@@ -22,7 +22,7 @@ This result establishes that the underlying task is learnable at this label budg
     A Sentinel-2-only fine-tuned baseline, evaluated zero-shot on real $\Phi$-sat-2 LULC data, is required to complete the source-vs-target comparison in the framing used by related on-orbit GeoFM studies (Section~\ref{chap:background}), and to quantify the ``before adaptation'' gap that the contrastive-KD mechanism (Section~\ref{sec:rq3-results}) is evaluated against.
 \end{quote}
 
-\subsection{Where the gap concentrates}
+\subsection{Domain-gap diagnostics at the encoder level}
 
 Domain-gap diagnostics on the co-registered triplets show that the gap is not uniform across TerraMind's depth: cosine similarity between matched real-$\Phi$-sat-2 and Sentinel-2 embeddings is lowest in the encoder's early layers, and per-domain normalization sharpens rather than dissolves this early-layer separation relative to a shared-normalization baseline.
 Since a normalization artifact would be expected to shrink, not sharpen, apparent similarity once each domain is properly calibrated to its own statistics, this result rules out calibration mismatch as the source of the measured gap and indicates a genuine representational effect concentrated in the earliest stages of the encoder, plausibly reflecting low-level spectral and textural statistics that later, more semantic layers partially normalize away.
@@ -58,7 +58,7 @@ This is a smaller effect than the LULC domain-gap results above might suggest, a
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{Interpreting the flood-robustness result}
+\subsection{Interpretation of the flood-robustness result}
 \label{sec:discussion-comparison}
 
 The mild flood-IoU degradation reported above is not unique to this thesis: Du et al.
@@ -67,7 +67,7 @@ Two independent studies observing the same pattern is worth foregrounding rather
 This has a direct consequence for how this thesis's motivating narrative should be read: flood segmentation, the downstream task chosen here, may understate the severity of the domain-gap problem this thesis's method addresses, since it happens to be an unusually forgiving task.
 This is stated here as an acknowledged limitation of the choice of downstream task, not concealed as a favorable result.
 
-\subsection{Positioning against $\Phi$satNet}
+\subsection{Positioning with $\Phi$satNet}
 
 $\Phi$satNet (Section~\ref{sec:phisatnet-background}), developed within the same research group, reports that a purpose-built, non-transformer GeoFM trained from scratch on a mission-specific corpus matches or exceeds unconstrained transformer-based GeoFMs on several on-board tasks.
 Taken at face value, this raises a reasonable objection to the approach in this thesis: if a bespoke lightweight model already performs well without any of the domain-adaptation or distillation machinery developed here, what is gained by adapting TerraMind instead?

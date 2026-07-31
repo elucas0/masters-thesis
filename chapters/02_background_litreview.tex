@@ -10,7 +10,7 @@ GeoFMs extend the foundation-model paradigm from natural images to Earth observa
 TerraMind\cite{jakubik2025terramind} is representative of this generation: a ViT-based, multimodal GeoFM pre-trained across nine geospatial modalities at scale, explicitly designed to produce transferable semantic representations rather than task-specific features.
 Studies compressing and deploying such models, discussed further below, treat this generalization capacity as the primary reason to prefer a GeoFM over a bespoke architecture -- but that capacity has, to date, mostly been demonstrated on data drawn from the same sensor family the model was pre-trained on, leaving open how it behaves under a genuine sensor change.
 
-\section{Domain Adaptation and the Sensor Domain Gap}
+\section{Domain Adaptation}
 
 Domain adaptation addresses the general problem of a model trained on a source distribution being applied to a target distribution with different input statistics but unchanged semantics \cite{kouw2019introductiondomainadaptationtransfer}.
 Within satellite on-board AI specifically, Du et al.
@@ -39,7 +39,7 @@ On-board AI processing has moved from single-purpose CNNs, exemplified by $\Phi$
 The hardware reality constraining this progress is specific and severe: the $\Phi$-sat-2 CogniSAT-XE1 payload's Intel Movidius Myriad 2 VPU \cite{myriad2} is legacy hardware whose supported operator set (through OpenVINO 2020.3, ONNX opset 8--11) lacks dynamic-axes support, making ViT inference structurally infeasible regardless of model size, and imposes hard memory (approximately 512\,MB) and model-size (250\,MB) limits under float16-only inference.
 These constraints, documented in detail by the same-lab $\Phi$satNet effort, are the concrete justification for why this thesis treats cross-architecture distillation, rather than direct deployment or same-family compression, as a requirement rather than a design choice.
 
-\subsection{$\Phi$satNet: a different approach}
+\subsection{$\Phi$satNet}
 \label{sec:phisatnet-background}
 
 $\Phi$satNet is a U-Net-derived, multi-task-pretrained GeoFM developed within the same research group specifically for on-board execution on $\Phi$-sat-2, using a purpose-built pre-training corpus and benchmark suite built on the same OrbitalAI simulator described above.

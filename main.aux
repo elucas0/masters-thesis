@@ -21,7 +21,7 @@
 \citation{du2025onorbitdemonstrationgeospatialfoundation}
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Problem Definition}{4}{section.1.1}\protected@file@percent }
 \newlabel{sec:problem-definition}{{1.1}{4}{Problem Definition}{section.1.1}{}}
-\newlabel{eq:covariate-shift}{{1.1}{4}{Problem Definition}{equation.1.1.1}{}}
+\newlabel{eq:covariate-shift}{{1.1}{4}{Problem Definition}{equation.1.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.2}Research Gap}{4}{section.1.2}\protected@file@percent }
 \newlabel{sec:research-gap}{{1.2}{4}{Research Gap}{section.1.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.3}Research Objective and Problem Statement}{5}{section.1.3}\protected@file@percent }
@@ -36,7 +36,7 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{chap:background}{{2}{6}{Background and Literature Review}{chapter.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.1}Geospatial Foundation Models}{6}{section.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Domain Adaptation and the Sensor Domain Gap}{6}{section.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Domain Adaptation}{6}{section.2.2}\protected@file@percent }
 \citation{hinton2015distilling}
 \citation{giuffrida2021varphi}
 \citation{barretta2026onboardaireview}
@@ -45,8 +45,8 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}Knowledge Distillation Across Architectures}{7}{section.2.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2.5}On-board AI for Earth Observation}{7}{section.2.5}\protected@file@percent }
 \newlabel{sec:onboard-ai}{{2.5}{7}{On-board AI for Earth Observation}{section.2.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}$\Phi $satNet: a different approach}{8}{subsection.2.5.1}\protected@file@percent }
-\newlabel{sec:phisatnet-background}{{2.5.1}{8}{$\Phi $satNet: a different approach}{subsection.2.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}$\Phi $satNet}{8}{subsection.2.5.1}\protected@file@percent }
+\newlabel{sec:phisatnet-background}{{2.5.1}{8}{$\Phi $satNet}{subsection.2.5.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.6}Synthesis}{8}{section.2.6}\protected@file@percent }
 \citation{Lindenberger_2023_ICCV}
 \citation{Lindenberger_2023_ICCV}
@@ -59,44 +59,42 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}The co-registered triplet dataset}{9}{subsection.3.1.1}\protected@file@percent }
 \newlabel{sec:triplets}{{3.1.1}{9}{The co-registered triplet dataset}{subsection.3.1.1}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Scale and coverage}{10}{section*.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Train/validation/test split and a limitation}{10}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Train/validation/test split and a limitation}{10}{section*.7}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Four representative triplets, each row showing the same scene as observed by real $\Phi $-sat-2, the physics-simulated $\Phi $-sat-2 rendering, and Sentinel-2B (each channel independently contrast-stretched for display). The real acquisitions show visibly grainier, noisier texture than either the simulated or source Sentinel-2 view -- most apparent in the dark water/shadow region of patch 171127 -- consistent with the sensor noise characteristics the degradation pipeline (Section~\ref {sec:degradation-pipeline}) is designed to reproduce. }}{11}{figure.caption.2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:patch-examples}{{3.1}{11}{Four representative triplets, each row showing the same scene as observed by real $\Phi $-sat-2, the physics-simulated $\Phi $-sat-2 rendering, and Sentinel-2B (each channel independently contrast-stretched for display). The real acquisitions show visibly grainier, noisier texture than either the simulated or source Sentinel-2 view -- most apparent in the dark water/shadow region of patch 171127 -- consistent with the sensor noise characteristics the degradation pipeline (Section~\ref {sec:degradation-pipeline}) is designed to reproduce}{figure.caption.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Left: distribution of the absolute time lag between matched $\Phi $-sat-2 and Sentinel-2 acquisitions (median 6.8 days, maximum 14.9 days, $n=253{,}228$). Right: monthly acquisition volume, Aug. \ 2024 -- Apr.\ 2026, showing the collection ramp-up in the first eight months.}}{12}{figure.caption.4}\protected@file@percent }
 \newlabel{fig:acquisition}{{3.2}{12}{Left: distribution of the absolute time lag between matched $\Phi $-sat-2 and Sentinel-2 acquisitions (median 6.8 days, maximum 14.9 days, $n=253{,}228$). Right: monthly acquisition volume, Aug. \ 2024 -- Apr.\ 2026, showing the collection ramp-up in the first eight months}{figure.caption.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Cumulative distribution of per-patch cloud cover, separating thick and thin cloud; 73\% of patches fall below 5\% total cloud cover.}}{12}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:clouds}{{3.3}{12}{Cumulative distribution of per-patch cloud cover, separating thick and thin cloud; 73\% of patches fall below 5\% total cloud cover}{figure.caption.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Left: spatial density of $\Phi $-sat-2 products (hexbin, log-scaled patch count per cell). Right: distribution of patches by K\"oppen--Geiger climate group (Beck et al., 2018 classification). }}{12}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:geography}{{3.4}{12}{Left: spatial density of $\Phi $-sat-2 products (hexbin, log-scaled patch count per cell). Right: distribution of patches by K\"oppen--Geiger climate group (Beck et al., 2018 classification)}{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Left: share of all labelled pixels by ESA WorldCover class. Right: number of patches in which each class is the dominant (plurality) class. }}{13}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:landcover}{{3.5}{13}{Left: share of all labelled pixels by ESA WorldCover class. Right: number of patches in which each class is the dominant (plurality) class}{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Left: class prior is stable across the train/validation/test split. Right: every one of the 1,287 products contributing to the test set also contributes patches to the training set -- the split is patch-level, not scene-level. }}{13}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:splits}{{3.6}{13}{Left: class prior is stable across the train/validation/test split. Right: every one of the 1,287 products contributing to the test set also contributes patches to the training set -- the split is patch-level, not scene-level}{figure.caption.9}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Measured sensor discrepancy}{13}{section*.10}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Per-band raw digital number distributions by sensor (log scale; boxes = IQR, whiskers = $1.5\times $IQR, outliers hidden; 400{,}000 sampled pixels). Real $\Phi $-sat-2 occupies a scale roughly one order of magnitude below Sentinel-2 and its simulated counterpart, which closely overlap each other. }}{14}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:band-boxplots}{{3.7}{14}{Per-band raw digital number distributions by sensor (log scale; boxes = IQR, whiskers = $1.5\times $IQR, outliers hidden; 400{,}000 sampled pixels). Real $\Phi $-sat-2 occupies a scale roughly one order of magnitude below Sentinel-2 and its simulated counterpart, which closely overlap each other}{figure.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces The same per-band distributions after per-sensor $z$-score normalization of $\sqrt  {\text  {DN}}$. Location and scale are aligned, but real $\Phi $-sat-2 retains a wider spread than Sentinel-2 or the simulated domain in every band -- the residual gap normalization alone cannot close. }}{14}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:band-boxplots-normalized}{{3.8}{14}{The same per-band distributions after per-sensor $z$-score normalization of $\sqrt {\text {DN}}$. Location and scale are aligned, but real $\Phi $-sat-2 retains a wider spread than Sentinel-2 or the simulated domain in every band -- the residual gap normalization alone cannot close}{figure.caption.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Per-band pixel agreement between co-registered real-$\Phi $-sat-2 and Sentinel-2B digital numbers (hexbin density, log scale; orange = ordinary least-squares fit; patches with $\leq $5\% cloud only). Point clouds are diffuse around the fitted line in every band, and several bands show a distinct vertical streak near zero $\Phi $-sat-2 DN spanning the full Sentinel-2 DN range, consistent with localized real-sensor dropout or saturation artifacts rather than measurement noise alone. }}{15}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:sensor-scatter}{{3.9}{15}{Per-band pixel agreement between co-registered real-$\Phi $-sat-2 and Sentinel-2B digital numbers (hexbin density, log scale; orange = ordinary least-squares fit; patches with $\leq $5\% cloud only). Point clouds are diffuse around the fitted line in every band, and several bands show a distinct vertical streak near zero $\Phi $-sat-2 DN spanning the full Sentinel-2 DN range, consistent with localized real-sensor dropout or saturation artifacts rather than measurement noise alone}{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Left: spatial density of $\Phi $-sat-2 products (hexbin, log-scaled patch count per cell). Right: distribution of patches by K\"oppen--Geiger climate group (Beck et al., 2018 classification). }}{12}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:geography}{{3.3}{12}{Left: spatial density of $\Phi $-sat-2 products (hexbin, log-scaled patch count per cell). Right: distribution of patches by K\"oppen--Geiger climate group (Beck et al., 2018 classification)}{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Left: share of all labelled pixels by ESA WorldCover class. Right: number of patches in which each class is the dominant (plurality) class. }}{12}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:landcover}{{3.4}{12}{Left: share of all labelled pixels by ESA WorldCover class. Right: number of patches in which each class is the dominant (plurality) class}{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Left: class prior is stable across the train/validation/test split. Right: every one of the 1,287 products contributing to the test set also contributes patches to the training set -- the split is patch-level, not scene-level. }}{13}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:splits}{{3.5}{13}{Left: class prior is stable across the train/validation/test split. Right: every one of the 1,287 products contributing to the test set also contributes patches to the training set -- the split is patch-level, not scene-level}{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Measured sensor discrepancy}{13}{section*.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Per-band raw digital number distributions by sensor (log scale; boxes = IQR, whiskers = $1.5\times $IQR, outliers hidden; 400{,}000 sampled pixels). Real $\Phi $-sat-2 occupies a scale roughly one order of magnitude below Sentinel-2 and its simulated counterpart, which closely overlap each other. }}{14}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:band-boxplots}{{3.6}{14}{Per-band raw digital number distributions by sensor (log scale; boxes = IQR, whiskers = $1.5\times $IQR, outliers hidden; 400{,}000 sampled pixels). Real $\Phi $-sat-2 occupies a scale roughly one order of magnitude below Sentinel-2 and its simulated counterpart, which closely overlap each other}{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces The same per-band distributions after per-sensor $z$-score normalization of $\sqrt  {\text  {DN}}$. Location and scale are aligned, but real $\Phi $-sat-2 retains a wider spread than Sentinel-2 or the simulated domain in every band -- the residual gap normalization alone cannot close. }}{14}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:band-boxplots-normalized}{{3.7}{14}{The same per-band distributions after per-sensor $z$-score normalization of $\sqrt {\text {DN}}$. Location and scale are aligned, but real $\Phi $-sat-2 retains a wider spread than Sentinel-2 or the simulated domain in every band -- the residual gap normalization alone cannot close}{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Per-band pixel agreement between co-registered real-$\Phi $-sat-2 and Sentinel-2B digital numbers (hexbin density, log scale; orange = ordinary least-squares fit; patches with $\leq $5\% cloud only). Point clouds are diffuse around the fitted line in every band, and several bands show a distinct vertical streak near zero $\Phi $-sat-2 DN spanning the full Sentinel-2 DN range, consistent with localized real-sensor dropout or saturation artifacts rather than measurement noise alone. }}{15}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:sensor-scatter}{{3.8}{15}{Per-band pixel agreement between co-registered real-$\Phi $-sat-2 and Sentinel-2B digital numbers (hexbin density, log scale; orange = ordinary least-squares fit; patches with $\leq $5\% cloud only). Point clouds are diffuse around the fitted line in every band, and several bands show a distinct vertical streak near zero $\Phi $-sat-2 DN spanning the full Sentinel-2 DN range, consistent with localized real-sensor dropout or saturation artifacts rather than measurement noise alone}{figure.caption.12}{}}
 \citation{longepe2024orbitalai}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces Median per-band digital number, normalized by each sensor's own overall band mean (1.0 = that sensor's average). Sentinel-2B and simulated $\Phi $-sat-2 overlap almost exactly; real $\Phi $-sat-2 has a markedly different spectral shape, peaking at Red and dipping at RE1 and NIR. }}{16}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:spectral-signature}{{3.10}{16}{Median per-band digital number, normalized by each sensor's own overall band mean (1.0 = that sensor's average). Sentinel-2B and simulated $\Phi $-sat-2 overlap almost exactly; real $\Phi $-sat-2 has a markedly different spectral shape, peaking at Red and dipping at RE1 and NIR}{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Median per-band digital number, normalized by each sensor's own overall band mean (1.0 = that sensor's average). Sentinel-2B and simulated $\Phi $-sat-2 overlap almost exactly; real $\Phi $-sat-2 has a markedly different spectral shape, peaking at Red and dipping at RE1 and NIR. }}{16}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:spectral-signature}{{3.9}{16}{Median per-band digital number, normalized by each sensor's own overall band mean (1.0 = that sensor's average). Sentinel-2B and simulated $\Phi $-sat-2 overlap almost exactly; real $\Phi $-sat-2 has a markedly different spectral shape, peaking at Red and dipping at RE1 and NIR}{figure.caption.13}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Simulated degraded flood-segmentation dataset}{16}{subsection.3.1.2}\protected@file@percent }
 \newlabel{sec:sen1floods-sim}{{3.1.2}{16}{Simulated degraded flood-segmentation dataset}{subsection.3.1.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Physics-Based Sensor Degradation Pipeline}{16}{section.3.2}\protected@file@percent }
 \newlabel{sec:degradation-pipeline}{{3.2}{16}{Physics-Based Sensor Degradation Pipeline}{section.3.2}{}}
-\@writefile{toc}{\contentsline {paragraph}{Radiance--reflectance conversion.}{16}{section*.15}\protected@file@percent }
-\newlabel{eq:rad2refl}{{3.1}{16}{Radiance--reflectance conversion}{equation.3.2.1}{}}
-\@writefile{toc}{\contentsline {paragraph}{Spatial resampling.}{17}{section*.16}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Band-to-band misalignment.}{17}{section*.17}\protected@file@percent }
-\newlabel{eq:misalign-l1a}{{3.2}{17}{Band-to-band misalignment}{equation.3.2.2}{}}
-\@writefile{toc}{\contentsline {paragraph}{Signal-to-noise degradation.}{17}{section*.18}\protected@file@percent }
-\newlabel{eq:snr-const}{{3.3}{17}{Signal-to-noise degradation}{equation.3.2.3}{}}
-\newlabel{eq:snr-signal}{{3.4}{17}{Signal-to-noise degradation}{equation.3.2.4}{}}
-\@writefile{toc}{\contentsline {paragraph}{Optical blur via MTF/PSF.}{18}{section*.19}\protected@file@percent }
-\newlabel{eq:mtf}{{3.5}{18}{Optical blur via MTF/PSF}{equation.3.2.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{Radiance--reflectance conversion.}{16}{section*.14}\protected@file@percent }
+\newlabel{eq:rad2refl}{{3.1}{16}{Radiance--reflectance conversion}{equation.3.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Spatial resampling.}{17}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Band-to-band misalignment.}{17}{section*.16}\protected@file@percent }
+\newlabel{eq:misalign-l1a}{{3.2}{17}{Band-to-band misalignment}{equation.3.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Signal-to-noise degradation.}{17}{section*.17}\protected@file@percent }
+\newlabel{eq:snr-const}{{3.3}{17}{Signal-to-noise degradation}{equation.3.3}{}}
+\newlabel{eq:snr-signal}{{3.4}{17}{Signal-to-noise degradation}{equation.3.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Optical blur via MTF/PSF.}{18}{section*.18}\protected@file@percent }
+\newlabel{eq:mtf}{{3.5}{18}{Optical blur via MTF/PSF}{equation.3.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Domain Gap Measurement}{18}{section.3.3}\protected@file@percent }
 \newlabel{sec:gap-measurement}{{3.3}{18}{Domain Gap Measurement}{section.3.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Normalization protocol}{18}{subsection.3.3.1}\protected@file@percent }
@@ -123,7 +121,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Domain Gap in Latent Space (RQ1)}{21}{section.4.2}\protected@file@percent }
 \newlabel{sec:rq1-results}{{4.2}{21}{Domain Gap in Latent Space (RQ1)}{section.4.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Real-data LULC baseline}{21}{subsection.4.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Where the gap concentrates}{22}{subsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Domain-gap diagnostics at the encoder level}{22}{subsection.4.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}Domain Adaptation and Distillation (RQ2, RQ3)}{22}{section.4.3}\protected@file@percent }
 \newlabel{sec:rq3-results}{{4.3}{22}{Domain Adaptation and Distillation (RQ2, RQ3)}{section.4.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}A negative result that reshaped the approach}{22}{subsection.4.3.1}\protected@file@percent }
@@ -131,9 +129,9 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Robustness across the degradation ladder}{23}{subsection.4.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}Discussion}{23}{section.4.4}\protected@file@percent }
 \newlabel{sec:discussion}{{4.4}{23}{Discussion}{section.4.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Interpreting the flood-robustness result}{23}{subsection.4.4.1}\protected@file@percent }
-\newlabel{sec:discussion-comparison}{{4.4.1}{23}{Interpreting the flood-robustness result}{subsection.4.4.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Positioning against $\Phi $satNet}{23}{subsection.4.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Interpretation of the flood-robustness result}{23}{subsection.4.4.1}\protected@file@percent }
+\newlabel{sec:discussion-comparison}{{4.4.1}{23}{Interpretation of the flood-robustness result}{subsection.4.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Positioning with $\Phi $satNet}{23}{subsection.4.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Limitations}{24}{subsection.4.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Practical recommendations}{24}{subsection.4.4.4}\protected@file@percent }
 \bibstyle{ieeetr}
