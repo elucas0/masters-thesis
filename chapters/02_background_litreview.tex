@@ -34,20 +34,21 @@ This thesis instead distills across architecture families -- from a ViT-based te
 \section{On-board AI for Earth Observation}
 \label{sec:onboard-ai}
 
-On-board AI processing has moved from single-purpose CNNs, exemplified by $\Phi$-sat-1's cloud-detection application\cite{giuffrida2021varphi}, toward more general and more capable models, as surveyed by Barretta et al.
+On-board AI processing has moved from single-purpose CNNs, exemplified by $\Phi$-sat-1's\cite{giuffrida2021phisat1} cloud-detection application\cite{giuffrida2020cloudscout}, toward more general and more capable models, as surveyed by Barretta et al.
 \ \cite{barretta2026onboardaireview}.
-The hardware reality constraining this progress is specific and severe: the $\Phi$-sat-2 CogniSAT-XE1 payload's Intel Movidius Myriad 2 VPU \cite{myriad2} is legacy hardware whose supported operator set (through OpenVINO 2020.3, ONNX opset 8--11) lacks dynamic-axes support, making ViT inference structurally infeasible regardless of model size, and imposes hard memory (approximately 512\,MB) and model-size (250\,MB) limits under float16-only inference.
-These constraints, documented in detail by the same-lab $\Phi$satNet effort, are the concrete justification for why this thesis treats cross-architecture distillation, rather than direct deployment or same-family compression, as a requirement rather than a design choice.
+The hardware on-board of $\Phi$-sat-2 is a constraining factor for the deployment of models as the CogniSAT-XE1 payload's is equiped with the Intel Movidius Myriad 2 VPU \cite{myriad2}. The support for this hardware has been discontinued in 2020, which makes it legacy. The supported operator set (through OpenVINO 2020.3, ONNX opset 8--11) \footnote{Supported operations are listed here: https://docs.openvino.ai/2023.3/
+openvino_docs_ops_opset2.html} lacks dynamic-axes support, making ViT inference structurally infeasible regardless of model size, and imposes hard memory (approximately 512\,MB \cite{leon2021improving}) and model-size (250\,MB) limits under float16-only inference.
+These constraints, documented in detail by the $\Phi$satNet effort, are the main motivations for cross-architecture distillation, rather than direct deployment or same-family compression.
 
 \subsection{$\Phi$satNet}
 \label{sec:phisatnet-background}
 
-$\Phi$satNet is a U-Net-derived, multi-task-pretrained GeoFM developed within the same research group specifically for on-board execution on $\Phi$-sat-2, using a purpose-built pre-training corpus and benchmark suite built on the same OrbitalAI simulator described above.
+$\Phi$satNet is a U-Net-derived, multi-task-pretrained GeoFM being developed by the $\Phi$-lab specifically for on-board execution on $\Phi$-sat-2, using a purpose-built pre-training corpus and benchmark suite built on the same OrbitalAI simulator described above.
 By training a compact, non-transformer architecture from scratch, $\Phi$satNet avoids the ViT-hardware-incompatibility problem entirely, and its authors report that it matches or exceeds unconstrained transformer-based GeoFMs on several on-board tasks.
-This is a different design philosophy from the one pursued here, not a competing solution to the same problem: $\Phi$satNet optimizes for a hardware-native architecture trained on a curated, mission-specific task suite, while this thesis bets that adapting an existing, diversely pre-trained GeoFM generalizes to new tasks with fewer labels than training a mission-specific model affords.
-Chapter~\ref{chap:results-discussion} tests this bet directly through a few-shot comparison against $\Phi$satNet.
+This is a different design philosophy from the one pursued here, not a competing solution to the same problem. $\Phi$satNet optimizes for a hardware-native architecture trained on a curated, mission-specific task suite, while this thesis looks into the adaptation of an existing, diversely pre-trained GeoFM generalizes to new tasks with fewer labels than training a mission-specific model affords.
+Chapter~\ref{chap:results-discussion} tests this directly through a few-shot comparison against $\Phi$satNet.
 
 \section{Synthesis}
 
-None of the five bodies of work above, individually or in combination, isolates sensor-induced covariate shift using co-registered source/target data, trains encoder-level domain invariance through an explicit paired objective rather than incidental exposure to degraded or limited real data, and verifies that this invariance -- not merely task accuracy -- survives cross-architecture distillation into hardware-deployable form.
+No work cited above isolates sensor-induced covariate shift using co-registered source/target data, trains encoder-level domain invariance through an explicit paired objective rather than incidental exposure to degraded or limited real data, and verifies that this invariance -- not merely task accuracy -- survives cross-architecture distillation into hardware-deployable form.
 The spatially and temporally co-registered $\Phi$-sat-2/Sentinel-2/simulated triplet dataset used in this thesis is what makes the first of these three possible; the paired-contrastive distillation objective developed in Chapter~\ref{chap:methodology} is what makes the second and third possible.
