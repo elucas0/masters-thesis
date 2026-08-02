@@ -6,8 +6,13 @@ Each part is treated in turn, before a closing synthesis states what combination
 
 \section{Geospatial Foundation Models}
 
-GeoFMs extend the foundation-model paradigm from natural images to Earth observation, pre-training a single large backbone on diverse, multi-modal EO archives so that many downstream tasks can be solved by fine-tuning a small task-specific head rather than training a full model from scratch.
-TerraMind\cite{jakubik2025terramind} is representative of this generation: a ViT-based, multimodal GeoFM pre-trained across nine geospatial modalities at scale, explicitly designed to produce transferable semantic representations rather than task-specific features.
+Foundation models are a class of large, pre-trained neural networks that can be adapted to many downstream tasks with minimal additional training \cite{bommasani2021opportunities}.
+This paradigm has been widely adopted in natural language processing and computer vision, where models such as BERT, GPT, and CLIP have demonstrated remarkable performance across a range of tasks.
+These models are characterized by their pre-training strategy, which typically involves self-supervised learning on massive, diverse datasets, and by their ability to generalize across tasks and domains.
+Once a foundation model is pre-trained, it can be fine-tuned on specific tasks, which makes them highly versatile and efficient for a wide range of applications.
+
+GeoFMs \cite{lu2025vision} extend the foundation-model paradigm from natural images to Earth observation, pre-training a single large backbone on diverse, multi-modal EO archives so that many downstream tasks can be solved by fine-tuning a small task-specific head rather than training a full model from scratch.
+TerraMind\cite{jakubik2025terramind} is a ViT-based, multimodal GeoFM pre-trained on nine modalities at scale, explicitly designed to produce transferable semantic representations rather than task-specific features.
 Studies compressing and deploying such models, discussed further below, treat this generalization capacity as the primary reason to prefer a GeoFM over a bespoke architecture -- but that capacity has, to date, mostly been demonstrated on data drawn from the same sensor family the model was pre-trained on, leaving open how it behaves under a genuine sensor change.
 
 \section{Domain Adaptation}
