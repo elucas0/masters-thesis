@@ -36,8 +36,7 @@ This thesis instead distills across architecture families -- from a ViT-based te
 
 On-board AI processing has moved from single-purpose CNNs, exemplified by $\Phi$-sat-1's\cite{giuffrida2021phisat1} cloud-detection application\cite{giuffrida2020cloudscout}, toward more general and more capable models, as surveyed by Barretta et al.
 \ \cite{barretta2026onboardaireview}.
-The hardware on-board of $\Phi$-sat-2 is a constraining factor for the deployment of models as the CogniSAT-XE1 payload's is equiped with the Intel Movidius Myriad 2 VPU \cite{myriad2}. The support for this hardware has been discontinued in 2020, which makes it legacy. The supported operator set (through OpenVINO 2020.3, ONNX opset 8--11) \footnote{Supported operations are listed here: https://docs.openvino.ai/2023.3/
-openvino_docs_ops_opset2.html} lacks dynamic-axes support, making ViT inference structurally infeasible regardless of model size, and imposes hard memory (approximately 512\,MB \cite{leon2021improving}) and model-size (250\,MB) limits under float16-only inference.
+The hardware on-board of $\Phi$-sat-2 is a constraining factor for the deployment of models as the CogniSAT-XE1 payload's is equiped with the Intel Movidius Myriad 2 VPU \cite{myriad2}. The support for this hardware has been discontinued in 2020, which makes it legacy. The supported operator set (through OpenVINO 2020.3, ONNX opset 8--11) \footnote{Supported operations are listed here: \url{https://docs.openvino.ai/2023.3/openvino_docs_ops_opset2.html}} lacks dynamic-axes support, making ViT inference structurally infeasible regardless of model size, and imposes hard memory (approximately 512\,MB \cite{leon2021improving}) and model-size (250\,MB) limits under float16-only inference.
 These constraints, documented in detail by the $\Phi$satNet effort, are the main motivations for cross-architecture distillation, rather than direct deployment or same-family compression.
 
 \subsection{$\Phi$satNet}

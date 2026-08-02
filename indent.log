@@ -1,7 +1,7 @@
 INFO:  latexindent version 3.24.7, 2025-08-15, a script to indent .tex files
        latexindent lives here: /usr/share/texlive/texmf-dist/scripts/latexindent/
-       Fri Jul 31 18:21:53 2026
-       Filename: /home/elouann/copernicus/research/masters-thesis/chapters/__latexindent_temp_04_results_discussion.tex
+       Fri Jul 31 23:05:06 2026
+       Filename: /home/elouann/copernicus/research/masters-thesis/chapters/__latexindent_temp_01_introduction.tex
 INFO:  Processing switches:
        -y|--yaml: YAML settings specified via command line
        -c|--cruft: cruft directory
@@ -17,12 +17,8 @@ INFO:  YAML settings read: -y switch
        YAML setting: defaultIndent:'    '
        single-quoted string found in -y switch: '    ', substitute to     
        Updating mainSettings with defaultIndent:     
-INFO:  Phase 1: searching for objects
-INFO:  Phase 2: finding surrounding indentation
-INFO:  Phase 3: indenting objects
-INFO:  Phase 4: final indentation check
-INFO:  Output routine:
-       Not outputting to file; see -w and -o switches for more options.
+FATAL I couldn't find /home/elouann/copernicus/research/masters-thesis/chapters/__latexindent_temp_01_introduction.tex, are you sure it exists?
+      Exiting, no indentation done.
        --------------
 INFO:  Please direct all communication/issues to:
         https://github.com/cmhughes/latexindent.pl
