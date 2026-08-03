@@ -1,49 +1,50 @@
-This is BibTeX, Version 0.99e (TeX Live 2026)
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: ieeetr.bst
 Database file #1: references.bib
+Warning--I didn't find a database entry for "heo2019comprehensive"
 Warning--empty journal in taylor2013wildfire
-Warning--there's a number but no series in coelho2021phisat2
-You've used 17 entries,
+Warning--empty journal in coelho2021phisat2
+You've used 35 entries,
             1876 wiz_defined-function locations,
-            581 strings with 7933 characters,
-and the built_in function-call counts, 4099 in all, are:
-= -- 343
-> -- 270
+            667 strings with 13139 characters,
+and the built_in function-call counts, 11331 in all, are:
+= -- 919
+> -- 825
 < -- 0
-+ -- 96
-- -- 79
-* -- 317
-:= -- 669
-add.period$ -- 24
-call.type$ -- 17
-change.case$ -- 18
++ -- 287
+- -- 252
+* -- 947
+:= -- 1767
+add.period$ -- 36
+call.type$ -- 35
+change.case$ -- 36
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 202
-empty$ -- 359
-format.name$ -- 79
-if$ -- 947
+cite$ -- 37
+duplicate$ -- 505
+empty$ -- 902
+format.name$ -- 252
+if$ -- 2587
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 16
-newline$ -- 61
-num.names$ -- 17
-pop$ -- 55
+int.to.str$ -- 35
+missing$ -- 32
+newline$ -- 109
+num.names$ -- 35
+pop$ -- 133
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 93
+skip$ -- 320
 stack$ -- 0
-substring$ -- 122
-swap$ -- 57
+substring$ -- 626
+swap$ -- 198
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 30
-width$ -- 19
-write$ -- 170
-(There were 2 warnings)
+while$ -- 90
+width$ -- 37
+write$ -- 326
+(There were 3 warnings)

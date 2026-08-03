@@ -1,21 +1,33 @@
 \chapter{Background and Literature Review}
 \label{chap:background}
 
-This chapter positions the thesis against five parts of the work that each contribute to the overall problem, which is to deploy a robust GeoFM on board a resource-constrained satellite.
+This chapter positions the thesis against five parts of the work that each contribute to the overall problem, which is to make the representational benefits of a GeoFM available on board a resource-constrained satellite.
 Each part is treated in turn, before a closing synthesis states what combination of them remains unaddressed.
+
+\section{On-board AI for Earth Observation}
+\label{sec:onboard-ai}
+
+On-board AI processing has moved from single-purpose CNNs, exemplified by $\Phi$-sat-1's\cite{giuffrida2021phisat1} cloud-detection application\cite{giuffrida2020cloudscout}, toward more general and more capable models, as surveyed by Barretta et al.
+\ \cite{barretta2026onboardaireview}.
+ViT architectures have become popular in computer vision due to their ability to capture global context via self-attention mechanisms, often outperforming CNNs on a variety of tasks\cite{han2022survey}.
+This makes ViT-based models strong candidates for on-board EO applications, but their computational and memory requirements are often prohibitive for deployment on resource-constrained satellites\cite{chou2023edge}.
+The hardware on board $\Phi$-sat-2 is a constraining factor for the deployment of models, as the CogniSAT-XE1 payload is equipped with the Intel Movidius Myriad 2 VPU~\cite{myriad2}.
+The support for this hardware has been discontinued in 2020, which makes it legacy.
+The $\Phi$satNet effort reports that the most recent OpenVINO release supporting this hardware is version 2020.3, that experimental testing confirmed only ONNX opset 8--11 are available\footnote{Supported operations are listed here: \url{https://docs.openvino.ai/2023.3/openvino_docs_ops_opset2.html}}, and that the resulting lack of dynamic-axes support renders transformer-based architectures such as ViT incompatible with the target~\cite{phisatnet}.
+These constraints, documented in detail by the $\Phi$satNet effort, are the main motivations for cross-architecture distillation, rather than direct deployment or same-family compression.
 
 \section{Geospatial Foundation Models}
 
-Foundation models are a class of large, pre-trained neural networks that can be adapted to many downstream tasks with minimal additional training \cite{bommasani2021opportunities}.
+Foundation models are a class of large, pre-trained neural networks that can be adapted to many downstream tasks with minimal additional training\cite{bommasani2021opportunities}.
 This paradigm has been widely adopted in natural language processing and computer vision, where models such as BERT, GPT, and CLIP have demonstrated remarkable performance across a range of tasks.
 These models are characterized by their pre-training strategy, which typically involves self-supervised learning on massive, diverse datasets, and by their ability to generalize across tasks and domains.
 Once a foundation model is pre-trained, it can be fine-tuned on specific tasks, which makes them highly versatile and efficient for a wide range of applications.
 
-GeoFMs \cite{lu2025vision} extend the foundation-model paradigm from natural images to Earth observation, pre-training a single large backbone on diverse, multi-modal EO archives so that many downstream tasks can be solved by fine-tuning a small task-specific head rather than training a full model from scratch.
-TerraMind\cite{jakubik2025terramind} is a ViT-based, multimodal GeoFM pre-trained on nine modalities at scale, explicitly designed to produce transferable semantic representations rather than task-specific features.
-Studies compressing and deploying such models treat this generalization capacity as the primary reason to prefer a GeoFM over a bespoke architecture. However, that capacity has, to date, mostly been demonstrated on data drawn from the same sensor family the model was pre-trained on, leaving open how it behaves under different sensor conditions.
-
-
+GeoFMs\cite{lu2025vision} extend the foundation-model paradigm from natural images to Earth observation.
+Pre-training gives a single large backbone of diverse, multi-modal EO archives so that many downstream tasks can be solved by fine-tuning a small task-specific head rather than training a full model from scratch.
+TerraMind\cite{jakubik2025terramind} is a ViT-based, multimodal GeoFM pre-trained on the multimodal TerraMesh dataset\cite{blumenstiel2025terramesh}, which includes Sentinel-2 data.
+It is explicitly designed to produce transferable semantic representations rather than task-specific features.
+However, that capacity has, to date, mostly been demonstrated on data drawn from the same sensor family the model was pre-trained on, leaving open how it behaves under different sensor conditions.
 
 \section{Domain Adaptation}
 
@@ -23,40 +35,55 @@ Domain adaptation addresses the general problem of a model trained on a source d
 Within satellite on-board AI specifically, Du et al.
 \ \cite{du2024domainadaptation} demonstrated domain adaptation for satellite-borne cloud detection by retraining task heads on real, though limited, labeled imagery from the Kanyini mission, with the encoder frozen.
 This line of work was extended on-orbit by Du et al.
-\ \cite{du2025onorbitdemonstrationgeospatialfoundation}, who deployed a compressed Prithvi-family GeoFM on Kanyini and the IMAGIN-e payload, again adapting via real-label head retraining rather than encoder-level invariance training, and measuring the domain gap only indirectly through downstream task performance on source and target benchmark datasets that differ in geography and content as well as sensor.
-This is the central limitation this thesis's data design addresses: without co-registered source/target pairs of the same scene, a measured performance drop cannot distinguish sensor-induced covariate shift from confounding differences in what the two datasets actually depict.
+\ \cite{du2025onorbitdemonstrationgeospatialfoundation}, who deployed a compressed Prithvi-family GeoFM on Kanyini and the IMAGIN-e payload, adapting via real-label head retraining rather than encoder-level invariance training.
+The domain gap is measured only indirectly through downstream task performance on source and target benchmark datasets that differ in geography and content as well as sensor.
+This is the central limitation this thesis's data design addresses, because without co-registered source/target pairs of the same scene, a measured performance drop cannot distinguish sensor-induced covariate shift from confounding differences in what the two datasets depict.
 
-A separate line of domain-adaptation work sidesteps alignment losses entirely by giving the model domain-specific normalization statistics instead. Domain-Specific Batch Normalization (DSBN) \cite{chang2019dsbn} keeps a single set of convolutional weights but a separate batch-normalization affine transform and running statistics per domain, requiring only that the domain of each example be known, not that examples be paired across domains. This is a substantially weaker requirement than the paired-contrastive or MMD-style objectives discussed above, and, unlike them, is directly applicable wherever the deployed sensor is known at inference -- which on board a single-sensor satellite it always is.
+Beyond retraining task heads, approaches to close the gap fall into a small number of families.
+Their shared theoretical motivation is the bound of Ben-David et al.~\cite{bendavid2010theory}, which limits target-domain error by the sum of the source-domain error, a divergence between the two marginal input distributions, and a term for the error of the best joint hypothesis.
+Since the first and third terms are not reduced by adaptation, the families below differ mainly in how they attack the divergence term.
+Discrepancy-based methods penalize a statistical distance between the source and target feature distributions directly, most commonly the maximum mean discrepancy (MMD)~\cite{gretton2012kernel}, which requires only that samples from each domain be available, not that they correspond.
+Alignment-based methods make the stronger assumption that corresponding inputs are available, and pull their representations together explicitly.
+X-STARS~\cite{marsocci2025xstars} is the closest published example to the setting of this thesis: it adapts a model pre-trained on one optical sensor to a second sensor through a multi-sensor alignment dense loss, a patch-wise contrastive objective applied between paired acquisitions of the same area by both sensors, within a continual-pretraining framework.
+It establishes that a paired-contrastive objective is effective when the sensor change is primarily one of spatial resolution, which is not the regime this thesis operates in: the $\Phi$-sat-2/Sentinel-2 gap measured in Chapter~\ref{chap:results-discussion} is driven mainly by differing spectral response rather than by resolution mismatch.
+
+A separate line of domain-adaptation work sidesteps alignment losses entirely by giving the model domain-specific normalization statistics instead.
+Domain-Specific Batch Normalization (DSBN) \cite{chang2019dsbn} keeps a single set of convolutional weights but a separate batch-normalization affine transform and running statistics per domain.
+This only requires that the domain of each example is known, not that examples are paired across domains.
+This is a weaker requirement than the paired-contrastive or MMD loss objectives discussed above, and, unlike them, is directly applicable wherever the deployed sensor is known at inference.
 
 \section{Physics-Based Sensor Degradation Simulation}
 
-Because labeled data from a satellite sensor does not exist before the satellite is launched, and accumulates slowly afterward for rare events, physics-based simulation of a target sensor's characteristics from an existing labeled source (typically Sentinel-2) has become a standard tool for pre-mission model development.
-The simulator developed for the ESA $\Phi$-lab OrbitalAI challenge \cite{longepe2024orbitalai} models this transformation as a sequence of physical operations in radiance space -- spectral and spatial resampling to the target sensor's band configuration and ground sampling distance, band-to-band misalignment consistent with push-broom acquisition geometry, signal-to-noise degradation, and optical blur modeled through the sensor's modulation transfer function -- calibrated against real flight data from related missions.
+Because labeled data from a satellite sensor does not exist before the satellite is launched, and accumulates slowly afterward for rare events, physics-based simulation of a target sensor's characteristics from an existing labeled source (typically Sentinel-2) has become a standard tool for pre-mission model development\cite{segl2012eetes}\cite{segl2015s2etes}.
+The simulator developed for the ESA $\Phi$-lab OrbitalAI challenge\cite{longepe2024orbitalai} models this transformation as a sequence of physical operations in radiance space -- spectral and spatial resampling to the target sensor's band configuration and ground sampling distance, band-to-band misalignment consistent with push-broom acquisition geometry, signal-to-noise degradation, and optical blur modeled through the sensor's modulation transfer function -- calibrated against real flight data from related missions.
 This simulator underlies both the degradation pipeline used in this thesis and, independently, the pre-training and benchmarking datasets used by $\Phi$satNet (Section~\ref{sec:phisatnet-background}), making it a shared, validated tool within this specific research context rather than a novel contribution of either work.
 
 \section{Knowledge Distillation Across Architectures}
 
-Knowledge distillation \cite{hinton2015distilling} compresses a large teacher model into a smaller student by training the student to reproduce the teacher's output distribution, or, in feature-based variants, its intermediate representations, rather than training the student only against hard labels.
-Most applications of distillation to on-board EO models compress within the same architecture family or distill into a same-family, smaller model, and treat robustness to sensor conditions as a property that transfers passively if the teacher itself is robust.
-This thesis instead distills across architecture families -- from a ViT-based teacher to a CNN student -- a necessary step given that ViT inference is not supported on the $\Phi$-sat-2 on-board hardware (Section~\ref{sec:onboard-ai}), and gives the student itself a domain-adaptation mechanism (domain-specific batch normalization, Section~\ref{sec:kd}) rather than relying on passive inheritance of whatever invariance the teacher happens to have. A paired-contrastive alignment objective exploiting the co-registered triplets was implemented and evaluated as an additional mechanism on top of this, but was found not to improve downstream task performance beyond what domain-specific normalization already provides (Section~\ref{sec:da-mechanism}).
-
-\section{On-board AI for Earth Observation}
-\label{sec:onboard-ai}
-
-On-board AI processing has moved from single-purpose CNNs, exemplified by $\Phi$-sat-1's\cite{giuffrida2021phisat1} cloud-detection application\cite{giuffrida2020cloudscout}, toward more general and more capable models, as surveyed by Barretta et al.
-\ \cite{barretta2026onboardaireview}.
-The hardware on-board of $\Phi$-sat-2 is a constraining factor for the deployment of models as the CogniSAT-XE1 payload's is equiped with the Intel Movidius Myriad 2 VPU \cite{myriad2}. The support for this hardware has been discontinued in 2020, which makes it legacy. The supported operator set (through OpenVINO 2020.3, ONNX opset 8--11) \footnote{Supported operations are listed here: \url{https://docs.openvino.ai/2023.3/openvino_docs_ops_opset2.html}} lacks dynamic-axes support, making ViT inference structurally infeasible regardless of model size, and imposes hard memory (approximately 512\,MB \cite{leon2021improving}) and model-size (250\,MB) limits under float16-only inference.
-These constraints, documented in detail by the $\Phi$satNet effort, are the main motivations for cross-architecture distillation, rather than direct deployment or same-family compression.
+Knowledge distillation (KD)\cite{hinton2015distilling} compresses a large "teacher" model into a smaller "student" by training the student to reproduce the teacher's output distribution.
+By transferring the teacher's semantic knowledge (SK), KD allows the student to generalize better on large datasets with a lower computational cost.
+Some feature-based variants exist that utilize the intermediate representations of the teacher, rather than training the student only against hard labels\cite{heo2019comprehensive}.
+Most applications of distillation to on-board EO models compress within a single architecture family, distilling into a smaller model of the same type\cite{le2025semantic}.
+This thesis instead distills across architecture families -- from a ViT-based teacher to a CNN student -- a necessary step given that ViT inference is not supported on the $\Phi$-sat-2 on-board hardware (Section~\ref{sec:onboard-ai}), and gives the student itself a domain-adaptation mechanism (domain-specific batch normalization, Section~\ref{sec:kd}) rather than relying on passive inheritance of whatever invariance the teacher happens to have.
+A paired-contrastive alignment objective exploiting the co-registered triplets was implemented and evaluated as an additional mechanism on top of this, but was found not to improve downstream task performance beyond what domain-specific normalization already provides (Section~\ref{sec:da-mechanism}).
 
 \subsection{$\Phi$satNet}
 \label{sec:phisatnet-background}
 
 $\Phi$satNet is a U-Net-derived, multi-task-pretrained GeoFM being developed by the $\Phi$-lab specifically for on-board execution on $\Phi$-sat-2, using a purpose-built pre-training corpus and benchmark suite built on the same OrbitalAI simulator described above.
-By training a compact, non-transformer architecture from scratch, $\Phi$satNet avoids the ViT-hardware-incompatibility problem entirely, and its authors report that it matches or exceeds unconstrained transformer-based GeoFMs on several on-board tasks.
-This is a different design philosophy from the one pursued here, not a competing solution to the same problem. $\Phi$satNet optimizes for a hardware-native architecture trained on a curated, mission-specific task suite, while this thesis looks into the adaptation of an existing, diversely pre-trained GeoFM generalizes to new tasks with fewer labels than training a mission-specific model affords.
-Chapter~\ref{chap:results-discussion} tests this directly through a few-shot comparison against $\Phi$satNet.
+By training a compact, non-transformer architecture from scratch, $\Phi$satNet avoids the ViT-hardware-incompatibility problem entirely, and its authors report that it matches or exceeds unconstrained transformer-based GeoFMs on several on-board tasks~\cite{phisatnet}.
+This is a different design philosophy from the one pursued here, not a competing solution to the same problem.
+$\Phi$satNet optimizes for a hardware-native architecture trained on a curated, mission-specific task suite, while this thesis asks whether an existing, diversely pre-trained GeoFM can be adapted to new tasks with fewer labels than training a mission-specific model requires.
+
+One property of $\Phi$satNet bears directly on the problem this thesis addresses.
+Its pre-training method and its $n$-shot benchmarks are built entirely on simulated $\Phi$-sat-2 imagery derived from Sentinel-2, not on real acquisitions~\cite{phisatnet}.
+$\Phi$satNet therefore does not escape the sensor domain gap by being mission-specific; it relocates it.
+Its reported few-shot advantage rests on the assumption that physically simulated imagery stands in adequately for the real sensor, and its own evidence base, being simulated throughout, cannot test that assumption.
+The sim-to-real question is thus one that the bespoke and the adapted approach inherit alike, and co-registered real acquisitions are what either would need in order to answer it.
+A matched few-shot comparison against $\Phi$satNet on a shared task and label budget remains the appropriate test of the label-efficiency claim; Chapter~\ref{chap:results-discussion} returns to this positioning, but that comparison has not been run and is left to future work.
 
 \section{Synthesis}
 
 No work cited above isolates sensor-induced covariate shift using co-registered source/target data, gives a cross-architecture distillation student an explicit, domain-aware adaptation mechanism rather than relying on incidental exposure to degraded or limited real data, and verifies that this invariance -- not merely task accuracy -- survives compression into hardware-deployable form.
 The spatially and temporally co-registered $\Phi$-sat-2/Sentinel-2/simulated triplet dataset used in this thesis is what makes the first of these possible; the domain-specific batch normalization applied during cross-architecture distillation (Chapter~\ref{chap:methodology}) is what makes the second and third possible, with the co-registered triplets additionally serving as the diagnostic instrument that shows a paired-contrastive alternative does not do better.
+That real-acquisition component also separates this work from the mission-specific alternative: $\Phi$satNet is pre-trained and benchmarked on simulated $\Phi$-sat-2 imagery, so the assumption that simulation stands in for the real sensor is one both approaches make and only real, co-registered data can check.
