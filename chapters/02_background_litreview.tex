@@ -13,7 +13,9 @@ Once a foundation model is pre-trained, it can be fine-tuned on specific tasks, 
 
 GeoFMs \cite{lu2025vision} extend the foundation-model paradigm from natural images to Earth observation, pre-training a single large backbone on diverse, multi-modal EO archives so that many downstream tasks can be solved by fine-tuning a small task-specific head rather than training a full model from scratch.
 TerraMind\cite{jakubik2025terramind} is a ViT-based, multimodal GeoFM pre-trained on nine modalities at scale, explicitly designed to produce transferable semantic representations rather than task-specific features.
-Studies compressing and deploying such models, discussed further below, treat this generalization capacity as the primary reason to prefer a GeoFM over a bespoke architecture -- but that capacity has, to date, mostly been demonstrated on data drawn from the same sensor family the model was pre-trained on, leaving open how it behaves under a genuine sensor change.
+Studies compressing and deploying such models treat this generalization capacity as the primary reason to prefer a GeoFM over a bespoke architecture. However, that capacity has, to date, mostly been demonstrated on data drawn from the same sensor family the model was pre-trained on, leaving open how it behaves under different sensor conditions.
+
+
 
 \section{Domain Adaptation}
 
@@ -23,6 +25,8 @@ Within satellite on-board AI specifically, Du et al.
 This line of work was extended on-orbit by Du et al.
 \ \cite{du2025onorbitdemonstrationgeospatialfoundation}, who deployed a compressed Prithvi-family GeoFM on Kanyini and the IMAGIN-e payload, again adapting via real-label head retraining rather than encoder-level invariance training, and measuring the domain gap only indirectly through downstream task performance on source and target benchmark datasets that differ in geography and content as well as sensor.
 This is the central limitation this thesis's data design addresses: without co-registered source/target pairs of the same scene, a measured performance drop cannot distinguish sensor-induced covariate shift from confounding differences in what the two datasets actually depict.
+
+A separate line of domain-adaptation work sidesteps alignment losses entirely by giving the model domain-specific normalization statistics instead. Domain-Specific Batch Normalization (DSBN) \cite{chang2019dsbn} keeps a single set of convolutional weights but a separate batch-normalization affine transform and running statistics per domain, requiring only that the domain of each example be known, not that examples be paired across domains. This is a substantially weaker requirement than the paired-contrastive or MMD-style objectives discussed above, and, unlike them, is directly applicable wherever the deployed sensor is known at inference -- which on board a single-sensor satellite it always is.
 
 \section{Physics-Based Sensor Degradation Simulation}
 
@@ -34,7 +38,7 @@ This simulator underlies both the degradation pipeline used in this thesis and, 
 
 Knowledge distillation \cite{hinton2015distilling} compresses a large teacher model into a smaller student by training the student to reproduce the teacher's output distribution, or, in feature-based variants, its intermediate representations, rather than training the student only against hard labels.
 Most applications of distillation to on-board EO models compress within the same architecture family or distill into a same-family, smaller model, and treat robustness to sensor conditions as a property that transfers passively if the teacher itself is robust.
-This thesis instead distills across architecture families -- from a ViT-based teacher to a CNN student -- a necessary step given that ViT inference is not supported on the $\Phi$-sat-2 on-board hardware (Section~\ref{sec:onboard-ai}), and applies the domain-invariance objective directly to the student during distillation rather than relying on passive inheritance from an already-invariant teacher.
+This thesis instead distills across architecture families -- from a ViT-based teacher to a CNN student -- a necessary step given that ViT inference is not supported on the $\Phi$-sat-2 on-board hardware (Section~\ref{sec:onboard-ai}), and gives the student itself a domain-adaptation mechanism (domain-specific batch normalization, Section~\ref{sec:kd}) rather than relying on passive inheritance of whatever invariance the teacher happens to have. A paired-contrastive alignment objective exploiting the co-registered triplets was implemented and evaluated as an additional mechanism on top of this, but was found not to improve downstream task performance beyond what domain-specific normalization already provides (Section~\ref{sec:da-mechanism}).
 
 \section{On-board AI for Earth Observation}
 \label{sec:onboard-ai}
@@ -54,5 +58,5 @@ Chapter~\ref{chap:results-discussion} tests this directly through a few-shot com
 
 \section{Synthesis}
 
-No work cited above isolates sensor-induced covariate shift using co-registered source/target data, trains encoder-level domain invariance through an explicit paired objective rather than incidental exposure to degraded or limited real data, and verifies that this invariance -- not merely task accuracy -- survives cross-architecture distillation into hardware-deployable form.
-The spatially and temporally co-registered $\Phi$-sat-2/Sentinel-2/simulated triplet dataset used in this thesis is what makes the first of these three possible; the paired-contrastive distillation objective developed in Chapter~\ref{chap:methodology} is what makes the second and third possible.
+No work cited above isolates sensor-induced covariate shift using co-registered source/target data, gives a cross-architecture distillation student an explicit, domain-aware adaptation mechanism rather than relying on incidental exposure to degraded or limited real data, and verifies that this invariance -- not merely task accuracy -- survives compression into hardware-deployable form.
+The spatially and temporally co-registered $\Phi$-sat-2/Sentinel-2/simulated triplet dataset used in this thesis is what makes the first of these possible; the domain-specific batch normalization applied during cross-architecture distillation (Chapter~\ref{chap:methodology}) is what makes the second and third possible, with the co-registered triplets additionally serving as the diagnostic instrument that shows a paired-contrastive alternative does not do better.
