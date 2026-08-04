@@ -31,11 +31,11 @@ However, that capacity has, to date, mostly been demonstrated on data drawn from
 
 \section{Domain Adaptation}
 
-Domain adaptation addresses the general problem of a model trained on a source distribution being applied to a target distribution with different input statistics but unchanged semantics \cite{kouw2019introductiondomainadaptationtransfer}.
+Domain adaptation addresses the general problem of a model trained on a source distribution being applied to a target distribution with different input statistics but unchanged semantics\cite{kouw2019introductiondomainadaptationtransfer}.
 Within satellite on-board AI specifically, Du et al.
 \ \cite{du2024domainadaptation} demonstrated domain adaptation for satellite-borne cloud detection by retraining task heads on real, though limited, labeled imagery from the Kanyini mission, with the encoder frozen.
 This line of work was extended on-orbit by Du et al.
-\ \cite{du2025onorbitdemonstrationgeospatialfoundation}, who deployed a compressed Prithvi-family GeoFM on Kanyini and the IMAGIN-e payload, adapting via real-label head retraining rather than encoder-level invariance training.
+\ \cite{du2025onorbitdemonstrationgeospatialfoundation}, who deployed a compressed Prithvi-family GeoFM on Kanyini and the IMAGIN-e payload, adapting via real-label head retraining rather than encoder-level domain adaptation.
 The domain gap is measured only indirectly through downstream task performance on source and target benchmark datasets that differ in geography and content as well as sensor.
 This is the central limitation this thesis's data design addresses, because without co-registered source/target pairs of the same scene, a measured performance drop cannot distinguish sensor-induced covariate shift from confounding differences in what the two datasets depict.
 
@@ -55,7 +55,7 @@ This is a weaker requirement than the paired-contrastive or MMD loss objectives 
 \section{Physics-Based Sensor Degradation Simulation}
 
 Because labeled data from a satellite sensor does not exist before the satellite is launched, and accumulates slowly afterward for rare events, physics-based simulation of a target sensor's characteristics from an existing labeled source (typically Sentinel-2) has become a standard tool for pre-mission model development\cite{segl2012eetes}\cite{segl2015s2etes}.
-The simulator developed for the ESA $\Phi$-lab OrbitalAI challenge\cite{longepe2024orbitalai} models this transformation as a sequence of physical operations in radiance space -- spectral and spatial resampling to the target sensor's band configuration and ground sampling distance, band-to-band misalignment consistent with push-broom acquisition geometry, signal-to-noise degradation, and optical blur modeled through the sensor's modulation transfer function -- calibrated against real flight data from related missions.
+The simulator developed for the ESA $\Phi$-lab OrbitalAI challenge\cite{longepe2024orbitalai} models this transformation as a sequence of physical operations in radiance space, calibrated against real flight data from related missions: spectral and spatial resampling to the target sensor's band configuration and ground sampling distance, band-to-band misalignment consistent with push-broom acquisition geometry, signal-to-noise degradation, and optical blur modeled through the sensor's modulation transfer function.
 This simulator underlies both the degradation pipeline used in this thesis and, independently, the pre-training and benchmarking datasets used by $\Phi$satNet (Section~\ref{sec:phisatnet-background}), making it a shared, validated tool within this specific research context rather than a novel contribution of either work.
 
 \section{Knowledge Distillation Across Architectures}
@@ -63,15 +63,13 @@ This simulator underlies both the degradation pipeline used in this thesis and, 
 Knowledge distillation (KD)\cite{hinton2015distilling} compresses a large "teacher" model into a smaller "student" by training the student to reproduce the teacher's output distribution.
 By transferring the teacher's semantic knowledge (SK), KD allows the student to generalize better on large datasets with a lower computational cost.
 Some feature-based variants exist that utilize the intermediate representations of the teacher, rather than training the student only against hard labels\cite{heo2019comprehensive}.
-T.
--D.
-Le et al.
-\cite{le2025semantic} proposed a distillation method between a ViT teacher and a ResNet student for image classification, which uses a dynamic weighting mechanism to adjust each teacher's influence on the student based on the teacher's confidence in its predictions.
-This thesis, on top of cross-architecture distillation -- a necessary step given that ViT inference is not supported on the $\Phi$-sat-2 on-board hardware (Section~\ref{sec:onboard-ai})-- gives the student itself a domain-adaptation mechanism (domain-specific batch normalization, Section~\ref{sec:kd}).
-This mechanism ensures that the student can learn domain-specific characteristics rather than relying on passive inheritance of the invariance the teacher might have than been able to learn.
+Le et al.~\cite{le2025semantic} proposed a distillation method between a ViT teacher and a ResNet student for image classification, which uses a dynamic weighting mechanism to adjust each teacher's influence on the student based on the teacher's confidence in its predictions.
+Cross-architecture distillation is a necessary step here, since ViT inference is not supported on the $\Phi$-sat-2 on-board hardware (Section~\ref{sec:onboard-ai}).
+On top of it, this thesis gives the student itself a domain-adaptation mechanism (domain-specific batch normalization, Section~\ref{sec:kd}).
+This mechanism ensures that the student can learn domain-specific characteristics rather than relying on passive inheritance of whatever invariance the teacher might have been able to learn.
 A paired-contrastive alignment objective exploiting the co-registered triplets was implemented and evaluated as an additional mechanism on top of this, but was found not to improve downstream task performance beyond what domain-specific normalization already provides (Section~\ref{sec:da-mechanism}).
 
-\subsection{$\Phi$satNet}
+\section{$\Phi$satNet}
 \label{sec:phisatnet-background}
 
 $\Phi$satNet is a U-Net-derived, multi-task-pretrained GeoFM being developed by the $\Phi$-lab specifically for on-board execution on $\Phi$-sat-2, using a purpose-built pre-training corpus and benchmark suite built on the same OrbitalAI simulator described above.
@@ -88,6 +86,8 @@ A matched few-shot comparison against $\Phi$satNet on a shared task and label bu
 
 \section{Synthesis}
 
-No work cited above isolates sensor-induced covariate shift using co-registered source/target data, gives a cross-architecture distillation student an explicit, domain-aware adaptation mechanism rather than relying on incidental exposure to degraded or limited real data, and verifies that this invariance -- not merely task accuracy -- survives compression into hardware-deployable form.
-The spatially and temporally co-registered $\Phi$-sat-2/Sentinel-2/simulated triplet dataset used in this thesis is what makes the first of these possible; the domain-specific batch normalization applied during cross-architecture distillation (Chapter~\ref{chap:methodology}) is what makes the second and third possible, with the co-registered triplets additionally serving as the diagnostic instrument that shows a paired-contrastive alternative does not do better.
-That real-acquisition component also separates this work from the mission-specific alternative: $\Phi$satNet is pre-trained and benchmarked on simulated $\Phi$-sat-2 imagery, so the assumption that simulation stands in for the real sensor is one both approaches make and only real, co-registered data can check.
+No work cited above isolates sensor-induced covariate shift using co-registered source/target data.
+This thesis gives a cross-architecture distillation student an explicit, domain-aware adaptation mechanism, and verifies that this adaptivity, not only task accuracy, survives compression into hardware-deployable form.
+The spatially and temporally co-registered $\Phi$-sat-2/Sentinel-2/simulated triplet dataset used in this thesis is what makes that isolation possible; the domain-specific batch normalization applied during cross-architecture distillation (Chapter~\ref{chap:methodology}) is what makes the adaptation and its verification possible.
+The co-registered triplets serve, in addition, as the diagnostic instrument that shows a paired-contrastive alternative does not do better than the simpler domain-specific normalization.
+The real-acquisition component also separates this work from the mission-specific alternative: $\Phi$satNet is pre-trained and benchmarked on simulated $\Phi$-sat-2 imagery, so the assumption that simulation stands in for the real sensor is one both approaches make and only real, co-registered data can check.

@@ -7,43 +7,43 @@ Warning--empty journal in taylor2013wildfire
 Warning--empty journal in coelho2021phisat2
 You've used 37 entries,
             1876 wiz_defined-function locations,
-            674 strings with 13524 characters,
-and the built_in function-call counts, 12134 in all, are:
-= -- 998
-> -- 856
+            677 strings with 13615 characters,
+and the built_in function-call counts, 12116 in all, are:
+= -- 994
+> -- 865
 < -- 0
-+ -- 298
-- -- 261
++ -- 301
+- -- 264
 * -- 1003
-:= -- 1869
+:= -- 1872
 add.period$ -- 38
 call.type$ -- 37
 change.case$ -- 38
 chr.to.int$ -- 0
 cite$ -- 39
 duplicate$ -- 549
-empty$ -- 979
-format.name$ -- 261
-if$ -- 2785
+empty$ -- 966
+format.name$ -- 264
+if$ -- 2780
 int.to.chr$ -- 0
 int.to.str$ -- 37
 missing$ -- 34
 newline$ -- 115
 num.names$ -- 37
-pop$ -- 145
+pop$ -- 141
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 353
+skip$ -- 357
 stack$ -- 0
-substring$ -- 698
-swap$ -- 218
+substring$ -- 678
+swap$ -- 222
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 98
+while$ -- 96
 width$ -- 39
-write$ -- 346
+write$ -- 347
 (There were 2 warnings)

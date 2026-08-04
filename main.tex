@@ -8,6 +8,27 @@
 \usepackage{amssymb}
 \usepackage{booktabs}
 \usepackage{caption}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric, arrows.meta, fit, backgrounds, calc}
+
+% ---------------------------------------------------------------------------
+% Draft-only: highlights work still in progress, for the supervisors' first read.
+%   \wip{status}                 -> box with a placeholder note
+%   \wip[my comment]{status}     -> box with my own note
+% To strip the styling for submission, replace the definition below with:
+%   \newcommand{\wip}[2][]{#2}
+% ---------------------------------------------------------------------------
+\definecolor{wipframe}{RGB}{176,98,0}
+\definecolor{wipbg}{RGB}{255,248,238}
+\newcommand{\wip}[2][\emph{(comment to be added)}]{%
+    \par\medskip\noindent
+    \fcolorbox{wipframe}{wipbg}{%
+        \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+            \textcolor{wipframe}{\textbf{Work in progress.}}\ #2\par
+        \end{minipage}%
+    }\par\medskip%
+}
 \geometry{a4paper, margin=1in}
 \graphicspath{{figures/}}
 
@@ -60,10 +81,12 @@
 \input{chapters/02_background_litreview}
 \input{chapters/03_methodology}
 \input{chapters/04_results_discussion}
-%\input{chapters/05_conclusion}
+\input{chapters/05_conclusion}
 
-%\appendix
-%\input{chapters/06_appendix}
+\input{chapters/07_declarations}
+
+\appendix
+\input{chapters/06_appendix}
 
 \bibliographystyle{ieeetr}
 \bibliography{references}
