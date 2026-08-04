@@ -3,48 +3,47 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: ieeetr.bst
 Database file #1: references.bib
-Warning--I didn't find a database entry for "heo2019comprehensive"
 Warning--empty journal in taylor2013wildfire
 Warning--empty journal in coelho2021phisat2
-You've used 35 entries,
+You've used 37 entries,
             1876 wiz_defined-function locations,
-            667 strings with 13139 characters,
-and the built_in function-call counts, 11331 in all, are:
-= -- 919
-> -- 825
+            674 strings with 13524 characters,
+and the built_in function-call counts, 12134 in all, are:
+= -- 998
+> -- 856
 < -- 0
-+ -- 287
-- -- 252
-* -- 947
-:= -- 1767
-add.period$ -- 36
-call.type$ -- 35
-change.case$ -- 36
++ -- 298
+- -- 261
+* -- 1003
+:= -- 1869
+add.period$ -- 38
+call.type$ -- 37
+change.case$ -- 38
 chr.to.int$ -- 0
-cite$ -- 37
-duplicate$ -- 505
-empty$ -- 902
-format.name$ -- 252
-if$ -- 2587
+cite$ -- 39
+duplicate$ -- 549
+empty$ -- 979
+format.name$ -- 261
+if$ -- 2785
 int.to.chr$ -- 0
-int.to.str$ -- 35
-missing$ -- 32
-newline$ -- 109
-num.names$ -- 35
-pop$ -- 133
+int.to.str$ -- 37
+missing$ -- 34
+newline$ -- 115
+num.names$ -- 37
+pop$ -- 145
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 320
+skip$ -- 353
 stack$ -- 0
-substring$ -- 626
-swap$ -- 198
+substring$ -- 698
+swap$ -- 218
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 90
-width$ -- 37
-write$ -- 326
-(There were 3 warnings)
+while$ -- 98
+width$ -- 39
+write$ -- 346
+(There were 2 warnings)

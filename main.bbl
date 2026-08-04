@@ -70,7 +70,7 @@ S.~Ben-David, J.~Blitzer, K.~Crammer, A.~Kulesza, F.~Pereira, and J.~W. Vaughan,
 \bibitem{gretton2012kernel}
 A.~Gretton, K.~M. Borgwardt, M.~J. Rasch, B.~Sch{\"o}lkopf, and A.~Smola, ``A kernel two-sample test,'' {\em Journal of Machine Learning Research}, vol.~13, pp.~723--773, 2012.
 
-\bibitem{marsocci2025xstars}
+\bibitem{marsocci2025cross}
 V.~Marsocci and N.~Audebert, ``Cross-sensor self-supervised training and alignment for remote sensing,'' {\em IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, vol.~18, pp.~12278--12289, 2025.
 
 \bibitem{chang2019dsbn}
@@ -82,11 +82,17 @@ K.~Segl, L.~Guanter, C.~Rogass, T.~Kuester, S.~Roessner, H.~Kaufmann, B.~Sang, V
 \bibitem{segl2015s2etes}
 K.~Segl, L.~Guanter, F.~Gascon, T.~Kuester, C.~Rogass, and C.~Mielke, ``S2etes: An end-to-end modeling tool for the simulation of sentinel-2 image products,'' {\em IEEE Transactions on Geoscience and Remote Sensing}, vol.~53, no.~10, pp.~5560--5571, 2015.
 
+\bibitem{heo2019comprehensive}
+B.~Heo, J.~Kim, S.~Yun, H.~Park, N.~Kwak, and J.~Y. Choi, ``A comprehensive overhaul of feature distillation,'' in {\em 2019 IEEE/CVF International Conference on Computer Vision (ICCV)}, pp.~1921--1930, IEEE, 2019.
+
 \bibitem{le2025semantic}
 T.-D. Le, V.~N. Ha, T.~T. Nguyen, G.~Eappen, P.~Thiruvasagam, H.-f. Chou, D.-D. Tran, L.~M. Garces-Socarras, J.~L. Gonzalez-Rios, J.~C. Merlano-Duncan, {\em et~al.}, ``Semantic knowledge distillation for onboard satellite earth observation image classification,'' in {\em 2025 IEEE International Conference on Machine Learning for Communication and Networking (ICMLCN)}, pp.~1--6, IEEE, 2025.
 
 \bibitem{Lindenberger_2023_ICCV}
 P.~Lindenberger, P.-E. Sarlin, and M.~Pollefeys, ``{LightGlue}: Local feature matching at light speed,'' in {\em Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)}, 2023.
+
+\bibitem{ronneberger2015u}
+O.~Ronneberger, P.~Fischer, and T.~Brox, ``U-net: Convolutional networks for biomedical image segmentation,'' in {\em International Conference on Medical image computing and computer-assisted intervention}, pp.~234--241, Springer, 2015.
 
 \bibitem{zanaga2022worldcover}
 D.~Zanaga, R.~Van De~Kerchove, D.~Daems, W.~De~Keersmaecker, C.~Brockmann, G.~Kirches, J.~Wevers, O.~Cartus, M.~Santoro, S.~Fritz, M.~Lesiv, M.~Herold, N.-E. Tsendbazar, P.~Xu, F.~Ramoino, and O.~Arino, ``{ESA WorldCover 10 m 2021 v200},'' 2022.

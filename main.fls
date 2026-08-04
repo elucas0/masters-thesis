@@ -300,14 +300,6 @@ INPUT ./figures/fig_label_crossover.png
 INPUT ./figures/fig_label_crossover.png
 INPUT ./figures/fig_label_crossover.png
 INPUT ./figures/fig_label_crossover.png
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
-INPUT ./chapters/05_conclusion.tex
-INPUT ./chapters/05_conclusion.tex
-INPUT ./chapters/05_conclusion.tex
-INPUT ./chapters/05_conclusion.tex
-INPUT chapters/05_conclusion.tex
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT main.bbl

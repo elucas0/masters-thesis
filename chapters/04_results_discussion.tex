@@ -130,7 +130,7 @@ Separately, the teacher itself reaches $0.5788$ mIoU on Sentinel-2, so the disti
     \label{fig:per-class}
 \end{figure}
 
-\section{The Advantage Reverses at Small Label Budgets}
+\section{Advantage Reverse on Small Label Budget}
 \label{sec:label-crossover}
 
 Distillation and unsupervised domain adaptation are usually motivated by label scarcity in the target domain~\cite{kouw2019introductiondomainadaptationtransfer}, so the expectation is that the advantage above should grow as target labels are removed.
@@ -154,54 +154,54 @@ This is offered as a hypothesis: with two budgets the crossing point is brackete
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{What domain-specific normalization actually contributed}
+% \subsection{Domain-specific normalization contribution}
 
-The improvement from domain-specific normalization is larger than a pure domain-alignment effect would predict, and its shape is informative: accuracy on the source sensor improved by a similar margin to the target ($+0.116$ against $+0.185$ test mIoU relative to the preceding configuration).
-A mechanism that only aligned domains should have improved the target branch alone.
-The most likely explanation is the train/test normalization inconsistency described in Section~\ref{sec:configuration}: prior configurations were evaluated through a normalization path the encoder had never been optimised under, which depressed both branches.
-On that reading, part of what is reported here as a domain-adaptation gain is the repair of a latent defect in the two-branch training scheme -- a caveat that does not diminish the practical result but does bear on how much of it should be attributed to domain adaptation per se.
+% The improvement from domain-specific normalization is larger than a pure domain-alignment effect would predict, and its shape is informative: accuracy on the source sensor improved by a similar margin to the target ($+0.116$ against $+0.185$ test mIoU relative to the preceding configuration).
+% A mechanism that only aligned domains should have improved the target branch alone.
+% The most likely explanation is the train/test normalization inconsistency described in Section~\ref{sec:configuration}: prior configurations were evaluated through a normalization path the encoder had never been optimised under, which depressed both branches.
+% On that reading, part of what is reported here as a domain-adaptation gain is the repair of a latent defect in the two-branch training scheme -- a caveat that does not diminish the practical result but does bear on how much of it should be attributed to domain adaptation per se.
 
-\subsection{Two measurement pitfalls}
-\label{sec:measurement-pitfalls}
+% \subsection{Measurement}
+% \label{sec:measurement-pitfalls}
 
-Two artefacts encountered during this work are worth recording, as both would silently corrupt a comparison of exactly this kind.
+% Two artefacts encountered during this work are worth recording, as both would silently corrupt a comparison of exactly this kind.
 
-First, the macro-averaged mIoU implemented by standard libraries excludes classes with zero union from its average, so its denominator depends on which classes a given model happens to predict.
-Where a rare class is absent from a small evaluation split, two models are then averaged over different numbers of classes and their mIoU are not comparable -- an effect that inflated an apparent advantage by roughly a factor of three in an early version of the label-budget experiment.
-All results in this chapter are reported on a fixed denominator over all eleven classes.
+% First, the macro-averaged mIoU implemented by standard libraries excludes classes with zero union from its average, so its denominator depends on which classes a given model happens to predict.
+% Where a rare class is absent from a small evaluation split, two models are then averaged over different numbers of classes and their mIoU are not comparable -- an effect that inflated an apparent advantage by roughly a factor of three in an early version of the label-budget experiment.
+% All results in this chapter are reported on a fixed denominator over all eleven classes.
 
-Second, and relatedly, an evaluation split sized as a fixed fraction of the training split makes a label-scarcity study vary its measurement and its treatment simultaneously.
-At the smallest budget this left one hundred evaluation patches, in which the rarest class does not occur at all.
-Evaluation splits are held fixed and independent of the training budget throughout.
+% Second, and relatedly, an evaluation split sized as a fixed fraction of the training split makes a label-scarcity study vary its measurement and its treatment simultaneously.
+% At the smallest budget this left one hundred evaluation patches, in which the rarest class does not occur at all.
+% Evaluation splits are held fixed and independent of the training budget throughout.
 
-\subsection{Limitations}
-\label{sec:limitations}
+% \subsection{Limitations}
+% \label{sec:limitations}
 
-All experiments use at most $10{,}000$ of the $202{,}582$ available training patches -- under $5\%$ -- so the crossover of Section~\ref{sec:label-crossover} is characterised entirely within the low-data regime, and the ranking at full scale is untested.
-Single seeds are used throughout; epoch-to-epoch validation variance is of the order of $0.02$ mIoU, so differences below roughly $0.03$ are resolved here only by paired testing across epochs, not by independent replication.
-The student is trained from random initialisation because no pre-trained weights exist for this backbone, which plausibly accounts for a substantial share of the remaining $0.15$ mIoU gap to the teacher and confounds any claim that the gap is attributable to domain shift.
-Finally, the work is scoped to a single sensor pair, so the finding that the gap is radiometric rather than resolution-driven (Section~\ref{sec:rq1-results}) should not be generalised beyond it.
+% All experiments use at most $10{,}000$ of the $202{,}582$ available training patches -- under $5\%$ -- so the crossover of Section~\ref{sec:label-crossover} is characterised entirely within the low-data regime, and the ranking at full scale is untested.
+% Single seeds are used throughout; epoch-to-epoch validation variance is of the order of $0.02$ mIoU, so differences below roughly $0.03$ are resolved here only by paired testing across epochs, not by independent replication.
+% The student is trained from random initialisation because no pre-trained weights exist for this backbone, which plausibly accounts for a substantial share of the remaining $0.15$ mIoU gap to the teacher and confounds any claim that the gap is attributable to domain shift.
+% Finally, the work is scoped to a single sensor pair, so the finding that the gap is radiometric rather than resolution-driven (Section~\ref{sec:rq1-results}) should not be generalised beyond it.
 
-\subsection{Interpretation of the flood-robustness result}
-\label{sec:discussion-comparison}
+% \subsection{Interpretation of the flood-robustness result}
+% \label{sec:discussion-comparison}
 
-The mild flood-IoU degradation observed across the simulated degradation ladder (Section~\ref{sec:degradation-pipeline}) is not unique to this thesis.
-Du et al.~\cite{du2025onorbitdemonstrationgeospatialfoundation} independently report that flood detection was anomalously robust to the sensor domain gap on Kanyini, in contrast to an approximately $47\%$ drop in cloud-detection performance on the same platform.
-Two independent studies observing the same pattern is worth foregrounding: water's strong near-infrared absorption contrast plausibly survives sensor noise and band mismatch better than the texture- and boundary-dependent cues that cloud or general land-cover classification rely on.
-This has a direct consequence for how this thesis should be read: flood segmentation may understade the severity of the domain-gap problem, which is part of why the LULC task was adopted as the primary benchmark.
+% The mild flood-IoU degradation observed across the simulated degradation ladder (Section~\ref{sec:degradation-pipeline}) is not unique to this thesis.
+% Du et al.~\cite{du2025onorbitdemonstrationgeospatialfoundation} independently report that flood detection was anomalously robust to the sensor domain gap on Kanyini, in contrast to an approximately $47\%$ drop in cloud-detection performance on the same platform.
+% Two independent studies observing the same pattern is worth foregrounding: water's strong near-infrared absorption contrast plausibly survives sensor noise and band mismatch better than the texture- and boundary-dependent cues that cloud or general land-cover classification rely on.
+% This has a direct consequence for how this thesis should be read: flood segmentation may understade the severity of the domain-gap problem, which is part of why the LULC task was adopted as the primary benchmark.
 
-\subsection{Positioning with \texorpdfstring{$\Phi$}{Phi}satNet}
+% \subsection{Positioning with \texorpdfstring{$\Phi$}{Phi}satNet}
 
-$\Phi$satNet (Section~\ref{sec:phisatnet-background}) reports that a purpose-built, non-transformer model trained from scratch on a mission-specific corpus matches or exceeds unconstrained transformer-based GeoFMs on several on-board tasks.
-This raises a reasonable objection: if a bespoke lightweight model already performs well without any of the machinery developed here, what is gained by adapting TerraMind instead?
+% $\Phi$satNet (Section~\ref{sec:phisatnet-background}) reports that a purpose-built, non-transformer model trained from scratch on a mission-specific corpus matches or exceeds unconstrained transformer-based GeoFMs on several on-board tasks.
+% This raises a reasonable objection: if a bespoke lightweight model already performs well without any of the machinery developed here, what is gained by adapting TerraMind instead?
 
-The results of Section~\ref{sec:label-crossover} sharpen rather than settle that question.
-The answer offered by this thesis is a label-efficiency bet -- that large-scale multi-modal pre-training generalises to new $\Phi$-sat-2 tasks with fewer labels than a narrower curated pre-training suite requires -- and the crossover measured here shows that such a bet is budget-dependent in a way that must be quantified rather than assumed.
-A matched few-shot comparison against $\Phi$satNet on a shared task and label budget remains the appropriate test and has not been run.
+% The results of Section~\ref{sec:label-crossover} sharpen rather than settle that question.
+% The answer offered by this thesis is a label-efficiency bet -- that large-scale multi-modal pre-training generalises to new $\Phi$-sat-2 tasks with fewer labels than a narrower curated pre-training suite requires -- and the crossover measured here shows that such a bet is budget-dependent in a way that must be quantified rather than assumed.
+% A matched few-shot comparison against $\Phi$satNet on a shared task and label budget remains the appropriate test and has not been run.
 
-\subsection{Practical recommendations}
+% \subsection{Practical recommendations}
 
-Three recommendations follow.
-First, missions intended to host on-board foundation models should prioritise collecting co-registered calibration data across the sensor pair the mission needs to bridge, early in operational life; this is what made the measurements in this chapter possible at all.
-Second, where the deployed sensor is known at inference -- which on board a satellite it always is -- domain-specific normalization is a very high value-for-effort intervention: it is a few hundred additional parameters and required no change to the training objective.
-Third, the label budget should be measured before adopting a distillation pipeline, since below the crossover of Section~\ref{sec:label-crossover} the simpler supervised baseline was both more accurate and roughly three times cheaper.
+% Three recommendations follow.
+% First, missions intended to host on-board foundation models should prioritise collecting co-registered calibration data across the sensor pair the mission needs to bridge, early in operational life; this is what made the measurements in this chapter possible at all.
+% Second, where the deployed sensor is known at inference -- which on board a satellite it always is -- domain-specific normalization is a very high value-for-effort intervention: it is a few hundred additional parameters and required no change to the training objective.
+% Third, the label budget should be measured before adopting a distillation pipeline, since below the crossover of Section~\ref{sec:label-crossover} the simpler supervised baseline was both more accurate and roughly three times cheaper.

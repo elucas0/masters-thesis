@@ -44,7 +44,7 @@ Their shared theoretical motivation is the bound of Ben-David et al.~\cite{benda
 Since the first and third terms are not reduced by adaptation, the families below differ mainly in how they attack the divergence term.
 Discrepancy-based methods penalize a statistical distance between the source and target feature distributions directly, most commonly the maximum mean discrepancy (MMD)~\cite{gretton2012kernel}, which requires only that samples from each domain be available, not that they correspond.
 Alignment-based methods make the stronger assumption that corresponding inputs are available, and pull their representations together explicitly.
-X-STARS~\cite{marsocci2025xstars} is the closest published example to the setting of this thesis: it adapts a model pre-trained on one optical sensor to a second sensor through a multi-sensor alignment dense loss, a patch-wise contrastive objective applied between paired acquisitions of the same area by both sensors, within a continual-pretraining framework.
+X-STARS~\cite{marsocci2025cross} is the closest known example to the setting of this thesis: it adapts a model pre-trained on one optical sensor to a second sensor through a multi-sensor alignment dense loss, a patch-wise contrastive objective applied between paired acquisitions of the same area by both sensors, within a continual-pretraining framework.
 It establishes that a paired-contrastive objective is effective when the sensor change is primarily one of spatial resolution, which is not the regime this thesis operates in: the $\Phi$-sat-2/Sentinel-2 gap measured in Chapter~\ref{chap:results-discussion} is driven mainly by differing spectral response rather than by resolution mismatch.
 
 A separate line of domain-adaptation work sidesteps alignment losses entirely by giving the model domain-specific normalization statistics instead.
@@ -63,8 +63,12 @@ This simulator underlies both the degradation pipeline used in this thesis and, 
 Knowledge distillation (KD)\cite{hinton2015distilling} compresses a large "teacher" model into a smaller "student" by training the student to reproduce the teacher's output distribution.
 By transferring the teacher's semantic knowledge (SK), KD allows the student to generalize better on large datasets with a lower computational cost.
 Some feature-based variants exist that utilize the intermediate representations of the teacher, rather than training the student only against hard labels\cite{heo2019comprehensive}.
-Most applications of distillation to on-board EO models compress within a single architecture family, distilling into a smaller model of the same type\cite{le2025semantic}.
-This thesis instead distills across architecture families -- from a ViT-based teacher to a CNN student -- a necessary step given that ViT inference is not supported on the $\Phi$-sat-2 on-board hardware (Section~\ref{sec:onboard-ai}), and gives the student itself a domain-adaptation mechanism (domain-specific batch normalization, Section~\ref{sec:kd}) rather than relying on passive inheritance of whatever invariance the teacher happens to have.
+T.
+-D.
+Le et al.
+\cite{le2025semantic} proposed a distillation method between a ViT teacher and a ResNet student for image classification, which uses a dynamic weighting mechanism to adjust each teacher's influence on the student based on the teacher's confidence in its predictions.
+This thesis, on top of cross-architecture distillation -- a necessary step given that ViT inference is not supported on the $\Phi$-sat-2 on-board hardware (Section~\ref{sec:onboard-ai})-- gives the student itself a domain-adaptation mechanism (domain-specific batch normalization, Section~\ref{sec:kd}).
+This mechanism ensures that the student can learn domain-specific characteristics rather than relying on passive inheritance of the invariance the teacher might have than been able to learn.
 A paired-contrastive alignment objective exploiting the co-registered triplets was implemented and evaluated as an additional mechanism on top of this, but was found not to improve downstream task performance beyond what domain-specific normalization already provides (Section~\ref{sec:da-mechanism}).
 
 \subsection{$\Phi$satNet}
