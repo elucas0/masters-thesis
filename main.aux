@@ -21,7 +21,7 @@
 \citation{du2025onorbitdemonstrationgeospatialfoundation}
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Problem Definition}{4}{section.1.1}\protected@file@percent }
 \newlabel{sec:problem-definition}{{1.1}{4}{Problem Definition}{section.1.1}{}}
-\newlabel{eq:covariate-shift}{{1.1}{4}{Problem Definition}{equation.1.1.1}{}}
+\newlabel{eq:covariate-shift}{{1.1}{4}{Problem Definition}{equation.1.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.2}Research Gap}{5}{section.1.2}\protected@file@percent }
 \newlabel{sec:research-gap}{{1.2}{5}{Research Gap}{section.1.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.3}Research Objective and Problem Statement}{5}{section.1.3}\protected@file@percent }
@@ -30,6 +30,7 @@
 \citation{giuffrida2020cloudscout}
 \citation{barretta2026onboardaireview}
 \citation{han2022survey}
+\citation{le2024onboard}
 \citation{chou2023edge}
 \citation{myriad2}
 \citation{phisatnet}
@@ -78,7 +79,7 @@
 \citation{beck2018present}
 \citation{beck2018present}
 \@writefile{toc}{\contentsline {subsubsection}{Scale and coverage}{12}{section*.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Train/validation/test split and a limitation}{12}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Train/validation/test split}{12}{section*.7}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Four representative triplets, each row showing the same scene as observed by real $\Phi $-sat-2, the physics-simulated $\Phi $-sat-2 rendering, and Sentinel-2B (each channel independently contrast-stretched for display). The real acquisitions show visibly grainier, noisier texture than either the simulated or source Sentinel-2 view, most apparent in the dark water/shadow region of patch 171127, consistent with the sensor noise characteristics the degradation pipeline (Section~\ref {sec:degradation-pipeline}) is designed to reproduce. }}{13}{figure.caption.2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:patch-examples}{{3.1}{13}{Four representative triplets, each row showing the same scene as observed by real $\Phi $-sat-2, the physics-simulated $\Phi $-sat-2 rendering, and Sentinel-2B (each channel independently contrast-stretched for display). The real acquisitions show visibly grainier, noisier texture than either the simulated or source Sentinel-2 view, most apparent in the dark water/shadow region of patch 171127, consistent with the sensor noise characteristics the degradation pipeline (Section~\ref {sec:degradation-pipeline}) is designed to reproduce}{figure.caption.2}{}}
@@ -105,23 +106,23 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Physics-Based Sensor Degradation Pipeline}{18}{section.3.2}\protected@file@percent }
 \newlabel{sec:degradation-pipeline}{{3.2}{18}{Physics-Based Sensor Degradation Pipeline}{section.3.2}{}}
 \@writefile{toc}{\contentsline {paragraph}{Radiance--reflectance conversion.}{18}{section*.14}\protected@file@percent }
-\newlabel{eq:rad2refl}{{3.1}{18}{Radiance--reflectance conversion}{equation.3.2.1}{}}
+\newlabel{eq:rad2refl}{{3.1}{18}{Radiance--reflectance conversion}{equation.3.1}{}}
 \@writefile{toc}{\contentsline {paragraph}{Spatial resampling.}{19}{section*.15}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Band-to-band misalignment.}{19}{section*.16}\protected@file@percent }
-\newlabel{eq:misalign-l1a}{{3.2}{19}{Band-to-band misalignment}{equation.3.2.2}{}}
+\newlabel{eq:misalign-l1a}{{3.2}{19}{Band-to-band misalignment}{equation.3.2}{}}
 \@writefile{toc}{\contentsline {paragraph}{Signal-to-noise degradation.}{19}{section*.17}\protected@file@percent }
-\newlabel{eq:snr-const}{{3.3}{19}{Signal-to-noise degradation}{equation.3.2.3}{}}
-\newlabel{eq:snr-signal}{{3.4}{19}{Signal-to-noise degradation}{equation.3.2.4}{}}
+\newlabel{eq:snr-const}{{3.3}{19}{Signal-to-noise degradation}{equation.3.3}{}}
+\newlabel{eq:snr-signal}{{3.4}{19}{Signal-to-noise degradation}{equation.3.4}{}}
 \@writefile{toc}{\contentsline {paragraph}{Optical blur via MTF/PSF.}{20}{section*.18}\protected@file@percent }
-\newlabel{eq:mtf}{{3.5}{20}{Optical blur via MTF/PSF}{equation.3.2.5}{}}
+\newlabel{eq:mtf}{{3.5}{20}{Optical blur via MTF/PSF}{equation.3.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Domain Gap Measurement}{20}{section.3.3}\protected@file@percent }
 \newlabel{sec:gap-measurement}{{3.3}{20}{Domain Gap Measurement}{section.3.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Normalization protocol}{20}{subsection.3.3.1}\protected@file@percent }
 \newlabel{sec:normalization}{{3.3.1}{20}{Normalization protocol}{subsection.3.3.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Direct and indirect evidence}{20}{subsection.3.3.2}\protected@file@percent }
 \citation{chang2019dsbn}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Domain-Adaptation Mechanism}{21}{section.3.4}\protected@file@percent }
-\newlabel{sec:da-mechanism}{{3.4}{21}{Domain-Adaptation Mechanism}{section.3.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Domain-Adaptation Strategy}{21}{section.3.4}\protected@file@percent }
+\newlabel{sec:da-mechanism}{{3.4}{21}{Domain-Adaptation Strategy}{section.3.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Exposure to degraded data}{21}{subsection.3.4.1}\protected@file@percent }
 \newlabel{sec:da-negative-result}{{3.4.1}{21}{Exposure to degraded data}{subsection.3.4.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Domain-specific batch normalization}{21}{subsection.3.4.2}\protected@file@percent }
@@ -159,28 +160,30 @@
 \citation{du2025onorbitdemonstrationgeospatialfoundation}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Sensor Gap in TerraMind Latent Space (RQ1)}{27}{section.4.2}\protected@file@percent }
 \newlabel{sec:rq1-results}{{4.2}{27}{Sensor Gap in TerraMind Latent Space (RQ1)}{section.4.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Sensor Adaptivity in the Distilled Student (RQ2)}{27}{section.4.3}\protected@file@percent }
-\newlabel{sec:rq2-results}{{4.3}{27}{Sensor Adaptivity in the Distilled Student (RQ2)}{section.4.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces UMAP projection of pooled embeddings for $800$ co-registered test patches, teacher (left) and distilled student (right), each projected independently. Grey lines join the two sensor views of the same patch. In the teacher's space the paired views are far apart (median link $6.15$ units); in the student's they are effectively coincident ($0.40$ units). }}{28}{figure.caption.23}\protected@file@percent }
 \newlabel{fig:embeddings-paired}{{4.1}{28}{UMAP projection of pooled embeddings for $800$ co-registered test patches, teacher (left) and distilled student (right), each projected independently. Grey lines join the two sensor views of the same patch. In the teacher's space the paired views are far apart (median link $6.15$ units); in the student's they are effectively coincident ($0.40$ units)}{figure.caption.23}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Distribution of the domain probe's out-of-fold decision score, the quantity from which PAD is computed. Separated modes imply a probe that never errs (PAD $\rightarrow 2$); overlapping modes imply chance (PAD $\rightarrow 0$). After standardising each domain on its own statistics (right column) the separability vanishes for both models, showing that all of it was per-channel mean and scale rather than representational structure. }}{29}{figure.caption.24}\protected@file@percent }
-\newlabel{fig:pad-decision}{{4.2}{29}{Distribution of the domain probe's out-of-fold decision score, the quantity from which PAD is computed. Separated modes imply a probe that never errs (PAD $\rightarrow 2$); overlapping modes imply chance (PAD $\rightarrow 0$). After standardising each domain on its own statistics (right column) the separability vanishes for both models, showing that all of it was per-channel mean and scale rather than representational structure}{figure.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Per-layer cosine similarity between paired Sentinel-2B and real-$\Phi $-sat-2 patch embeddings from the TerraMind Tiny encoder, averaged over $800$ samples (shaded band: one standard deviation). }}{28}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:cosine-sim-tiny}{{4.2}{28}{Per-layer cosine similarity between paired Sentinel-2B and real-$\Phi $-sat-2 patch embeddings from the TerraMind Tiny encoder, averaged over $800$ samples (shaded band: one standard deviation)}{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Sensor Adaptivity in the Distilled Student (RQ2)}{29}{section.4.3}\protected@file@percent }
+\newlabel{sec:rq2-results}{{4.3}{29}{Sensor Adaptivity in the Distilled Student (RQ2)}{section.4.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Distillation Against a Supervised Baseline (RQ3)}{29}{section.4.4}\protected@file@percent }
+\newlabel{sec:rq3-results}{{4.4}{29}{Distillation Against a Supervised Baseline (RQ3)}{section.4.4}{}}
 \citation{kouw2019introductiondomainadaptationtransfer}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Distillation Against a Supervised Baseline (RQ3)}{30}{section.4.4}\protected@file@percent }
-\newlabel{sec:rq3-results}{{4.4}{30}{Distillation Against a Supervised Baseline (RQ3)}{section.4.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Main results. Validation mIoU is the best epoch; both budgets use the same fixed $1{,}000$-patch validation split. Paired $t$-tests are over matched epochs. }}{30}{table.caption.25}\protected@file@percent }
-\newlabel{tab:main-results}{{4.2}{30}{Main results. Validation mIoU is the best epoch; both budgets use the same fixed $1{,}000$-patch validation split. Paired $t$-tests are over matched epochs}{table.caption.25}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Advantage Reverse on Small Label Budget}{30}{section.4.5}\protected@file@percent }
-\newlabel{sec:label-crossover}{{4.5}{30}{Advantage Reverse on Small Label Budget}{section.4.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Left: target-domain accuracy over training at $10{,}000$ labelled patches; the dotted line marks the teacher's Sentinel-2 accuracy. Right: the residual accuracy difference between the two sensors for the distilled student, which settles near zero. }}{31}{figure.caption.26}\protected@file@percent }
-\newlabel{fig:dsbn-vs-baseline}{{4.3}{31}{Left: target-domain accuracy over training at $10{,}000$ labelled patches; the dotted line marks the teacher's Sentinel-2 accuracy. Right: the residual accuracy difference between the two sensors for the distilled student, which settles near zero}{figure.caption.26}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Per-class test IoU at $10{,}000$ labelled patches, ordered by class prevalence. Distillation is ahead on nine of eleven classes. Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them. }}{31}{figure.caption.27}\protected@file@percent }
-\newlabel{fig:per-class}{{4.4}{31}{Per-class test IoU at $10{,}000$ labelled patches, ordered by class prevalence. Distillation is ahead on nine of eleven classes. Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them}{figure.caption.27}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Best validation mIoU against labelled training budget. The two methods cross: distillation is worse at $1{,}000$ labelled patches and better at $10{,}000$. Both budgets share the same fixed validation split. }}{32}{figure.caption.28}\protected@file@percent }
-\newlabel{fig:label-crossover}{{4.5}{32}{Best validation mIoU against labelled training budget. The two methods cross: distillation is worse at $1{,}000$ labelled patches and better at $10{,}000$. Both budgets share the same fixed validation split}{figure.caption.28}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Discussion}{32}{section.4.6}\protected@file@percent }
-\newlabel{sec:discussion}{{4.6}{32}{Discussion}{section.4.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Domain-specific normalization contribution}{32}{subsection.4.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Distribution of the domain probe's out-of-fold decision score, the quantity from which PAD is computed. Separated modes imply a probe that never errs (PAD $\rightarrow 2$); overlapping modes imply chance (PAD $\rightarrow 0$). After standardising each domain on its own statistics (right column) the separability vanishes for both models, showing that all of it was per-channel mean and scale rather than representational structure. }}{30}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:pad-decision}{{4.3}{30}{Distribution of the domain probe's out-of-fold decision score, the quantity from which PAD is computed. Separated modes imply a probe that never errs (PAD $\rightarrow 2$); overlapping modes imply chance (PAD $\rightarrow 0$). After standardising each domain on its own statistics (right column) the separability vanishes for both models, showing that all of it was per-channel mean and scale rather than representational structure}{figure.caption.25}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Main results. Validation mIoU is the best epoch; both budgets use the same fixed $1{,}000$-patch validation split. Paired $t$-tests are over matched epochs. }}{31}{table.caption.26}\protected@file@percent }
+\newlabel{tab:main-results}{{4.2}{31}{Main results. Validation mIoU is the best epoch; both budgets use the same fixed $1{,}000$-patch validation split. Paired $t$-tests are over matched epochs}{table.caption.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Left: target-domain accuracy over training at $10{,}000$ labelled patches; the dotted line marks the teacher's Sentinel-2 accuracy. Right: the residual accuracy difference between the two sensors for the distilled student, which settles near zero. }}{31}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:dsbn-vs-baseline}{{4.4}{31}{Left: target-domain accuracy over training at $10{,}000$ labelled patches; the dotted line marks the teacher's Sentinel-2 accuracy. Right: the residual accuracy difference between the two sensors for the distilled student, which settles near zero}{figure.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Per-class test IoU at $10{,}000$ labelled patches, ordered by class prevalence. Distillation is ahead on nine of eleven classes. Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them. }}{31}{figure.caption.28}\protected@file@percent }
+\newlabel{fig:per-class}{{4.5}{31}{Per-class test IoU at $10{,}000$ labelled patches, ordered by class prevalence. Distillation is ahead on nine of eleven classes. Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them}{figure.caption.28}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Advantage Reverse on Small Label Budget}{32}{section.4.5}\protected@file@percent }
+\newlabel{sec:label-crossover}{{4.5}{32}{Advantage Reverse on Small Label Budget}{section.4.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Best validation mIoU against labelled training budget. The two methods cross: distillation is worse at $1{,}000$ labelled patches and better at $10{,}000$. Both budgets share the same fixed validation split. }}{32}{figure.caption.29}\protected@file@percent }
+\newlabel{fig:label-crossover}{{4.6}{32}{Best validation mIoU against labelled training budget. The two methods cross: distillation is worse at $1{,}000$ labelled patches and better at $10{,}000$. Both budgets share the same fixed validation split}{figure.caption.29}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Discussion}{33}{section.4.6}\protected@file@percent }
+\newlabel{sec:discussion}{{4.6}{33}{Discussion}{section.4.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Domain-specific normalization contribution}{33}{subsection.4.6.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}Measurement pitfalls}{33}{subsection.4.6.2}\protected@file@percent }
 \newlabel{sec:measurement-pitfalls}{{4.6.2}{33}{Measurement pitfalls}{subsection.4.6.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.6.3}Limitations}{33}{subsection.4.6.3}\protected@file@percent }
@@ -191,19 +194,19 @@
 \newlabel{sec:discussion-comparison}{{4.6.4}{34}{Interpretation of the flood-robustness result}{subsection.4.6.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.6.5}Positioning with $\Phi $satNet}{34}{subsection.4.6.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.6.6}Practical recommendations}{34}{subsection.4.6.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{35}{chapter.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{36}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:conclusion}{{5}{35}{Conclusion}{chapter.5}{}}
-\@writefile{toc}{\contentsline {chapter}{Declarations}{37}{chapter*.29}\protected@file@percent }
+\newlabel{chap:conclusion}{{5}{36}{Conclusion}{chapter.5}{}}
+\@writefile{toc}{\contentsline {chapter}{Declarations}{38}{chapter*.30}\protected@file@percent }
 \bibstyle{ieeetr}
 \bibdata{references}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{38}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{39}{chapter.A}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{app:real-baseline}{{A}{38}{Real-Data LULC Baseline}{appendix.A}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.1}Protocol}{38}{section.A.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A.2}Result}{38}{section.A.2}\protected@file@percent }
+\newlabel{app:real-baseline}{{A}{39}{Real-Data LULC Baseline}{chapter.A}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}Protocol}{39}{section.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}Result}{39}{section.A.2}\protected@file@percent }
 \bibcite{barretta2026onboardaireview}{1}
 \bibcite{tellman2021satellite}{2}
 \bibcite{taylor2013wildfire}{3}
@@ -218,27 +221,28 @@
 \bibcite{giuffrida2021phisat1}{12}
 \bibcite{giuffrida2020cloudscout}{13}
 \bibcite{han2022survey}{14}
-\bibcite{chou2023edge}{15}
-\bibcite{phisatnet}{16}
-\bibcite{bommasani2021opportunities}{17}
-\bibcite{lu2025vision}{18}
-\bibcite{blumenstiel2025terramesh}{19}
-\bibcite{kouw2019introductiondomainadaptationtransfer}{20}
-\bibcite{du2024domainadaptation}{21}
-\bibcite{bendavid2010theory}{22}
-\bibcite{gretton2012kernel}{23}
-\bibcite{marsocci2025cross}{24}
-\bibcite{chang2019dsbn}{25}
-\bibcite{segl2012eetes}{26}
-\bibcite{segl2015s2etes}{27}
-\bibcite{heo2019comprehensive}{28}
-\bibcite{le2025semantic}{29}
-\bibcite{Lindenberger_2023_ICCV}{30}
-\bibcite{beck2018present}{31}
-\bibcite{ronneberger2015unet}{32}
-\bibcite{zanaga2022worldcover}{33}
-\bibcite{ioffe2015batchnorm}{34}
-\bibcite{lin2017focal}{35}
-\bibcite{cui2019classbalanced}{36}
-\bibcite{mcinnes2018umap}{37}
-\gdef \@abspage@last{44}
+\bibcite{le2024onboard}{15}
+\bibcite{chou2023edge}{16}
+\bibcite{phisatnet}{17}
+\bibcite{bommasani2021opportunities}{18}
+\bibcite{lu2025vision}{19}
+\bibcite{blumenstiel2025terramesh}{20}
+\bibcite{kouw2019introductiondomainadaptationtransfer}{21}
+\bibcite{du2024domainadaptation}{22}
+\bibcite{bendavid2010theory}{23}
+\bibcite{gretton2012kernel}{24}
+\bibcite{marsocci2025cross}{25}
+\bibcite{chang2019dsbn}{26}
+\bibcite{segl2012eetes}{27}
+\bibcite{segl2015s2etes}{28}
+\bibcite{heo2019comprehensive}{29}
+\bibcite{le2025semantic}{30}
+\bibcite{Lindenberger_2023_ICCV}{31}
+\bibcite{beck2018present}{32}
+\bibcite{ronneberger2015unet}{33}
+\bibcite{zanaga2022worldcover}{34}
+\bibcite{ioffe2015batchnorm}{35}
+\bibcite{lin2017focal}{36}
+\bibcite{cui2019classbalanced}{37}
+\bibcite{mcinnes2018umap}{38}
+\gdef \@abspage@last{45}

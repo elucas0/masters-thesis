@@ -1,8 +1,8 @@
 \chapter{Methodology}
 \label{chap:methodology}
 
-This chapter presents the complete analytical workflow: the data used and the role each dataset plays, the physics-based degradation pipeline and its calibration, the protocol for measuring the domain gap, the domain-adaptation mechanism adopted (and the one rejected, with the evidence for rejecting it), the cross-architecture distillation procedure, and the evaluation protocol.
-It closes with a dedicated account of the tooling and reproducibility practices used throughout, as required by the thesis guidelines.
+This chapter presents the complete analytical workflow: the data used and the role each dataset plays, the physics-based degradation pipeline and its calibration, the protocol for measuring the domain gap, the domain-adaptation mechanism adopted, the cross-architecture distillation procedure, and the evaluation protocol.
+It closes with a dedicated account of the tooling and reproducibility practices used throughout.
 
 The data underlying this work is split into two categories.
 The first is the co-registered triplet dataset itself: real $\Phi$-sat-2 acquisitions, obtained via the ESA Insula Perception platform, matched to concurrent Sentinel-2 scenes and to a physics-simulated $\Phi$-sat-2 rendering of the same Sentinel-2 scene, co-registered using the LightGlue deep feature-matching algorithm \cite{Lindenberger_2023_ICCV} and filtered for spatio-temporal proximity and cloud cover.
@@ -76,7 +76,7 @@ The typical patch is fairly homogeneous: a single class occupies a median of 73\
     \label{fig:landcover}
 \end{figure}
 
-\subsubsection{Train/validation/test split and a limitation}
+\subsubsection{Train/validation/test split}
 
 The dataset is split 80/10/10 (202{,}582 / 25{,}323 / 25{,}323 patches) at the patch level with a fixed seed, and the resulting class-prior distribution is stable across all three splits, confirming the split does not introduce label-distribution shift (Figure~\ref{fig:splits}, left).
 However this introduces a different problem, because splitting is patch-level rather than product-level, all 1{,}299 source products are represented in the training set, and every one of the 1{,}287 distinct products contributing to the test set also contributes patches to training (Figure~\ref{fig:splits}, right).
@@ -232,7 +232,7 @@ The two conditions produced similar overall results, and per-domain normalizatio
 The domain gap is measured directly, in latent space, using the co-registered triplets: paired cosine similarity between the embeddings of the two sensor views of the same ground, proxy $\mathcal{A}$-distance (PAD) computed per encoder layer to locate where the gap concentrates, and a cross-domain linear-probe-transfer test in which a probe fitted on one sensor's embeddings is applied to the other's embeddings of the same patches.
 It is measured indirectly through downstream task performance: LULC mIoU of the distilled student relative to a supervised baseline of identical architecture trained directly on the target sensor (Section~\ref{sec:evaluation-protocol}), and flood-segmentation IoU across the simulated degradation ladder of Section~\ref{sec:sen1floods-sim}.
 
-\section{Domain-Adaptation Mechanism}
+\section{Domain-Adaptation Strategy}
 \label{sec:da-mechanism}
 
 \subsection{Exposure to degraded data}
@@ -255,7 +255,7 @@ Because the deployed sensor on board $\Phi$-sat-2 is always known at inference, 
 \label{sec:contrastive-mechanism}
 
 The co-registered triplet dataset provides something most domain-adaptation settings lack: for every training example, the identical underlying scene observed by two or three different sensors.
-This licenses a directly supervised alignment objective rather than an unpaired one: a contrastive loss that pulls the embeddings of matched real-$\Phi$-sat-2, real-Sentinel-2, and simulated-$\Phi$-sat-2 patches of the same scene together, while pushing apart embeddings of unrelated scenes, regardless of which sensor produced each embedding.
+This guarantees a directly supervised alignment objective rather than an unpaired one. The contrastive loss pulls the embeddings of matched real-$\Phi$-sat-2, real-Sentinel-2, and simulated-$\Phi$-sat-2 patches of the same scene together, while pushing apart embeddings of unrelated scenes, regardless of which sensor produced each embedding.
 This directly penalizes the encoder for representing sensor identity, rather than only scene content, and does so using the strongest available supervisory signal, exact scene correspondence, instead of matching marginal distributions between unpaired sensor domains as an MMD-style objective would.
 
 This objective was implemented and evaluated on top of the DSBN configuration above, with the co-registered triplets used as designed: to test a training mechanism, not only to measure the gap.

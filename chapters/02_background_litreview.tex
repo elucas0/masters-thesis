@@ -10,7 +10,7 @@ Each part is treated in turn, before a closing synthesis states what combination
 On-board AI processing has moved from single-purpose CNNs, exemplified by $\Phi$-sat-1's\cite{giuffrida2021phisat1} cloud-detection application\cite{giuffrida2020cloudscout}, toward more general and more capable models, as surveyed by Barretta et al.
 \ \cite{barretta2026onboardaireview}.
 ViT architectures have become popular in computer vision due to their ability to capture global context via self-attention mechanisms, often outperforming CNNs on a variety of tasks\cite{han2022survey}.
-This makes ViT-based models strong candidates for on-board EO applications, but their computational and memory requirements are often prohibitive for deployment on resource-constrained satellites\cite{chou2023edge}.
+This makes ViT-based models strong candidates for on-board EO applications\cite{le2024onboard}, but their computational and memory requirements are often prohibitive for deployment on resource-constrained satellites\cite{chou2023edge}.
 The hardware on board $\Phi$-sat-2 is a constraining factor for the deployment of models, as the CogniSAT-XE1 payload is equipped with the Intel Movidius Myriad 2 VPU~\cite{myriad2}.
 The support for this hardware has been discontinued in 2020, which makes it legacy.
 The $\Phi$satNet effort reports that the most recent OpenVINO release supporting this hardware is version 2020.3, that experimental testing confirmed only ONNX opset 8--11 are available\footnote{Supported operations are listed here: \url{https://docs.openvino.ai/2023.3/openvino_docs_ops_opset2.html}}, and that the resulting lack of dynamic-axes support renders transformer-based architectures such as ViT incompatible with the target~\cite{phisatnet}.

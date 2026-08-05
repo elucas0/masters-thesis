@@ -102,6 +102,18 @@ It is worth noting that this ordering is the reverse of the resolution-driven ac
     \label{fig:embeddings-paired}
 \end{figure}
 
+A raw per-layer cosine-similarity check on the smaller TerraMind Tiny encoder, fine-tuned separately on real $\Phi$-sat-2 data as part of the earlier protocol described in Appendix~\ref{app:real-baseline}, is consistent with this picture (Figure~\ref{fig:cosine-sim-tiny}).
+Similarity between paired Sentinel-2B and real-$\Phi$-sat-2 embeddings is near zero at the first block and rises through the middle of the network, mirroring the low-level-radiometry reading of the per-layer PAD result above.
+This is a supplementary observation on a different model scale and a different measure (raw cosine similarity rather than PAD) than the analysis above, offered as a consistency check rather than a replication of it.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{figures/fig_cosine_sim_terramind.png}
+    \caption{Per-layer cosine similarity between paired Sentinel-2B and real-$\Phi$-sat-2 patch embeddings from the TerraMind Tiny encoder, averaged over $800$ samples (shaded band: one standard deviation).
+    }
+    \label{fig:cosine-sim-tiny}
+\end{figure}
+
 \section{Sensor Adaptivity in the Distilled Student (RQ2)}
 \label{sec:rq2-results}
 
