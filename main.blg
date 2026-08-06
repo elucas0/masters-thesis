@@ -5,45 +5,45 @@ The style file: ieeetr.bst
 Database file #1: references.bib
 Warning--empty journal in taylor2013wildfire
 Warning--empty journal in coelho2021phisat2
-You've used 38 entries,
+You've used 33 entries,
             1876 wiz_defined-function locations,
-            681 strings with 13974 characters,
-and the built_in function-call counts, 12381 in all, are:
-= -- 1006
-> -- 900
+            658 strings with 12798 characters,
+and the built_in function-call counts, 10706 in all, are:
+= -- 865
+> -- 797
 < -- 0
-+ -- 313
-- -- 275
-* -- 1030
-:= -- 1924
-add.period$ -- 39
-call.type$ -- 38
-change.case$ -- 39
++ -- 277
+- -- 244
+* -- 905
+:= -- 1687
+add.period$ -- 34
+call.type$ -- 33
+change.case$ -- 34
 chr.to.int$ -- 0
-cite$ -- 40
-duplicate$ -- 558
-empty$ -- 983
-format.name$ -- 275
-if$ -- 2833
+cite$ -- 35
+duplicate$ -- 478
+empty$ -- 831
+format.name$ -- 244
+if$ -- 2437
 int.to.chr$ -- 0
-int.to.str$ -- 38
-missing$ -- 35
-newline$ -- 118
-num.names$ -- 38
-pop$ -- 145
+int.to.str$ -- 33
+missing$ -- 31
+newline$ -- 103
+num.names$ -- 33
+pop$ -- 113
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 358
+skip$ -- 301
 stack$ -- 0
-substring$ -- 678
-swap$ -- 223
+substring$ -- 566
+swap$ -- 191
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 97
-width$ -- 40
-write$ -- 355
+while$ -- 83
+width$ -- 35
+write$ -- 313
 (There were 2 warnings)

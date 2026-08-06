@@ -1,223 +1,103 @@
 \begin{thebibliography}{10}
 
 \bibitem{barretta2026onboardaireview}
-D.~Barretta, L.~Marini, F.~Razzano, G.~Guerrisi, S.~Sandberg, R.~Del~Prete,
-  V.~Zancan, E.~Mariotti, G.~Furano, L.~Manovi, {\em et~al.}, ``Toward
-  real-time earth system intelligence through advancements in onboard ai
-  processing: A review,'' {\em IEEE Geoscience and Remote Sensing Magazine},
-  2026.
+D.~Barretta, L.~Marini, F.~Razzano, G.~Guerrisi, S.~Sandberg, R.~Del~Prete, V.~Zancan, E.~Mariotti, G.~Furano, L.~Manovi, {\em et~al.}, ``Toward real-time earth system intelligence through advancements in onboard ai processing: A review,'' {\em IEEE Geoscience and Remote Sensing Magazine}, 2026.
 
 \bibitem{tellman2021satellite}
-B.~Tellman, J.~A. Sullivan, C.~Kuhn, A.~J. Kettner, C.~S. Doyle, G.~R.
-  Brakenridge, T.~A. Erickson, and D.~A. Slayback, ``Satellite imaging reveals
-  increased proportion of population exposed to floods,'' {\em Nature},
-  vol.~596, no.~7870, pp.~80--86, 2021.
+B.~Tellman, J.~A. Sullivan, C.~Kuhn, A.~J. Kettner, C.~S. Doyle, G.~R. Brakenridge, T.~A. Erickson, and D.~A. Slayback, ``Satellite imaging reveals increased proportion of population exposed to floods,'' {\em Nature}, vol.~596, no.~7870, pp.~80--86, 2021.
 
 \bibitem{taylor2013wildfire}
-S.~W. Taylor, D.~G. Woolford, C.~Dean, and D.~L. Martell, ``Wildfire prediction
-  to inform fire management: statistical science challenges,'' 2013.
+S.~W. Taylor, D.~G. Woolford, C.~Dean, and D.~L. Martell, ``Wildfire prediction to inform fire management: statistical science challenges,'' 2013.
 
 \bibitem{myriad2}
-{Intel Movidius}, ``{Myriad 2} vision processing unit -- product brief,'' tech.
-  rep., Intel Corporation, 2016.
+{Intel Movidius}, ``{Myriad 2} vision processing unit -- product brief,'' tech. rep., Intel Corporation, 2016.
 
 \bibitem{coelho2021phisat2}
-C.~Coelho, A.~Marin, F.~Deconinck, I.~Babkina, J.~B. Ars, and M.~Pastena,
-  ``Nanosat mo framework: Enabling ai apps for earth observation,'' 2021.
+C.~Coelho, A.~Marin, F.~Deconinck, I.~Babkina, J.~B. Ars, and M.~Pastena, ``Nanosat mo framework: Enabling ai apps for earth observation,'' 2021.
 
 \bibitem{marin2021phi}
-A.~Marin, C.~Coelho, F.~Deconinck, I.~Babkina, N.~Longepe, and M.~Pastena,
-  ``Phi-sat-2: Onboard ai apps for earth observation,'' {\em Proc. Space Artif.
-  Intell}, vol.~6, 2021.
+A.~Marin, C.~Coelho, F.~Deconinck, I.~Babkina, N.~Longepe, and M.~Pastena, ``Phi-sat-2: Onboard ai apps for earth observation,'' {\em Proc. Space Artif. Intell}, vol.~6, 2021.
 
 \bibitem{jakubik2025terramind}
-J.~Jakubik, F.~Yang, B.~Blumenstiel, E.~Scheurer, R.~Sedona, S.~Maurogiovanni,
-  J.~Bosmans, N.~Dionelis, V.~Marsocci, N.~Kopp, {\em et~al.}, ``Terramind:
-  Large-scale generative multimodality for earth observation,'' in {\em 2025
-  IEEE/CVF International Conference on Computer Vision (ICCV)}, pp.~7383--7394,
-  IEEE, 2025.
+J.~Jakubik, F.~Yang, B.~Blumenstiel, E.~Scheurer, R.~Sedona, S.~Maurogiovanni, J.~Bosmans, N.~Dionelis, V.~Marsocci, N.~Kopp, {\em et~al.}, ``Terramind: Large-scale generative multimodality for earth observation,'' in {\em 2025 IEEE/CVF International Conference on Computer Vision (ICCV)}, pp.~7383--7394, IEEE, 2025.
 
 \bibitem{dosovitskiy2020image}
-A.~Dosovitskiy, L.~Beyer, A.~Kolesnikov, D.~Weissenborn, X.~Zhai,
-  T.~Unterthiner, M.~Dehghani, M.~Minderer, G.~Heigold, S.~Gelly, {\em et~al.},
-  ``An image is worth 16x16 words: Transformers for image recognition at
-  scale,'' {\em arXiv preprint arXiv:2010.11929}, 2020.
+A.~Dosovitskiy, L.~Beyer, A.~Kolesnikov, D.~Weissenborn, X.~Zhai, T.~Unterthiner, M.~Dehghani, M.~Minderer, G.~Heigold, S.~Gelly, {\em et~al.}, ``An image is worth 16x16 words: Transformers for image recognition at scale,'' {\em arXiv preprint arXiv:2010.11929}, 2020.
 
 \bibitem{longepe2024orbitalai}
-N.~Long{\'e}p{\'e}, I.~Petrelli, N.~O. Kadunc, D.~Peressutti, R.~Del~Prete,
-  M.~Casaburi, I.~Babkina, N.~Vercruyssen, E.~C. Luis, {\'A}.~M. Elorza, {\em
-  et~al.}, ``Simulation of multispectral and hyperspectral eo products for
-  onboard machine learning application,'' {\em IEEE Journal of Selected Topics
-  in Applied Earth Observations and Remote Sensing}, vol.~17, pp.~17651--17665,
-  2024.
+N.~Long{\'e}p{\'e}, I.~Petrelli, N.~O. Kadunc, D.~Peressutti, R.~Del~Prete, M.~Casaburi, I.~Babkina, N.~Vercruyssen, E.~C. Luis, {\'A}.~M. Elorza, {\em et~al.}, ``Simulation of multispectral and hyperspectral eo products for onboard machine learning application,'' {\em IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, vol.~17, pp.~17651--17665, 2024.
 
 \bibitem{hinton2015distilling}
-G.~Hinton, O.~Vinyals, and J.~Dean, ``Distilling the knowledge in a neural
-  network,'' {\em arXiv preprint arXiv:1503.02531}, 2015.
+G.~Hinton, O.~Vinyals, and J.~Dean, ``Distilling the knowledge in a neural network,'' {\em arXiv preprint arXiv:1503.02531}, 2015.
 \newblock Presented at the NIPS 2014 Deep Learning Workshop.
 
 \bibitem{du2025onorbitdemonstrationgeospatialfoundation}
-A.~Du, R.~Del~Prete, A.~Mousist, N.~Manser, F.~Marre, A.~Barton, C.~Seubert,
-  G.~Meoni, and T.-J. Chin, ``First on-orbit demonstration of a geospatial
-  foundation model,'' {\em arXiv preprint arXiv:2512.01181}, 2025.
+A.~Du, R.~Del~Prete, A.~Mousist, N.~Manser, F.~Marre, A.~Barton, C.~Seubert, G.~Meoni, and T.-J. Chin, ``First on-orbit demonstration of a geospatial foundation model,'' {\em arXiv preprint arXiv:2512.01181}, 2025.
 
 \bibitem{giuffrida2021phisat1}
-G.~Giuffrida, L.~Fanucci, G.~Meoni, M.~Batic, L.~Buckley, A.~Dunne, C.~Dijk,
-  M.~Esposito, J.~Hefele, N.~Vercruyssen, G.~Furano, M.~Pastena, and
-  J.~Aschbacher, ``The \ensuremath{\Phi}-sat-1 mission: The first on-board deep
-  neural network demonstrator for satellite earth observation,'' {\em IEEE
-  Transactions on Geoscience and Remote Sensing}, vol.~60, pp.~1--14, 01 2021.
+G.~Giuffrida, L.~Fanucci, G.~Meoni, M.~Batic, L.~Buckley, A.~Dunne, C.~Dijk, M.~Esposito, J.~Hefele, N.~Vercruyssen, G.~Furano, M.~Pastena, and J.~Aschbacher, ``The \ensuremath{\Phi}-sat-1 mission: The first on-board deep neural network demonstrator for satellite earth observation,'' {\em IEEE Transactions on Geoscience and Remote Sensing}, vol.~60, pp.~1--14, 01 2021.
 
 \bibitem{giuffrida2020cloudscout}
-G.~Giuffrida, L.~Diana, F.~De~Gioia, G.~Benelli, G.~Meoni, M.~Donati, and
-  L.~Fanucci, ``Cloudscout: A deep neural network for on-board cloud detection
-  on hyperspectral images,'' {\em Remote Sensing}, vol.~12, no.~14, p.~2205,
-  2020.
+G.~Giuffrida, L.~Diana, F.~De~Gioia, G.~Benelli, G.~Meoni, M.~Donati, and L.~Fanucci, ``Cloudscout: A deep neural network for on-board cloud detection on hyperspectral images,'' {\em Remote Sensing}, vol.~12, no.~14, p.~2205, 2020.
 
 \bibitem{han2022survey}
-K.~Han, Y.~Wang, H.~Chen, X.~Chen, J.~Guo, Z.~Liu, Y.~Tang, A.~Xiao, C.~Xu,
-  Y.~Xu, {\em et~al.}, ``A survey on vision transformer,'' {\em IEEE
-  transactions on pattern analysis and machine intelligence}, vol.~45, no.~1,
-  pp.~87--110, 2022.
+K.~Han, Y.~Wang, H.~Chen, X.~Chen, J.~Guo, Z.~Liu, Y.~Tang, A.~Xiao, C.~Xu, Y.~Xu, {\em et~al.}, ``A survey on vision transformer,'' {\em IEEE transactions on pattern analysis and machine intelligence}, vol.~45, no.~1, pp.~87--110, 2022.
 
 \bibitem{le2024onboard}
-T.-D. Le, V.~N. Ha, T.~T. Nguyen, G.~Eappen, P.~Thiruvasagam, H.-f. Chou, D.-D.
-  Tran, H.~Nguyen-Kha, L.~M. Garces-Socarras, J.~L. Gonzalez-Rios, {\em
-  et~al.}, ``Onboard satellite image classification for earth observation: A
-  comparative study of vit models,'' {\em arXiv preprint arXiv:2409.03901},
-  2024.
+T.-D. Le, V.~N. Ha, T.~T. Nguyen, G.~Eappen, P.~Thiruvasagam, H.-f. Chou, D.-D. Tran, H.~Nguyen-Kha, L.~M. Garces-Socarras, J.~L. Gonzalez-Rios, {\em et~al.}, ``Onboard satellite image classification for earth observation: A comparative study of vit models,'' {\em arXiv preprint arXiv:2409.03901}, 2024.
 
 \bibitem{chou2023edge}
-H.-f. Chou, S.~Solanki, V.~N. Ha, L.~Chen, S.~L. Ma, H.~Al-Hraishawi,
-  G.~Eappen, and S.~Chatzinotas, ``Edge ai empowered physical layer security
-  for 6g ntn: Potential threats and future opportunities,'' {\em arXiv preprint
-  arXiv:2401.01005}, 2023.
+H.-f. Chou, S.~Solanki, V.~N. Ha, L.~Chen, S.~L. Ma, H.~Al-Hraishawi, G.~Eappen, and S.~Chatzinotas, ``Edge ai empowered physical layer security for 6g ntn: Potential threats and future opportunities,'' {\em arXiv preprint arXiv:2401.01005}, 2023.
 
 \bibitem{phisatnet}
-C.~Collado-Capell, G.~Daga, R.~Del~Prete, N.~Dionelis, A.~Wijata,
-  E.~Portal{\'e}s, C.~Szywala, F.~Biancucci, G.~Bajaj, C.~Aybar,
-  L.~G{\'o}mez-Chova, V.~Marsocci, G.~Meoni, J.~Nalepa, and N.~Long{\'e}p{\'e},
-  ``{$\Phi$satNet}: Enhanced onboard autonomy, versatility and performance for
-  {EO} mission by geospatial foundation models.'' Manuscript in preparation,
-  European Space Agency $\Phi$-lab. Draft version consulted 03/2026. Cited with
-  permission of the authors., 2026.
+C.~Collado-Capell, G.~Daga, R.~Del~Prete, N.~Dionelis, A.~Wijata, E.~Portal{\'e}s, C.~Szywala, F.~Biancucci, G.~Bajaj, C.~Aybar, L.~G{\'o}mez-Chova, V.~Marsocci, G.~Meoni, J.~Nalepa, and N.~Long{\'e}p{\'e}, ``{$\Phi$satNet}: Enhanced onboard autonomy, versatility and performance for {EO} mission by geospatial foundation models.'' Manuscript in preparation, European Space Agency $\Phi$-lab. Draft version consulted 03/2026. Cited with permission of the authors., 2026.
 
 \bibitem{bommasani2021opportunities}
-R.~Bommasani, D.~A. Hudson, E.~Adeli, R.~Altman, S.~Arora, S.~von Arx, M.~S.
-  Bernstein, J.~Bohg, A.~Bosselut, E.~Brunskill, {\em et~al.}, ``On the
-  opportunities and risks of foundation models,'' {\em arXiv preprint
-  arXiv:2108.07258}, 2021.
+R.~Bommasani, D.~A. Hudson, E.~Adeli, R.~Altman, S.~Arora, S.~von Arx, M.~S. Bernstein, J.~Bohg, A.~Bosselut, E.~Brunskill, {\em et~al.}, ``On the opportunities and risks of foundation models,'' {\em arXiv preprint arXiv:2108.07258}, 2021.
 
 \bibitem{lu2025vision}
-S.~Lu, J.~Guo, J.~R. Zimmer-Dauphinee, J.~M. Nieusma, X.~Wang,
-  P.~VanValkenburgh, S.~A. Wernke, and Y.~Huo, ``Vision foundation models in
-  remote sensing: A survey,'' {\em IEEE Geoscience and Remote Sensing
-  Magazine}, vol.~13, no.~3, pp.~190--215, 2025.
+S.~Lu, J.~Guo, J.~R. Zimmer-Dauphinee, J.~M. Nieusma, X.~Wang, P.~VanValkenburgh, S.~A. Wernke, and Y.~Huo, ``Vision foundation models in remote sensing: A survey,'' {\em IEEE Geoscience and Remote Sensing Magazine}, vol.~13, no.~3, pp.~190--215, 2025.
 
 \bibitem{blumenstiel2025terramesh}
-B.~Blumenstiel, P.~Fraccaro, V.~Marsocci, J.~Jakubik, S.~Maurogiovanni,
-  M.~Czerkawski, R.~Sedona, G.~Cavallaro, T.~Brunschwiler, J.~B. Moreno, {\em
-  et~al.}, ``Terramesh: A planetary mosaic of multimodal earth observation
-  data,'' in {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
-  Pattern Recognition}, pp.~2419--2427, 2025.
+B.~Blumenstiel, P.~Fraccaro, V.~Marsocci, J.~Jakubik, S.~Maurogiovanni, M.~Czerkawski, R.~Sedona, G.~Cavallaro, T.~Brunschwiler, J.~B. Moreno, {\em et~al.}, ``Terramesh: A planetary mosaic of multimodal earth observation data,'' in {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pp.~2419--2427, 2025.
 
 \bibitem{kouw2019introductiondomainadaptationtransfer}
-W.~M. Kouw and M.~Loog, ``An introduction to domain adaptation and transfer
-  learning,'' {\em arXiv preprint arXiv:1812.11806}, 2019.
+W.~M. Kouw and M.~Loog, ``An introduction to domain adaptation and transfer learning,'' {\em arXiv preprint arXiv:1812.11806}, 2019.
 
 \bibitem{du2024domainadaptation}
-A.~Du, A.-D. Doan, Y.~W. Law, and T.-J. Chin, ``Domain adaptation for
-  satellite-borne multispectral cloud detection,'' {\em Remote Sensing},
-  vol.~16, no.~18, p.~3469, 2024.
+A.~Du, A.-D. Doan, Y.~W. Law, and T.-J. Chin, ``Domain adaptation for satellite-borne multispectral cloud detection,'' {\em Remote Sensing}, vol.~16, no.~18, p.~3469, 2024.
 
 \bibitem{bendavid2010theory}
-S.~Ben-David, J.~Blitzer, K.~Crammer, A.~Kulesza, F.~Pereira, and J.~W.
-  Vaughan, ``A theory of learning from different domains,'' {\em Machine
-  Learning}, vol.~79, no.~1--2, pp.~151--175, 2010.
+S.~Ben-David, J.~Blitzer, K.~Crammer, A.~Kulesza, F.~Pereira, and J.~W. Vaughan, ``A theory of learning from different domains,'' {\em Machine Learning}, vol.~79, no.~1--2, pp.~151--175, 2010.
 
 \bibitem{gretton2012kernel}
-A.~Gretton, K.~M. Borgwardt, M.~J. Rasch, B.~Sch{\"o}lkopf, and A.~Smola, ``A
-  kernel two-sample test,'' {\em Journal of Machine Learning Research},
-  vol.~13, pp.~723--773, 2012.
+A.~Gretton, K.~M. Borgwardt, M.~J. Rasch, B.~Sch{\"o}lkopf, and A.~Smola, ``A kernel two-sample test,'' {\em Journal of Machine Learning Research}, vol.~13, pp.~723--773, 2012.
 
 \bibitem{marsocci2025cross}
-V.~Marsocci and N.~Audebert, ``Cross-sensor self-supervised training and
-  alignment for remote sensing,'' {\em IEEE Journal of Selected Topics in
-  Applied Earth Observations and Remote Sensing}, vol.~18, pp.~12278--12289,
-  2025.
+V.~Marsocci and N.~Audebert, ``Cross-sensor self-supervised training and alignment for remote sensing,'' {\em IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, vol.~18, pp.~12278--12289, 2025.
 
 \bibitem{chang2019dsbn}
-W.-G. Chang, T.~You, S.~Seo, S.~Kwak, and B.~Han, ``Domain-specific batch
-  normalization for unsupervised domain adaptation,'' in {\em Proceedings of
-  the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  pp.~7354--7362, 2019.
+W.-G. Chang, T.~You, S.~Seo, S.~Kwak, and B.~Han, ``Domain-specific batch normalization for unsupervised domain adaptation,'' in {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, pp.~7354--7362, 2019.
 
 \bibitem{segl2012eetes}
-K.~Segl, L.~Guanter, C.~Rogass, T.~Kuester, S.~Roessner, H.~Kaufmann, B.~Sang,
-  V.~Mogulsky, and S.~Hofer, ``Eetes—the enmap end-to-end simulation tool,''
-  {\em IEEE Journal of Selected Topics in Applied Earth Observations and Remote
-  Sensing}, vol.~5, no.~2, pp.~522--530, 2012.
+K.~Segl, L.~Guanter, C.~Rogass, T.~Kuester, S.~Roessner, H.~Kaufmann, B.~Sang, V.~Mogulsky, and S.~Hofer, ``Eetes—the enmap end-to-end simulation tool,'' {\em IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, vol.~5, no.~2, pp.~522--530, 2012.
 
 \bibitem{segl2015s2etes}
-K.~Segl, L.~Guanter, F.~Gascon, T.~Kuester, C.~Rogass, and C.~Mielke, ``S2etes:
-  An end-to-end modeling tool for the simulation of sentinel-2 image
-  products,'' {\em IEEE Transactions on Geoscience and Remote Sensing},
-  vol.~53, no.~10, pp.~5560--5571, 2015.
+K.~Segl, L.~Guanter, F.~Gascon, T.~Kuester, C.~Rogass, and C.~Mielke, ``S2etes: An end-to-end modeling tool for the simulation of sentinel-2 image products,'' {\em IEEE Transactions on Geoscience and Remote Sensing}, vol.~53, no.~10, pp.~5560--5571, 2015.
 
 \bibitem{heo2019comprehensive}
-B.~Heo, J.~Kim, S.~Yun, H.~Park, N.~Kwak, and J.~Y. Choi, ``A comprehensive
-  overhaul of feature distillation,'' in {\em 2019 IEEE/CVF International
-  Conference on Computer Vision (ICCV)}, pp.~1921--1930, IEEE, 2019.
+B.~Heo, J.~Kim, S.~Yun, H.~Park, N.~Kwak, and J.~Y. Choi, ``A comprehensive overhaul of feature distillation,'' in {\em 2019 IEEE/CVF International Conference on Computer Vision (ICCV)}, pp.~1921--1930, IEEE, 2019.
 
 \bibitem{le2025semantic}
-T.-D. Le, V.~N. Ha, T.~T. Nguyen, G.~Eappen, P.~Thiruvasagam, H.-f. Chou, D.-D.
-  Tran, L.~M. Garces-Socarras, J.~L. Gonzalez-Rios, J.~C. Merlano-Duncan, {\em
-  et~al.}, ``Semantic knowledge distillation for onboard satellite earth
-  observation image classification,'' in {\em 2025 IEEE International
-  Conference on Machine Learning for Communication and Networking (ICMLCN)},
-  pp.~1--6, IEEE, 2025.
+T.-D. Le, V.~N. Ha, T.~T. Nguyen, G.~Eappen, P.~Thiruvasagam, H.-f. Chou, D.-D. Tran, L.~M. Garces-Socarras, J.~L. Gonzalez-Rios, J.~C. Merlano-Duncan, {\em et~al.}, ``Semantic knowledge distillation for onboard satellite earth observation image classification,'' in {\em 2025 IEEE International Conference on Machine Learning for Communication and Networking (ICMLCN)}, pp.~1--6, IEEE, 2025.
 
 \bibitem{Lindenberger_2023_ICCV}
-P.~Lindenberger, P.-E. Sarlin, and M.~Pollefeys, ``{LightGlue}: Local feature
-  matching at light speed,'' in {\em Proceedings of the IEEE/CVF International
-  Conference on Computer Vision (ICCV)}, 2023.
+P.~Lindenberger, P.-E. Sarlin, and M.~Pollefeys, ``{LightGlue}: Local feature matching at light speed,'' in {\em Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)}, 2023.
 
 \bibitem{beck2018present}
-H.~E. Beck, N.~E. Zimmermann, T.~R. McVicar, N.~Vergopolan, A.~Berg, and E.~F.
-  Wood, ``Present and future k{\"o}ppen-geiger climate classification maps at
-  1-km resolution,'' {\em Scientific data}, vol.~5, no.~1, p.~180214, 2018.
+H.~E. Beck, N.~E. Zimmermann, T.~R. McVicar, N.~Vergopolan, A.~Berg, and E.~F. Wood, ``Present and future k{\"o}ppen-geiger climate classification maps at 1-km resolution,'' {\em Scientific data}, vol.~5, no.~1, p.~180214, 2018.
 
 \bibitem{ronneberger2015unet}
-O.~Ronneberger, P.~Fischer, and T.~Brox, ``U-net: Convolutional networks for
-  biomedical image segmentation,'' in {\em Medical Image Computing and
-  Computer-Assisted Intervention (MICCAI)}, pp.~234--241, Springer, 2015.
-
-\bibitem{zanaga2022worldcover}
-D.~Zanaga, R.~Van De~Kerchove, D.~Daems, W.~De~Keersmaecker, C.~Brockmann,
-  G.~Kirches, J.~Wevers, O.~Cartus, M.~Santoro, S.~Fritz, M.~Lesiv, M.~Herold,
-  N.-E. Tsendbazar, P.~Xu, F.~Ramoino, and O.~Arino, ``{ESA WorldCover 10 m
-  2021 v200},'' 2022.
-
-\bibitem{ioffe2015batchnorm}
-S.~Ioffe and C.~Szegedy, ``Batch normalization: Accelerating deep network
-  training by reducing internal covariate shift,'' in {\em Proceedings of the
-  32nd International Conference on Machine Learning (ICML)}, pp.~448--456,
-  2015.
-
-\bibitem{lin2017focal}
-T.-Y. Lin, P.~Goyal, R.~Girshick, K.~He, and P.~Doll{\'a}r, ``Focal loss for
-  dense object detection,'' in {\em Proceedings of the IEEE International
-  Conference on Computer Vision (ICCV)}, pp.~2980--2988, 2017.
-
-\bibitem{cui2019classbalanced}
-Y.~Cui, M.~Jia, T.-Y. Lin, Y.~Song, and S.~Belongie, ``Class-balanced loss
-  based on effective number of samples,'' in {\em Proceedings of the IEEE/CVF
-  Conference on Computer Vision and Pattern Recognition (CVPR)},
-  pp.~9268--9277, 2019.
-
-\bibitem{mcinnes2018umap}
-L.~McInnes, J.~Healy, and J.~Melville, ``{UMAP}: Uniform manifold approximation
-  and projection for dimension reduction,'' {\em arXiv preprint
-  arXiv:1802.03426}, 2018.
+O.~Ronneberger, P.~Fischer, and T.~Brox, ``U-net: Convolutional networks for biomedical image segmentation,'' in {\em Medical Image Computing and Computer-Assisted Intervention (MICCAI)}, pp.~234--241, Springer, 2015.
 
 \end{thebibliography}
