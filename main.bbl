@@ -34,6 +34,9 @@ G.~Hinton, O.~Vinyals, and J.~Dean, ``Distilling the knowledge in a neural netwo
 \bibitem{du2025onorbitdemonstrationgeospatialfoundation}
 A.~Du, R.~Del~Prete, A.~Mousist, N.~Manser, F.~Marre, A.~Barton, C.~Seubert, G.~Meoni, and T.-J. Chin, ``First on-orbit demonstration of a geospatial foundation model,'' {\em arXiv preprint arXiv:2512.01181}, 2025.
 
+\bibitem{razzano2024ai}
+F.~Razzano, P.~Di~Stasio, F.~Mauro, G.~Meoni, M.~Esposito, G.~Schirinzi, and S.~L. Ullo, ``{AI} techniques for near real-time monitoring of contaminants in coastal waters on board future \ensuremath{\Phi}-sat-2 mission,'' {\em IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, vol.~17, pp.~16755--16766, 2024.
+
 \bibitem{giuffrida2021phisat1}
 G.~Giuffrida, L.~Fanucci, G.~Meoni, M.~Batic, L.~Buckley, A.~Dunne, C.~Dijk, M.~Esposito, J.~Hefele, N.~Vercruyssen, G.~Furano, M.~Pastena, and J.~Aschbacher, ``The \ensuremath{\Phi}-sat-1 mission: The first on-board deep neural network demonstrator for satellite earth observation,'' {\em IEEE Transactions on Geoscience and Remote Sensing}, vol.~60, pp.~1--14, 01 2021.
 

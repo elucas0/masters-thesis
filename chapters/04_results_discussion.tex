@@ -168,7 +168,7 @@ Frequency-weighted IoU moves in the same direction as the macro average ($0.5132
 Two costs qualify this.
 Distillation requires $7.9$ minutes per epoch against the baseline's $3.3$, a factor of $2.4$, dominated by the frozen teacher's forward pass and the second student branch.
 At a fixed compute budget rather than a fixed epoch count the comparison is much closer, and the baseline may be preferable.
-Separately, the teacher itself reaches $0.5788$ mIoU on Sentinel-2, so the distilled student closes only part of a substantial capacity gap; compression, not only domain adaptation, remains the binding constraint.
+Separately, the teacher itself reaches $0.5788$ mIoU on Sentinel-2, so the distilled student closes only part of a substantial capacity gap; compression, not only DA, remains the binding constraint.
 
 \begin{table}[htbp]
     \centering
@@ -214,7 +214,7 @@ Separately, the teacher itself reaches $0.5788$ mIoU on Sentinel-2, so the disti
 \section{Advantage Reverse on Small Label Budget}
 \label{sec:label-crossover}
 
-Distillation and unsupervised domain adaptation are usually motivated by label scarcity in the target domain~\cite{kouw2019introductiondomainadaptationtransfer}, so the expectation is that the advantage above should grow as target labels are removed.
+Distillation and unsupervised DA are usually motivated by label scarcity in the target domain~\cite{kouw2019introductiondomainadaptationtransfer}, so the expectation is that the advantage above should grow as target labels are removed.
 It does the opposite.
 
 At $1{,}000$ labelled patches the supervised baseline is ahead by every measure: best validation mIoU $0.2916$ against $0.2679$, test mIoU $0.2707$ against $0.2635$, and on matched epochs the distilled student leads in only $8$ of the $58$ epochs both runs share.
@@ -246,7 +246,7 @@ The improvement from domain-specific normalization is larger than a pure domain-
 A mechanism that only aligned domains should have improved the target branch alone.
 The most likely explanation is the train/test normalization inconsistency described in Section~\ref{sec:configuration}: prior configurations were evaluated through a normalization path the encoder had never been optimised under, which depressed both branches.
 On that reading, part of what is reported here as a domain-adaptation gain is the repair of a latent defect in the two-branch training scheme.
-That caveat does not diminish the practical result, but it does bear on how much of it should be attributed to domain adaptation per se.
+That caveat does not diminish the practical result, but it does bear on how much of it should be attributed to DA.
 
 \subsection{Measurement pitfalls}
 \label{sec:measurement-pitfalls}

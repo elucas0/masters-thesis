@@ -7,13 +7,44 @@ Each part is treated in turn, before a closing synthesis states what combination
 \section{On-board AI for Earth Observation}
 \label{sec:onboard-ai}
 
-On-board AI processing has moved from single-purpose CNNs, exemplified by $\Phi$-sat-1's\cite{giuffrida2021phisat1} cloud-detection application\cite{giuffrida2020cloudscout}, toward more general and more capable models, as surveyed by Barretta et al.
-\ \cite{barretta2026onboardaireview}.
+The volume of data returned by Earth observation missions keeps growing, driven both by the number of platforms in orbit and by the increasing capability of their instruments, whether through finer spatial resolution or, in the hyperspectral case, far denser spectral sampling.
+The result is a body of products that covers the globe repeatedly and serves a wide range of applications.
+Extracting value from it means moving from observations to information, and ultimately to decisions taken by users who are not themselves remote sensing specialists.
+Machine learning is well suited to automating that step, since it can interpret the complex, high-dimensional structure of EO acquisitions for tasks such as predictive analytics and anomaly detection\cite{barretta2026onboardaireview}.
+
+The conventional way of applying such models keeps the whole inference stage on the ground.
+Models are trained on datasets compiled from the archives of one or several missions, and each new acquisition is downlinked in full before any information is extracted from it.
+This is the bent-pipe architecture (Figure~\ref{fig:workflow}), in which the satellite acts as a passive relay: it acquires data, applies at most minimal preprocessing, and transmits the result to a ground station without interpreting it\cite{razzano2024ai}.
+The arrangement keeps mission design simple, but it makes the useful output of a mission dependent on ground infrastructure and bounds it by downlink bandwidth and latency, which is what prevents a near-real-time response.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=12cm]{fig_onboard_workflow.png}
+    \caption{Top Workflow (Bent-Pipe Architecture): Data is acquired and minimally preprocessed on the satellite before being transmitted to the ground station, where in-depth analysis for anomalies is conducted.
+        Bottom Workflow: The satellite extracts parameters and detects anomalies onboard, transmitting only the relevant anomaly data to the ground station, reducing data transmission and enabling faster detection.
+        From Razzano et al.~\cite{razzano2024ai}.
+    }
+    \label{fig:workflow}
+\end{figure}
+
+Because the satellite is not part of the information extraction process under this arrangement, and because modern missions add to an already large archive faster than it can be exploited, there is growing interest in running inference on board, on the imagery as the sensor captures it.
+Not every platform can host such a model.
+Image-processing networks, convolutional and deep neural networks in particular, are poorly matched to the processors typically flown, which are chosen for reliability and power efficiency rather than throughput and offer limited computation and memory\cite{barretta2026onboardaireview}.
+An AI-enabled satellite therefore carries a model uplinked from the ground and trained for that mission specifically.
+
+$\Phi$-sat-1 was the first mission to demonstrate that this is achievable, running a cloud-detection network on board a hyperspectral imager and establishing on-board AI as a reliable and accurate tool for that task\cite{giuffrida2021phisat1}.
+Two constraints shaped the result, with the first being the on-board hardware: dedicated processing had to be developed for the mission, operating within the platform's power budget and tolerating the faults that radiation induces in orbit.
+The second is the lack of data as there wasn't enough imagery from the HyperScout product line existed to train a network to label every pixel as cloudy or clear, a recurring difficulty for space imagers, since a bespoke camera is generally developed for each new mission and its archive necessarily begins empty.
+The network eventually deployed was a custom segmentation architecture designed around the accelerator's limits, and the bound on intra-layer memory in particular governed how its convolutional and deconvolutional layers could be implemented\cite{giuffrida2020cloudscout}.
+
+CNN-based models of this kind are efficient, but their locality leaves them less able to capture the long-range patterns and contextual dependencies that more demanding remote sensing tasks require.
 ViT architectures have become popular in computer vision due to their ability to capture global context via self-attention mechanisms, often outperforming CNNs on a variety of tasks\cite{han2022survey}.
-This makes ViT-based models strong candidates for on-board EO applications\cite{le2024onboard}, but their computational and memory requirements are often prohibitive for deployment on resource-constrained satellites\cite{chou2023edge}.
+This makes ViT-based models strong candidates for on-board EO applications, and in a comparative study of ViT variants for onboard satellite image classification Le et al.~\cite{le2024onboard} report that pre-trained ViTs consistently outperform equivalent models trained from scratch.
+These pre-trained models also require lower computational cost, and are more resilient to noise, which is close to the combination an on-board setting needs the most.
+Their cost nonetheless remains the primary barrier to deployment, since the large parameter counts and the attention computation that give ViTs their advantage are precisely what a resource-constrained satellite can least afford\cite{chou2023edge}.
 The hardware on board $\Phi$-sat-2 is a constraining factor for the deployment of models, as the CogniSAT-XE1 payload is equipped with the Intel Movidius Myriad 2 VPU~\cite{myriad2}.
 The support for this hardware has been discontinued in 2020, which makes it legacy.
-The $\Phi$satNet effort reports that the most recent OpenVINO release supporting this hardware is version 2020.3, that experimental testing confirmed only ONNX opset 8--11 are available\footnote{Supported operations are listed here: \url{https://docs.openvino.ai/2023.3/openvino_docs_ops_opset2.html}}, and that the resulting lack of dynamic-axes support renders transformer-based architectures such as ViT incompatible with the target~\cite{phisatnet}.
+The $\Phi$satNet effort reports that the most recent OpenVINO release supporting this hardware is version 2020.3, that experimental testing confirmed only ONNX opset 8--11 are available\footnote{Supported operations are listed here: \url{https://docs.openvino.ai/2023.3/openvino_docs_ops_opset11.html}}, and that the resulting lack of dynamic-axes support renders transformer-based architectures such as ViT incompatible with the target~\cite{phisatnet}.
 These constraints, documented in detail by the $\Phi$satNet effort, are the main motivations for cross-architecture distillation, rather than direct deployment or same-family compression.
 
 \section{Geospatial Foundation Models}
@@ -29,32 +60,53 @@ TerraMind\cite{jakubik2025terramind} is a ViT-based, multimodal GeoFM pre-traine
 It is explicitly designed to produce transferable semantic representations rather than task-specific features.
 However, that capacity has, to date, mostly been demonstrated on data drawn from the same sensor family the model was pre-trained on, leaving open how it behaves under different sensor conditions.
 
-\section{Domain Adaptation}
+\section{Domain Gap}
+\label{sec:domain-gap}
 
-Domain adaptation addresses the general problem of a model trained on a source distribution being applied to a target distribution with different input statistics but unchanged semantics\cite{kouw2019introductiondomainadaptationtransfer}.
+A domain gap is a distribution shift between the data a model was trained on and the data it must work with once deployed.
+Because a learned model only holds where the distribution it was fitted to holds, such a shift generally shows up as a loss of accuracy, and it does so even when nothing about the task itself has changed.
+The problem is acute for on-board AI, where the model is fixed at uplink time while acquisitions continue to vary with illumination, atmosphere, season, geography, and the behaviour of the instrument itself.
+It is useful to separate three kinds of shift, since they have different causes and admit different remedies\cite{kouw2019introductiondomainadaptationtransfer}.
+
+\begin{itemize}
+    \item[--] \emph{Covariate shift} is a change in the distribution of the inputs while the labelling rule stays the same: the same scene content is represented differently, for instance because the imagery carries blur, sensor noise, or haze that the training data did not.
+    \item[--] \emph{Prior shift} is a change in the distribution of the labels themselves, as when a class that is well represented in the source domain is rare or absent in the target, so a model calibrated on the source over-predicts it.
+    \item[--] \emph{Concept shift} is a change in what a given label looks like: a forest in Brittany and a tropical forest in Vietnam carry the same land-cover label while containing different species with different spectral signatures, so the mapping from label to appearance is no longer the one the model learned.
+\end{itemize}
+
+This thesis is concerned with covariate shift, and specifically with the part of it attributable to the instrument.
+The three kinds are difficult to separate in practice, because two datasets acquired by different sensors normally also differ in where and when they were acquired, and therefore in class balance and in scene content: a measured drop in accuracy then confounds all three.
+The co-registered triplets described in Chapter~\ref{chap:methodology} are constructed to remove that confound.
+Because each triplet holds views of the same ground at very nearly the same time, the label distribution and the underlying scene are held fixed across the pair by construction, leaving the sensor as the only factor that varies and the shift it induces as the only one being measured.
+
+\subsection{Domain Adaptation}
+\label{sec:domain-adaptation}
+
+Domain adaptation (DA) addresses the general problem of a model trained on a source distribution being applied to a target distribution with different input statistics but unchanged semantics\cite{kouw2019introductiondomainadaptationtransfer}.
 Within satellite on-board AI specifically, Du et al.
-\ \cite{du2024domainadaptation} demonstrated domain adaptation for satellite-borne cloud detection by retraining task heads on real, though limited, labeled imagery from the Kanyini mission, with the encoder frozen.
+\ \cite{du2024domainadaptation} demonstrated DA for satellite-borne cloud detection by retraining task heads on real, though limited, labeled imagery from the Kanyini mission, with the encoder frozen.
 This line of work was extended on-orbit by Du et al.
-\ \cite{du2025onorbitdemonstrationgeospatialfoundation}, who deployed a compressed Prithvi-family GeoFM on Kanyini and the IMAGIN-e payload, adapting via real-label head retraining rather than encoder-level domain adaptation.
+\ \cite{du2025onorbitdemonstrationgeospatialfoundation}, who deployed a compressed Prithvi-family GeoFM on Kanyini and the IMAGIN-e payload, adapting via real-label head retraining rather than encoder-level DA.
 The domain gap is measured only indirectly through downstream task performance on source and target benchmark datasets that differ in geography and content as well as sensor.
 This is the central limitation this thesis's data design addresses, because without co-registered source/target pairs of the same scene, a measured performance drop cannot distinguish sensor-induced covariate shift from confounding differences in what the two datasets depict.
 
 Beyond retraining task heads, approaches to close the gap fall into a small number of families.
 Their shared theoretical motivation is the bound of Ben-David et al.~\cite{bendavid2010theory}, which limits target-domain error by the sum of the source-domain error, a divergence between the two marginal input distributions, and a term for the error of the best joint hypothesis.
 Since the first and third terms are not reduced by adaptation, the families below differ mainly in how they attack the divergence term.
-Discrepancy-based methods penalize a statistical distance between the source and target feature distributions directly, most commonly the maximum mean discrepancy (MMD)~\cite{gretton2012kernel}, which requires only that samples from each domain be available, not that they correspond.
+Discrepancy-based methods penalize a statistical distance between the source and target feature distributions directly, most commonly the maximum mean discrepancy (MMD)~\cite{gretton2012kernel}, which requires only that samples from each domain is available.
 Alignment-based methods make the stronger assumption that corresponding inputs are available, and pull their representations together explicitly.
 X-STARS~\cite{marsocci2025cross} is the closest known example to the setting of this thesis: it adapts a model pre-trained on one optical sensor to a second sensor through a multi-sensor alignment dense loss, a patch-wise contrastive objective applied between paired acquisitions of the same area by both sensors, within a continual-pretraining framework.
 It establishes that a paired-contrastive objective is effective when the sensor change is primarily one of spatial resolution, which is not the regime this thesis operates in: the $\Phi$-sat-2/Sentinel-2 gap measured in Chapter~\ref{chap:results-discussion} is driven mainly by differing spectral response rather than by resolution mismatch.
 
 A separate line of domain-adaptation work sidesteps alignment losses entirely by giving the model domain-specific normalization statistics instead.
 Domain-Specific Batch Normalization (DSBN) \cite{chang2019dsbn} keeps a single set of convolutional weights but a separate batch-normalization affine transform and running statistics per domain.
-This only requires that the domain of each example is known, not that examples are paired across domains.
-This is a weaker requirement than the paired-contrastive or MMD loss objectives discussed above, and, unlike them, is directly applicable wherever the deployed sensor is known at inference.
+This only requires that the domain of each example is known.
+This is a smaller requirement than the paired-contrastive or MMD loss objectives discussed above, and, unlike them, is directly applicable wherever the deployed sensor is known at inference.
 
 \section{Physics-Based Sensor Degradation Simulation}
 
 Because labeled data from a satellite sensor does not exist before the satellite is launched, and accumulates slowly afterward for rare events, physics-based simulation of a target sensor's characteristics from an existing labeled source (typically Sentinel-2) has become a standard tool for pre-mission model development\cite{segl2012eetes}\cite{segl2015s2etes}.
+% Explain more details about other simulators and their characteristics, and how they compare to the one used in this thesis, to provide a comprehensive overview of the field.
 The simulator developed for the ESA $\Phi$-lab OrbitalAI challenge\cite{longepe2024orbitalai} models this transformation as a sequence of physical operations in radiance space, calibrated against real flight data from related missions: spectral and spatial resampling to the target sensor's band configuration and ground sampling distance, band-to-band misalignment consistent with push-broom acquisition geometry, signal-to-noise degradation, and optical blur modeled through the sensor's modulation transfer function.
 This simulator underlies both the degradation pipeline used in this thesis and, independently, the pre-training and benchmarking datasets used by $\Phi$satNet (Section~\ref{sec:phisatnet-background}), making it a shared, validated tool within this specific research context rather than a novel contribution of either work.
 
