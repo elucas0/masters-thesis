@@ -112,29 +112,30 @@ A product-level (rather than patch-level) re-split is the direct remedy and is n
 
 \subsubsection{Measured sensor discrepancy}
 
-Three independent measurements quantify the sensor discrepancy this dataset is designed to expose, prior to any model being involved.
+Four independent measurements quantify the sensor discrepancy this dataset is designed to expose, prior to any model being involved.
 
-First, the raw radiometric scales of the two sensors heavily differ (Figure~\ref{fig:band-boxplots}): real $\Phi$-sat-2 digital numbers have per-band medians of about 55--150 (12-bit range, with measurable saturation of 2.1--2.2\% of pixels in the RE1/RE2 bands and dropout of 0.3--0.36\% in RE2/RE3), against Sentinel-2 and simulated-$\Phi$-sat-2 medians around 2{,}200--3{,}300, consistent with the Level-1C (L1C) Top-of-Atmosphere (TOA) reflectance-scaled DN convention.
-The simulated and raw Sentinel-2 domains are close to statistically indistinguishable at this level (their boxes are overlapping in Figure~\ref{fig:band-boxplots}), confirming that the physics-based degradation pipeline (Section~\ref{sec:degradation-pipeline}) perturbs fine spatial and spectral structure rather than intensity statistics.
+First, the raw radiometric scales of the two sensors heavily differ (Figure~\ref{fig:band-boxplots}): real $\Phi$-sat-2 digital numbers are concentrated an order of magnitude below Sentinel-2 and simulated-$\Phi$-sat-2, whose density curves overlap so closely in every band that the Sentinel-2B trace is entirely hidden beneath the simulated one -- a more direct confirmation of their near-identical raw statistics than a summary boxplot gives, since the full distributions, not just their quartiles, coincide. Real $\Phi$-sat-2's distribution is not simply shifted lower, however: alongside its dominant low-value mode it carries a smaller secondary lobe that reaches into the same value range as Sentinel-2/simulated, overlapping with their peak in every band. This secondary lobe is consistent with the measurable saturation (2.1--2.2\% of pixels in the RE1/RE2 bands) and dropout (0.3--0.36\% in RE2/RE3) already established for the real sensor: a small but non-negligible population of real pixels sits far from the sensor's typical response.
+The simulated and raw Sentinel-2 domains remain close to statistically indistinguishable at this level, confirming that the physics-based degradation pipeline (Section~\ref{sec:degradation-pipeline}) perturbs fine spatial and spectral structure rather than intensity statistics.
 The domain gap this thesis is concerned with is therefore a real-vs-simulated gap, not a simulated-vs-source gap.
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=\textwidth]{fig_band_boxplots.png}
-    \caption{Per-band raw digital number distributions by sensor (log scale; boxes = IQR, whiskers = $1.5\times$IQR, outliers hidden; 400{,}000 sampled pixels).
-        Real $\Phi$-sat-2 occupies a scale roughly one order of magnitude below Sentinel-2 and its simulated counterpart, which closely overlap each other.
+    \includegraphics[width=\textwidth]{hist_bands_raw.png}
+    \caption{Per-band raw digital-number density by sensor (log-scaled $x$-axis; 400{,}000 sampled pixels).
+        Sentinel-2B (blue) and simulated $\Phi$-sat-2 (orange) overlap so closely that blue is not visible beneath orange in any panel.
+        Real $\Phi$-sat-2 (green) is concentrated roughly one order of magnitude lower, with a smaller secondary lobe extending into the Sentinel-2B/simulated value range in every band.
     }
     \label{fig:band-boxplots}
 \end{figure}
 
-Per-domain normalization (Section~\ref{sec:normalization}) closes most, but not all, of this gap (Figure~\ref{fig:band-boxplots-normalized}): after $z$-scoring each sensor independently, the three distributions are centered similarly, but real $\Phi$-sat-2 retains visibly wider spread and longer tails in every band than Sentinel-2 or the simulated domain.
-This residual spread difference, not the location/scale difference normalization already removes, is what the domain-adaptation mechanism of Section~\ref{sec:da-mechanism} must close.
+Per-domain normalization (Section~\ref{sec:normalization}) aligns the location and scale of the three distributions, but not their shape (Figure~\ref{fig:band-boxplots-normalized}): Sentinel-2B and simulated $\Phi$-sat-2 remain unimodal and closely overlapping, while real $\Phi$-sat-2 is distinctly bimodal in every band -- a taller, narrower primary mode near $z\approx-0.7$ than either reference domain reaches, plus a separate secondary mode around $z\approx+0.5$ to $+1.5$ that Sentinel-2B and simulated $\Phi$-sat-2 do not have at all. In the red and red-edge bands (B04--B08) this secondary population sharpens further into a narrow spike near $z\approx2.3$--$2.5$, consistent with the same RE1/RE2-concentrated saturation noted above: the smooth clip in the normalization protocol (Section~\ref{sec:normalization}) compresses rather than removes this population, so it survives as a pile-up near the clip boundary instead of a hard ceiling. This is a structural difference in distribution shape, not merely a difference in spread, and it is this shape mismatch -- not a location or scale offset that per-domain normalization already removes -- that the domain-adaptation mechanism of Section~\ref{sec:da-mechanism} must close.
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=\textwidth]{fig_band_boxplots_normalized.png}
-    \caption{The same per-band distributions after per-sensor $z$-score normalization of $\sqrt{\text{DN}}$.
-        Location and scale are aligned, but real $\Phi$-sat-2 retains a wider spread than Sentinel-2 or the simulated domain in every band: the residual gap normalization alone cannot close.
+    \includegraphics[width=\textwidth]{hist_bands_normalized.png}
+    \caption{The same per-band densities after per-sensor $z$-score normalization of $\sqrt{\text{DN}}$.
+        Sentinel-2B and simulated $\Phi$-sat-2 stay unimodal and closely overlapping; real $\Phi$-sat-2 is bimodal in every band, with a second mode near $z\approx+0.5$--$1.5$ that sharpens into a distinct spike near $z\approx2.3$--$2.5$ in bands B04--B08, plausibly the smooth-clipped saturation population.
+        Location and scale are aligned, but this shape difference is not something normalization alone can close.
     }
     \label{fig:band-boxplots-normalized}
 \end{figure}
@@ -168,6 +169,48 @@ This analysis is a quantitative support for attributing the domain gap primarily
 \end{figure}
 
 These measured per-domain statistics (mean, standard deviation, and clip value per band, computed separately for the real, Sentinel-2, and simulated domains) are what parametrize the per-domain normalization protocol of Section~\ref{sec:normalization}.
+
+Fourth, the residual disagreement after per-domain normalization can be localized spatially and broken down by land-cover class, rather than only summarized as an aggregate distribution shape. For a pair of normalized views of the same patch, a per-pixel approximation error is defined as the mean-over-bands $\ell_1$ distance,
+\begin{equation}
+    \mathrm{err}(u,v) = \frac{1}{7}\sum_{c=1}^{7} \left| x^{\text{real}}_{c}(u,v) - x^{\text{s2b}}_{c}(u,v) \right|,
+    \label{eq:approx-error}
+\end{equation}
+where $x^{\text{real}}$ and $x^{\text{s2b}}$ are the per-domain-normalized (Section~\ref{sec:normalization}) real-$\Phi$-sat-2 and Sentinel-2B views of the same co-registered patch. Because both views are already standardized on their own statistics, Equation~\eqref{eq:approx-error} isolates exactly the part of the gap that marginal alignment does not explain -- point spread function, band response, view geometry, and residual co-registration error -- rather than the location/scale offset the normalization protocol already removes.
+
+Aggregated over 5,000 patches and broken down by the dominant ESA WorldCover class of each pixel, the pixel-weighted mean approximation error is $0.91$ (Figure~\ref{fig:approx-error-class}). Among the five best-supported classes (13--21\% of pixels each), the error is not uniform: bare/sparse vegetation and permanent water ($\approx 1.06$--$1.07$) disagree between sensors noticeably more than tree cover and shrubland ($\approx 0.73$), with cropland, built-up, and grassland in between ($\approx 0.85$--$0.88$). Open, low-texture or specular surfaces -- bare ground, water -- are plausibly more sensitive to the residual radiometric and geometric mismatches Equation~\eqref{eq:approx-error} captures than vegetated, texturally rich surfaces, which anchor co-registration and view-geometry effects more consistently across sensors. The three classes shown with the most extreme bars (moss and lichen, snow and ice, mangroves) each account for under $1\%$ of labelled pixels in this sample and carry correspondingly enormous error bars; they are reported for completeness but should not be read as robust estimates.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=\textwidth]{fig_approx_error_by_class.png}
+    \caption{Mean cross-sensor approximation error (Equation~\eqref{eq:approx-error}) by dominant ESA WorldCover class, over 5,000 patches. Error bars are one standard deviation; the percentage above each bar is that class's share of labelled pixels in the sample. The three near-zero-support classes at left (moss/lichen, snow/ice) and the near-zero-support class at far right (mangroves) should be read with their $<1\%$ pixel share in mind, not as precise estimates.}
+    \label{fig:approx-error-class}
+\end{figure}
+
+\subsubsection{Qualitative examples}
+\label{sec:triplet-qualitative}
+
+Figures~\ref{fig:triplet-overlay-a}--\ref{fig:triplet-overlay-c} show three individual patches with the LULC mask overlaid on both sensor views alongside the approximation-error map of Equation~\eqref{eq:approx-error}, illustrating the range this dataset actually spans rather than only its aggregate statistics.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=\textwidth]{fig_triplet_overlay_019123.png}
+    \caption{A coastal wetland patch (mean approximation error $1.24$, above the dataset-wide mean of $0.91$). Error concentrates over the vegetated/wetland interior more than over open water, consistent with the class-level pattern of Figure~\ref{fig:approx-error-class}.}
+    \label{fig:triplet-overlay-a}
+\end{figure}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=\textwidth]{fig_triplet_overlay_012943.png}
+    \caption{A tree-cover/grassland boundary patch (mean approximation error $0.96$, close to the dataset-wide mean), included as a representative rather than an extreme case.}
+    \label{fig:triplet-overlay-b}
+\end{figure}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=\textwidth]{fig_triplet_overlay_019598.png}
+    \caption{A cropland patch in which the real $\Phi$-sat-2 view shows severe band-to-band misalignment: entire field-sized regions render as saturated, blocky color artifacts rather than the coherent scene visible in the co-registered Sentinel-2B view. This is real flight data exhibiting, at qualitatively higher severity, the same phenomenon Equation~\eqref{eq:misalign-l1a} models synthetically -- direct evidence that band misalignment is a genuine, sometimes severe, real-sensor artifact and not only a simulator assumption. Notably, the scalar mean approximation error for this patch ($0.90$) sits almost exactly at the dataset-wide mean despite the dramatic visual artifact: Equation~\eqref{eq:approx-error} averages absolute per-band intensity differences and is largely insensitive to spatial/geometric coherence, so it under-represents locally severe misalignment of this kind even where it visibly dominates the scene. This is a limitation of the approximation-error metric itself, not evidence that this patch is unremarkable.}
+    \label{fig:triplet-overlay-c}
+\end{figure}
 
 \subsection{Simulated degraded flood-segmentation dataset}
 \label{sec:sen1floods-sim}
