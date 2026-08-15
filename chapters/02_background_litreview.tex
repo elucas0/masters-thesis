@@ -99,7 +99,9 @@ X-STARS~\cite{marsocci2025cross} is the closest known example to the setting of 
 It establishes that a paired-contrastive objective is effective when the sensor change is primarily one of spatial resolution, which is not the regime this thesis operates in: the $\Phi$-sat-2/Sentinel-2 gap measured in Chapter~\ref{chap:results-discussion} is driven mainly by differing spectral response.
 
 A separate line of domain-adaptation work sidesteps alignment losses entirely by giving the model domain-specific normalization statistics instead.
-Domain-Specific Batch Normalization (DSBN) \cite{chang2019dsbn} keeps a single set of convolutional weights but a separate batch-normalization affine transform and running statistics per domain.
+Domain-Specific Batch Normalization (DSBN) \cite{chang2019dsbn} is a generic technique originally for unsupervised domain adaptation, and is designed to be integrated into various algorithms based on deep neural networks with batch normalization layers.
+Batch normalization (BN)\cite{ioffe2015batchnorm} is a technique used in deep learning to normalize the inputs of each layer, which helps stabilize and accelerate training.
+DSBN extends BN by maintaining separate sets of normalization parameters (mean and variance) for each domain by keeping a single set of convolutional weights but a separate batch-normalization affine transform and running statistics per domain.
 This only requires that the domain of each example is known.
 This is a smaller requirement than the paired-contrastive or MMD loss objectives discussed above, and, unlike them, is directly applicable wherever the deployed sensor is known at inference.
 

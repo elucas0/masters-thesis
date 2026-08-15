@@ -120,7 +120,37 @@ This is a supplementary observation on a different model scale and a different m
 The distilled student inverts every one of these measurements.
 Paired cosine similarity rises from $0.098$ to $0.948$, and probe transfer from $33\%$ to $97\%$ ($0.663 \rightarrow 0.646$): a classifier fitted on the student's Sentinel-2 features is very nearly as accurate on its $\Phi$-sat-2 features.
 In Figure~\ref{fig:embeddings-paired} the paired links collapse to $0.40$ UMAP units, a fifteen-fold reduction.
-The downstream consequence is visible in the right panel of Figure~\ref{fig:dsbn-vs-baseline}: the student's accuracy on the two sensors differs by only $0.032$ mIoU on the test split, against a teacher whose representation does not usefully transfer at all.
+The downstream consequence is visible in the right panel of Figure~\ref{fig:dsbn-vs-baseline}.
+The student's accuracy on the two sensors converges on parity: on the test split it scores $0.4454$ on $\Phi$-sat-2 against $0.4417$ on Sentinel-2, a residual difference of $-0.004$ mIoU, against a teacher whose representation does not usefully transfer at all.
+Table~\ref{tab:invariance} collects the three measures side by side.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Sensor invariance of the teacher and the distilled student, over $800$ co-registered test patches.
+        Paired cosine and probe transfer compare the two sensor views of the \emph{same} ground.
+        Probe transfer fits a linear classifier on Sentinel-2 embeddings and applies it to $\Phi$-sat-2 embeddings; retention is the ratio of the two accuracies.
+        The IoU difference is measured on the full test split rather than on the $800$-patch embedding sample.
+    }
+    \label{tab:invariance}
+    \begin{tabular}{lcc}
+        \toprule
+        Measure                                          & TerraMind teacher & Distilled student \\
+        \midrule
+        Paired cosine similarity                         & $0.098$           & $\mathbf{0.948}$  \\
+        Median paired link (UMAP units)                  & $6.15$            & $\mathbf{0.40}$   \\
+        Probe: Sentinel-2 $\rightarrow$ Sentinel-2       & $0.754$           & $0.663$           \\
+        Probe: Sentinel-2 $\rightarrow$ $\Phi$-sat-2     & $0.250$           & $\mathbf{0.646}$  \\
+        Probe transfer retention                         & $33\%$            & $\mathbf{97\%}$   \\
+        \addlinespace
+        IoU($\Phi$-sat-2) $-$ IoU(Sentinel-2), test      & ---               & $\mathbf{-0.004}$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\wip[Confirm you are comfortable defending the asymmetry in the probe row before this goes in.]{%
+Placeholder for a remark on the one row that cuts against the student.
+The teacher is the stronger encoder \emph{within} Sentinel-2 ($0.754$ against $0.663$ same-domain probe accuracy); its advantage disappears only when the probe is asked to cross the sensor gap.
+Whether that is worth foregrounding as a limitation of the student or as the precise statement of what distillation bought is a judgement call, and it is yours to make.}
 
 One measurement in this set behaves counter-intuitively, because it illustrates a trap in evaluating this class of method.
 Raw PAD is maximal for the student ($2.000$, versus $1.955$ for the teacher) meaning a linear probe separates the two domains perfectly.
@@ -156,47 +186,69 @@ That is weaker than a single sensor-agnostic encoder, but it is the property an 
 \label{sec:rq3-results}
 
 Sensor adaptivity is only useful if it buys accuracy that a simpler method would not.
-The control is a student of identical architecture trained directly on labelled $\Phi$-sat-2 with no teacher, no second sensor and no distillation, holding constant the split, normalization, augmentation, task loss, optimiser, schedule and early-stopping criterion.
+The control is a student of identical architecture trained directly on labelled $\Phi$-sat-2 with no teacher, no second sensor and no distillation, holding constant the split, normalization, augmentation, task loss, optimiser, schedule and early-stopping criterion (Table~\ref{tab:hyperparameters}).
 
-At a budget of $10{,}000$ labelled patches, distillation wins clearly (Table~\ref{tab:main-results}, Figure~\ref{fig:dsbn-vs-baseline}).
-Best validation mIoU is $0.4532$ against $0.3989$, and on matched epochs the distilled student is ahead by $0.0227$ mIoU on average, leading in $54$ of the $71$ epochs both runs share.
-The advantage is not present early, since the baseline leads for the first twenty epochs, and then widens monotonically, which is why an earlier run truncated at $50$ epochs substantially understated it.
+At a budget of $10{,}000$ labelled patches the distilled student reaches $0.4607$ best validation mIoU against the baseline's $0.3989$, a margin of $0.0618$ (Table~\ref{tab:main-results}).
+Figure~\ref{fig:dsbn-vs-baseline} shows the shape of that margin: the baseline is ahead for roughly the first twenty-five epochs, the two cross, and the distilled run then separates and continues climbing after the baseline has flattened.
+Averaged over the $71$ epochs the two runs share, the distilled student leads by $0.0161$ mIoU and is ahead in $49$ of them.
 
-Per-class results (Figure~\ref{fig:per-class}) show the gain is broad, not concentrated: distillation is ahead on nine of eleven classes, most markedly on mangroves ($+0.19$), herbaceous wetland ($+0.12$), grassland ($+0.12$) and cropland ($+0.10$).
-Frequency-weighted IoU moves in the same direction as the macro average ($0.5132$ against $0.4467$), so the result is not an artefact of rare-class weighting.
+\wip[Read the paragraph above and confirm the framing matches your reading of the curves.]{%
+Placeholder for your own interpretation of \emph{why} the distilled run overtakes late rather than early.
+The mechanism is not established by these runs: the candidate explanations are that the teacher's signal is most useful once the student has enough capacity committed to the easy classes, or simply that the two-branch arm sees twice the supervision per epoch and therefore trails on wall-clock but not on epochs.
+State whichever you are prepared to defend, or leave it as an open question.}
 
-Two costs qualify this.
-Distillation requires $7.9$ minutes per epoch against the baseline's $3.3$, a factor of $2.4$, dominated by the frozen teacher's forward pass and the second student branch.
-At a fixed compute budget instead of a fixed epoch count the comparison is much closer, and the baseline may be preferable.
-Separately, the teacher itself reaches $0.5788$ mIoU on Sentinel-2, so the distilled student closes only part of a substantial capacity gap; compression, not only DA, remains the binding constraint.
+The distilled run had not converged.
+Its best epoch is $89$ of the $101$ it ran, and it exhausted the full budget without triggering early stopping, so $0.4607$ should be read as a lower bound on what this configuration reaches.
+The baseline, by contrast, early-stopped at epoch $80$.
+
+Per-class results (Figure~\ref{fig:per-class}) show the gain is broad, not concentrated in one class.
+Distillation is ahead on nine of the eleven classes, most markedly on mangroves ($+0.144$), grassland ($+0.135$), moss/lichen ($+0.115$), tree cover ($+0.100$) and cropland ($+0.099$).
+It is behind on permanent water ($-0.019$) and level on shrubland ($-0.002$).
+Frequency-weighted IoU moves in the same direction as the macro average ($0.523$ against $0.454$), so the result is not an artefact of the rare-class weighting introduced in Section~\ref{sec:configuration}.
+
+\wip[Fill in once you have decided how much weight to put on the two classes where the baseline wins.]{%
+Placeholder for the per-class discussion.
+Permanent water is the only class where the undistilled baseline is meaningfully ahead ($-0.019$), with shrubland level; it is spectrally distinctive and not rare enough for the class weighting to be doing the work.
+A sentence on whether that pattern is meaningful, or within the per-class noise of a single seed, belongs here.}
+
+Two costs qualify the result.
+Distillation requires $7.9$ minutes per epoch against the baseline's $3.3$, a factor of $2.4$, dominated by the frozen teacher's forward pass and the second student branch; at a fixed compute budget rather than a fixed epoch count the comparison is much closer.
+Separately, the teacher reaches $0.6351$ mIoU on Sentinel-2 while the student reaches $0.4454$ on $\Phi$-sat-2, so roughly $0.19$ mIoU of the teacher--student gap remains unclosed.
+That residual is a compression gap rather than a domain gap: Section~\ref{sec:rq2-results} shows the student performs almost identically on the two sensors, so what separates it from the teacher is capacity and initialisation, not sensor mismatch.
 
 \begin{table}[htbp]
     \centering
-    \caption{Main results.
-        Validation mIoU is the best epoch; both budgets use the same fixed $1{,}000$-patch validation split.
-        Paired $t$-tests are over matched epochs.
+    \caption{Main results on the LULC task.
+        Validation mIoU is the best epoch, on the fixed $1{,}000$-patch validation split shared by every run; because the splits are nested prefixes of one shuffled ordering, the two label budgets are evaluated on the identical patches.
+        Test mIoU is on the full $25{,}323$-patch test split.
+        Cost is total wall-clock for the run.
     }
     \label{tab:main-results}
     \begin{tabular}{llccc}
         \toprule
-        Labels                                                        & Method              & Val.\ mIoU        & Test mIoU         & Cost (h)       \\
+        Labels     & Method              & Val.\ mIoU        & Test mIoU         & Cost (h)       \\
         \midrule
-        $10{,}000$                                                    & KD + DSBN           & $\mathbf{0.4532}$ & $\mathbf{0.4254}$ & $11.6$         \\
-        $10{,}000$                                                    & Supervised baseline & $0.3989$          & $0.3902$          & $\mathbf{4.4}$ \\
+        $10{,}000$ & KD + DSBN           & $\mathbf{0.4607}$ & $\mathbf{0.4454}$ & $13.3$         \\
+        $10{,}000$ & Supervised baseline & $0.3989$          & $0.3782$          & $\mathbf{4.4}$ \\
         \addlinespace
-        $1{,}000$                                                     & KD + DSBN           & $0.2679$          & $0.2635$          & $2.2$          \\
-        $1{,}000$                                                     & Supervised baseline & $\mathbf{0.2916}$ & $\mathbf{0.2707}$ & $\mathbf{0.6}$ \\
+        $1{,}000$  & KD + DSBN           & $0.2679$          & $0.2635$          & $2.2$          \\
+        $1{,}000$  & Supervised baseline & $\mathbf{0.2916}$ & $\mathbf{0.2707}$ & $\mathbf{0.6}$ \\
         \midrule
-        \multicolumn{2}{l}{TerraMind teacher (Sentinel-2, reference)} & ---                 & $0.5788$          & ---                                \\
+        \multicolumn{2}{l}{TerraMind teacher (Sentinel-2, reference)} & ---  & $0.6351$          & ---            \\
         \bottomrule
     \end{tabular}
 \end{table}
 
+Both test scores in Table~\ref{tab:main-results} are measured on the full $25{,}323$-patch split.
+The $10{,}000$-label baseline was originally evaluated on a $997$-patch subset, before the evaluation split was decoupled from the training budget (Section~\ref{sec:measurement-pitfalls}); its stored checkpoint was re-evaluated on the full split for this table, which moved its score from $0.3902$ to $0.3782$ and required no retraining.
+The size of that shift is worth noting on its own: the same frozen teacher scores $0.5788$ on the $997$-patch subset and $0.6351$ on the full split, so subset-to-subset differences of this magnitude are not negligible and no number from the two evaluation regimes should be compared directly.
+
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/fig_dsbn_vs_baseline.png}
-    \caption{Left: target-domain accuracy over training at $10{,}000$ labelled patches; the dotted line marks the teacher's Sentinel-2 accuracy.
-        Right: the residual accuracy difference between the two sensors for the distilled student, which settles near zero.
+    \caption{Left: $\Phi$-sat-2 validation mIoU over training at $10{,}000$ labelled patches, with the best epoch marked; the dotted line is the teacher's Sentinel-2 accuracy.
+        Right: the residual accuracy difference between the two sensors for the distilled student, which crosses zero around epoch $55$ and oscillates about it thereafter.
     }
     \label{fig:dsbn-vs-baseline}
 \end{figure}
@@ -204,9 +256,8 @@ Separately, the teacher itself reaches $0.5788$ mIoU on Sentinel-2, so the disti
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/fig_per_class_dsbn.png}
-    \caption{Per-class test IoU at $10{,}000$ labelled patches, ordered by class prevalence.
-        Distillation is ahead on nine of eleven classes.
-        Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them.
+    \caption{Per-class test IoU at $10{,}000$ labelled patches, ordered by class prevalence, with each class's share of labelled pixels beneath its label.
+        Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them (Section~\ref{sec:configuration}).
     }
     \label{fig:per-class}
 \end{figure}
