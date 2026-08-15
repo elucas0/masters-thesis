@@ -9,32 +9,33 @@
 \contentsline {subsection}{\numberline {2.3.1}Domain Adaptation}{9}{subsection.2.3.1}%
 \contentsline {section}{\numberline {2.4}Physics-Based Sensor Degradation Simulation}{10}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Knowledge Distillation Across Architectures}{10}{section.2.5}%
-\contentsline {section}{\numberline {2.6}$\Phi $satNet}{11}{section.2.6}%
+\contentsline {section}{\numberline {2.6}$\Phi $satNet}{10}{section.2.6}%
 \contentsline {section}{\numberline {2.7}Synthesis}{11}{section.2.7}%
 \contentsline {chapter}{\numberline {3}Methodology}{12}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Data}{12}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}The co-registered triplet dataset}{12}{subsection.3.1.1}%
-\contentsline {subsubsection}{Scale and coverage}{15}{section*.5}%
-\contentsline {subsubsection}{Train/validation/test split}{17}{section*.9}%
-\contentsline {subsubsection}{Measured sensor discrepancy}{17}{section*.11}%
-\contentsline {subsection}{\numberline {3.1.2}Simulated degraded flood-segmentation dataset}{19}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Physics-Based Sensor Degradation Pipeline}{20}{section.3.2}%
-\contentsline {paragraph}{Radiance--reflectance conversion.}{21}{section*.17}%
-\contentsline {paragraph}{Spatial resampling.}{22}{section*.18}%
-\contentsline {paragraph}{Band-to-band misalignment.}{22}{section*.19}%
-\contentsline {paragraph}{Signal-to-noise degradation.}{22}{section*.20}%
-\contentsline {paragraph}{Optical blur via MTF/PSF.}{23}{section*.21}%
-\contentsline {section}{\numberline {3.3}Domain Gap Measurement}{23}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Normalization protocol}{23}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Direct and indirect evidence}{23}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Domain-Adaptation Strategy}{24}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Fine-tuning on degraded data}{24}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Domain-specific batch normalization}{24}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Paired-contrastive triplet alignment}{25}{subsection.3.4.3}%
-\contentsline {section}{\numberline {3.5}Cross-Architecture Knowledge Distillation}{26}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Evaluation Protocol}{27}{section.3.6}%
-\contentsline {section}{\numberline {3.7}Tools, Software Environment, and Reproducibility}{28}{section.3.7}%
-\contentsline {chapter}{Declarations}{29}{chapter*.24}%
-\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{30}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Protocol}{30}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Result}{30}{section.A.2}%
+\contentsline {subsubsection}{Scale and coverage}{13}{section*.5}%
+\contentsline {subsubsection}{Train/validation/test split}{16}{section*.9}%
+\contentsline {subsubsection}{Measured sensor discrepancy}{16}{section*.11}%
+\contentsline {subsubsection}{Qualitative examples}{19}{section*.16}%
+\contentsline {subsection}{\numberline {3.1.2}Simulated degraded flood-segmentation dataset}{22}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Physics-Based Sensor Degradation Pipeline}{22}{section.3.2}%
+\contentsline {paragraph}{Radiance--reflectance conversion.}{22}{section*.21}%
+\contentsline {paragraph}{Spatial resampling.}{24}{section*.22}%
+\contentsline {paragraph}{Band-to-band misalignment.}{24}{section*.23}%
+\contentsline {paragraph}{Signal-to-noise degradation.}{24}{section*.24}%
+\contentsline {paragraph}{Optical blur via MTF/PSF.}{25}{section*.25}%
+\contentsline {section}{\numberline {3.3}Domain Gap Measurement}{25}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Normalization protocol}{25}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Direct and indirect evidence}{26}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Domain-Adaptation Strategy}{26}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Fine-tuning on degraded data}{26}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Domain-specific batch normalization}{26}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Paired-contrastive triplet alignment}{27}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5}Cross-Architecture Knowledge Distillation}{28}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Evaluation Protocol}{29}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Tools, Software Environment, and Reproducibility}{30}{section.3.7}%
+\contentsline {chapter}{Declarations}{31}{chapter*.28}%
+\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{32}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Protocol}{32}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Result}{32}{section.A.2}%

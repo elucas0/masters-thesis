@@ -22,7 +22,7 @@ The encoder would therefore never encounter at test time the normalization under
 
 \paragraph{Class-imbalanced task loss.}
 The WorldCover class prior on this dataset is severely imbalanced: the three rarest classes (snow/ice, mangroves, moss/lichen) together account for $1.2\%$ of labelled pixels but, under a macro-averaged mIoU, for $27\%$ of the metric.
-Under unweighted cross-entropy the student never predicted these classes at all, scoring exactly zero IoU on them in training as well as validation, a failure to learn rather than overfitting.
+Under unweighted cross-entropy the student never predicted these classes at all, scoring exactly zero IoU on them in training as well as validation, a failure to learn, not overfitting.
 All runs reported here therefore use focal loss~\cite{lin2017focal} with $\gamma = 2$ and inverse-square-root class weighting derived from the measured pixel frequencies, a milder variant of the effective-number scheme of Cui et al.~\cite{cui2019classbalanced}.
 
 Contrastive representation-alignment objectives (Section~\ref{sec:contrastive-mechanism}) were implemented and ablated but are disabled in all results below; their weights are zero throughout.
@@ -68,7 +68,7 @@ Everything the two conditions could share is held constant: architecture, initia
     \end{tabular}
 \end{table}
 
-One asymmetry in this comparison is structural rather than incidental and should be stated alongside the table.
+One asymmetry in this comparison is structural, not incidental, and should be stated alongside the table.
 The distilled arm applies the task loss to both sensor views of each patch, so within one epoch it draws twice as much supervision from the same labels as the single-branch baseline does.
 This is inherent to what the comparison is testing, since the baseline has no second view by definition, but it means that the per-epoch comparisons reported below are not matched on gradient signal, and it contributes, alongside the frozen teacher's forward pass, to the cost difference quantified in Section~\ref{sec:rq3-results}.
 
@@ -79,7 +79,7 @@ Until that run completes, the attribution of the invariance results of Section~\
 \section{Sensor Gap in TerraMind Latent Space (RQ1)}
 \label{sec:rq1-results}
 
-The first question is whether the domain gap is visible in the representation itself, rather than only in downstream accuracy.
+The first question is whether the domain gap is visible in the representation itself, and not only in downstream accuracy.
 Embeddings were extracted for $800$ co-registered test patches from both sensors and compared under three measures: paired cosine similarity between the two views of the same ground, proxy $\mathcal{A}$-distance (PAD)~\cite{bendavid2010theory}, and a cross-domain probe-transfer test in which a linear classifier fitted on Sentinel-2 embeddings is applied to $\Phi$-sat-2 embeddings of the same patches.
 
 The teacher's representation does not transfer across the sensor pair.
@@ -104,7 +104,7 @@ It is worth noting that this ordering is the reverse of the resolution-driven ac
 
 A raw per-layer cosine-similarity check on the smaller TerraMind Tiny encoder, fine-tuned separately on real $\Phi$-sat-2 data as part of the earlier protocol described in Appendix~\ref{app:real-baseline}, is consistent with this picture (Figure~\ref{fig:cosine-sim-tiny}).
 Similarity between paired Sentinel-2B and real-$\Phi$-sat-2 embeddings is near zero at the first block and rises through the middle of the network, mirroring the low-level-radiometry reading of the per-layer PAD result above.
-This is a supplementary observation on a different model scale and a different measure (raw cosine similarity rather than PAD) than the analysis above, offered as a consistency check rather than a replication of it.
+This is a supplementary observation on a different model scale and a different measure (raw cosine similarity in place of PAD) than the analysis above, offered as a consistency check, not a replication of it.
 
 \begin{figure}[htbp]
     \centering
@@ -133,7 +133,7 @@ PAD is therefore not a valid instrument for a model with domain-specific normali
 Probe transfer, which asks the functional question directly, is the appropriate measure and is the one reported above.
 
 \wip{The same caution applies in weaker form to the two measures this section does rely on.
-Domain-specific normalization aligns each domain's first and second moments by construction, and both paired cosine similarity and probe transfer are sensitive to that alignment, so some part of the improvement reported above may share an origin with the PAD artefact rather than reflecting semantic alignment alone.
+Domain-specific normalization aligns each domain's first and second moments by construction, and both paired cosine similarity and probe transfer are sensitive to that alignment, so some part of the improvement reported above may share an origin with the PAD artefact instead of reflecting semantic alignment alone.
 Recomputing both measures on a student trained with shared normalization, and after standardising each domain on its own statistics, is in progress and is the check that would settle how much of the gain is representational.
 Until it completes, the magnitude of the invariance improvement should be read as an upper bound, though the direction of the effect is not in doubt: the teacher's representation does not transfer across the sensor pair at all, and the student's does.}
 
@@ -142,7 +142,7 @@ Until it completes, the magnitude of the invariance improvement should be read a
     \includegraphics[width=\textwidth]{figures/fig_pad_decision_scores.png}
     \caption{Distribution of the domain probe's out-of-fold decision score, the quantity from which PAD is computed.
         Separated modes imply a probe that never errs (PAD $\rightarrow 2$); overlapping modes imply chance (PAD $\rightarrow 0$).
-        After standardising each domain on its own statistics (right column) the separability vanishes for both models, showing that all of it was per-channel mean and scale rather than representational structure.
+        After standardising each domain on its own statistics (right column) the separability vanishes for both models, showing that all of it was per-channel mean and scale, not representational structure.
     }
     \label{fig:pad-decision}
 \end{figure}
@@ -162,12 +162,12 @@ At a budget of $10{,}000$ labelled patches, distillation wins clearly (Table~\re
 Best validation mIoU is $0.4532$ against $0.3989$, and on matched epochs the distilled student is ahead by $0.0227$ mIoU on average, leading in $54$ of the $71$ epochs both runs share.
 The advantage is not present early, since the baseline leads for the first twenty epochs, and then widens monotonically, which is why an earlier run truncated at $50$ epochs substantially understated it.
 
-Per-class results (Figure~\ref{fig:per-class}) show the gain is broad rather than concentrated: distillation is ahead on nine of eleven classes, most markedly on mangroves ($+0.19$), herbaceous wetland ($+0.12$), grassland ($+0.12$) and cropland ($+0.10$).
+Per-class results (Figure~\ref{fig:per-class}) show the gain is broad, not concentrated: distillation is ahead on nine of eleven classes, most markedly on mangroves ($+0.19$), herbaceous wetland ($+0.12$), grassland ($+0.12$) and cropland ($+0.10$).
 Frequency-weighted IoU moves in the same direction as the macro average ($0.5132$ against $0.4467$), so the result is not an artefact of rare-class weighting.
 
 Two costs qualify this.
 Distillation requires $7.9$ minutes per epoch against the baseline's $3.3$, a factor of $2.4$, dominated by the frozen teacher's forward pass and the second student branch.
-At a fixed compute budget rather than a fixed epoch count the comparison is much closer, and the baseline may be preferable.
+At a fixed compute budget instead of a fixed epoch count the comparison is much closer, and the baseline may be preferable.
 Separately, the teacher itself reaches $0.5788$ mIoU on Sentinel-2, so the distilled student closes only part of a substantial capacity gap; compression, not only DA, remains the binding constraint.
 
 \begin{table}[htbp]
@@ -222,7 +222,7 @@ It also does so at roughly a third of the cost, and with the larger budget avail
 Figure~\ref{fig:label-crossover} shows the crossover; both budgets are evaluated on the identical fixed $1{,}000$-patch validation split, so the two points are directly comparable.
 
 The reversal is consistent across every measure reported (best validation mIoU, test mIoU, and the epoch-by-epoch lead), but the two ends of the crossover are not equally well resolved.
-At $10{,}000$ labels the margin ($0.0543$ validation mIoU) is comfortably larger than the epoch-to-epoch variance noted at the start of this chapter; at $1{,}000$ labels it is not ($0.0237$ validation, $0.0072$ test), and the baseline's advantage at the small budget therefore rests mainly on the consistency of the epoch-by-epoch lead rather than on the size of the final gap.
+At $10{,}000$ labels the margin ($0.0543$ validation mIoU) is comfortably larger than the epoch-to-epoch variance noted at the start of this chapter; at $1{,}000$ labels it is not ($0.0237$ validation, $0.0072$ test), and the baseline's advantage at the small budget therefore rests mainly on the consistency of the epoch-by-epoch lead, not on the size of the final gap.
 Replication across seeds is required before the small-budget end of the crossover can be treated as established, and that is the appropriate reading of it here.
 A plausible reading is that the distilled configuration carries substantially more machinery (a second forward pass, doubled normalization parameters, and a distillation term pulling toward a teacher that is itself imperfect at $0.5788$ mIoU), and that below some label threshold the cost of that machinery exceeds the value of the teacher's signal.
 This is offered as a hypothesis: with two budgets the crossing point is bracketed but not located, and intermediate budgets would be required to characterise it.
@@ -288,9 +288,9 @@ Flood segmentation may understade the severity of the domain-gap problem, which 
 $\Phi$satNet (Section~\ref{sec:phisatnet-background}) reports that a purpose-built, non-transformer model trained from scratch on a mission-specific corpus matches or exceeds unconstrained transformer-based GeoFMs on several on-board tasks~\cite{phisatnet}.
 This raises a reasonable objection: if a bespoke lightweight model already performs well without any of the machinery developed here, what is gained by adapting TerraMind instead?
 
-The results of Section~\ref{sec:label-crossover} sharpen rather than settle that question.
+The results of Section~\ref{sec:label-crossover} sharpen that question without settling it.
 The answer offered by this thesis is a label-efficiency bet: that large-scale multi-modal pre-training generalises to new $\Phi$-sat-2 tasks with fewer labels than a narrower curated pre-training suite requires.
-The crossover measured here shows that such a bet is budget-dependent in a way that must be quantified rather than assumed.
+The crossover measured here shows that such a bet is budget-dependent in a way that must be quantified, not assumed.
 A matched few-shot comparison against $\Phi$satNet on a shared task and label budget remains the appropriate test and has not been run.
 
 \subsection{Practical recommendations}

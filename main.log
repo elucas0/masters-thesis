@@ -1,10 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.7.30)  12 AUG 2026 00:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.7.30)  12 AUG 2026 02:23
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/elouann/masters-thesis/main.tex
-(/home/elouann/masters-thesis/main.tex
+**main.tex
+(./main.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
@@ -60,7 +59,8 @@ Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
  (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-) (/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
  (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
@@ -131,7 +131,8 @@ Package hyperref Info: backreferencing OFF on input line 6078.
 Package hyperref Info: Link coloring OFF on input line 6083.
 Package hyperref Info: Link coloring with OCG OFF on input line 6088.
 Package hyperref Info: PDF/A mode OFF on input line 6093.
- (/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
@@ -298,7 +299,8 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
-) (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks26
 \pgfutil@tempdima=\dimen185
 \pgfutil@tempdimb=\dimen186
@@ -348,7 +350,8 @@ File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfsyssoftpath@smallbuffer@items=\count300
 \pgfsyssoftpath@bigbuffer@items=\count301
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
@@ -359,7 +362,8 @@ Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
 \pgfmath@toks=\toks33
 \pgfmath@stack@operand=\toks34
 \pgfmath@stack@operation=\toks35
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count303
 )) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
@@ -401,7 +405,8 @@ File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@pt@temp=\dimen275
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
 File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
@@ -431,7 +436,8 @@ File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfnodeparttextbox=\box59
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
 \pgf@nodesepstart=\dimen278
 \pgf@nodesepend=\dimen279
@@ -475,7 +481,8 @@ File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@expandcount=\count315
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
 File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
@@ -655,149 +662,165 @@ Overfull \hbox (7.64594pt too wide) in paragraph at lines 141--1
 
 [11]
 Chapter 3.
+
+LaTeX Warning: Reference `chap:results-discussion' on page 12 undefined on input line 26.
+
 [12
 
 ]
-
-LaTeX Warning: Reference `chap:results-discussion' on page 13 undefined on input line 29.
-
-<figures/fig_srf_s2_phisat2.png, id=348, 411.5375pt x 329.23pt>
+<figures/fig_srf_s2_phisat2.png, id=346, 411.5375pt x 329.23pt>
 File: figures/fig_srf_s2_phisat2.png Graphic file (type png)
 <use figures/fig_srf_s2_phisat2.png>
-Package pdftex.def Info: figures/fig_srf_s2_phisat2.png  used on input line 33.
+Package pdftex.def Info: figures/fig_srf_s2_phisat2.png  used on input line 30.
 (pdftex.def)             Requested size: 341.43306pt x 273.14528pt.
-<figures/fig_patch_examples.png, id=352, 471.9231pt x 641.9985pt>
+<figures/fig_patch_examples.png, id=350, 471.9231pt x 641.9985pt>
 File: figures/fig_patch_examples.png Graphic file (type png)
 <use figures/fig_patch_examples.png>
-Package pdftex.def Info: figures/fig_patch_examples.png  used on input line 47.
+Package pdftex.def Info: figures/fig_patch_examples.png  used on input line 44.
 (pdftex.def)             Requested size: 341.43306pt x 464.49167pt.
-[13 <./figures/fig_srf_s2_phisat2.png>] [14 <./figures/fig_patch_examples.png>]
-<figures/fig_acquisition.png, id=368, 681.0243pt x 220.4235pt>
+ [13 <./figures/fig_srf_s2_phisat2.png>] [14 <./figures/fig_patch_examples.png>]
+<figures/fig_acquisition.png, id=365, 681.0243pt x 220.4235pt>
 File: figures/fig_acquisition.png Graphic file (type png)
 <use figures/fig_acquisition.png>
-Package pdftex.def Info: figures/fig_acquisition.png  used on input line 66.
+Package pdftex.def Info: figures/fig_acquisition.png  used on input line 60.
 (pdftex.def)             Requested size: 452.9679pt x 146.6134pt.
-<figures/fig_geography.png, id=370, 787.5021pt x 251.9814pt>
+<figures/fig_geography.png, id=367, 787.5021pt x 251.9814pt>
 File: figures/fig_geography.png Graphic file (type png)
 <use figures/fig_geography.png>
-Package pdftex.def Info: figures/fig_geography.png  used on input line 78.
+Package pdftex.def Info: figures/fig_geography.png  used on input line 72.
 (pdftex.def)             Requested size: 452.9679pt x 144.93816pt.
-<figures/fig_landcover.png, id=374, 753.2943pt x 251.9814pt>
+<figures/fig_landcover.png, id=371, 753.2943pt x 251.9814pt>
 File: figures/fig_landcover.png Graphic file (type png)
 <use figures/fig_landcover.png>
-Package pdftex.def Info: figures/fig_landcover.png  used on input line 90.
+Package pdftex.def Info: figures/fig_landcover.png  used on input line 84.
 (pdftex.def)             Requested size: 452.9679pt x 151.52066pt.
 
 
-LaTeX Warning: Reference `chap:results-discussion' on page 15 undefined on input line 101.
+LaTeX Warning: Reference `chap:results-discussion' on page 15 undefined on input line 95.
 
 
-LaTeX Warning: Reference `sec:discussion' on page 15 undefined on input line 102.
+LaTeX Warning: Reference `sec:discussion' on page 15 undefined on input line 96.
 
-[15 <./figures/fig_acquisition.png>] [16 <./figures/fig_geography.png> <./figures/fig_landcover.png>]
-<figures/fig_splits.png, id=394, 753.0534pt x 235.3593pt>
+[15 <./figures/fig_acquisition.png> <./figures/fig_geography.png>]
+<figures/fig_splits.png, id=385, 753.0534pt x 235.3593pt>
 File: figures/fig_splits.png Graphic file (type png)
 <use figures/fig_splits.png>
-Package pdftex.def Info: figures/fig_splits.png  used on input line 106.
+Package pdftex.def Info: figures/fig_splits.png  used on input line 100.
 (pdftex.def)             Requested size: 452.9679pt x 141.57219pt.
-<figures/fig_band_boxplots.png, id=398, 679.8198pt x 245.4771pt>
-File: figures/fig_band_boxplots.png Graphic file (type png)
-<use figures/fig_band_boxplots.png>
-Package pdftex.def Info: figures/fig_band_boxplots.png  used on input line 123.
-(pdftex.def)             Requested size: 452.9679pt x 163.56233pt.
-<figures/fig_band_boxplots_normalized.png, id=402, 650.6709pt x 245.4771pt>
-File: figures/fig_band_boxplots_normalized.png Graphic file (type png)
-<use figures/fig_band_boxplots_normalized.png>
-Package pdftex.def Info: figures/fig_band_boxplots_normalized.png  used on input line 135.
-(pdftex.def)             Requested size: 452.9679pt x 170.89262pt.
- [17 <./figures/fig_splits.png>]
-<figures/fig_sensor_scatter.png, id=415, 864.3492pt x 423.7431pt>
-File: figures/fig_sensor_scatter.png Graphic file (type png)
-<use figures/fig_sensor_scatter.png>
-Package pdftex.def Info: figures/fig_sensor_scatter.png  used on input line 149.
-(pdftex.def)             Requested size: 452.9679pt x 222.0611pt.
+ [16 <./figures/fig_landcover.png> <./figures/fig_splits.png>]
+<figures/hist_bands_raw.png, id=397, 930.3558pt x 455.0601pt>
+File: figures/hist_bands_raw.png Graphic file (type png)
+<use figures/hist_bands_raw.png>
+Package pdftex.def Info: figures/hist_bands_raw.png  used on input line 119.
+(pdftex.def)             Requested size: 452.9679pt x 221.55795pt.
+ [17 <./figures/hist_bands_raw.png>]
+<figures/hist_bands_normalized.png, id=410, 930.1149pt x 456.9873pt>
+File: figures/hist_bands_normalized.png Graphic file (type png)
+<use figures/hist_bands_normalized.png>
+Package pdftex.def Info: figures/hist_bands_normalized.png  used on input line 133.
+(pdftex.def)             Requested size: 452.9679pt x 222.55205pt.
 
 
-LaTeX Warning: Reference `chap:results-discussion' on page 18 undefined on input line 156.
+LaTeX Warning: Reference `chap:results-discussion' on page 18 undefined on input line 141.
 
 
-LaTeX Warning: Reference `sec:rq1-results' on page 18 undefined on input line 159.
+LaTeX Warning: Reference `sec:rq1-results' on page 18 undefined on input line 144.
 
-[18 <./figures/fig_band_boxplots.png> <./figures/fig_band_boxplots_normalized.png>]
-<figures/fig_spectral_signature.png, id=424, 427.8384pt x 254.3904pt>
+<figures/fig_spectral_signature.png, id=412, 427.8384pt x 254.3904pt>
 File: figures/fig_spectral_signature.png Graphic file (type png)
 <use figures/fig_spectral_signature.png>
-Package pdftex.def Info: figures/fig_spectral_signature.png  used on input line 163.
+Package pdftex.def Info: figures/fig_spectral_signature.png  used on input line 148.
 (pdftex.def)             Requested size: 317.07614pt x 188.54094pt.
- [19 <./figures/fig_sensor_scatter.png>]
+[18 <./figures/hist_bands_normalized.png>]
+<figures/fig_approx_error_by_class.png, id=427, 787.22679pt x 425.36057pt>
+File: figures/fig_approx_error_by_class.png Graphic file (type png)
+<use figures/fig_approx_error_by_class.png>
+Package pdftex.def Info: figures/fig_approx_error_by_class.png  used on input line 175.
+(pdftex.def)             Requested size: 452.9679pt x 244.74916pt.
+<figures/fig_triplet_overlay_019123.png, id=433, 1813.46078pt x 348.96086pt>
+File: figures/fig_triplet_overlay_019123.png Graphic file (type png)
+<use figures/fig_triplet_overlay_019123.png>
+Package pdftex.def Info: figures/fig_triplet_overlay_019123.png  used on input line 190.
+(pdftex.def)             Requested size: 452.9679pt x 87.16013pt.
+<figures/fig_triplet_overlay_012943.png, id=436, 1813.46078pt x 349.47707pt>
+File: figures/fig_triplet_overlay_012943.png Graphic file (type png)
+<use figures/fig_triplet_overlay_012943.png>
+Package pdftex.def Info: figures/fig_triplet_overlay_012943.png  used on input line 199.
+(pdftex.def)             Requested size: 452.9679pt x 87.28906pt.
+<figures/fig_triplet_overlay_019598.png, id=437, 1813.46078pt x 349.47707pt>
+File: figures/fig_triplet_overlay_019598.png Graphic file (type png)
+<use figures/fig_triplet_overlay_019598.png>
+Package pdftex.def Info: figures/fig_triplet_overlay_019598.png  used on input line 206.
+(pdftex.def)             Requested size: 452.9679pt x 87.28906pt.
+ [19 <./figures/fig_spectral_signature.png>] [20 <./figures/fig_approx_error_by_class.png> <./figures/fig_triplet_overlay_019123.png> <./figures/fig_triplet_overlay_012943.png>] [21 <./figures/fig_triplet_overlay_019598.png>]
 
-LaTeX Warning: Reference `chap:results-discussion' on page 20 undefined on input line 185.
+LaTeX Warning: Reference `chap:results-discussion' on page 22 undefined on input line 231.
 
-[20 <./figures/fig_spectral_signature.png>]
-<figures/fig_updated_simulator.png, id=445, 776.14969pt x 485.56406pt>
+<figures/fig_updated_simulator.png, id=472, 776.14969pt x 485.56406pt>
 File: figures/fig_updated_simulator.png Graphic file (type png)
 <use figures/fig_updated_simulator.png>
-Package pdftex.def Info: figures/fig_updated_simulator.png  used on input line 200.
+Package pdftex.def Info: figures/fig_updated_simulator.png  used on input line 246.
 (pdftex.def)             Requested size: 452.9679pt x 283.3833pt.
- [21 <./figures/fig_updated_simulator.png>] [22]
+[22
 
-LaTeX Warning: Reference `chap:results-discussion' on page 23 undefined on input line 266.
+] [23 <./figures/fig_updated_simulator.png>] [24]
 
-[23]
-<figures/fig_bn_dsbn.png, id=485, 810.77907pt x 176.91093pt>
+LaTeX Warning: Reference `chap:results-discussion' on page 25 undefined on input line 312.
+
+[25]
+<figures/fig_bn_dsbn.png, id=514, 810.77907pt x 176.91093pt>
 File: figures/fig_bn_dsbn.png Graphic file (type png)
 <use figures/fig_bn_dsbn.png>
-Package pdftex.def Info: figures/fig_bn_dsbn.png  used on input line 299.
+Package pdftex.def Info: figures/fig_bn_dsbn.png  used on input line 346.
 (pdftex.def)             Requested size: 452.9679pt x 98.83998pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--314
+Underfull \hbox (badness 10000) in paragraph at lines 361--361
 [][][][]$\T1/cmtt/m/n/10 https : / / docs . openvino . ai / 2023 . 3 / openvino _ docs _ ops _ normalization _
  []
 
-[24]
+[26] [27 <./figures/fig_bn_dsbn.png>]
 
-LaTeX Warning: Reference `sec:rq2-results' on page 25 undefined on input line 331.
-
-
-LaTeX Warning: Reference `chap:results-discussion' on page 25 undefined on input line 331.
+LaTeX Warning: Reference `sec:rq2-results' on page 28 undefined on input line 378.
 
 
-LaTeX Warning: Reference `sec:rq1-results' on page 25 undefined on input line 332.
-
-[25 <./figures/fig_bn_dsbn.png>]
-
-LaTeX Warning: Reference `chap:results-discussion' on page 26 undefined on input line 344.
+LaTeX Warning: Reference `chap:results-discussion' on page 28 undefined on input line 378.
 
 
-LaTeX Warning: Reference `chap:results-discussion' on page 26 undefined on input line 437.
+LaTeX Warning: Reference `sec:rq1-results' on page 28 undefined on input line 379.
 
 
-LaTeX Warning: Reference `chap:results-discussion' on page 26 undefined on input line 437.
+LaTeX Warning: Reference `chap:results-discussion' on page 28 undefined on input line 393.
 
-[26]
+[28]
 
-LaTeX Warning: Reference `sec:discussion-comparison' on page 27 undefined on input line 453.
+LaTeX Warning: Reference `chap:results-discussion' on page 29 undefined on input line 487.
 
-[27]
 
-LaTeX Warning: Reference `chap:results-discussion' on page 28 undefined on input line 462.
+LaTeX Warning: Reference `chap:results-discussion' on page 29 undefined on input line 487.
 
-) (./chapters/07_declarations.tex [28]
 
-LaTeX Warning: Reference `sec:discussion-comparison' on page 29 undefined on input line 11.
+LaTeX Warning: Reference `sec:discussion-comparison' on page 29 undefined on input line 503.
 
-) (./chapters/06_appendix.tex [29
+[29]
+
+LaTeX Warning: Reference `chap:results-discussion' on page 30 undefined on input line 512.
+
+) (./chapters/07_declarations.tex [30]
+
+LaTeX Warning: Reference `sec:discussion-comparison' on page 31 undefined on input line 11.
+
+) (./chapters/06_appendix.tex [31
 
 ]
 Appendix A.
 
-LaTeX Warning: Reference `chap:results-discussion' on page 30 undefined on input line 4.
+LaTeX Warning: Reference `chap:results-discussion' on page 32 undefined on input line 4.
 
-) (./main.bbl [30
+) (./main.bbl [32
 
-] [31
+] [33
 
-] [32] [33]) [34] (./main.aux)
+] [34] [35]) [36] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -807,21 +830,23 @@ L3 programming layer <2024-01-22>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A6C439554CB3D160BD0487FFAE1F5984;5877.
+(rerunfilecheck)             Checksum: B30CC2F8C80D231F2444FD3070EE1547;5877.
  ) 
 Here is how much of TeX's memory you used:
- 23882 strings out of 476182
- 448927 string characters out of 5795595
- 1941975 words of memory out of 5000000
- 45335 multiletter control sequences out of 15000+600000
+ 23920 strings out of 476182
+ 450178 string characters out of 5795595
+ 1942975 words of memory out of 5000000
+ 45367 multiletter control sequences out of 15000+600000
  584859 words of font info for 110 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,11n,87p,1040b,1009s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on main.pdf (36 pages, 12650296 bytes).
+ 84i,11n,87p,1011b,1009s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/elouan
+n/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on main.pdf (38 pages, 21954152 bytes).
 PDF statistics:
- 1235 PDF objects out of 1440 (max. 8388607)
- 594 compressed objects within 6 object streams
- 138 named destinations out of 1000 (max. 500000)
- 334 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1271 PDF objects out of 1440 (max. 8388607)
+ 617 compressed objects within 7 object streams
+ 145 named destinations out of 1000 (max. 500000)
+ 349 words of extra memory for PDF output out of 10000 (max. 10000000)
 
