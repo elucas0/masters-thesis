@@ -3,8 +3,9 @@
 
 This chapter reports the experiments that evaluate the three research questions of Section~\ref{sec:research-objective}: whether a measurable sensor domain gap exists in the latent space of a geospatial foundation model (RQ1), whether cross-architecture distillation from that model can produce a sensor-adaptive compact student (RQ2), and whether doing so is preferable to simply training the compact model on the target sensor directly (RQ3).
 Following the configuration set out in Section~\ref{sec:configuration}, all results below use a single configuration (distillation with domain-specific batch normalization), and the comparison of interest throughout is against a supervised baseline of identical architecture trained without any distillation.
-Every condition reported in this chapter was run once, with a single fixed seed.
+With one exception, every condition reported in this chapter was run once, with a single fixed seed.
 Comparisons are therefore reported descriptively, as differences between training curves and between best-epoch scores, rather than as statistical inferences; epoch-to-epoch validation variance is of the order of $0.02$ mIoU, so differences smaller than roughly $0.03$ should not be treated as resolved.
+The exception is the degradation-ladder evaluation of Section~\ref{sec:ladder-results}, which was replicated over three seeds and for which drops are reported with a measured seed-to-seed deviation; that section is consequently the only one in this chapter whose smaller effects are resolved.
 
 \section{Experimental Configuration}
 \label{sec:configuration}
@@ -76,7 +77,7 @@ This is inherent to what the comparison is testing, since the baseline has no se
 It requires a distilled student trained with a single shared set of batch-normalization statistics, which is the condition that would separate the contribution of the domain-specific variant from that of the two-branch distillation scheme and the class-balanced loss adopted alongside it.
 Until that run completes, the attribution of the invariance results of Section~\ref{sec:rq2-results} to domain-specific normalization specifically should be read as provisional: what the results below establish is that the configuration as a whole produces the reported behaviour, not which of its components is responsible.}
 
-\section{Sensor Gap in TerraMind Latent Space (RQ1)}
+\section{Sensor Gap in TerraMind Latent Space}
 \label{sec:rq1-results}
 
 The first question is whether the domain gap is visible in the representation itself, and not only in downstream accuracy.
@@ -114,7 +115,121 @@ This is a supplementary observation on a different model scale and a different m
     \label{fig:cosine-sim-tiny}
 \end{figure}
 
-\section{Sensor Adaptivity in the Distilled Student (RQ2)}
+\section{Degradation Factor effects on Downstream Task Gap}
+\label{sec:ladder-results}
+
+The measurements above establish that a gap exists and locate it, by layer, in low-level radiometry, but they cannot attribute it to a physical cause: the two instruments differ in spectral response, radiometric noise, band registration and ground sampling distance simultaneously, and no measurement on real pairs can separate those.
+The simulated ladder of Section~\ref{sec:sen1floods-sim} makes the separation possible by degrading one factor at a time over identical scene content.
+Three factors are varied over four severities each: sensor noise (SNR), optical blur (PSF), and band-to-band misalignment.
+Table~\ref{tab:ladder-definition} gives the parameter values.
+A severity axis common to all three is defined by setting level~4 to the operating point of the joint simulator configuration and halving the perturbation magnitude at each step down, so that a given level means the same fraction of full simulated degradation whichever factor is being varied.
+
+\begin{table}[htbp]
+    \centering
+    \caption{The degradation ladder. Level~4 reproduces the joint simulator configuration; each step down halves the perturbation. SNR is drawn per scene from the stated range and the noise amplitude scales as its reciprocal, so the four ranges correspond to relative noise of $1/8$, $1/4$, $1/2$ and $1$. Blur and misalignment parameters are in resampled $4.75$\,m pixels.}
+    \label{tab:ladder-definition}
+    \begin{tabular}{lcccc}
+        \toprule
+        Level & Severity & SNR range & PSF $\sigma$ (px) & Misalignment $\sigma$ (px) \\
+        \midrule
+        L1 & $0.125$ & $[40, 80]$ & $0.5$  & $1.25$  \\
+        L2 & $0.250$ & $[20, 40]$ & $1.0$  & $2.50$  \\
+        L3 & $0.500$ & $[10, 20]$ & $2.0$  & $5.00$  \\
+        L4 & $1.000$ & $[5, 10]$  & $4.0$  & $10.00$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+What is measured is the domain gap proper: each model is trained once on the undegraded rung and the resulting checkpoint is then evaluated on every rung's test split, so the degradation appears only at inference, as it would for a model trained on Sentinel-2 and deployed on $\Phi$-sat-2.
+Three encoder configurations are compared: the distilled student with its encoder frozen and its decoder trained ($5.14$\,M of $9.86$\,M parameters trainable), TerraMind \texttt{base} under the same frozen-encoder protocol ($7.92$\,M of $94.25$\,M), and TerraMind \texttt{base} fine-tuned end to end.
+Each configuration is run for three seeds.
+Because a single checkpoint is scored across all thirteen test splits, the drop can be paired within seed, which matters here: absolute IoU varies by up to $0.06$ between seeds while the paired drops agree to within $0.01$, so pairing is what makes the smaller effects resolvable at all.
+Table~\ref{tab:ladder-domain-gap} reports the results.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Domain gap across the degradation ladder: change in positive-class IoU relative to the undegraded test split, for a model trained only on undegraded data.
+        Values are the mean over three seeds of the within-seed drop, $\pm$ one standard deviation of those drops; $^{\ast}$ marks a drop exceeding twice that deviation.
+        The two model families are scored under different evaluation geometry (the student on $256$-pixel centre crops, TerraMind on full $1077$-pixel scenes), so the clean baselines are not comparable between columns and only the drops are.
+    }
+    \label{tab:ladder-domain-gap}
+    \begin{tabular}{lccc}
+        \toprule
+        & Distilled student & TerraMind base & TerraMind base \\
+        & (encoder frozen)  & (encoder frozen) & (fine-tuned) \\
+        \midrule
+        Clean baseline (IoU) & $0.835 \pm 0.011$ & $0.739 \pm 0.057$ & $0.773 \pm 0.033$ \\
+        \midrule
+        \multicolumn{4}{l}{\emph{Sensor noise (SNR)}} \\
+        \quad L1 & $-0.047 \pm 0.030$            & $+0.002 \pm 0.003$ & $-0.001 \pm 0.001$            \\
+        \quad L2 & $-0.144 \pm 0.049^{\ast}$     & $+0.003 \pm 0.006$ & $-0.004 \pm 0.002$            \\
+        \quad L3 & $-0.260 \pm 0.039^{\ast}$     & $-0.018 \pm 0.017$ & $-0.041 \pm 0.014^{\ast}$     \\
+        \quad L4 & $\mathbf{-0.455} \pm 0.058^{\ast}$ & $-0.088 \pm 0.066$ & $-0.152 \pm 0.030^{\ast}$ \\
+        \addlinespace
+        \multicolumn{4}{l}{\emph{Optical blur (PSF)}} \\
+        \quad L1 & $-0.001 \pm 0.003$        & $-0.004 \pm 0.003$ & $0.000 \pm 0.000$ \\
+        \quad L2 & $-0.010 \pm 0.010$        & $-0.010 \pm 0.007$ & $0.000 \pm 0.001$ \\
+        \quad L3 & $-0.042 \pm 0.023$        & $-0.016 \pm 0.012$ & $0.000 \pm 0.003$ \\
+        \quad L4 & $-0.128 \pm 0.063^{\ast}$ & $-0.025 \pm 0.016$ & $\mathbf{-0.008} \pm 0.009$ \\
+        \addlinespace
+        \multicolumn{4}{l}{\emph{Band misalignment}} \\
+        \quad L1 & $-0.006 \pm 0.001^{\ast}$ & $-0.008 \pm 0.003^{\ast}$ & $-0.003 \pm 0.001^{\ast}$ \\
+        \quad L2 & $-0.033 \pm 0.004^{\ast}$ & $-0.033 \pm 0.005^{\ast}$ & $-0.013 \pm 0.003^{\ast}$ \\
+        \quad L3 & $-0.084 \pm 0.013^{\ast}$ & $-0.065 \pm 0.005^{\ast}$ & $-0.051 \pm 0.007^{\ast}$ \\
+        \quad L4 & $\mathbf{-0.150} \pm 0.015^{\ast}$ & $\mathbf{-0.119} \pm 0.009^{\ast}$ & $\mathbf{-0.109} \pm 0.012^{\ast}$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Band misalignment is the only factor that degrades every configuration significantly, monotonically, and by a similar amount.
+Its full-severity cost varies only between $-0.109$ and $-0.150$ IoU across models that differ by an order of magnitude in trainable parameters and by architecture family, and it is the sole factor resolved at the mildest severity in all three columns, where a $1.25$-pixel shift already costs a small but reproducible amount.
+Its seed-to-seed deviation is also the tightest in the table.
+A perturbation whose cost is that insensitive to the model absorbing it is best read as damage to the input signal rather than as a weakness of any particular representation: band-to-band shifts corrupt precisely the cross-band relationships on which a water/land decision rests, and no amount of encoder capacity recovers information that the shift has destroyed.
+
+Sensor noise produces the largest single degradation, but its magnitude is a property of the model rather than of the perturbation.
+It costs the distilled student $-0.455$ IoU at full severity, fine-tuned TerraMind $-0.152$, and frozen TerraMind $-0.088$ with a deviation ($0.066$) large enough that the frozen figure is not resolved at three seeds.
+The spread across configurations is threefold or more at every severity, against the near-constant spread for misalignment, so noise sensitivity is the factor most amenable to being engineered away by a better or larger representation.
+
+Optical blur is the least damaging factor throughout, and for fine-tuned TerraMind it is indistinguishable from zero: four severities spanning a twenty-four-fold reduction in image gradient energy move the score by at most $0.008$ IoU.
+The frozen configurations do show a small monotone response, negative at all twelve seed-and-severity combinations for frozen TerraMind, so the pretrained representation is not entirely blur-agnostic; but no individual severity clears the significance threshold in any column, and the effect is an order of magnitude below the other two factors.
+
+This ordering answers the attribution question left open in Section~\ref{sec:rq1-results}, and it answers it in the same direction.
+The factor that models a resolution difference, optical blur, is the one that costs almost nothing, while the radiometric factor and the band-registration factor carry the effect.
+The per-layer PAD result located the gap in low-level radiometry rather than in semantics, and the ladder independently identifies the two low-level physical effects responsible, using a different task, a different measurement, and imagery in which scene content is held fixed by construction.
+It also reinforces the point that the gap here is not resolution-driven, which is the reverse of the emphasis in related on-orbit work~\cite{du2025onorbitdemonstrationgeospatialfoundation}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Degradation seen at inference only, against degradation present during training as well, for the distilled student at full severity.
+        The matched-condition column is a single seed and is not directly comparable in precision to the three-seed cross-condition column; it is reported to establish the size of the effect, which is large, not its exact value.
+    }
+    \label{tab:ladder-adaptation}
+    \begin{tabular}{lccc}
+        \toprule
+        Factor at L4 & Trained clean, tested degraded & Trained and tested degraded & Recovered \\
+        \midrule
+        Sensor noise (SNR)  & $-0.455$ & $-0.072$ & $84\%$          \\
+        Band misalignment   & $-0.150$ & $-0.051$ & $66\%$          \\
+        Optical blur (PSF)  & $-0.128$ & $+0.020$ & all of it \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+One further comparison bears directly on what to do about these results.
+Repeating the sweep with each model trained on the same degraded condition it is evaluated on, rather than on clean data, recovers most of the loss (Table~\ref{tab:ladder-adaptation}): $84\%$ of the noise penalty and $66\%$ of the misalignment penalty disappear, and blur ceases to be a penalty at all, scoring marginally \emph{above} the clean baseline in the manner of a mild augmentation.
+The gap measured in Table~\ref{tab:ladder-domain-gap} is therefore largely an adaptation gap rather than an information-loss gap, at least for noise and blur.
+Where the operating sensor's noise characteristics are known in advance, which for a launched instrument they are, simulating them during training reclaims most of the achievable performance without any domain-adaptation machinery.
+Misalignment is again the exception: a third of its cost survives training on the degraded condition, which is consistent with reading it as genuine destruction of cross-band information.
+
+Three limitations bound these results.
+The factors are varied one at a time, whereas a real sensor pair presents all of them at once and possibly interacting; the ladder identifies which effects matter in isolation, not how they compose.
+The degradations are simulated, so the conclusion concerns the simulator's model of the instrument difference rather than the instrument difference itself, and the absence of real labelled $\Phi$-sat-2 flood data (Section~\ref{sec:sen1floods-sim}) is what makes that unavoidable.
+Finally, the supervised U-Net baseline is not included in Table~\ref{tab:ladder-domain-gap}, so these results characterise the distilled and foundation-model encoders but do not establish whether distillation itself changed robustness relative to training on the target sensor directly.
+
+\wip{Two further pieces of this evaluation are prepared but not yet included: a latent-space view of how the ladder displaces the U-Net's representation, and the corresponding domain-gap metrics of Section~\ref{sec:gap-measurement} computed per rung.
+Both are expected to test the same attribution from the representation side rather than the task side, and the reading above should be revisited if they disagree with it.}
+
+\section{Sensor Adaptivity in the Distilled Student}
 \label{sec:rq2-results}
 
 The distilled student inverts every one of these measurements.
@@ -316,7 +431,7 @@ Evaluation splits are held fixed and independent of the training budget througho
 \label{sec:limitations}
 
 All experiments use at most $10{,}000$ of the $202{,}582$ available training patches, under $5\%$, so the crossover of Section~\ref{sec:label-crossover} is characterised entirely within the low-data regime, and the ranking at full scale is untested.
-Single seeds are used throughout, so no result in this chapter is supported by independent replication; epoch-to-epoch validation variance is of the order of $0.02$ mIoU, and differences below roughly $0.03$, which includes the small-budget end of the crossover in Section~\ref{sec:label-crossover}, are consequently not resolved.
+Single seeds are used everywhere except the degradation-ladder evaluation of Section~\ref{sec:ladder-results}, so apart from that section no result in this chapter is supported by independent replication; epoch-to-epoch validation variance is of the order of $0.02$ mIoU, and differences below roughly $0.03$, which includes the small-budget end of the crossover in Section~\ref{sec:label-crossover}, are consequently not resolved.
 Two further controls are outstanding at the time of writing: a shared-normalization distillation run isolating the contribution of domain-specific normalization (Section~\ref{sec:configuration}), and a recomputation of the invariance measures under shared and per-domain-standardised normalization (Section~\ref{sec:rq2-results}).
 The student is trained from random initialisation because no pre-trained weights exist for this backbone, which plausibly accounts for a substantial share of the remaining $0.15$ mIoU gap to the teacher and confounds any claim that the gap is attributable to domain shift.
 Finally, the work is scoped to a single sensor pair, so the finding that the gap is radiometric rather than resolution-driven (Section~\ref{sec:rq1-results}) should not be generalised beyond it.
@@ -325,11 +440,10 @@ Finally, the work is scoped to a single sensor pair, so the finding that the gap
 \label{sec:discussion-comparison}
 
 \wip{The flood-segmentation evaluation is only partially complete at the time of writing, and the scope of what follows should be read accordingly.
-The robustness assessment across the simulated degradation ladder (Section~\ref{sec:sen1floods-sim}) has so far been run on TerraMind alone, characterising how the teacher's flood-segmentation performance responds to increasing degradation severity.
-The corresponding evaluation of the two compact models (the supervised U-Net baseline and the distilled student) on the simulated and Sentinel-2 variants of Sen1Floods is in progress and is not reported here.
-The invariance and label-budget findings above therefore rest on the LULC task alone, and no claim is made yet about whether they carry over to flood segmentation.}
+The robustness assessment across the simulated degradation ladder (Section~\ref{sec:ladder-results}) covers TerraMind, in both frozen and fine-tuned configurations, and the distilled student; the supervised U-Net baseline has not been run across the ladder, so no statement is yet possible about whether distillation changed flood-task robustness relative to training on the target sensor directly.
+The invariance and label-budget findings above therefore still rest on the LULC task alone, and no claim is made yet about whether they carry over to flood segmentation.}
 
-The mild flood-IoU degradation observed for the teacher across the simulated degradation ladder is not unique to this thesis.
+The mild flood-IoU degradation observed for the teacher across the simulated degradation ladder (Section~\ref{sec:ladder-results}, at worst $-0.152$ IoU under full-severity noise and $-0.008$ under full-severity blur) is not unique to this thesis.
 Du et al.~\cite{du2025onorbitdemonstrationgeospatialfoundation} independently report that flood detection was anomalously robust to the sensor domain gap on Kanyini, in contrast to an approximately $47\%$ drop in cloud-detection performance on the same platform.
 According to two independent studies observing the same pattern, water's strong near-infrared absorption contrast plausibly survives sensor noise and band mismatch better than the texture- and boundary-dependent cues that cloud or general land-cover classification rely on.
 Flood segmentation may understade the severity of the domain-gap problem, which is part of why the LULC task was adopted as the primary benchmark.
