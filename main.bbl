@@ -24,6 +24,9 @@ J.~Jakubik, F.~Yang, B.~Blumenstiel, E.~Scheurer, R.~Sedona, S.~Maurogiovanni, J
 \bibitem{dosovitskiy2020image}
 A.~Dosovitskiy, L.~Beyer, A.~Kolesnikov, D.~Weissenborn, X.~Zhai, T.~Unterthiner, M.~Dehghani, M.~Minderer, G.~Heigold, S.~Gelly, {\em et~al.}, ``An image is worth 16x16 words: Transformers for image recognition at scale,'' {\em arXiv preprint arXiv:2010.11929}, 2020.
 
+\bibitem{bendavid2010theory}
+S.~Ben-David, J.~Blitzer, K.~Crammer, A.~Kulesza, F.~Pereira, and J.~W. Vaughan, ``A theory of learning from different domains,'' {\em Machine Learning}, vol.~79, no.~1--2, pp.~151--175, 2010.
+
 \bibitem{longepe2024orbitalai}
 N.~Long{\'e}p{\'e}, I.~Petrelli, N.~O. Kadunc, D.~Peressutti, R.~Del~Prete, M.~Casaburi, I.~Babkina, N.~Vercruyssen, E.~C. Luis, {\'A}.~M. Elorza, {\em et~al.}, ``Simulation of multispectral and hyperspectral eo products for onboard machine learning application,'' {\em IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, vol.~17, pp.~17651--17665, 2024.
 
@@ -64,14 +67,14 @@ S.~Lu, J.~Guo, J.~R. Zimmer-Dauphinee, J.~M. Nieusma, X.~Wang, P.~VanValkenburgh
 \bibitem{blumenstiel2025terramesh}
 B.~Blumenstiel, P.~Fraccaro, V.~Marsocci, J.~Jakubik, S.~Maurogiovanni, M.~Czerkawski, R.~Sedona, G.~Cavallaro, T.~Brunschwiler, J.~B. Moreno, {\em et~al.}, ``Terramesh: A planetary mosaic of multimodal earth observation data,'' in {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pp.~2419--2427, 2025.
 
+\bibitem{marsocci2024pangaea}
+V.~Marsocci, Y.~Jia, G.~Le~Bellier, D.~Kerekes, L.~Zeng, S.~Hafner, S.~Gerard, E.~Brune, R.~Yadav, A.~Shibli, H.~Fang, Y.~Ban, M.~Vergauwen, N.~Audebert, and A.~Nascetti, ``{PANGAEA}: A global and inclusive benchmark for geospatial foundation models,'' {\em arXiv preprint arXiv:2412.04204}, 2025.
+
 \bibitem{kouw2019introductiondomainadaptationtransfer}
 W.~M. Kouw and M.~Loog, ``An introduction to domain adaptation and transfer learning,'' {\em arXiv preprint arXiv:1812.11806}, 2019.
 
 \bibitem{du2024domainadaptation}
 A.~Du, A.-D. Doan, Y.~W. Law, and T.-J. Chin, ``Domain adaptation for satellite-borne multispectral cloud detection,'' {\em Remote Sensing}, vol.~16, no.~18, p.~3469, 2024.
-
-\bibitem{bendavid2010theory}
-S.~Ben-David, J.~Blitzer, K.~Crammer, A.~Kulesza, F.~Pereira, and J.~W. Vaughan, ``A theory of learning from different domains,'' {\em Machine Learning}, vol.~79, no.~1--2, pp.~151--175, 2010.
 
 \bibitem{gretton2012kernel}
 A.~Gretton, K.~M. Borgwardt, M.~J. Rasch, B.~Sch{\"o}lkopf, and A.~Smola, ``A kernel two-sample test,'' {\em Journal of Machine Learning Research}, vol.~13, pp.~723--773, 2012.
@@ -82,11 +85,17 @@ V.~Marsocci and N.~Audebert, ``Cross-sensor self-supervised training and alignme
 \bibitem{chang2019dsbn}
 W.-G. Chang, T.~You, S.~Seo, S.~Kwak, and B.~Han, ``Domain-specific batch normalization for unsupervised domain adaptation,'' in {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, pp.~7354--7362, 2019.
 
+\bibitem{ioffe2015batchnorm}
+S.~Ioffe and C.~Szegedy, ``Batch normalization: Accelerating deep network training by reducing internal covariate shift,'' in {\em Proceedings of the 32nd International Conference on Machine Learning (ICML)}, pp.~448--456, 2015.
+
 \bibitem{segl2012eetes}
 K.~Segl, L.~Guanter, C.~Rogass, T.~Kuester, S.~Roessner, H.~Kaufmann, B.~Sang, V.~Mogulsky, and S.~Hofer, ``Eetes—the enmap end-to-end simulation tool,'' {\em IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, vol.~5, no.~2, pp.~522--530, 2012.
 
 \bibitem{segl2015s2etes}
 K.~Segl, L.~Guanter, F.~Gascon, T.~Kuester, C.~Rogass, and C.~Mielke, ``S2etes: An end-to-end modeling tool for the simulation of sentinel-2 image products,'' {\em IEEE Transactions on Geoscience and Remote Sensing}, vol.~53, no.~10, pp.~5560--5571, 2015.
+
+\bibitem{goudemant2024onboardanomaly}
+T.~Goudemant, B.~Francesconi, M.~Aubrun, E.~Kervennic, I.~Grenet, Y.~Bobichon, and M.~Bellizzi, ``Onboard anomaly detection for marine environmental protection,'' {\em IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, vol.~17, pp.~7918--7931, 2024.
 
 \bibitem{heo2019comprehensive}
 B.~Heo, J.~Kim, S.~Yun, H.~Park, N.~Kwak, and J.~Y. Choi, ``A comprehensive overhaul of feature distillation,'' in {\em 2019 IEEE/CVF International Conference on Computer Vision (ICCV)}, pp.~1921--1930, IEEE, 2019.
@@ -102,5 +111,17 @@ H.~E. Beck, N.~E. Zimmermann, T.~R. McVicar, N.~Vergopolan, A.~Berg, and E.~F. W
 
 \bibitem{ronneberger2015unet}
 O.~Ronneberger, P.~Fischer, and T.~Brox, ``U-net: Convolutional networks for biomedical image segmentation,'' in {\em Medical Image Computing and Computer-Assisted Intervention (MICCAI)}, pp.~234--241, Springer, 2015.
+
+\bibitem{zanaga2022worldcover}
+D.~Zanaga, R.~Van De~Kerchove, D.~Daems, W.~De~Keersmaecker, C.~Brockmann, G.~Kirches, J.~Wevers, O.~Cartus, M.~Santoro, S.~Fritz, M.~Lesiv, M.~Herold, N.-E. Tsendbazar, P.~Xu, F.~Ramoino, and O.~Arino, ``{ESA WorldCover 10 m 2021 v200},'' 2022.
+
+\bibitem{lin2017focal}
+T.-Y. Lin, P.~Goyal, R.~Girshick, K.~He, and P.~Doll{\'a}r, ``Focal loss for dense object detection,'' in {\em Proceedings of the IEEE International Conference on Computer Vision (ICCV)}, pp.~2980--2988, 2017.
+
+\bibitem{cui2019classbalanced}
+Y.~Cui, M.~Jia, T.-Y. Lin, Y.~Song, and S.~Belongie, ``Class-balanced loss based on effective number of samples,'' in {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, pp.~9268--9277, 2019.
+
+\bibitem{mcinnes2018umap}
+L.~McInnes, J.~Healy, and J.~Melville, ``{UMAP}: Uniform manifold approximation and projection for dimension reduction,'' {\em arXiv preprint arXiv:1802.03426}, 2018.
 
 \end{thebibliography}

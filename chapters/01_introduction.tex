@@ -9,8 +9,8 @@ This paradigm shift overcomes the downlink bottleneck for time-critical applicat
 The European Space Agency's $\Phi$-sat-2 mission is among the most complete demonstrations to date: a 6U CubeSat carrying an 8-band high-resolution multispectral imager alongside a space-qualified Intel Movidius Myriad 2 VPU (Vision Processing Unit)\cite{myriad2}.
 Instead of running a single fixed application, $\Phi$-sat-2 uses the NanoSat MO Framework\cite{coelho2021phisat2} to install, update, and orchestrate multiple AI applications on board, much as a smartphone runs installable apps.
 
-To date, applications running on board $\Phi$-sat-2 have been small, task-specific convolutional neural networks (CNNs), each trained, validated, and uplinked individually for a specific job such as cloud masking, vessel detection, or roadmap extraction\cite{marin2021phi}.
-Adding a new capability means repeating the entire pipeline from scratch.
+To date, applications that were created to run on board $\Phi$-sat-2 have been small, task-specific convolutional neural networks (CNNs), each trained, validated, and uplinked individually for a specific job such as cloud masking, vessel detection, or roadmap extraction\cite{marin2021phi}.
+To add a new capability to the system, the entire pipeline needs to be repeated from scratch.
 Geospatial Foundation Models (GeoFMs) offer a different model of development.
 Pre-trained on large, diverse archives of EO imagery, a GeoFM such as TerraMind\cite{jakubik2025terramind} learns a general-purpose semantic representation that downstream tasks can exploit with comparatively few labeled examples, without requiring a bespoke architecture and a full training run per application.
 This property matters specifically for applications like flood and burnt-area mapping, where labeled events are rare by nature and a mission cannot simply wait to accumulate a large annotated archive before it becomes useful in an emergency.
@@ -19,8 +19,8 @@ Two significant challenges stand between this promise and an operational on-boar
 The first is the architectural constraints due to target hardware limitations.
 TerraMind is built on the Vision Transformers (ViTs)\cite{dosovitskiy2020image} architecture, which is structurally incompatible with space-qualified accelerators of the Myriad 2's generation\cite{myriad2}, as it predates the hardware and software support that ViT inference requires.
 The second is the operational domain gap due to sensor differences.
-GeoFMs such as TerraMind are pre-trained on Sentinel-2 and similar archived missions, but $\Phi$-sat-2 has a physically different sensor, and the statistical properties of its imagery differ from Sentinel-2's in ways the model never saw during pre-training.
-Solving either problem alone does not solve the other, as a compressed model built without addressing the domain gap simply compresses the gap along with it, and a domain-adapted ViT still cannot run on the target hardware.
+GeoFMs such as TerraMind are pre-trained on Sentinel-2 and similar archived missions, but $\Phi$-sat-2 has a different sensor, and the properties of its imagery are different enough from Sentinel-2's such that the model might not generalize well to it, this phenomenon is known as a domain gap\cite{bendavid2010theory}.
+Each problem has to be solved individually, as a compressed model built without addressing the domain gap simply compresses the gap with it, and a domain-adapted ViT still cannot run on the target hardware.
 
 This thesis addresses both obstacles together, using TerraMind and $\Phi$-sat-2 as the case study, with flood segmentation as the motivating downstream application.
 The methodological approach combines three elements.
@@ -40,7 +40,7 @@ Writing $p_s$ and $p_t$ for the source (pre-training, e.g.\ Sentinel-2) and targ
     p_t(x) \neq p_s(x) \quad \text{while} \quad p_t(y \mid x) = p_s(y \mid x).
     \label{eq:covariate-shift}
 \end{equation}
-In practice, the physical scene and its semantic content are identical across the two domains, but the pixel statistics produced by the sensor observing it differ.
+In practice, the physical scene and its semantic content are identical across the two domains, but the sensors produce different pixel statistics.
 This shift occurs because of differing spectral response functions, point spread functions, signal-to-noise characteristics, and geometric band-to-band alignment, all of which are properties of the sensor rather than the scene itself.
 A model whose learned representation is sensitive to these sensor-specific statistics instead of the underlying semantics will degrade on the target domain even though nothing about the task itself has changed.
 
@@ -52,19 +52,20 @@ The co-registered triplet dataset used in this work is designed specifically to 
 
 Two related works describe in similar ways the gap this thesis addresses.
 Du et al.
-\ \cite{du2025onorbitdemonstrationgeospatialfoundation} recently demonstrated an on-orbit GeoFM (a compressed Prithvi variant) on the Kanyini CubeSat and the IMAGIN-e payload, adapting it to the target sensor by retraining task heads on real, though limited, target-domain labels while keeping the encoder frozen.
-Their measured domain gap, however, is confounded in the way described above: source and target are entirely different benchmark datasets, not co-registered pairs, so sensor-induced shift cannot be isolated from content and geographic shift.
-Separately, $\Phi$satNet, a U-Net-based GeoFM developed within the same research group specifically for on-board execution on $\Phi$-sat-2 hardware, sidesteps the ViT-compatibility problem by training a compact, non-transformer architecture from scratch on a purpose-built pre-training corpus, instead of adapting an existing large-scale pre-trained model.
-Neither work isolates sensor-only covariate shift using co-registered data, and neither tests whether an existing GeoFM's broad, diverse pre-training transfers to a new sensor with fewer labels.
-This thesis addresses the first of those directly; the second, a matched label-efficiency comparison against $\Phi$satNet, is framed here but left to future work (Section~\ref{sec:discussion-comparison}).
-The gap this thesis addresses is therefore threefold: (i) whether the domain gap between $\Phi$-sat-2 and Sentinel-2-pretrained TerraMind can be measured directly, in latent space, using data that isolates sensor-induced covariate shift from confounding factors; (ii) whether that gap can be closed through an explicit domain-adaptation mechanism and not through incidental exposure to degraded training data, and which such mechanism (a per-domain normalization scheme, or a paired-contrastive objective exploiting the co-registered triplets) is actually responsible for closing it; and (iii) whether the resulting adaptivity survives compression into a hardware-deployable, cross-architecture (ViT-to-CNN) student model, and whether that compression step itself yields a downstream accuracy benefit over training a compact model directly on the target sensor.
+\ \cite{du2025onorbitdemonstrationgeospatialfoundation} demonstrated an on-orbit GeoFM (compressed Prithvi) on the Kanyini CubeSat and the IMAGIN-e payload, adapting it to the target sensor by retraining task heads on a limited set of real target-domain labels while keeping the encoder frozen.
+However, the domain gap they measure between source and target domains are from different benchmark datasets, not co-registered pairs, so sensor-induced shift is not isolated from content and geographic shift.
+
+Within the $\Phi$-lab, a GeoFM named $\Phi$satNet was developed specifically for on-board execution on $\Phi$-sat-2 hardware. Based on the U-Net architecture (CNN-based), it avoids the ViT-compatibility problem by training from scratch on a pre-training methodology involving physics-simulated $\Phi$-sat-2 data.
+Neither of these works isolate sensor-only covariate shift using co-registered data, and they don't test whether an existing GeoFM's broad, diverse pre-training transfers to a new sensor with fewer labels.
+This thesis addresses the first of those directly; the second involves a matched label-efficiency comparison against $\Phi$satNet, which is framed but left to future work (Section~\ref{sec:discussion-comparison}).
+The gap this thesis addresses is therefore threefold: (i) whether the domain gap between $\Phi$-sat-2 and Sentinel-2-pretrained TerraMind can be measured directly, in latent space, using data that isolates sensor-induced covariate shift; (ii) whether that gap can be closed through an explicit domain-adaptation mechanism; and (iii) whether the resulting adaptivity survives compression into a hardware-deployable, cross-architecture (ViT-to-CNN) student model.
 
 \section{Research Objective and Problem Statement}
 \label{sec:research-objective}
 
 The objective of this thesis is to determine whether the representational benefits of a large-scale, Sentinel-2-pre-trained GeoFM can be carried across the sensor domain gap into a lightweight CNN that must operate on $\Phi$-sat-2 imagery and run on the $\Phi$-sat-2 on-board processor.
-TerraMind is not itself adapted to $\Phi$-sat-2.
-It is used as a frozen teacher on the Sentinel-2 domain it was pre-trained for, and the burden of bridging the two sensors falls on the student, which is trained on both and deployed on one.
+TerraMind is not itself adapted to $\Phi$-sat-2 so it is used as a frozen teacher on the Sentinel-2 domain it was pre-trained for. 
+To bridge the gap, the student is trained on both domains and learns to generalize across sensors to be operated on one.
 The question is therefore whether a student distilled under this arrangement represents the two sensors consistently and performs well on the target sensor, without giving up the advantage that motivated starting from a GeoFM instead of training from scratch.
 This objective is pursued through three research questions:
 

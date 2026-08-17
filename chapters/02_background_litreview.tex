@@ -34,7 +34,8 @@ An AI-enabled satellite therefore carries a model uplinked from the ground and t
 
 $\Phi$-sat-1 was the first mission to demonstrate that this is achievable, running a cloud-detection network on board a hyperspectral imager and establishing on-board AI as a reliable and accurate tool for that task\cite{giuffrida2021phisat1}.
 Two constraints shaped the result, with the first being the on-board hardware: dedicated processing had to be developed for the mission, operating within the platform's power budget and tolerating the faults that radiation induces in orbit.
-The second is the lack of data as there wasn't enough imagery from the HyperScout product line existed to train a network to label every pixel as cloudy or clear, a recurring difficulty for space imagers, since a bespoke camera is generally developed for each new mission and its archive necessarily begins empty.
+The second is the lack of data as there wasn't enough imagery from the HyperScout product line to train a network to label every pixel as cloudy or clear.
+This is a recurring difficulty for space imagers, since a bespoke camera is generally developed for each new mission and its archive necessarily begins empty.
 The network eventually deployed was a custom segmentation architecture designed around the accelerator's limits, and the bound on intra-layer memory in particular governed how its convolutional and deconvolutional layers could be implemented\cite{giuffrida2020cloudscout}.
 
 CNN-based models of this kind are efficient, but their locality leaves them less able to capture the long-range patterns and contextual dependencies that more demanding remote sensing tasks require.
@@ -56,17 +57,29 @@ Once a foundation model is pre-trained, it can be fine-tuned on specific tasks, 
 
 GeoFMs\cite{lu2025vision} extend the foundation-model paradigm from natural images to Earth observation.
 Pre-training gives a single large backbone of diverse, multi-modal EO archives so that many downstream tasks can be solved by fine-tuning a small task-specific head instead of training a full model from scratch.
-TerraMind\cite{jakubik2025terramind} is a ViT-based, multimodal GeoFM pre-trained on the multimodal TerraMesh dataset\cite{blumenstiel2025terramesh}, which includes Sentinel-2 data.
+TerraMind\cite{jakubik2025terramind} is a ViT-based, multimodal GeoFM pre-trained on the multimodal TerraMesh dataset\cite{blumenstiel2025terramesh}, which includes over 9 million multi-seasonal samples with eight spatiotemporal aligned modalities (Sentinel-2 at L2A, L1C, RGB, Sentinel-1 RTC and GRD, DEM, NDVI, LULC).
 It is explicitly designed to produce transferable semantic representations rather than task-specific features.
 However, that capacity has, to date, mostly been demonstrated on data drawn from the same sensor family the model was pre-trained on, leaving open how it behaves under different sensor conditions.
+
+The generalization claim behind GeoFMs has recently been put to a systematic test.
+PANGAEA~\cite{marsocci2024pangaea} was created because existing GeoFM evaluations were narrow and inconsistent as benchmarks were often geographically biased toward North America and Europe, and several assessed models through a single instrument.
+PANGAEA spans eleven datasets across urban, agricultural, marine, and forest domains, with global coverage, spatial resolutions from 1.5 to 30\,m per pixel, uni- to multi-temporal configurations, and several sensor types including multispectral, natural-colour, and synthetic aperture radar imagery.
+The models are compared against supervised task-specific baselines, among them a plain U-Net and a vanilla ViT.
+
+A relevant finding for this thesis is that GeoFMs do not consistently outperform those supervised baselines, and that task-specific models exploit the spectral and spatial detail of a dataset more effectively when the characteristics of the pre-training data differ from those of the downstream data.
+The evaluation identifies the spectral and spatial resolution of the pre-training sensor as a significant determinant of downstream performance, especially when the downstream task requires fine-grained spatial or spectral information.
+Another point relevant is the scope of what remains untested as the authors observe that geospatial models are evaluated mainly on narrow selections of tasks and datasets, leaving their ability to handle domain shifts across geographic regions, sensors, and temporal conditions largely unexplored.
+
+PANGAEA compares across sensors in the sense that its datasets originate from different instruments, but the sensor is never the only variable that changes between them.
+Separating that factor from the others requires observations of the same ground by two instruments, which is what the dataset described in Chapter~\ref{chap:methodology} supplies and what the measurements of Chapter~\ref{chap:results-discussion} rest on.
 
 \section{Domain Gap}
 \label{sec:domain-gap}
 
 A domain gap is a distribution shift between the data a model was trained on and the data it must work with once deployed.
 Because a learned model only holds where the distribution it was fitted to holds, such a shift generally shows up as a loss of accuracy, and it does so even when nothing about the task itself has changed.
-The problem is acute for on-board AI, where the model is fixed at uplink time while acquisitions continue to vary with illumination, atmosphere, season, geography, and the behaviour of the instrument itself.
-It is useful to separate three kinds of shift, since they have different causes and admit different remedies\cite{kouw2019introductiondomainadaptationtransfer}.
+The problem is inherent to on-board AI, where the model is fixed at uplink time while acquisitions continue to vary with illumination, atmosphere, season, geography, and the behaviour of the instrument itself.
+It is useful to separate three kinds of shift, since they have different causes can be minimized in different ways\cite{kouw2019introductiondomainadaptationtransfer}.
 
 \begin{itemize}
     \item[--] \emph{Covariate shift} is a change in the distribution of the inputs while the labelling rule stays the same: the same scene content is represented differently, for instance because the imagery carries blur, sensor noise, or haze that the training data did not.
@@ -95,7 +108,7 @@ Their shared theoretical motivation is the bound of Ben-David et al.~\cite{benda
 Since the first and third terms are not reduced by adaptation, the families below differ mainly in how they attack the divergence term.
 Discrepancy-based methods penalize a statistical distance between the source and target feature distributions directly, most commonly the maximum mean discrepancy (MMD)~\cite{gretton2012kernel}, which requires only that samples from each domain is available.
 Alignment-based methods make the stronger assumption that corresponding inputs are available, and pull their representations together explicitly.
-X-STARS~\cite{marsocci2025cross} is the closest known example to the setting of this thesis: it adapts a model pre-trained on one optical sensor to a second sensor through a multi-sensor alignment dense loss, a patch-wise contrastive objective applied between paired acquisitions of the same area by both sensors, within a continual-pretraining framework.
+X-STARS~\cite{marsocci2025cross} is a close example to the setting of this thesis, it adapts a model pre-trained on one optical sensor to a second sensor through a multi-sensor alignment dense loss, a patch-wise contrastive objective applied between paired acquisitions of the same area by both sensors, within a continual-pretraining framework.
 It establishes that a paired-contrastive objective is effective when the sensor change is primarily one of spatial resolution, which is not the regime this thesis operates in: the $\Phi$-sat-2/Sentinel-2 gap measured in Chapter~\ref{chap:results-discussion} is driven mainly by differing spectral response.
 
 A separate line of domain-adaptation work sidesteps alignment losses entirely by giving the model domain-specific normalization statistics instead.
@@ -109,8 +122,16 @@ This is a smaller requirement than the paired-contrastive or MMD loss objectives
 
 Because labeled data from a satellite sensor does not exist before the satellite is launched, and accumulates slowly afterward for rare events, physics-based simulation of a target sensor's characteristics from an existing labeled source (typically Sentinel-2) has become a standard tool for pre-mission model development\cite{segl2012eetes}\cite{segl2015s2etes}.
 % Explain more details about other simulators and their characteristics, and how they compare to the one used in this thesis, to provide a comprehensive overview of the field.
-The simulator developed for the ESA $\Phi$-lab OrbitalAI challenge\cite{longepe2024orbitalai} models this transformation as a sequence of physical operations in radiance space, calibrated against real flight data from related missions: spectral and spatial resampling to the target sensor's band configuration and ground sampling distance, band-to-band misalignment consistent with push-broom acquisition geometry, signal-to-noise degradation, and optical blur modeled through the sensor's modulation transfer function.
+The simulator developed for the ESA $\Phi$-lab OrbitalAI challenge\cite{longepe2024orbitalai} models this transformation as a sequence of physical operations in radiance space, calibrated against real flight data from related missions. 
+Spectral and spatial resampling to the target sensor's band configuration and ground sampling distance, band-to-band misalignment consistent with push-broom acquisition geometry, signal-to-noise degradation, and optical blur modeled through the sensor's modulation transfer function.
 This simulator underlies both the degradation pipeline used in this thesis and, independently, the pre-training and benchmarking datasets used by $\Phi$satNet (Section~\ref{sec:phisatnet-background}), making it shared, validated infrastructure within this research context that neither work claims as its own contribution.
+Goudemant et al.~\cite{goudemant2024onboardanomaly} built an on-board marine anomaly detector for oil spills, algal blooms, and sediment flooding using the same OrbitalAI simulators to generate representative $\Phi$-sat-2 and IMAGIN-e imagery from Sentinel-2 L1C scenes of documented pollution events.
+Their processing chain is the one described above: conversion to top-of-atmosphere radiance, a $\Phi$-sat-2-specific panchromatic band synthesised from the multispectral bands by spectral-response-weighted combination, spatial resampling to the target ground sampling distance, band-to-band misalignment, signal-to-noise degradation, modulation transfer function blurring, and conversion back to reflectance.
+They trained on simulated $\Phi$-sat-2 patches and deployed the models on the same Intel Myriad 2 accelerator this thesis targets, which makes the work a useful independent confirmation that the simulator can support a full development cycle from a mission that has not yet delivered labelled data.
+
+This study also illustrates the limit of the approach.
+Its performance was established on simulated imagery throughout, and its authors identify validating the system on in-flight data, together with sensitivity testing against individual sensor phenomena such as noise and spectral deregistration, as work still to be done.
+The simulator makes pre-launch development possible; on its own it cannot establish how far the simulated sensor stands in for the real one, which is the question the co-registered real acquisitions of Chapter~\ref{chap:methodology} are assembled to answer.
 
 \section{Knowledge Distillation Across Architectures}
 
@@ -136,12 +157,12 @@ Its pre-training method and its $n$-shot benchmarks are built entirely on simula
 $\Phi$satNet therefore does not escape the sensor domain gap by being mission-specific; it relocates it.
 Its reported few-shot advantage rests on the assumption that physically simulated imagery stands in adequately for the real sensor, and its own evidence base, being simulated throughout, cannot test that assumption.
 The sim-to-real question is thus one that the bespoke and the adapted approach inherit alike, and co-registered real acquisitions are what either would need in order to answer it.
-A matched few-shot comparison against $\Phi$satNet on a shared task and label budget remains the appropriate test of the label-efficiency claim; Chapter~\ref{chap:results-discussion} returns to this positioning, but that comparison has not been run and is left to future work.
+A matched few-shot comparison against $\Phi$satNet on a shared task and label budget remains the appropriate test of the label-efficiency claim; Chapter~\ref{chap:results-discussion} returns to this positioning, but that comparison has not been run and is left for future work.
 
 \section{Synthesis}
 
-No work cited above isolates sensor-induced covariate shift using co-registered source/target data.
+None of the work cited above isolates sensor-induced covariate shift using co-registered source/target data.
 This thesis gives a cross-architecture distillation student an explicit, domain-aware adaptation mechanism, and verifies that this adaptivity, not only task accuracy, survives compression into hardware-deployable form.
 The spatially and temporally co-registered $\Phi$-sat-2/Sentinel-2/simulated triplet dataset used in this thesis is what makes that isolation possible; the domain-specific batch normalization applied during cross-architecture distillation (Chapter~\ref{chap:methodology}) is what makes the adaptation and its verification possible.
 The co-registered triplets serve, in addition, as the diagnostic instrument that shows a paired-contrastive alternative does not do better than the simpler domain-specific normalization.
-The real-acquisition component also separates this work from the mission-specific alternative: $\Phi$satNet is pre-trained and benchmarked on simulated $\Phi$-sat-2 imagery, so the assumption that simulation stands in for the real sensor is one both approaches make and only real, co-registered data can check.
+The real-acquisition component also separates this work from the mission-specific alternative as $\Phi$satNet is pre-trained and benchmarked on simulated $\Phi$-sat-2 imagery, so the assumption that simulation stands in for the real sensor is one both approaches make and only real, co-registered data can check.
