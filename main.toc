@@ -9,7 +9,7 @@
 \contentsline {subsection}{\numberline {2.3.1}Domain Adaptation}{10}{subsection.2.3.1}%
 \contentsline {section}{\numberline {2.4}Physics-Based Sensor Degradation Simulation}{11}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Knowledge Distillation Across Architectures}{12}{section.2.5}%
-\contentsline {section}{\numberline {2.6}$\Phi $satNet}{13}{section.2.6}%
+\contentsline {section}{\numberline {2.6}$\Phi $satNet}{12}{section.2.6}%
 \contentsline {section}{\numberline {2.7}Synthesis}{13}{section.2.7}%
 \contentsline {chapter}{\numberline {3}Methodology}{14}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Data}{14}{section.3.1}%
