@@ -1,7 +1,7 @@
 \chapter{Results and Discussion}
 \label{chap:results-discussion}
 
-This chapter reports the experiments that evaluate the three research questions of Section~\ref{sec:research-objective}: whether a measurable sensor domain gap exists in the latent space of a geospatial foundation model (RQ1), whether cross-architecture distillation from that model can produce a sensor-adaptive compact student (RQ2), and whether doing so is preferable to simply training the compact model on the target sensor directly (RQ3).
+This chapter reports the experiments that evaluate the three research questions of Section~\ref{sec:research-objective}: whether a measurable sensor domain gap exists in the latent space of a geospatial foundation model, where it concentrates and which physical sensor difference produces it (RQ1), whether cross-architecture distillation from that model can produce a sensor-adaptive compact student (RQ2), and whether doing so is preferable to simply training the compact model on the target sensor directly (RQ3).
 All the results below use the single configuration set out in Section~\ref{sec:configuration}, which is a distillation with domain-specific batch normalization, and the comparison of interest throughout is against a supervised baseline of identical architecture trained without any distillation.
 With one exception, every condition reported in this chapter was run once, with a single fixed seed.
 We therefore report the comparisons descriptively, as differences between training curves and between best-epoch scores, and not as statistical inferences.
@@ -84,7 +84,7 @@ This is inherent to what the comparison is testing, since the baseline has no se
     Until that run completes, the attribution of the invariance results of Section~\ref{sec:rq2-results} to domain-specific normalization specifically should be read as provisional: what the results below establish is that the configuration as a whole produces the reported behaviour, not which of its components is responsible.
 }
 
-\section{Sensor Gap in TerraMind Latent Space}
+\section{Sensor Gap in TerraMind Latent Space (RQ1)}
 \label{sec:rq1-results}
 
 The first question is whether the domain gap is visible in the representation itself, and not only in the downstream accuracy.
@@ -122,10 +122,11 @@ This is a supplementary observation, on a different model scale and with a diffe
     \label{fig:cosine-sim-tiny}
 \end{figure}
 
-\section{Degradation Factor effects on Downstream Task Gap}
+\section{Degradation Factor effects on Downstream Task Gap (RQ1)}
 \label{sec:ladder-results}
 
-The measurements above establish that a gap exists, and they locate it by layer in the low-level radiometry, but they cannot attribute it to a physical cause.
+This section takes up the last part of RQ1, which asks which of the physical differences between the two instruments is the one that produces the gap.
+This sub-question takes on the measurements above that established that a gap exists and that it is low-level in origin, and it asks which of the three low-level differences is responsible: radiometric noise, optical blur, or band misalignment.
 The two instruments differ in their spectral response, their radiometric noise, their band registration and their ground sampling distance all at once, and no measurement on real pairs can separate those.
 The simulated ladder of Section~\ref{sec:sen1floods-sim} makes the separation possible by degrading one factor at a time over identical scene content.
 Three factors are varied over four severities each: sensor noise (SNR), optical blur (PSF), and band-to-band misalignment.
@@ -154,8 +155,7 @@ A severity axis common to all three is defined by setting level~4 to the operati
 
 What we measure here is the domain gap proper: each model is trained once on the undegraded rung, and the resulting checkpoint is then evaluated on the test split of every rung, so the degradation only appears at inference, exactly as it would for a model trained on Sentinel-2 and deployed on $\Phi$-sat-2.
 Three encoder configurations are compared: the distilled student with its encoder frozen and its decoder trained ($5.14$\,M of $9.86$\,M parameters trainable), TerraMind \texttt{base} under the same frozen-encoder protocol ($7.92$\,M of $94.25$\,M), and TerraMind \texttt{base} fine-tuned end to end.
-Each configuration is run for three seeds.
-Because a single checkpoint is scored across all thirteen test splits, the drop can be paired within a seed, and this matters a lot here: the absolute IoU varies by up to $0.06$ between seeds while the paired drops agree to within $0.01$, so the pairing is what makes the smaller effects resolvable at all.
+Each configuration is run for three seeds using the same model checkpoint across all test splits.
 Table~\ref{tab:ladder-domain-gap} reports the results.
 
 \begin{table}[htbp]
@@ -163,28 +163,28 @@ Table~\ref{tab:ladder-domain-gap} reports the results.
     \label{tab:ladder-domain-gap}
     \begin{tabular}{lccc}
         \toprule
-                             & Distilled student                  & TerraMind base                     & TerraMind base                     \\
-                             & (encoder frozen)                   & (encoder frozen)                   & (fine-tuned)                       \\
+                             & Distilled student           & TerraMind base            & TerraMind base                     \\
+                             & (encoder frozen)            & (encoder frozen)          & (fine-tuned)                       \\
         \midrule
-        Clean baseline (IoU) & $0.835 \pm 0.011$                  & $0.739 \pm 0.057$                  & $0.773 \pm 0.033$                  \\
+        Clean baseline (IoU) & $\mathbf{0.814} \pm 0.002$  & $0.739 \pm 0.057$         & $0.773 \pm 0.033$                  \\
         \midrule
-        \multicolumn{4}{l}{\emph{Sensor noise (SNR)}}                                                                                       \\
-        \quad L1             & $-0.047 \pm 0.030$                 & $+0.002 \pm 0.003$                 & $-0.001 \pm 0.001$                 \\
-        \quad L2             & $-0.144 \pm 0.049^{\ast}$          & $+0.003 \pm 0.006$                 & $-0.004 \pm 0.002$                 \\
-        \quad L3             & $-0.260 \pm 0.039^{\ast}$          & $-0.018 \pm 0.017$                 & $-0.041 \pm 0.014^{\ast}$          \\
-        \quad L4             & $\mathbf{-0.455} \pm 0.058^{\ast}$ & $-0.088 \pm 0.066$                 & $-0.152 \pm 0.030^{\ast}$          \\
+        \multicolumn{4}{l}{\emph{Sensor noise (SNR)}}                                                                       \\
+        \quad L1             & $-0.031 \pm 0.024$          & $+0.002 \pm 0.003$        & $-0.001 \pm 0.001$                 \\
+        \quad L2             & $-0.114 \pm 0.099$          & $+0.003 \pm 0.006$        & $-0.004 \pm 0.002$                 \\
+        \quad L3             & $-0.280 \pm 0.234$          & $-0.018 \pm 0.017$        & $-0.041 \pm 0.014^{\ast}$          \\
+        \quad L4             & $\mathbf{-0.458} \pm 0.267$ & $-0.088 \pm 0.066$        & $-0.152 \pm 0.030^{\ast}$          \\
         \addlinespace
-        \multicolumn{4}{l}{\emph{Optical blur (PSF)}}                                                                                       \\
-        \quad L1             & $-0.001 \pm 0.003$                 & $-0.004 \pm 0.003$                 & $0.000 \pm 0.000$                  \\
-        \quad L2             & $-0.010 \pm 0.010$                 & $-0.010 \pm 0.007$                 & $0.000 \pm 0.001$                  \\
-        \quad L3             & $-0.042 \pm 0.023$                 & $-0.016 \pm 0.012$                 & $0.000 \pm 0.003$                  \\
-        \quad L4             & $-0.128 \pm 0.063^{\ast}$          & $-0.025 \pm 0.016$                 & $\mathbf{-0.008} \pm 0.009$        \\
+        \multicolumn{4}{l}{\emph{Optical blur (PSF)}}                                                                       \\
+        \quad L1             & $-0.002 \pm 0.000^{\ast}$   & $-0.004 \pm 0.003$        & $0.000 \pm 0.000$                  \\
+        \quad L2             & $-0.013 \pm 0.003^{\ast}$   & $-0.010 \pm 0.007$        & $0.000 \pm 0.001$                  \\
+        \quad L3             & $-0.048 \pm 0.014^{\ast}$   & $-0.016 \pm 0.012$        & $0.000 \pm 0.003$                  \\
+        \quad L4             & $-0.110 \pm 0.030^{\ast}$   & $-0.025 \pm 0.016$        & $\mathbf{-0.008} \pm 0.009$        \\
         \addlinespace
-        \multicolumn{4}{l}{\emph{Band misalignment}}                                                                                        \\
-        \quad L1             & $-0.006 \pm 0.001^{\ast}$          & $-0.008 \pm 0.003^{\ast}$          & $-0.003 \pm 0.001^{\ast}$          \\
-        \quad L2             & $-0.033 \pm 0.004^{\ast}$          & $-0.033 \pm 0.005^{\ast}$          & $-0.013 \pm 0.003^{\ast}$          \\
-        \quad L3             & $-0.084 \pm 0.013^{\ast}$          & $-0.065 \pm 0.005^{\ast}$          & $-0.051 \pm 0.007^{\ast}$          \\
-        \quad L4             & $\mathbf{-0.150} \pm 0.015^{\ast}$ & $\mathbf{-0.119} \pm 0.009^{\ast}$ & $\mathbf{-0.109} \pm 0.012^{\ast}$ \\
+        \multicolumn{4}{l}{\emph{Band misalignment}}                                                                        \\
+        \quad L1             & $-0.006 \pm 0.001^{\ast}$   & $-0.008 \pm 0.003^{\ast}$ & $-0.003 \pm 0.001^{\ast}$          \\
+        \quad L2             & $-0.031 \pm 0.001^{\ast}$   & $-0.033 \pm 0.005^{\ast}$ & $-0.013 \pm 0.003^{\ast}$          \\
+        \quad L3             & $-0.082 \pm 0.004^{\ast}$   & $-0.065 \pm 0.005^{\ast}$ & $-0.051 \pm 0.007^{\ast}$          \\
+        \quad L4             & $-0.140 \pm 0.007^{\ast}$   & $-0.119 \pm 0.009^{\ast}$ & $\mathbf{-0.109} \pm 0.012^{\ast}$ \\
         \bottomrule
     \end{tabular}
     \caption{Domain gap across the degradation ladder: change in positive-class IoU relative to the undegraded test split, for a model trained only on undegraded data.
@@ -193,19 +193,25 @@ Table~\ref{tab:ladder-domain-gap} reports the results.
     }
 \end{table}
 
+On undegraded data the distilled student is the strongest of the three, at $0.814$ IoU against $0.773$ for fine-tuned TerraMind and $0.739$ for frozen TerraMind.
+The smaller student outperforming the foundation model on this clean task can be attributed to its stronger local representation, whereas TerraMind is a general-purpose encoder receiving only a task head and a fine-tuning pass.
+The comparison of interest here is the response to degradation.
+
 Band misalignment is the only factor that degrades every configuration significantly, monotonically, and by a similar amount.
-Its full-severity cost varies only between $-0.109$ and $-0.150$ IoU across models that differ by an order of magnitude in trainable parameters and by architecture family, and it is the sole factor resolved at the mildest severity in all three columns, where a $1.25$-pixel shift already costs a small but reproducible amount.
-Its seed-to-seed deviation is also the tightest in the table.
+Its full-severity cost varies only between $-0.109$ and $-0.140$ IoU across models that differ by an order of magnitude in trainable parameters and by architecture family, and it is the sole factor resolved at the mildest severity in all three columns, where a $1.25$-pixel shift already costs a small but reproducible amount.
+Its seed-to-seed deviation is also the smallest in the table.
 A perturbation whose cost is that insensitive to the model absorbing it is best read as a damage to the input signal, rather than as a weakness of any particular representation.
 Band-to-band shifts corrupt precisely the cross-band relationships on which a water/land decision rests, and no amount of encoder capacity recovers an information that the shift has already destroyed.
 
-Sensor noise produces the largest single degradation, but its magnitude is a property of the model rather than of the perturbation.
-It costs the distilled student $-0.455$ IoU at full severity, fine-tuned TerraMind $-0.152$, and frozen TerraMind $-0.088$ with a deviation ($0.066$) large enough that the frozen figure is not resolved at three seeds.
-The spread across the configurations is threefold or more at every severity, against a near-constant spread for the misalignment, so the noise sensitivity is the factor that is the most amenable to being engineered away by a better or a larger representation.
+Sensor noise produces the largest single degradation, but its magnitude is a property of the model rather than of the perturbation, and it is the least reproducible quantity in the table.
+At full severity it costs the distilled student $-0.458$ IoU on average and fine-tuned TerraMind $-0.152$, a threefold difference that holds at every severity and stands in contrast to the near-constant cost of misalignment.
+Neither the student's figure nor frozen TerraMind's ($-0.088$) is resolved at three seeds, because in both cases the seed-to-seed deviation of the drop ($0.267$ and $0.066$) is of the same order as the drop itself.
 
-Optical blur is the least damaging factor throughout, and for fine-tuned TerraMind it is indistinguishable from zero: four severities spanning a twenty-four-fold reduction in image gradient energy move the score by at most $0.008$ IoU.
-The frozen configurations do show a small monotone response, which is negative at all twelve seed-and-severity combinations for the frozen TerraMind, so the pretrained representation is not entirely blur-agnostic.
-But no individual severity clears the significance threshold in any column, and the effect stays an order of magnitude below the other two factors.
+Optical blur is the least damaging factor in every configuration, but the three differ in how cleanly the effect is resolved.
+For fine-tuned TerraMind it is indistinguishable from zero: four severities spanning a twenty-four-fold reduction in image gradient energy move the score by at most $0.008$ IoU.
+For frozen TerraMind the response is monotone and uniformly negative but never clears the significance threshold, reaching $-0.025$ at full severity.
+For the distilled student it is small but unambiguous, significant at all four severities with the tightest deviations in the table, rising from $-0.002$ to $-0.110$.
+Blur is therefore real for the student and negligible for TerraMind, yet even for the student it remains the smallest of the three factors, costing a quarter of what noise costs at the same nominal severity.
 
 This ordering settles the attribution question left open in Section~\ref{sec:rq1-results}, and it settles it in the same direction.
 The factor that models a resolution difference, which is the optical blur, is the one that costs almost nothing, while the radiometric factor and the band-registration factor are the ones carrying the effect.
@@ -245,7 +251,7 @@ Finally, the supervised U-Net baseline is not included in Table~\ref{tab:ladder-
     Both are expected to test the same attribution from the representation side rather than the task side, and the reading above should be revisited if they disagree with it.
 }
 
-\section{Sensor Adaptivity in the Distilled Student}
+\section{Sensor Adaptivity in the Distilled Student (RQ2)}
 \label{sec:rq2-results}
 
 The distilled student inverts every one of these measurements.
@@ -400,9 +406,7 @@ The size of that shift is worth noting on its own: the same frozen teacher score
 \section{Advantage Reversal on Small Label Budget}
 \label{sec:label-crossover}
 
-Distillation and unsupervised DA are usually motivated by a label scarcity in the target domain~\cite{kouw2019introductiondomainadaptationtransfer}, so we would expect the advantage above to grow as the target labels are removed.
-It does the opposite.
-
+KD and UDA are usually motivated by a label scarcity in the target domain~\cite{kouw2019introductiondomainadaptationtransfer}, so we would expect the advantage above to grow as the target labels are removed, however the opposite is observed.
 At $1{,}000$ labelled patches the supervised baseline is ahead by every measure: best validation mIoU $0.2916$ against $0.2679$, test mIoU $0.2707$ against $0.2635$, and on matched epochs the distilled student leads in only $8$ of the $58$ epochs both runs share.
 It also does so at roughly a third of the cost, and this even though the distilled run had the larger budget available to it: it used its full hundred epochs without ever triggering the early stopping, while the baseline stopped at sixty-seven.
 Figure~\ref{fig:label-crossover} shows the crossover; both budgets are evaluated on the identical fixed $1{,}000$-patch validation split, so the two points are directly comparable.

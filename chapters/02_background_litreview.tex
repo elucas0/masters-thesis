@@ -45,7 +45,7 @@ This makes ViT-based models strong candidates for on-board EO applications, and 
 These pre-trained models also cost less to compute and are more resilient to noise, which is close to the combination an on-board setting needs the most.
 Their cost nonetheless remains the primary barrier to deployment, since the large parameter counts and the attention computation that give ViTs their advantage are precisely what a resource-constrained satellite can least afford\cite{chou2023edge}.
 The hardware on board $\Phi$-sat-2 is a key constraint on what can be deployed there, as the CogniSAT-XE1 payload carries the Intel Movidius Myriad 2 VPU~\cite{myriad2}, whose support ended in 2020, which makes it legacy hardware.
-The $\Phi$satNet effort reports that the most recent OpenVINO release supporting this hardware is version 2020.3, that experimental testing confirmed only ONNX opset 8--11 are available\footnote{Supported operations are listed here: \url{https://docs.openvino.ai/2023.3/openvino_docs_ops_opset11.html}}, and that the resulting lack of dynamic-axes support renders transformer-based architectures such as ViT incompatible with the target~\cite{phisatnet}.
+The $\Phi$satNet effort reports that the most recent OpenVINO release supporting this hardware is version 2020.3, that experimental testing confirmed only ONNX opset 8--11 are available\footnote{Supported operations listed: \url{https://docs.openvino.ai/2023.3/openvino_docs_ops_opset11.html}}, and that the resulting lack of dynamic-axes support renders transformer-based architectures such as ViT incompatible with the target~\cite{phisatnet}.
 These constraints are the main motivation for a cross-architecture distillation, in place of a direct deployment or a same-family compression.
 
 \section{Geospatial Foundation Models}
@@ -77,8 +77,11 @@ Separating that factor from the others requires observations of the same ground 
 \label{sec:domain-gap}
 
 A domain gap is a distribution shift between the data a model was trained on and the data it has to work with once it is deployed.
-Because a learned model only holds where the distribution it was fitted to holds, such a shift generally shows up as a loss of accuracy, and it does so even when nothing about the task itself has changed.
-The problem is inherent to on-board AI, where the model is fixed at uplink time while the acquisitions keep varying with the illumination, the atmosphere, the season, the geography and the behaviour of the instrument itself.
+Because the model holds weights modeling distributions of the source domain, such a shift generally translates to a loss of accuracy, even when nothing about the task has changed.
+Ben-David et al.~\cite{bendavid2010theory} formalize this intuition with a bound on the target-domain error, which they limit by the sum of three terms: the error on the source domain, a divergence between the two marginal input distributions, and the error of the best hypothesis on both domains jointly.
+Only the second of these describes the gap itself, and it is the term any adaptation method has to act on.
+
+This problem is particularly relevant in on-board AI, where the model is fixed at uplink time while the acquisitions keep varying with the illumination, the atmosphere, the season, the geography and the behaviour of the instrument itself.
 It is useful to separate three kinds of shift, since they have different causes and can be minimized in different ways\cite{kouw2019introductiondomainadaptationtransfer}.
 
 \begin{itemize}
@@ -90,22 +93,26 @@ It is useful to separate three kinds of shift, since they have different causes 
 This thesis is concerned with the covariate shift, and specifically with the part of it that is attributable to the instrument.
 The three kinds are difficult to separate in practice, because two datasets acquired by different sensors normally also differ in where and when they were acquired, and therefore in class balance and in scene content: a measured drop in accuracy then confounds all three.
 The co-registered triplets described in Chapter~\ref{chap:methodology} are constructed to remove that confound.
-Because each triplet holds views of the same ground at very nearly the same time, the label distribution and the underlying scene are held fixed across those views by construction, which leaves the sensor as the only factor that varies, and the shift it induces as the only one being measured.
+Since each triplet holds views of the same ground at very nearly the same time, the label distribution and the underlying scene are held fixed across those views by construction, which leaves the sensor as the only factor that varies, and the shift it induces as the only one being measured.
 
 \subsection{Domain Adaptation}
 \label{sec:domain-adaptation}
 
 Domain adaptation (DA) addresses the general problem of a model trained on a source distribution being applied to a target distribution with different input statistics but unchanged semantics\cite{kouw2019introductiondomainadaptationtransfer}.
-Within satellite on-board AI specifically, Du et al.
-\ \cite{du2024domainadaptation} demonstrated DA for satellite-borne cloud detection by retraining task heads on real, though limited, labeled imagery from the Kanyini mission, with the encoder frozen.
-This line of work was then extended on-orbit by Du et al.
-\ \cite{du2025onorbitdemonstrationgeospatialfoundation}, who deployed a compressed Prithvi-family GeoFM on Kanyini and the IMAGIN-e payload, and adapted it via a real-label head retraining instead of an encoder-level DA.
+In remote sensing applications, when target data is available, there are two main types of DA: unsupervised (UDA), where the target data is unlabeled, and supervised (SDA), where a small amount of labeled target data is available.
+Within satellite on-board AI, Du et al.
+\cite{du2024domainadaptation} demonstrated DA for onboard multispectral cloud detection in the context of the $\Phi$-sat-1 mission.
+They proposed novel task definitions for DA, which they named \emph{offline adaptation} and \emph{online adaptation}.
+Offline adaptation relies on SDA and downlinking to update the CNN remotely as new labeled data of the target domain becomes available during the mission.
+Online adaptation demonstrates \emph{test-time} adaptation, where the model is updated on-board with unlabeled data, using a self-supervised loss.
+
+This thesis focuses on an initial SDA step, where a small amount of labeled target data is available for adaptation and evaluation, and does not address the online adaptation problem.
+The main author also reports a follow-up work \cite{du2025onorbitdemonstrationgeospatialfoundation}, where they deployed a compressed Prithvi-family GeoFM on Kanyini and the IMAGIN-e payload, and adapted it via a real-label head retraining instead of an encoder-level DA.
 They measure the domain gap only indirectly, through the downstream task performance on source and target benchmark datasets that differ in geography and content as well as in sensor.
 This is the central limitation that the data design of this thesis addresses, because without co-registered source/target pairs of the same scene, a measured performance drop cannot distinguish the sensor-induced covariate shift from the confounding differences in what the two datasets depict.
 
 Beyond retraining task heads, the approaches to close the gap fall into a small number of families.
-Their shared theoretical motivation is the bound of Ben-David et al.~\cite{bendavid2010theory}, which limits the target-domain error by the sum of the source-domain error, a divergence between the two marginal input distributions, and a term for the error of the best joint hypothesis.
-Since the first and third terms are not reduced by adaptation, the families below differ mainly in how they attack the divergence term.
+What separates them is how each one attacks the divergence term of the bound introduced at the start of this section.
 Discrepancy-based methods penalize a statistical distance between the source and target feature distributions directly, most commonly the maximum mean discrepancy (MMD)~\cite{gretton2012kernel}, which requires only that samples from each domain are available.
 Alignment-based methods make the stronger assumption that corresponding inputs are available, and pull their representations together explicitly.
 X-STARS~\cite{marsocci2025cross} is a close example to the setting of this thesis.
@@ -113,7 +120,7 @@ It adapts a model pre-trained on one optical sensor to a second sensor through a
 It establishes that a paired-contrastive objective is effective when the sensor change is primarily one of spatial resolution, which is not the regime this thesis operates in: the $\Phi$-sat-2/Sentinel-2 gap measured in Chapter~\ref{chap:results-discussion} is driven mainly by a differing spectral response.
 
 A separate line of domain-adaptation work sidesteps the alignment losses entirely, by giving the model domain-specific normalization statistics instead.
-Domain-Specific Batch Normalization (DSBN)~\cite{chang2019dsbn} is a generic technique, originally for unsupervised domain adaptation, and it is designed to be integrated into deep networks that use batch normalization layers.
+Domain-Specific Batch Normalization (DSBN)~\cite{chang2019dsbn} is a generic technique, originally for UDA, and it is designed to be integrated into deep networks that use batch normalization layers.
 Batch normalization (BN)\cite{ioffe2015batchnorm} is a technique used in deep learning to normalize the inputs of each layer, which helps stabilize and accelerate the training.
 DSBN extends BN by keeping a single set of convolutional weights, but a separate batch-normalization affine transform and separate running statistics (mean and variance) per domain.
 This only requires that the domain of each example is known, which is a much smaller requirement than the paired-contrastive or MMD loss objectives discussed above, and, unlike them, it is directly applicable wherever the deployed sensor is known at inference.

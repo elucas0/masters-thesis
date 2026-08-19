@@ -185,7 +185,7 @@ The three classes shown with the most extreme bars (moss and lichen, snow and ic
     \includegraphics[width=\textwidth]{fig_approx_error_by_class.png}
     \caption{Mean cross-sensor approximation error (Equation~\eqref{eq:approx-error}) by dominant ESA WorldCover class, over 5,000 patches.
         Error bars are one standard deviation; the percentage above each bar is that class's share of labelled pixels in the sample.
-        Three classes show 0\% presence in the sample (moss and lichen, snow and ice, mangroves) because they are rare in the dataset; they are reported for completeness.
+        Three classes show >1\% presence in the sample (moss and lichen, snow and ice, mangroves) because they are rare in the dataset, they are still reported for completeness.
     }
     \label{fig:approx-error-class}
 \end{figure}
@@ -199,7 +199,7 @@ They illustrate the range that this dataset actually spans.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_triplet_overlay_019123.png}
-    \caption{A coastal wetland patch (mean approximation error $1.24$, above the dataset-wide mean of $0.91$).
+    \caption{Patch showing coastal wetland (mean approximation error $1.24$, above the dataset-wide mean of $0.91$).
         Errors are located over open water, consistent with the class-level pattern of Figure~\ref{fig:approx-error-class}.
     }
     \label{fig:triplet-overlay-a}
@@ -208,16 +208,15 @@ They illustrate the range that this dataset actually spans.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_triplet_overlay_012943.png}
-    \caption{A tree-cover/grassland boundary patch (mean approximation error $0.96$).}
+    \caption{Patch showing a grassland cutting a forest. This simple scene has a low mean approximation error ($0.96$).}
     \label{fig:triplet-overlay-b}
 \end{figure}
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_triplet_overlay_019598.png}
-    \caption{A cropland patch in which the real $\Phi$-sat-2 view shows severe band-to-band misalignment, which is not present in the Sentinel-2 view.
-        This real flight data shows the same phenomenon Equation~\eqref{eq:misalign-l1a} models synthetically.
-        This is direct evidence that band misalignment can sometimes be a severe real-sensor artifact.
+    \caption{Patch showing cropland (mean approximation error $0.90$).
+        This real flight data shows a similar phenomenon that Equation~\eqref{eq:misalign-l1a} models synthetically.
         The scalar mean approximation error for this patch ($0.90$) is close to the dataset-wide mean despite the heavy artifact: Equation~\eqref{eq:approx-error} averages absolute per-band intensity differences and is insensitive to spatial/geometric coherence, so it under-represents local misalignment, which is a limitation of the metric.
     }
     \label{fig:triplet-overlay-c}
@@ -228,7 +227,7 @@ They illustrate the range that this dataset actually spans.
 \subsection{Simulated degraded flood-segmentation dataset}
 \label{sec:sen1floods-sim}
 
-No real $\Phi$-sat-2 flood dataset exists, because the mission has not yet captured and labeled a flood event; this is a structural limitation of any new mission, not a data-collection oversight.
+No real $\Phi$-sat-2 flood dataset exists, because the mission has not yet captured and labeled a flood event; this is common limitation of any new mission as reported by Barreta et al. \cite{barretta2026onboardaireview}.
 To obtain labeled data for the flood-segmentation task that motivates this thesis, we pass the Sen1Floods benchmark through the same degradation pipeline used to build the triplets, which produces a graded ladder of $\Phi$-sat-2-like flood scenes at increasing degradation severity.
 This simulated dataset plays a different role from the triplets: it is the training and evaluation substrate for the flood task itself, not the substrate for measuring the domain gap, since it lacks a real-$\Phi$-sat-2 counterpart against which to validate the simulation directly.
 

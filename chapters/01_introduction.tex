@@ -71,7 +71,7 @@ The question is therefore whether a student distilled under this arrangement rep
 This objective is pursued through three research questions:
 
 \begin{enumerate}
-    \item Does the domain gap caused by the sensor differences between $\Phi$-sat-2 and Sentinel-2 measurably affect the latent representations produced by TerraMind, and if so, where in the encoder does this effect concentrate?
+    \item Does the domain gap caused by the sensor differences between $\Phi$-sat-2 and Sentinel-2 measurably affect the latent representations produced by TerraMind, and if so, where in the encoder does this effect concentrate? And since the two instruments differ in several respects at once, which of those physical differences is the one that produces the gap?
     \item Can a lightweight CNN distilled from TerraMind be made sensor-adaptive, given that a naive fine-tuning on degraded data alone does not achieve it? And if it can, which mechanism is responsible: the domain-specific normalization, a paired-contrastive objective exploiting the co-registered triplets, or both?
     \item Does distilling from TerraMind in this way improve the downstream $\Phi$-sat-2 task performance over simply training a compact model of the same architecture directly on the target sensor? Sensor-adaptivity and task accuracy are assessed as two separate questions here, without assuming that the first one implies the second.
 \end{enumerate}
