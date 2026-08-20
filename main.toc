@@ -41,18 +41,18 @@
 \contentsline {paragraph}{Class-imbalanced task loss.}{34}{section*.29}%
 \contentsline {section}{\numberline {4.2}Sensor Gap in TerraMind Latent Space (RQ1)}{34}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Degradation Factor effects on Downstream Task Gap (RQ1)}{37}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Sensor Adaptivity in the Distilled Student (RQ2)}{40}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Distillation Against a Supervised Baseline (RQ3)}{42}{section.4.5}%
+\contentsline {section}{\numberline {4.4}Sensor Adaptivity in the Distilled Student (RQ2)}{41}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Distillation Against a Supervised Baseline (RQ3)}{43}{section.4.5}%
 \contentsline {section}{\numberline {4.6}Advantage Reversal on Small Label Budget}{45}{section.4.6}%
 \contentsline {section}{\numberline {4.7}Discussion}{46}{section.4.7}%
 \contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{46}{subsection.4.7.1}%
-\contentsline {subsection}{\numberline {4.7.2}Measurement pitfalls}{46}{subsection.4.7.2}%
-\contentsline {subsection}{\numberline {4.7.3}Limitations}{46}{subsection.4.7.3}%
-\contentsline {subsection}{\numberline {4.7.4}Interpretation of the flood-robustness result}{47}{subsection.4.7.4}%
-\contentsline {subsection}{\numberline {4.7.5}Positioning with $\Phi $satNet}{47}{subsection.4.7.5}%
-\contentsline {subsection}{\numberline {4.7.6}Practical recommendations}{47}{subsection.4.7.6}%
-\contentsline {chapter}{\numberline {5}Conclusion}{49}{chapter.5}%
-\contentsline {chapter}{Declarations}{51}{chapter*.42}%
-\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{52}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Protocol}{52}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Result}{52}{section.A.2}%
+\contentsline {subsection}{\numberline {4.7.2}Measurement pitfalls}{47}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}Limitations}{47}{subsection.4.7.3}%
+\contentsline {subsection}{\numberline {4.7.4}Interpretation of the flood-robustness result}{48}{subsection.4.7.4}%
+\contentsline {subsection}{\numberline {4.7.5}Positioning with $\Phi $satNet}{48}{subsection.4.7.5}%
+\contentsline {subsection}{\numberline {4.7.6}Practical recommendations}{48}{subsection.4.7.6}%
+\contentsline {chapter}{\numberline {5}Conclusion}{50}{chapter.5}%
+\contentsline {chapter}{Declarations}{52}{chapter*.43}%
+\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{53}{chapter.A}%
+\contentsline {section}{\numberline {A.1}Protocol}{53}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Result}{53}{section.A.2}%

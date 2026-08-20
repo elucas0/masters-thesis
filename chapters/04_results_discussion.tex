@@ -38,7 +38,6 @@ Everything the two conditions could share is held constant: architecture, initia
 
 \begin{table}[htbp]
     \centering
-    \label{tab:hyperparameters}
     \begin{tabular}{lll}
         \toprule
         Setting                 & KD + DSBN                                                                             & Supervised baseline \\
@@ -73,6 +72,7 @@ Everything the two conditions could share is held constant: architecture, initia
     \caption{Training configuration for the two arms.
         Settings above the rule are identical by construction; those below apply to the distilled arm only.
     }
+    \label{tab:hyperparameters}
 \end{table}
 
 One asymmetry in this comparison is structural rather than incidental, and it should be stated alongside the table.
@@ -135,7 +135,6 @@ A severity axis common to all three is defined by setting level~4 to the operati
 
 \begin{table}[htbp]
     \centering
-    \label{tab:ladder-definition}
     \begin{tabular}{lcccc}
         \toprule
         Level & Severity & SNR range  & PSF $\sigma$ (px) & Misalignment $\sigma$ (px) \\
@@ -151,7 +150,20 @@ A severity axis common to all three is defined by setting level~4 to the operati
         SNR is drawn per scene from the stated range and the noise amplitude scales as its reciprocal, so the four ranges correspond to relative noise of $1/8$, $1/4$, $1/2$ and $1$.
         Blur and misalignment parameters are in resampled $4.75$\,m pixels.
     }
+    \label{tab:ladder-definition}
 \end{table}
+
+Figure~\ref{fig:ladder-grid} shows what the four severities of Table~\ref{tab:ladder-definition} look like on a representative Sen1Floods scene, with each factor varied in isolation.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig_ladder_grid.png}
+    \caption{A degradation ladder sample from the Sen1Floods benchmark (scene Nigeria 81933, $256\times256$\,px at $4.75$\,m resolution).
+        Each row varies one factor in isolation across the four severities of Table~\ref{tab:ladder-definition}, from undegraded (left) to full severity L4 (right), while every other stage of the simulator is held fixed.
+        A single contrast stretch, fixed on the undegraded scene, is applied to every panel.
+    }
+    \label{fig:ladder-grid}
+\end{figure}
 
 What we measure here is the domain gap proper: each model is trained once on the undegraded rung, and the resulting checkpoint is then evaluated on the test split of every rung, so the degradation only appears at inference, exactly as it would for a model trained on Sentinel-2 and deployed on $\Phi$-sat-2.
 Three encoder configurations are compared: the distilled student with its encoder frozen and its decoder trained ($5.14$\,M of $9.86$\,M parameters trainable), TerraMind \texttt{base} under the same frozen-encoder protocol ($7.92$\,M of $94.25$\,M), and TerraMind \texttt{base} fine-tuned end to end.
@@ -160,7 +172,6 @@ Table~\ref{tab:ladder-domain-gap} reports the results.
 
 \begin{table}[htbp]
     \centering
-    \label{tab:ladder-domain-gap}
     \begin{tabular}{lccc}
         \toprule
                              & Distilled student           & TerraMind base            & TerraMind base                     \\
@@ -191,6 +202,7 @@ Table~\ref{tab:ladder-domain-gap} reports the results.
         Values are the mean over three seeds of the within-seed drop, $\pm$ one standard deviation of those drops; $^{\ast}$ marks a drop exceeding twice that deviation.
         The two model families are scored under different evaluation geometry (the student on $256$-pixel centre crops, TerraMind on full $1077$-pixel scenes), so the clean baselines are not comparable between columns and only the drops are.
     }
+    \label{tab:ladder-domain-gap}
 \end{table}
 
 On undegraded data the distilled student is the strongest of the three, at $0.814$ IoU against $0.773$ for fine-tuned TerraMind and $0.739$ for frozen TerraMind.
@@ -220,7 +232,6 @@ It also reinforces the point that the gap here is not resolution-driven, which i
 
 \begin{table}[htbp]
     \centering
-    \label{tab:ladder-adaptation}
     \begin{tabular}{lccc}
         \toprule
         Factor at L4       & Trained clean, tested degraded & Trained and tested degraded & Recovered \\
@@ -233,6 +244,7 @@ It also reinforces the point that the gap here is not resolution-driven, which i
     \caption{Degradation seen at inference only, against degradation present during training as well, for the distilled student at full severity.
         The matched-condition column is a single seed and is not directly comparable in precision to the three-seed cross-condition column; it is reported to establish the size of the effect, which is large, not its exact value.
     }
+    \label{tab:ladder-adaptation}
 \end{table}
 
 One further comparison bears directly on what to do about these results.
@@ -263,7 +275,6 @@ Table~\ref{tab:invariance} collects the three measures side by side.
 
 \begin{table}[htbp]
     \centering
-    \label{tab:invariance}
     \begin{tabular}{lcc}
         \toprule
         Measure                                      & TerraMind teacher & Distilled student \\
@@ -282,6 +293,7 @@ Table~\ref{tab:invariance} collects the three measures side by side.
         Probe transfer fits a linear classifier on Sentinel-2 embeddings and applies it to $\Phi$-sat-2 embeddings; retention is the ratio of the two accuracies.
         The IoU difference is measured on the full test split rather than on the $800$-patch embedding sample.
     }
+    \label{tab:invariance}
 \end{table}
 
 \wip[Decide how to frame the probe row that cuts against the student.]{%
@@ -360,7 +372,6 @@ That residual is a compression gap rather than a domain gap, since Section~\ref{
 
 \begin{table}[htbp]
     \centering
-    \label{tab:main-results}
     \begin{tabular}{llccc}
         \toprule
         Labels                                                        & Method              & Val.\ mIoU        & Test mIoU         & Cost (h)       \\
@@ -379,6 +390,7 @@ That residual is a compression gap rather than a domain gap, since Section~\ref{
         Test mIoU is on the full $25{,}323$-patch test split.
         Cost is total wall-clock for the run.
     }
+    \label{tab:main-results}
 \end{table}
 
 Both test scores in Table~\ref{tab:main-results} are measured on the full $25{,}323$-patch split.
