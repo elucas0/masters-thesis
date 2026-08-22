@@ -24,10 +24,10 @@ Neither problem solves the other: a compressed model built without addressing th
 
 This thesis addresses both obstacles at once, with TerraMind and $\Phi$-sat-2 as the case study, and flood segmentation as the motivating downstream application.
 The approach combines three elements.
-First, a physics-based sensor degradation pipeline, based on the simulator developed for the ESA $\Phi$-lab OrbitalAI challenge\cite{longepe2024orbitalai}, processes Sentinel-2 imagery at the pixel level in order to simulate the $\Phi$-sat-2 sensor characteristics.
+First, a physics-based sensor degradation pipeline, based on the simulator developed for the ESA $\Phi$-lab OrbitalAI challenge\cite{longepe2024orbitalai}, processes Sentinel-2 imagery to simulate the $\Phi$-sat-2 sensor characteristics.
 This gives us labeled training data for a target sensor that hasn't accumulated data for flood segmentation yet.
-Second, a purpose-built dataset of spatially and temporally co-registered image triplets (real $\Phi$-sat-2, real Sentinel-2 and simulated $\Phi$-sat-2, all of the same scene) makes it possible to measure this domain gap directly in latent space, and to test candidate adaptation mechanisms against it instead of relying on downstream accuracy alone.
-Third, domain-specific batch normalization is applied during the knowledge distillation\cite{hinton2015distilling} of the TerraMind encoder into a lightweight CNN: the student keeps a separate set of normalization statistics per sensor on otherwise shared weights, so the deployable model adapts to whichever sensor it is actually reading from at inference, since that sensor identity is always known on board.
+Second, a triplets dataset of spatially and temporally co-registered acquisitions from real $\Phi$-sat-2, real Sentinel-2 and simulated $\Phi$-sat-2 enables us to measure the domain gap directly in latent space, and to test adaptation mechanisms against it.
+Third, domain-specific batch normalization\cite{chang2019dsbn} is applied during the knowledge distillation\cite{hinton2015distilling} of the TerraMind encoder into a lightweight CNN. With this method, the deployable model adapts to the sensor its getting data from at inference.
 A paired-contrastive alignment objective exploiting the co-registered triplets directly was also implemented and evaluated as an alternative mechanism, but it did not improve downstream task performance beyond what domain-specific normalization already provides.
 
 \section{Problem Definition}

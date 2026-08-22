@@ -1,6 +1,6 @@
 \contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Problem Definition}{4}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Research Gap}{5}{section.1.2}%
+\contentsline {section}{\numberline {1.2}Research Gap}{4}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Research Objective and Problem Statement}{5}{section.1.3}%
 \contentsline {chapter}{\numberline {2}Background and Literature Review}{7}{chapter.2}%
 \contentsline {section}{\numberline {2.1}On-board AI for Earth Observation}{7}{section.2.1}%
@@ -11,48 +11,48 @@
 \contentsline {section}{\numberline {2.5}Knowledge Distillation Across Architectures}{12}{section.2.5}%
 \contentsline {section}{\numberline {2.6}$\Phi $satNet}{13}{section.2.6}%
 \contentsline {section}{\numberline {2.7}Synthesis}{13}{section.2.7}%
-\contentsline {chapter}{\numberline {3}Methodology}{14}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Data}{14}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}The co-registered triplet dataset}{14}{subsection.3.1.1}%
-\contentsline {subsubsection}{Scale and coverage}{15}{section*.5}%
-\contentsline {subsubsection}{Train/validation/test split}{18}{section*.9}%
-\contentsline {subsubsection}{Measured sensor discrepancy}{18}{section*.11}%
-\contentsline {subsubsection}{Qualitative examples}{21}{section*.16}%
-\contentsline {subsection}{\numberline {3.1.2}Simulated degraded flood-segmentation dataset}{24}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Physics-Based Sensor Degradation Pipeline}{24}{section.3.2}%
-\contentsline {paragraph}{Radiance--reflectance conversion.}{24}{section*.21}%
-\contentsline {paragraph}{Spatial resampling.}{26}{section*.22}%
-\contentsline {paragraph}{Band-to-band misalignment.}{26}{section*.23}%
-\contentsline {paragraph}{Signal-to-noise degradation.}{26}{section*.24}%
-\contentsline {paragraph}{Optical blur via MTF/PSF.}{27}{section*.25}%
-\contentsline {section}{\numberline {3.3}Domain Gap Measurement}{27}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Normalization protocol}{27}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Direct and indirect evidence}{28}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Domain-Adaptation Strategy}{28}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Fine-tuning on degraded data}{28}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Domain-specific batch normalization}{28}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Paired-contrastive triplet alignment}{29}{subsection.3.4.3}%
-\contentsline {section}{\numberline {3.5}Cross-Architecture Knowledge Distillation}{30}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Evaluation Protocol}{31}{section.3.6}%
-\contentsline {section}{\numberline {3.7}Tools, Software Environment, and Reproducibility}{32}{section.3.7}%
-\contentsline {chapter}{\numberline {4}Results and Discussion}{33}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Experimental Configuration}{33}{section.4.1}%
-\contentsline {paragraph}{Domain-specific batch normalization.}{33}{section*.28}%
-\contentsline {paragraph}{Class-imbalanced task loss.}{34}{section*.29}%
-\contentsline {section}{\numberline {4.2}Sensor Gap in TerraMind Latent Space (RQ1)}{34}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Degradation Factor effects on Downstream Task Gap (RQ1)}{37}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Sensor Adaptivity in the Distilled Student (RQ2)}{41}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Distillation Against a Supervised Baseline (RQ3)}{43}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Advantage Reversal on Small Label Budget}{45}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Discussion}{46}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{46}{subsection.4.7.1}%
-\contentsline {subsection}{\numberline {4.7.2}Measurement pitfalls}{47}{subsection.4.7.2}%
-\contentsline {subsection}{\numberline {4.7.3}Limitations}{47}{subsection.4.7.3}%
-\contentsline {subsection}{\numberline {4.7.4}Interpretation of the flood-robustness result}{48}{subsection.4.7.4}%
-\contentsline {subsection}{\numberline {4.7.5}Positioning with $\Phi $satNet}{48}{subsection.4.7.5}%
-\contentsline {subsection}{\numberline {4.7.6}Practical recommendations}{48}{subsection.4.7.6}%
-\contentsline {chapter}{\numberline {5}Conclusion}{50}{chapter.5}%
-\contentsline {chapter}{Declarations}{52}{chapter*.43}%
-\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{53}{chapter.A}%
-\contentsline {section}{\numberline {A.1}Protocol}{53}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Result}{53}{section.A.2}%
+\contentsline {chapter}{\numberline {3}Methodology}{15}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Data}{15}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}The co-registered triplet dataset}{15}{subsection.3.1.1}%
+\contentsline {subsubsection}{Scale and coverage}{16}{section*.5}%
+\contentsline {subsubsection}{Train/validation/test split}{19}{section*.9}%
+\contentsline {subsubsection}{Measured sensor discrepancy}{20}{section*.11}%
+\contentsline {subsubsection}{Qualitative examples}{23}{section*.16}%
+\contentsline {subsection}{\numberline {3.1.2}Simulated degraded flood-segmentation dataset}{25}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Physics-Based Sensor Degradation Pipeline}{25}{section.3.2}%
+\contentsline {paragraph}{Radiance--reflectance conversion.}{25}{section*.21}%
+\contentsline {paragraph}{Spatial resampling.}{27}{section*.22}%
+\contentsline {paragraph}{Band-to-band misalignment.}{27}{section*.23}%
+\contentsline {paragraph}{Signal-to-noise degradation.}{27}{section*.24}%
+\contentsline {paragraph}{Optical blur via MTF/PSF.}{28}{section*.25}%
+\contentsline {section}{\numberline {3.3}Domain Gap Measurement}{28}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Normalization protocol}{28}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Direct and indirect evidence}{29}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Domain-Adaptation Strategy}{29}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Fine-tuning on degraded data}{29}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Domain-specific batch normalization}{29}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Paired-contrastive triplet alignment}{30}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5}Cross-Architecture Knowledge Distillation}{31}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Evaluation Protocol}{32}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Tools, Software Environment, and Reproducibility}{33}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{34}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Experimental Configuration}{34}{section.4.1}%
+\contentsline {paragraph}{Domain-specific batch normalization.}{34}{section*.28}%
+\contentsline {paragraph}{Class-imbalanced task loss.}{35}{section*.29}%
+\contentsline {section}{\numberline {4.2}Sensor Gap in TerraMind Latent Space (RQ1)}{35}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Degradation Factor effects on Downstream Task Gap (RQ1)}{38}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Sensor Adaptivity in the Distilled Student (RQ2)}{42}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Distillation Against a Supervised Baseline (RQ3)}{44}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Advantage Reversal on Small Label Budget}{46}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Discussion}{47}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{47}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Measurement pitfalls}{48}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}Limitations}{48}{subsection.4.7.3}%
+\contentsline {subsection}{\numberline {4.7.4}Interpretation of the flood-robustness result}{49}{subsection.4.7.4}%
+\contentsline {subsection}{\numberline {4.7.5}Positioning with $\Phi $satNet}{49}{subsection.4.7.5}%
+\contentsline {subsection}{\numberline {4.7.6}Practical recommendations}{49}{subsection.4.7.6}%
+\contentsline {chapter}{\numberline {5}Conclusion}{51}{chapter.5}%
+\contentsline {chapter}{Declarations}{53}{chapter*.43}%
+\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{54}{chapter.A}%
+\contentsline {section}{\numberline {A.1}Protocol}{54}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Result}{54}{section.A.2}%

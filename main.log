@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.31)  20 AUG 2026 17:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.31)  22 AUG 2026 14:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -590,7 +590,7 @@ l.75 \end{abstract}
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.48 ...zation contribution}{46}{subsection.4.7.1}
+l.48 ...zation contribution}{47}{subsection.4.7.1}
                                                   % [1
 
 ])
@@ -601,9 +601,9 @@ l.48 ...zation contribution}{46}{subsection.4.7.1}
 Chapter 1.
 [3
 
-] [4] [5]) (./chapters/02_background_litreview.tex [6]
+] [4]) (./chapters/02_background_litreview.tex [5] [6]
 Chapter 2.
-<figures/fig_onboard_workflow.png, id=322, 633.11531pt x 277.035pt>
+<figures/fig_onboard_workflow.png, id=324, 633.11531pt x 277.035pt>
 File: figures/fig_onboard_workflow.png Graphic file (type png)
 <use figures/fig_onboard_workflow.png>
 Package pdftex.def Info: figures/fig_onboard_workflow.png  used on input line 22.
@@ -623,172 +623,173 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 154.
 
-) (./chapters/03_methodology.tex [13]
+) (./chapters/03_methodology.tex [13] [14]
 Chapter 3.
-[14
+[15
 
 ]
-<figures/fig_srf_s2_phisat2.png, id=491, 411.5375pt x 329.23pt>
+<figures/fig_srf_s2_phisat2.png, id=499, 411.5375pt x 329.23pt>
 File: figures/fig_srf_s2_phisat2.png Graphic file (type png)
 <use figures/fig_srf_s2_phisat2.png>
-Package pdftex.def Info: figures/fig_srf_s2_phisat2.png  used on input line 33.
+Package pdftex.def Info: figures/fig_srf_s2_phisat2.png  used on input line 35.
 (pdftex.def)             Requested size: 341.43306pt x 273.14528pt.
-<figures/fig_patch_examples.png, id=495, 471.9231pt x 641.9985pt>
+<figures/fig_patch_examples.png, id=503, 471.9231pt x 641.9985pt>
 File: figures/fig_patch_examples.png Graphic file (type png)
 <use figures/fig_patch_examples.png>
-Package pdftex.def Info: figures/fig_patch_examples.png  used on input line 48.
+Package pdftex.def Info: figures/fig_patch_examples.png  used on input line 50.
 (pdftex.def)             Requested size: 341.43306pt x 464.49167pt.
- [15 <./figures/fig_srf_s2_phisat2.png>] [16 <./figures/fig_patch_examples.png>]
-<figures/fig_acquisition.png, id=510, 681.0243pt x 220.4235pt>
+ [16 <./figures/fig_srf_s2_phisat2.png>] [17 <./figures/fig_patch_examples.png>]
+<figures/fig_acquisition.png, id=519, 681.0243pt x 220.4235pt>
 File: figures/fig_acquisition.png Graphic file (type png)
 <use figures/fig_acquisition.png>
-Package pdftex.def Info: figures/fig_acquisition.png  used on input line 64.
+Package pdftex.def Info: figures/fig_acquisition.png  used on input line 66.
 (pdftex.def)             Requested size: 452.9679pt x 146.6134pt.
-<figures/fig_geography.png, id=512, 787.5021pt x 251.9814pt>
+<figures/fig_geography.png, id=521, 787.5021pt x 251.9814pt>
 File: figures/fig_geography.png Graphic file (type png)
 <use figures/fig_geography.png>
-Package pdftex.def Info: figures/fig_geography.png  used on input line 76.
+Package pdftex.def Info: figures/fig_geography.png  used on input line 78.
 (pdftex.def)             Requested size: 452.9679pt x 144.93816pt.
-<figures/fig_landcover.png, id=516, 753.2943pt x 251.9814pt>
+<figures/fig_landcover.png, id=525, 753.2943pt x 251.9814pt>
 File: figures/fig_landcover.png Graphic file (type png)
 <use figures/fig_landcover.png>
-Package pdftex.def Info: figures/fig_landcover.png  used on input line 88.
+Package pdftex.def Info: figures/fig_landcover.png  used on input line 90.
 (pdftex.def)             Requested size: 452.9679pt x 151.52066pt.
- [17 <./figures/fig_acquisition.png> <./figures/fig_geography.png>]
-<figures/fig_splits.png, id=533, 753.0534pt x 235.3593pt>
+ [18 <./figures/fig_acquisition.png> <./figures/fig_geography.png>]
+<figures/fig_splits.png, id=540, 753.0534pt x 235.3593pt>
 File: figures/fig_splits.png Graphic file (type png)
 <use figures/fig_splits.png>
-Package pdftex.def Info: figures/fig_splits.png  used on input line 105.
+Package pdftex.def Info: figures/fig_splits.png  used on input line 107.
 (pdftex.def)             Requested size: 452.9679pt x 141.57219pt.
- [18 <./figures/fig_landcover.png> <./figures/fig_splits.png>]
-<figures/hist_bands_raw.png, id=545, 930.3558pt x 455.0601pt>
+ [19 <./figures/fig_landcover.png> <./figures/fig_splits.png>]
+<figures/hist_bands_raw.png, id=552, 930.3558pt x 455.0601pt>
 File: figures/hist_bands_raw.png Graphic file (type png)
 <use figures/hist_bands_raw.png>
-Package pdftex.def Info: figures/hist_bands_raw.png  used on input line 126.
+Package pdftex.def Info: figures/hist_bands_raw.png  used on input line 128.
 (pdftex.def)             Requested size: 452.9679pt x 221.55795pt.
- [19 <./figures/hist_bands_raw.png>]
-<figures/hist_bands_normalized.png, id=557, 930.1149pt x 456.9873pt>
+ [20 <./figures/hist_bands_raw.png>]
+<figures/hist_bands_normalized.png, id=565, 930.1149pt x 456.9873pt>
 File: figures/hist_bands_normalized.png Graphic file (type png)
 <use figures/hist_bands_normalized.png>
-Package pdftex.def Info: figures/hist_bands_normalized.png  used on input line 142.
+Package pdftex.def Info: figures/hist_bands_normalized.png  used on input line 144.
 (pdftex.def)             Requested size: 452.9679pt x 222.55205pt.
-<figures/fig_spectral_signature.png, id=561, 427.8384pt x 254.3904pt>
+<figures/fig_spectral_signature.png, id=569, 427.8384pt x 254.3904pt>
 File: figures/fig_spectral_signature.png Graphic file (type png)
 <use figures/fig_spectral_signature.png>
-Package pdftex.def Info: figures/fig_spectral_signature.png  used on input line 158.
+Package pdftex.def Info: figures/fig_spectral_signature.png  used on input line 160.
 (pdftex.def)             Requested size: 317.07614pt x 188.54094pt.
- [20 <./figures/hist_bands_normalized.png>]
-<figures/fig_approx_error_by_class.png, id=573, 787.22679pt x 425.36057pt>
+ [21 <./figures/hist_bands_normalized.png>]
+<figures/fig_approx_error_by_class.png, id=581, 787.22679pt x 425.36057pt>
 File: figures/fig_approx_error_by_class.png Graphic file (type png)
 <use figures/fig_approx_error_by_class.png>
-Package pdftex.def Info: figures/fig_approx_error_by_class.png  used on input line 185.
+Package pdftex.def Info: figures/fig_approx_error_by_class.png  used on input line 187.
 (pdftex.def)             Requested size: 452.9679pt x 244.74916pt.
-<figures/fig_triplet_overlay_019123.png, id=579, 1813.46078pt x 348.96086pt>
+ [22 <./figures/fig_spectral_signature.png>]
+<figures/fig_triplet_overlay_019123.png, id=596, 1813.46078pt x 348.96086pt>
 File: figures/fig_triplet_overlay_019123.png Graphic file (type png)
 <use figures/fig_triplet_overlay_019123.png>
-Package pdftex.def Info: figures/fig_triplet_overlay_019123.png  used on input line 201.
+Package pdftex.def Info: figures/fig_triplet_overlay_019123.png  used on input line 203.
 (pdftex.def)             Requested size: 452.9679pt x 87.16013pt.
-<figures/fig_triplet_overlay_012943.png, id=582, 1813.46078pt x 349.47707pt>
+<figures/fig_triplet_overlay_012943.png, id=599, 1813.46078pt x 349.47707pt>
 File: figures/fig_triplet_overlay_012943.png Graphic file (type png)
 <use figures/fig_triplet_overlay_012943.png>
-Package pdftex.def Info: figures/fig_triplet_overlay_012943.png  used on input line 210.
+Package pdftex.def Info: figures/fig_triplet_overlay_012943.png  used on input line 212.
 (pdftex.def)             Requested size: 452.9679pt x 87.28906pt.
-<figures/fig_triplet_overlay_019598.png, id=583, 1813.46078pt x 349.47707pt>
+<figures/fig_triplet_overlay_019598.png, id=600, 1813.46078pt x 349.47707pt>
 File: figures/fig_triplet_overlay_019598.png Graphic file (type png)
 <use figures/fig_triplet_overlay_019598.png>
-Package pdftex.def Info: figures/fig_triplet_overlay_019598.png  used on input line 217.
+Package pdftex.def Info: figures/fig_triplet_overlay_019598.png  used on input line 219.
 (pdftex.def)             Requested size: 452.9679pt x 87.28906pt.
- [21 <./figures/fig_spectral_signature.png>] [22 <./figures/fig_approx_error_by_class.png> <./figures/fig_triplet_overlay_019123.png> <./figures/fig_triplet_overlay_012943.png>] [23 <./figures/fig_triplet_overlay_019598.png>]
-<figures/fig_updated_simulator.png, id=625, 776.14969pt x 485.56406pt>
+ [23 <./figures/fig_approx_error_by_class.png> <./figures/fig_triplet_overlay_019123.png>] [24 <./figures/fig_triplet_overlay_012943.png> <./figures/fig_triplet_overlay_019598.png>]
+<figures/fig_updated_simulator.png, id=633, 776.14969pt x 485.56406pt>
 File: figures/fig_updated_simulator.png Graphic file (type png)
 <use figures/fig_updated_simulator.png>
-Package pdftex.def Info: figures/fig_updated_simulator.png  used on input line 255.
+Package pdftex.def Info: figures/fig_updated_simulator.png  used on input line 257.
 (pdftex.def)             Requested size: 452.9679pt x 283.3833pt.
- [24
+ [25
 
-] [25 <./figures/fig_updated_simulator.png>] [26] [27]
-<figures/fig_bn_dsbn.png, id=666, 810.77907pt x 176.91093pt>
+] [26 <./figures/fig_updated_simulator.png>] [27] [28]
+<figures/fig_bn_dsbn.png, id=674, 810.77907pt x 176.91093pt>
 File: figures/fig_bn_dsbn.png Graphic file (type png)
 <use figures/fig_bn_dsbn.png>
-Package pdftex.def Info: figures/fig_bn_dsbn.png  used on input line 359.
+Package pdftex.def Info: figures/fig_bn_dsbn.png  used on input line 361.
 (pdftex.def)             Requested size: 452.9679pt x 98.83998pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--374
+Underfull \hbox (badness 10000) in paragraph at lines 376--376
 [][][][]$\T1/cmtt/m/n/10 https : / / docs . openvino . ai / 2023 . 3 / openvino _ docs _ ops _ normalization _
  []
 
 
-Overfull \hbox (8.79388pt too wide) in paragraph at lines 370--381
+Overfull \hbox (8.79388pt too wide) in paragraph at lines 372--383
 \T1/cmr/m/n/12 ture. Batch nor-mal-iza-tion is rep-re-sentable in the de-ploy-ment for-mat: \T1/cmtt/m/n/12 BatchNormInference
  []
 
-[28] [29 <./figures/fig_bn_dsbn.png>] [30] [31]) (./chapters/04_results_discussion.tex [32]
+[29] [30 <./figures/fig_bn_dsbn.png>] [31] [32]) (./chapters/04_results_discussion.tex [33]
 Chapter 4.
-[33
+[34
 
-] [34] [35]
-<figures/fig_embeddings_paired.png, id=762, 831.5868pt x 387.1263pt>
+] [35] [36]
+<figures/fig_embeddings_paired.png, id=769, 831.5868pt x 387.1263pt>
 File: figures/fig_embeddings_paired.png Graphic file (type png)
 <use figures/fig_embeddings_paired.png>
 Package pdftex.def Info: figures/fig_embeddings_paired.png  used on input line 105.
 (pdftex.def)             Requested size: 452.9679pt x 210.87036pt.
-<figures/fig_cosine_sim_terramind.png, id=765, 723.4227pt x 395.3169pt>
+<figures/fig_cosine_sim_terramind.png, id=772, 723.4227pt x 395.3169pt>
 File: figures/fig_cosine_sim_terramind.png Graphic file (type png)
 <use figures/fig_cosine_sim_terramind.png>
 Package pdftex.def Info: figures/fig_cosine_sim_terramind.png  used on input line 119.
 (pdftex.def)             Requested size: 385.02547pt x 210.39763pt.
- [36 <./figures/fig_embeddings_paired.png>]
-<figures/fig_ladder_grid.png, id=778, 1133.28394pt x 635.976pt>
+ [37 <./figures/fig_embeddings_paired.png>]
+<figures/fig_ladder_grid.png, id=785, 1133.28394pt x 635.976pt>
 File: figures/fig_ladder_grid.png Graphic file (type png)
 <use figures/fig_ladder_grid.png>
 Package pdftex.def Info: figures/fig_ladder_grid.png  used on input line 160.
 (pdftex.def)             Requested size: 452.9679pt x 254.2015pt.
- [37 <./figures/fig_cosine_sim_terramind.png>] [38 <./figures/fig_ladder_grid.png>] [39]
+ [38 <./figures/fig_cosine_sim_terramind.png>] [39 <./figures/fig_ladder_grid.png>] [40]
 Overfull \hbox (51.79149pt too wide) in paragraph at lines 235--246
  [][] 
  []
 
-[40] [41]
-<figures/fig_pad_decision_scores.png, id=822, 794.7291pt x 457.9509pt>
+[41] [42]
+<figures/fig_pad_decision_scores.png, id=829, 794.7291pt x 457.9509pt>
 File: figures/fig_pad_decision_scores.png Graphic file (type png)
 <use figures/fig_pad_decision_scores.png>
 Package pdftex.def Info: figures/fig_pad_decision_scores.png  used on input line 323.
 (pdftex.def)             Requested size: 452.9679pt x 261.01376pt.
- [42] [43 <./figures/fig_pad_decision_scores.png>] [44]
-<figures/fig_dsbn_vs_baseline.png, id=847, 789.1884pt x 266.6763pt>
+ [43] [44 <./figures/fig_pad_decision_scores.png>] [45]
+<figures/fig_dsbn_vs_baseline.png, id=855, 789.1884pt x 266.6763pt>
 File: figures/fig_dsbn_vs_baseline.png Graphic file (type png)
 <use figures/fig_dsbn_vs_baseline.png>
 Package pdftex.def Info: figures/fig_dsbn_vs_baseline.png  used on input line 402.
 (pdftex.def)             Requested size: 452.9679pt x 153.0691pt.
-<figures/fig_per_class_dsbn.png, id=848, 680.7834pt x 246.6816pt>
+<figures/fig_per_class_dsbn.png, id=856, 680.7834pt x 246.6816pt>
 File: figures/fig_per_class_dsbn.png Graphic file (type png)
 <use figures/fig_per_class_dsbn.png>
 Package pdftex.def Info: figures/fig_per_class_dsbn.png  used on input line 411.
 (pdftex.def)             Requested size: 452.9679pt x 164.13153pt.
- [45 <./figures/fig_dsbn_vs_baseline.png> <./figures/fig_per_class_dsbn.png>]
-<figures/fig_label_crossover.png, id=860, 398.9304pt x 257.0403pt>
+ [46 <./figures/fig_dsbn_vs_baseline.png> <./figures/fig_per_class_dsbn.png>]
+<figures/fig_label_crossover.png, id=867, 398.9304pt x 257.0403pt>
 File: figures/fig_label_crossover.png Graphic file (type png)
 <use figures/fig_label_crossover.png>
 Package pdftex.def Info: figures/fig_label_crossover.png  used on input line 434.
 (pdftex.def)             Requested size: 326.13744pt x 210.14687pt.
- [46 <./figures/fig_label_crossover.png>] [47]) (./chapters/05_conclusion.tex [48] [49]
+ [47 <./figures/fig_label_crossover.png>] [48]) (./chapters/05_conclusion.tex [49] [50]
 Chapter 5.
-[50
+[51
 
-]) (./chapters/07_declarations.tex [51]
+]) (./chapters/07_declarations.tex [52]
 Overfull \hbox (16.33174pt too wide) in paragraph at lines 18--27
  [][] 
  []
 
-) (./chapters/06_appendix.tex [52
+) (./chapters/06_appendix.tex [53
 
 ]
 Appendix A.
-) (./main.bbl [53
+) (./main.bbl [54
 
-] [54
+] [55
 
-] [55] [56]) [57] (./main.aux)
+] [56] [57]) [58] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -797,18 +798,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 57E201544D3A97718EEBCF2C6A37057C;9219.
  ) 
 Here is how much of TeX's memory you used:
- 24208 strings out of 468489
- 456346 string characters out of 5440514
+ 24209 strings out of 468489
+ 456353 string characters out of 5440514
  867855 words of memory out of 6000000
  52503 multiletter control sequences out of 15000+600000
  656363 words of font info for 121 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
  84i,11n,94p,1060b,997s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on main.pdf (59 pages, 27289665 bytes).
+Output written on main.pdf (60 pages, 27289537 bytes).
 PDF statistics:
- 1103 PDF objects out of 1200 (max. 8388607)
- 918 compressed objects within 10 object streams
- 204 named destinations out of 1000 (max. 500000)
+ 1111 PDF objects out of 1200 (max. 8388607)
+ 925 compressed objects within 10 object streams
+ 205 named destinations out of 1000 (max. 500000)
  504 words of extra memory for PDF output out of 10000 (max. 10000000)
 

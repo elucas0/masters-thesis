@@ -2,14 +2,15 @@
 \label{chap:methodology}
 
 This chapter presents the complete analytical workflow.
-We first describe the data used and the role each dataset plays, then the physics-based degradation pipeline and its calibration, then the protocol for measuring the domain gap, then the domain-adaptation mechanism adopted and the cross-architecture distillation procedure, and finally the evaluation protocol.
-The chapter closes with the tooling and the reproducibility practices used throughout.
+We first describe the data used and the role each dataset plays, with the physics-based degradation pipeline and the co-registration procedure that produces the triplets dataset.
+Then, the protocol for measuring the domain gap is described, with the domain-adaptation mechanism adopted and the cross-architecture distillation procedure, and finally the evaluation protocol.
+The chapter closes with the tooling and the reproducibility practices used throughout the process.
 
-The data underlying this work falls into two categories.
-The first is the co-registered triplet dataset itself: real $\Phi$-sat-2 acquisitions, obtained via the ESA Insula Perception platform, matched to concurrent Sentinel-2 scenes and to a physics-simulated $\Phi$-sat-2 rendering of the same Sentinel-2 scene, co-registered using the LightGlue deep feature-matching algorithm \cite{Lindenberger_2023_ICCV} and filtered for spatio-temporal proximity and cloud cover.
-This dataset carries land-cover labels derived from ESA WorldCover 2021, and it is the only real-sensor ground truth currently available to us.
-The second category is simulated: a physics-degraded, graded version of the Sen1Floods flood-segmentation benchmark, produced with the same degradation pipeline.
-It stands in for a real labeled $\Phi$-sat-2 flood dataset, which does not yet exist because the mission has not captured an annotated flood event.
+This work uses two distinct datasets compiled specifically for the $\Phi$-sat-2 mission, each with a different purpose.
+The first is the co-registered triplet dataset. Real $\Phi$-sat-2 acquisitions are matched to concurrent Sentinel-2 scenes using the LightGlue deep feature-matching algorithm \cite{Lindenberger_2023_ICCV}. Simulated $\Phi$-sat-2 renderings of the Sentinel-2 scenes are also produced with the physics-based degradation pipeline described in Section~\ref{sec:degradation-pipeline}.
+This dataset carries land-cover labels derived from ESA WorldCover 2021\cite{zanaga2022worldcover}, and its purpose is to have a downstream task with which to measure the domain gap caused by the sensor differences between Sentinel-2 and $\Phi$-sat-2.
+The second dataset is a physics-degraded version of the Sen1Floods flood-segmentation benchmark, produced with the same degradation pipeline.
+It stands in place of a real labeled $\Phi$-sat-2 flood dataset, which does not yet exist because the mission has not captured an annotated flood event.
 
 \section{Data}
 \label{sec:data}
@@ -18,7 +19,8 @@ It stands in for a real labeled $\Phi$-sat-2 flood dataset, which does not yet e
 \label{sec:triplets}
 
 The main dataset is a collection of spatially and temporally co-registered image triplets, produced in collaboration with the ESA $\Phi$-lab: real $\Phi$-sat-2 acquisitions (obtained via the ESA Insula Perception platform), the corresponding real Sentinel-2B scene, and a physics-simulated $\Phi$-sat-2 rendering of that same Sentinel-2 scene (Section~\ref{sec:degradation-pipeline}).
-Candidate scenes were filtered by spatio-temporal proximity between the $\Phi$-sat-2 and Sentinel-2 overpasses and by a cloud-cover threshold on both acquisitions, and precise pixel-level alignment was achieved using the LightGlue deep feature-matching algorithm \cite{Lindenberger_2023_ICCV}, which identifies corresponding semantic keypoints across the two sensors despite their differing spatial and radiometric characteristics.
+Candidate scenes were filtered by spatio-temporal proximity between the $\Phi$-sat-2 and Sentinel-2 overpasses and by a cloud-cover threshold on both acquisitions, and precise pixel-level alignment was achieved using the LightGlue deep feature-matching algorithm \cite{Lindenberger_2023_ICCV}.
+This algorithm was chosen for its ability to identify corresponding semantic keypoints across the two sensors despite their differing spatial and radiometric characteristics.
 
 The choice of Sentinel-2 as the paired source sensor follows from the two instruments' band layouts.
 Figure~\ref{fig:srf} compares their spectral response functions and their per-band spatial resolutions.
