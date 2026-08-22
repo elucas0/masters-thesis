@@ -27,7 +27,7 @@
 \contentsline {paragraph}{Optical blur via MTF/PSF.}{28}{section*.25}%
 \contentsline {section}{\numberline {3.3}Domain Gap Measurement}{28}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Normalization protocol}{28}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Direct and indirect evidence}{29}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Direct and indirect evidence}{28}{subsection.3.3.2}%
 \contentsline {section}{\numberline {3.4}Domain-Adaptation Strategy}{29}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}Fine-tuning on degraded data}{29}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Domain-specific batch normalization}{29}{subsection.3.4.2}%

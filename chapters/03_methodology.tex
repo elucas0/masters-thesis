@@ -99,7 +99,7 @@ The typical patch is fairly homogeneous: a single class occupies a median of 73\
 The dataset is split 80/10/10 (202{,}582 / 25{,}323 / 25{,}323 patches) at the patch level with a fixed seed, and the resulting class-prior distribution is stable across all three splits, confirming the split does not introduce label-distribution shift (Figure~\ref{fig:splits}, left).
 However, this introduces a different problem.
 Because the split is made over patches, all 1{,}299 source products are represented in the training set, and every one of the 1{,}287 distinct products contributing to the test set also contributes patches to the training set (Figure~\ref{fig:splits}, right).
-Since patches coming from the same product are spatially adjacent or overlapping crops of a single acquisition, the test set is therefore not a clean geographic or scene-level hold-out, and the real-data performance figures reported in Chapter~\ref{chap:results-discussion} should be read as an optimistic upper bound on the generalization to genuinely unseen scenes.
+Since patches coming from the same product are spatially adjacent or overlapping crops of a single acquisition, the test set is therefore not a clean geographic or scene-level hold-out, and the real-data performance figures reported in Chapter~\ref{chap:results-discussion} should be read as an optimistic upper bound on the generalization to unseen scenes.
 Re-splitting at product level instead of at patch level is the direct remedy, and it is noted as future work in Section~\ref{sec:discussion}.
 
 \begin{figure}[htp]
@@ -326,7 +326,7 @@ Raw $\Phi$-sat-2 digital numbers are heavy-tailed; a square-root transform is ap
 An early baseline was corrupted by a normalization defect that caused weight saturation and an artificially depressed performance estimate; correcting it was a precondition for every result reported in Chapter~\ref{chap:results-discussion}.
 
 The per-domain normalization could itself account for an apparent domain gap that is really just a difference in raw value scale, so we ran the domain-gap measurement below both with and without it.
-The two conditions produced similar overall results, and per-domain normalization gave lower cosine similarity between domains in the encoder's early layers, the opposite of what a normalization artifact would predict, indicating that the measured gap in early layers is a genuine representational effect and not a calibration artifact.
+The two conditions produced similar overall results, and per-domain normalization gave lower cosine similarity between domains in the encoder's early layers, the opposite of what a normalization artifact would predict, indicating that the measured gap in early layers is a representational effect and not a calibration artifact.
 
 \subsection{Direct and indirect evidence}
 
@@ -392,7 +392,7 @@ This directly penalizes the encoder for representing the sensor identity and not
 This objective was implemented and evaluated on top of the DSBN configuration above, with the co-registered triplets used as designed: to test a training mechanism, not only to measure the gap.
 On the LULC task, it did not improve downstream performance beyond the DSBN-only configuration (Section~\ref{sec:rq2-results}), and all headline results in Chapter~\ref{chap:results-discussion} are reported with its weight set to zero.
 We report this as a negative ablation result rather than omitting it.
-The co-registered pairing that makes a contrastive objective possible is a genuine structural asset of this dataset, and the fact that exploiting it directly added nothing measurable on top of a much simpler per-domain normalization scheme is itself informative, both about where the sensor gap actually lives (Section~\ref{sec:rq1-results}) and about how much machinery is needed to close it.
+%The co-registered pairing that makes a contrastive objective possible is an advantage of this dataset, and the fact that exploiting it directly didn't add measurable improvement on top of simpler per-domain normalization scheme is informative, both about where the sensor gap actually lives (Section~\ref{sec:rq1-results}) and about how much machinery is needed to close it.
 
 \section{Cross-Architecture Knowledge Distillation}
 \label{sec:kd}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.31)  22 AUG 2026 14:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.31)  23 AUG 2026 00:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -661,17 +661,17 @@ File: figures/fig_splits.png Graphic file (type png)
 Package pdftex.def Info: figures/fig_splits.png  used on input line 107.
 (pdftex.def)             Requested size: 452.9679pt x 141.57219pt.
  [19 <./figures/fig_landcover.png> <./figures/fig_splits.png>]
-<figures/hist_bands_raw.png, id=552, 930.3558pt x 455.0601pt>
+<figures/hist_bands_raw.png, id=552, 929.874pt x 455.301pt>
 File: figures/hist_bands_raw.png Graphic file (type png)
 <use figures/hist_bands_raw.png>
 Package pdftex.def Info: figures/hist_bands_raw.png  used on input line 128.
-(pdftex.def)             Requested size: 452.9679pt x 221.55795pt.
+(pdftex.def)             Requested size: 452.9679pt x 221.79333pt.
  [20 <./figures/hist_bands_raw.png>]
-<figures/hist_bands_normalized.png, id=565, 930.1149pt x 456.9873pt>
+<figures/hist_bands_normalized.png, id=565, 929.874pt x 455.301pt>
 File: figures/hist_bands_normalized.png Graphic file (type png)
 <use figures/hist_bands_normalized.png>
 Package pdftex.def Info: figures/hist_bands_normalized.png  used on input line 144.
-(pdftex.def)             Requested size: 452.9679pt x 222.55205pt.
+(pdftex.def)             Requested size: 452.9679pt x 221.79333pt.
 <figures/fig_spectral_signature.png, id=569, 427.8384pt x 254.3904pt>
 File: figures/fig_spectral_signature.png Graphic file (type png)
 <use figures/fig_spectral_signature.png>
@@ -728,18 +728,18 @@ Chapter 4.
 [34
 
 ] [35] [36]
-<figures/fig_embeddings_paired.png, id=769, 831.5868pt x 387.1263pt>
+<figures/fig_embeddings_paired.png, id=797, 831.5868pt x 387.1263pt>
 File: figures/fig_embeddings_paired.png Graphic file (type png)
 <use figures/fig_embeddings_paired.png>
 Package pdftex.def Info: figures/fig_embeddings_paired.png  used on input line 105.
 (pdftex.def)             Requested size: 452.9679pt x 210.87036pt.
-<figures/fig_cosine_sim_terramind.png, id=772, 723.4227pt x 395.3169pt>
+<figures/fig_cosine_sim_terramind.png, id=800, 723.4227pt x 395.3169pt>
 File: figures/fig_cosine_sim_terramind.png Graphic file (type png)
 <use figures/fig_cosine_sim_terramind.png>
 Package pdftex.def Info: figures/fig_cosine_sim_terramind.png  used on input line 119.
 (pdftex.def)             Requested size: 385.02547pt x 210.39763pt.
  [37 <./figures/fig_embeddings_paired.png>]
-<figures/fig_ladder_grid.png, id=785, 1133.28394pt x 635.976pt>
+<figures/fig_ladder_grid.png, id=813, 1133.28394pt x 635.976pt>
 File: figures/fig_ladder_grid.png Graphic file (type png)
 <use figures/fig_ladder_grid.png>
 Package pdftex.def Info: figures/fig_ladder_grid.png  used on input line 160.
@@ -750,24 +750,24 @@ Overfull \hbox (51.79149pt too wide) in paragraph at lines 235--246
  []
 
 [41] [42]
-<figures/fig_pad_decision_scores.png, id=829, 794.7291pt x 457.9509pt>
+<figures/fig_pad_decision_scores.png, id=858, 794.7291pt x 457.9509pt>
 File: figures/fig_pad_decision_scores.png Graphic file (type png)
 <use figures/fig_pad_decision_scores.png>
 Package pdftex.def Info: figures/fig_pad_decision_scores.png  used on input line 323.
 (pdftex.def)             Requested size: 452.9679pt x 261.01376pt.
  [43] [44 <./figures/fig_pad_decision_scores.png>] [45]
-<figures/fig_dsbn_vs_baseline.png, id=855, 789.1884pt x 266.6763pt>
+<figures/fig_dsbn_vs_baseline.png, id=883, 789.1884pt x 266.6763pt>
 File: figures/fig_dsbn_vs_baseline.png Graphic file (type png)
 <use figures/fig_dsbn_vs_baseline.png>
 Package pdftex.def Info: figures/fig_dsbn_vs_baseline.png  used on input line 402.
 (pdftex.def)             Requested size: 452.9679pt x 153.0691pt.
-<figures/fig_per_class_dsbn.png, id=856, 680.7834pt x 246.6816pt>
+<figures/fig_per_class_dsbn.png, id=884, 680.7834pt x 246.6816pt>
 File: figures/fig_per_class_dsbn.png Graphic file (type png)
 <use figures/fig_per_class_dsbn.png>
 Package pdftex.def Info: figures/fig_per_class_dsbn.png  used on input line 411.
 (pdftex.def)             Requested size: 452.9679pt x 164.13153pt.
  [46 <./figures/fig_dsbn_vs_baseline.png> <./figures/fig_per_class_dsbn.png>]
-<figures/fig_label_crossover.png, id=867, 398.9304pt x 257.0403pt>
+<figures/fig_label_crossover.png, id=895, 398.9304pt x 257.0403pt>
 File: figures/fig_label_crossover.png Graphic file (type png)
 <use figures/fig_label_crossover.png>
 Package pdftex.def Info: figures/fig_label_crossover.png  used on input line 434.
@@ -800,16 +800,16 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  24209 strings out of 468489
  456353 string characters out of 5440514
- 867855 words of memory out of 6000000
+ 872134 words of memory out of 6000000
  52503 multiletter control sequences out of 15000+600000
  656363 words of font info for 121 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
  84i,11n,94p,1060b,997s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on main.pdf (60 pages, 27289537 bytes).
+Output written on main.pdf (60 pages, 26925489 bytes).
 PDF statistics:
- 1111 PDF objects out of 1200 (max. 8388607)
- 925 compressed objects within 10 object streams
+ 1139 PDF objects out of 1200 (max. 8388607)
+ 953 compressed objects within 10 object streams
  205 named destinations out of 1000 (max. 500000)
  504 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -252,7 +252,7 @@ Repeating the sweep with each model trained on the same degraded condition it is
 $84\%$ of the noise penalty and $66\%$ of the misalignment penalty disappear, and the blur ceases to be a penalty at all, since it scores marginally \emph{above} the clean baseline, in the manner of a mild augmentation.
 The gap measured in Table~\ref{tab:ladder-domain-gap} is therefore largely an adaptation gap rather than an information-loss gap, at least for noise and blur.
 Where the noise characteristics of the operating sensor are known in advance, which for a launched instrument they always are, simulating them during the training reclaims most of the achievable performance, and this without any domain-adaptation machinery at all.
-Misalignment is again the exception: a third of its cost survives training on the degraded condition, which is consistent with reading it as genuine destruction of cross-band information.
+Misalignment is again the exception: a third of its cost survives training on the degraded condition, which is consistent with reading it as factor degrading the cross-band information.
 
 Three limitations bound these results.
 We vary the factors one at a time, whereas a real sensor pair presents all of them at once, and possibly interacting, so the ladder identifies which effects matter in isolation, and not how they compose.
