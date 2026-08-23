@@ -339,7 +339,30 @@ Sensor adaptivity is only useful if it improves accuracy over a simpler method.
 The control for this is a student of identical architecture, trained directly on labelled $\Phi$-sat-2 with no teacher, no second sensor and no distillation.
 Some parameters are held constant for fairness: the split, the normalization, the augmentation, the task loss, the optimiser, the schedule and the early-stopping criterion (Table~\ref{tab:hyperparameters}).
 
-At a budget of $10{,}000$ labelled patches the distilled student reaches $0.4607$ best validation mIoU against the baseline's $0.3989$, an improvement of $+0.0618$ (Table~\ref{tab:main-results}).
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{llccc}
+        \toprule
+        Labels                                                        & Method              & Val.\ mIoU        & Test mIoU         & Cost (h)       \\
+        \midrule
+        $10{,}000$                                                    & KD + DSBN           & $\mathbf{0.4607}$ & $\mathbf{0.4454}$ & $13.3$         \\
+        $10{,}000$                                                    & Supervised baseline & $0.3720$          & $0.3739$          & $\mathbf{4.0}$ \\
+        \addlinespace
+        $1{,}000$                                                     & KD + DSBN           & $0.2679$          & $0.2635$          & $2.2$          \\
+        $1{,}000$                                                     & Supervised baseline & $\mathbf{0.2916}$ & $\mathbf{0.2707}$ & $\mathbf{0.6}$ \\
+        \midrule
+        \multicolumn{2}{l}{TerraMind teacher (Sentinel-2, reference)} & ---                 & $0.6351$          & ---                                \\
+        \bottomrule
+    \end{tabular}
+    \caption{Main results on the LULC task.
+        Validation mIoU is the best epoch, on the fixed $1{,}000$-patch validation split shared by every run; because the splits are nested prefixes of one shuffled ordering, the two label budgets are evaluated on the identical patches.
+        Test mIoU is on the full $25{,}323$-patch test split.
+        Cost is total wall-clock for the run.
+    }
+    \label{tab:main-results}
+\end{table}
+
+At a budget of $10{,}000$ labelled patches the distilled student reaches $0.4607$ best validation mIoU against the baseline's $0.3720$, an improvement of $+0.0887$ and $0.4454$ against $0.3739$ on the test split (Table~\ref{tab:main-results}).
 Figure~\ref{fig:dsbn-vs-baseline} shows the shape of that margin: the baseline is ahead during the first twenty-five epochs, then the two curves cross but the distilled run keeps climbing after the baseline has flattened and stalled due to early stopping.
 
 \begin{figure}[htbp]
@@ -360,7 +383,7 @@ This overtake could be read as
 }
 
 The distilled run's best epoch is the $89$th of the $101$ it ran, and it exhausted the full budget without triggering the early stopping, so the result should be read as a lower bound on what this configuration reaches.
-The baseline, by contrast, early-stopped at epoch $80$.
+The baseline, by contrast, early-stopped at epoch $73$.
 
 The per-class results (Figure~\ref{fig:per-class}) show that the gain is a broad one, and not concentrated in a single class.
 Distillation is ahead on ten of the eleven classes, most markedly on moss/lichen ($+0.148$), snow/ice ($+0.124$), mangroves ($+0.120$), cropland ($+0.112$), tree cover ($+0.097$) and grassland ($+0.096$).
@@ -387,29 +410,6 @@ The distillation requires $7.9$ minutes per epoch against the $3.3$ of the basel
 At a fixed compute budget rather than a fixed epoch count, the comparison would therefore be much closer.
 Separately, the teacher reaches $0.6351$ mIoU on Sentinel-2 while the student reaches $0.4454$ on $\Phi$-sat-2, so roughly $0.19$ mIoU of the teacher--student gap remains unclosed.
 That residual is a compression gap rather than a domain gap, since Section~\ref{sec:rq2-results} shows that the student performs almost identically on the two sensors, so what separates it from the teacher is its capacity and its initialisation.
-
-\begin{table}[htbp]
-    \centering
-    \begin{tabular}{llccc}
-        \toprule
-        Labels                                                        & Method              & Val.\ mIoU        & Test mIoU         & Cost (h)       \\
-        \midrule
-        $10{,}000$                                                    & KD + DSBN           & $\mathbf{0.4607}$ & $\mathbf{0.4454}$ & $13.3$         \\
-        $10{,}000$                                                    & Supervised baseline & $0.3720$          & $0.3739$          & $\mathbf{4.0}$ \\
-        \addlinespace
-        $1{,}000$                                                     & KD + DSBN           & $0.2679$          & $0.2635$          & $2.2$          \\
-        $1{,}000$                                                     & Supervised baseline & $\mathbf{0.2916}$ & $\mathbf{0.2707}$ & $\mathbf{0.6}$ \\
-        \midrule
-        \multicolumn{2}{l}{TerraMind teacher (Sentinel-2, reference)} & ---                 & $0.6351$          & ---                                \\
-        \bottomrule
-    \end{tabular}
-    \caption{Main results on the LULC task.
-        Validation mIoU is the best epoch, on the fixed $1{,}000$-patch validation split shared by every run; because the splits are nested prefixes of one shuffled ordering, the two label budgets are evaluated on the identical patches.
-        Test mIoU is on the full $25{,}323$-patch test split.
-        Cost is total wall-clock for the run.
-    }
-    \label{tab:main-results}
-\end{table}
 
 \section{Advantage Reversal on Small Label Budget}
 \label{sec:label-crossover}
