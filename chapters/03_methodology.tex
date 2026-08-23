@@ -350,11 +350,80 @@ Standard supervised fine-tuning, even on physics-degraded data, doesn't translat
 The mechanism we adopted only requires that the domain of each training example is known.
 Domain-Specific Batch Normalization (DSBN) \cite{chang2019dsbn} gives the student a separate batch-normalization affine transform and running statistics per sensor domain, on top of otherwise fully shared convolutional weights.
 Concretely, the two-branch distillation scheme (Section~\ref{sec:kd}) forwards a Sentinel-2 batch and a $\Phi$-sat-2 batch through the student separately at each training step, and DSBN lets each pass use the normalization statistics of its own domain, instead of a single set of statistics blended across the two.
-Figure~\ref{fig:dsbn} contrasts the two arrangements.
-Under ordinary batch normalization both domains pass through one shared layer, so its running statistics converge to a blend of the two sensors and describe neither exactly.
-A DSBN layer instead holds two branches, and each example activates the branch matching its own domain while the inactive branch is left untouched.
-Everything outside those layers, which is to say every convolutional weight in the student, stays shared and is therefore trained on both sensors at once.
-The mechanism thus separates the sensor-specific part of the representation, which is the per-channel scale and shift, from the part that ought to be common, which is the learned filters.
+
+\paragraph{Batch normalization.}
+Write $x \in \mathbb{R}^{H \times W \times N}$ for the activations of a single channel over a mini-batch of $N$ examples, indexed by spatial position $(i,j)$ and example $n$.
+A batch-normalization layer \cite{ioffe2015batchnorm} whitens those activations and rescales them with learned per-channel affine parameters $\gamma$ and $\beta$:
+\begin{equation}
+    \mathrm{BN}\big(x[i,j,n];\, \gamma, \beta\big) = \gamma \cdot \hat{x}[i,j,n] + \beta,
+    \label{eq:bn}
+\end{equation}
+where
+\begin{equation}
+    \hat{x}[i,j,n] = \frac{x[i,j,n] - \mu}{\sqrt{\sigma^{2} + \epsilon}},
+    \label{eq:bn-whiten}
+\end{equation}
+and the mini-batch mean and variance are
+\begin{equation}
+    \mu = \frac{\sum_{n} \sum_{i,j} x[i,j,n]}{N \cdot H \cdot W},
+    \qquad
+    \sigma^{2} = \frac{\sum_{n} \sum_{i,j} \big(x[i,j,n] - \mu\big)^{2}}{N \cdot H \cdot W},
+    \label{eq:bn-stats}
+\end{equation}
+with $\epsilon$ a small constant guarding against division by zero.
+Mini-batch statistics are unavailable at inference, so during training the layer additionally accumulates estimates of the mean and variance of the whole activation distribution, $\bar{\mu}$ and $\bar{\sigma}$, by exponential moving average with update factor $\alpha$.
+At the $t$-th mini-batch,
+\begin{equation}
+    \bar{\mu}^{\,t+1} = (1 - \alpha)\,\bar{\mu}^{\,t} + \alpha\,\mu^{t},
+    \qquad
+    \big(\bar{\sigma}^{\,t+1}\big)^{2} = (1 - \alpha)\,\big(\bar{\sigma}^{\,t}\big)^{2} + \alpha\,\big(\sigma^{t}\big)^{2},
+    \label{eq:bn-ema}
+\end{equation}
+and it is these accumulated values, not the batch statistics, that whiten activations at test time.
+
+Equation~\eqref{eq:bn-stats} is where a single-branch network fails under a sensor gap: the sums run over every example in the mini-batch irrespective of which sensor produced it, so the running estimates of Equation~\eqref{eq:bn-ema} converge to a blend of the two sensors' statistics and describe neither of them.
+Chang et al.\ make the same observation in general terms, that sharing the mean and variance across source and target is inappropriate when the domain shift is significant; the raw-scale and distribution-shape differences measured in Section~\ref{sec:triplets} put this sensor pair well inside that regime.
+
+\paragraph{Domain-specific batch normalization.}
+DSBN keeps one complete set of normalization parameters and statistics per domain label $d \in \{S, T\}$, here $S$ for Sentinel-2 and $T$ for $\Phi$-sat-2.
+Writing $x_d \in \mathbb{R}^{H \times W \times N}$ for the activations of a channel belonging to domain $d$, the layer becomes
+\begin{equation}
+    \mathrm{DSBN}_{d}\big(x_d[i,j,n];\, \gamma_d, \beta_d\big) = \gamma_d \cdot \hat{x}_d[i,j,n] + \beta_d,
+    \label{eq:dsbn}
+\end{equation}
+with
+\begin{equation}
+    \hat{x}_d[i,j,n] = \frac{x_d[i,j,n] - \mu_d}{\sqrt{\sigma_d^{2} + \epsilon}},
+    \label{eq:dsbn-whiten}
+\end{equation}
+\begin{equation}
+    \mu_d = \frac{\sum_{n} \sum_{i,j} x_d[i,j,n]}{N \cdot H \cdot W},
+    \qquad
+    \sigma_d^{2} = \frac{\sum_{n} \sum_{i,j} \big(x_d[i,j,n] - \mu_d\big)^{2}}{N \cdot H \cdot W}.
+    \label{eq:dsbn-stats}
+\end{equation}
+The running estimates are accumulated separately per domain as well,
+\begin{equation}
+    \bar{\mu}_d^{\,t+1} = (1 - \alpha)\,\bar{\mu}_d^{\,t} + \alpha\,\mu_d^{t},
+    \qquad
+    \big(\bar{\sigma}_d^{\,t+1}\big)^{2} = (1 - \alpha)\,\big(\bar{\sigma}_d^{\,t}\big)^{2} + \alpha\,\big(\sigma_d^{t}\big)^{2},
+    \label{eq:dsbn-ema}
+\end{equation}
+and at test time the examples of a domain are whitened with that domain's own $\bar{\mu}_d$ and $\bar{\sigma}_d$.
+
+Comparing Equation~\eqref{eq:dsbn} with Equation~\eqref{eq:bn}, the functional form is unchanged and the entire difference is the subscript $d$.
+The conversion is correspondingly mechanical: every BN layer of a base network $F(\cdot)$ is replaced by a DSBN layer, and each input is accompanied by its domain label, giving a domain-specific network $F_d(\cdot)$.
+Only $\gamma_d$, $\beta_d$, $\bar{\mu}_d$ and $\bar{\sigma}_d$ are duplicated, which for a layer of $C$ channels is four $C$-vectors per domain, negligible beside the convolutional weights.
+Everything outside those layers, which is to say every learned filter in the student, stays shared and is trained on both sensors at once.
+The split is therefore placed exactly at the per-channel scale and shift, the part of the representation that the measurements of Section~\ref{sec:triplets} identify as the most sensor-dependent, while the filters, which ought to be common, remain so.
+Chang et al.\ argue that this is also why the shared weights learn better domain-invariant features: the domain-specific component of the activations can be removed effectively using the statistics and parameters of the domain the input actually came from.
+
+One boundary is worth stating explicitly.
+DSBN was introduced for \emph{unsupervised} domain adaptation, where the target domain carries no labels at all, and the original paper embeds the layer in a two-stage framework that first estimates pseudo-labels for the target domain and then trains on them.
+We adopt only the layer itself.
+Our target domain is labelled (Section~\ref{sec:triplets}), both branches are trained under supervision, and no pseudo-labelling stage is involved, so the mechanism is used here in a setting simpler than the one it was designed for.
+
+Figure~\ref{fig:dsbn} contrasts the two arrangements, with each example activating the branch matching its own domain while the inactive branch is left untouched.
 
 \begin{figure}[htp]
     \centering
