@@ -15,7 +15,7 @@ That section is consequently the only one in this chapter whose smaller effects 
 The teacher is TerraMind~\cite{jakubik2025terramind} at the \texttt{base} scale, fine-tuned on the Sentinel-2 branch of the triplet dataset (Section~\ref{sec:triplets}) for the eleven-class WorldCover LULC task~\cite{zanaga2022worldcover}, and frozen thereafter.
 The student is a U-Net~\cite{ronneberger2015unet} with $9.85$\,M parameters, trained from a random initialisation, since no pre-trained weights are available for this backbone.
 This is a material constraint, and we return to it in Section~\ref{sec:limitations}.
-Both models consume the seven-band Blue--NIR stack under the per-domain normalization protocol of Section~\ref{sec:normalization}.
+Both models consume the seven-band Blue-NIR stack under the per-domain normalization protocol of Section~\ref{sec:normalization}.
 
 Two elements of this configuration deserve to be stated explicitly, since we arrived at both of them empirically and both of them materially change the results.
 
@@ -75,7 +75,7 @@ Everything the two conditions could share is held constant: architecture, initia
     \label{tab:hyperparameters}
 \end{table}
 
-One asymmetry in this comparison is structural rather than incidental, and it should be stated alongside the table.
+One asymmetry in this comparison is structural rather than incidental.
 The distilled arm applies the task loss to both sensor views of each patch, so within one epoch it draws twice as much supervision from the same labels as the single-branch baseline does.
 This is inherent to what the comparison is testing, since the baseline has no second view by definition, but it does mean that the per-epoch comparisons reported below are not matched on gradient signal, and it also contributes, alongside the forward pass of the frozen teacher, to the cost difference quantified in Section~\ref{sec:rq3-results}.
 
@@ -126,7 +126,7 @@ This is a supplementary observation, on a different model scale and with a diffe
 \label{sec:ladder-results}
 
 This section takes up the last part of RQ1, which asks which of the physical differences between the two instruments is the one that produces the gap.
-This sub-question takes on the measurements above that established that a gap exists and that it is low-level in origin, and it asks which of the three low-level differences is responsible: radiometric noise, optical blur, or band misalignment.
+It builds on the measurements above, which established that a gap exists and that it is low-level in origin, and narrows the question to three candidates: radiometric noise, optical blur, and band misalignment.
 The two instruments differ in their spectral response, their radiometric noise, their band registration and their ground sampling distance all at once, and no measurement on real pairs can separate those.
 The simulated ladder of Section~\ref{sec:sen1floods-sim} makes the separation possible by degrading one factor at a time over identical scene content.
 Three factors are varied over four severities each: sensor noise (SNR), optical blur (PSF), and band-to-band misalignment.
@@ -165,7 +165,7 @@ Figure~\ref{fig:ladder-grid} shows what the four severities of Table~\ref{tab:la
     \label{fig:ladder-grid}
 \end{figure}
 
-What we measure here is the domain gap proper: each model is trained once on the undegraded rung, and the resulting checkpoint is then evaluated on the test split of every rung, so the degradation only appears at inference, exactly as it would for a model trained on Sentinel-2 and deployed on $\Phi$-sat-2.
+What we measure here is the domain gap proper: each model is trained once on the clean data, and the resulting checkpoint is then evaluated on the test split of every variant, so the degradation only occurs at inference.
 Three encoder configurations are compared: the distilled student with its encoder frozen and its decoder trained ($5.14$\,M of $9.86$\,M parameters trainable), TerraMind \texttt{base} under the same frozen-encoder protocol ($7.92$\,M of $94.25$\,M), and TerraMind \texttt{base} fine-tuned end to end.
 Each configuration is run for three seeds using the same model checkpoint across all test splits.
 Table~\ref{tab:ladder-domain-gap} reports the results.
@@ -174,46 +174,46 @@ Table~\ref{tab:ladder-domain-gap} reports the results.
     \centering
     \begin{tabular}{lccc}
         \toprule
-                             & Distilled student           & TerraMind base            & TerraMind base                     \\
-                             & (encoder frozen)            & (encoder frozen)          & (fine-tuned)                       \\
+                             & Distilled student           & TerraMind base     & TerraMind base              \\
+                             & (encoder frozen)            & (encoder frozen)   & (fine-tuned)                \\
         \midrule
-        Clean baseline (IoU) & $\mathbf{0.814} \pm 0.002$  & $0.739 \pm 0.057$         & $0.773 \pm 0.033$                  \\
+        Clean baseline (IoU) & $\mathbf{0.814} \pm 0.002$  & $0.739 \pm 0.057$  & $0.773 \pm 0.033$           \\
         \midrule
-        \multicolumn{4}{l}{\emph{Sensor noise (SNR)}}                                                                       \\
-        \quad L1             & $-0.031 \pm 0.024$          & $+0.002 \pm 0.003$        & $-0.001 \pm 0.001$                 \\
-        \quad L2             & $-0.114 \pm 0.099$          & $+0.003 \pm 0.006$        & $-0.004 \pm 0.002$                 \\
-        \quad L3             & $-0.280 \pm 0.234$          & $-0.018 \pm 0.017$        & $-0.041 \pm 0.014^{\ast}$          \\
-        \quad L4             & $\mathbf{-0.458} \pm 0.267$ & $-0.088 \pm 0.066$        & $-0.152 \pm 0.030^{\ast}$          \\
+        \multicolumn{4}{l}{\emph{Sensor noise (SNR)}}                                                         \\
+        \quad L1             & $-0.031 \pm 0.024$          & $+0.002 \pm 0.003$ & $-0.001 \pm 0.001$          \\
+        \quad L2             & $-0.114 \pm 0.099$          & $+0.003 \pm 0.006$ & $-0.004 \pm 0.002$          \\
+        \quad L3             & $-0.280 \pm 0.234$          & $-0.018 \pm 0.017$ & $-0.041 \pm 0.014$          \\
+        \quad L4             & $\mathbf{-0.458} \pm 0.267$ & $-0.088 \pm 0.066$ & $-0.152 \pm 0.030$          \\
         \addlinespace
-        \multicolumn{4}{l}{\emph{Optical blur (PSF)}}                                                                       \\
-        \quad L1             & $-0.002 \pm 0.000^{\ast}$   & $-0.004 \pm 0.003$        & $0.000 \pm 0.000$                  \\
-        \quad L2             & $-0.013 \pm 0.003^{\ast}$   & $-0.010 \pm 0.007$        & $0.000 \pm 0.001$                  \\
-        \quad L3             & $-0.048 \pm 0.014^{\ast}$   & $-0.016 \pm 0.012$        & $0.000 \pm 0.003$                  \\
-        \quad L4             & $-0.110 \pm 0.030^{\ast}$   & $-0.025 \pm 0.016$        & $\mathbf{-0.008} \pm 0.009$        \\
+        \multicolumn{4}{l}{\emph{Optical blur (PSF)}}                                                         \\
+        \quad L1             & $-0.002 \pm 0.000$          & $-0.004 \pm 0.003$ & $0.000 \pm 0.000$           \\
+        \quad L2             & $-0.013 \pm 0.003$          & $-0.010 \pm 0.007$ & $0.000 \pm 0.001$           \\
+        \quad L3             & $-0.048 \pm 0.014$          & $-0.016 \pm 0.012$ & $0.000 \pm 0.003$           \\
+        \quad L4             & $-0.110 \pm 0.030$          & $-0.025 \pm 0.016$ & $\mathbf{-0.008} \pm 0.009$ \\
         \addlinespace
-        \multicolumn{4}{l}{\emph{Band misalignment}}                                                                        \\
-        \quad L1             & $-0.006 \pm 0.001^{\ast}$   & $-0.008 \pm 0.003^{\ast}$ & $-0.003 \pm 0.001^{\ast}$          \\
-        \quad L2             & $-0.031 \pm 0.001^{\ast}$   & $-0.033 \pm 0.005^{\ast}$ & $-0.013 \pm 0.003^{\ast}$          \\
-        \quad L3             & $-0.082 \pm 0.004^{\ast}$   & $-0.065 \pm 0.005^{\ast}$ & $-0.051 \pm 0.007^{\ast}$          \\
-        \quad L4             & $-0.140 \pm 0.007^{\ast}$   & $-0.119 \pm 0.009^{\ast}$ & $\mathbf{-0.109} \pm 0.012^{\ast}$ \\
+        \multicolumn{4}{l}{\emph{Band misalignment}}                                                          \\
+        \quad L1             & $-0.006 \pm 0.001$          & $-0.008 \pm 0.003$ & $-0.003 \pm 0.001$          \\
+        \quad L2             & $-0.031 \pm 0.001$          & $-0.033 \pm 0.005$ & $-0.013 \pm 0.003$          \\
+        \quad L3             & $-0.082 \pm 0.004$          & $-0.065 \pm 0.005$ & $-0.051 \pm 0.007$          \\
+        \quad L4             & $-0.140 \pm 0.007$          & $-0.119 \pm 0.009$ & $\mathbf{-0.109} \pm 0.012$ \\
         \bottomrule
     \end{tabular}
     \caption{Domain gap across the degradation ladder: change in positive-class IoU relative to the undegraded test split, for a model trained only on undegraded data.
-        Values are the mean over three seeds of the within-seed drop, $\pm$ one standard deviation of those drops; $^{\ast}$ marks a drop exceeding twice that deviation.
+        Values are the mean over three seeds of the within-seed drop, $\pm$ one standard deviation of those drops.
         The two model families are scored under different evaluation geometry (the student on $256$-pixel centre crops, TerraMind on full $1077$-pixel scenes), so the clean baselines are not comparable between columns and only the drops are.
     }
     \label{tab:ladder-domain-gap}
 \end{table}
 
-On undegraded data the distilled student is the strongest of the three, at $0.814$ IoU against $0.773$ for fine-tuned TerraMind and $0.739$ for frozen TerraMind.
-The smaller student outperforming the foundation model on this clean task can be attributed to its stronger local representation, whereas TerraMind is a general-purpose encoder receiving only a task head and a fine-tuning pass.
+On clean data the distilled student is the strongest of the three, at $0.814$ IoU against $0.773$ for fine-tuned TerraMind and $0.739$ for frozen TerraMind.
+That the smaller student outperforms the foundation model on this clean task can be attributed to its stronger local representation, whereas TerraMind is a general-purpose encoder given only a task head and a fine-tuning pass.
 The comparison of interest here is the response to degradation.
 
 Band misalignment is the only factor that degrades every configuration significantly, monotonically, and by a similar amount.
 Its full-severity cost varies only between $-0.109$ and $-0.140$ IoU across models that differ by an order of magnitude in trainable parameters and by architecture family, and it is the sole factor resolved at the mildest severity in all three columns, where a $1.25$-pixel shift already costs a small but reproducible amount.
 Its seed-to-seed deviation is also the smallest in the table.
 A perturbation whose cost is that insensitive to the model absorbing it is best read as a damage to the input signal, rather than as a weakness of any particular representation.
-Band-to-band shifts corrupt precisely the cross-band relationships on which a water/land decision rests, and no amount of encoder capacity recovers an information that the shift has already destroyed.
+Band-to-band shifts corrupt precisely the cross-band relationships on which a water/land decision rests, and no amount of encoder capacity recovers information that the shift has already destroyed.
 
 Sensor noise produces the largest single degradation, but its magnitude is a property of the model rather than of the perturbation, and it is the least reproducible quantity in the table.
 At full severity it costs the distilled student $-0.458$ IoU on average and fine-tuned TerraMind $-0.152$, a threefold difference that holds at every severity and stands in contrast to the near-constant cost of misalignment.
@@ -225,7 +225,7 @@ For frozen TerraMind the response is monotone and uniformly negative but never c
 For the distilled student it is small but unambiguous, significant at all four severities with the tightest deviations in the table, rising from $-0.002$ to $-0.110$.
 Blur is therefore real for the student and negligible for TerraMind, yet even for the student it remains the smallest of the three factors, costing a quarter of what noise costs at the same nominal severity.
 
-This ordering settles the attribution question left open in Section~\ref{sec:rq1-results}, and it settles it in the same direction.
+This ordering settles the attribution question left open in Section~\ref{sec:rq1-results}.
 The factor that models a resolution difference, which is the optical blur, is the one that costs almost nothing, while the radiometric factor and the band-registration factor are the ones carrying the effect.
 The per-layer PAD result located the gap in low-level radiometry rather than in semantics, and the ladder independently identifies the two low-level physical effects responsible, using a different task, a different measurement, and imagery in which scene content is held fixed by construction.
 It also reinforces the point that the gap here is not resolution-driven, which is again the reverse of the emphasis found in related on-orbit work~\cite{du2025onorbitdemonstrationgeospatialfoundation}.
@@ -234,11 +234,12 @@ It also reinforces the point that the gap here is not resolution-driven, which i
     \centering
     \begin{tabular}{lccc}
         \toprule
-        Factor at L4       & Trained clean, tested degraded & Trained and tested degraded & Recovered \\
+        Factor at L4       & Trained clean,  & Trained,        & Recovered \\
+                           & tested degraded & tested degraded             \\
         \midrule
-        Sensor noise (SNR) & $-0.455$                       & $-0.072$                    & $84\%$    \\
-        Band misalignment  & $-0.150$                       & $-0.051$                    & $66\%$    \\
-        Optical blur (PSF) & $-0.128$                       & $+0.020$                    & all of it \\
+        Sensor noise (SNR) & $-0.455$        & $-0.072$        & $84\%$    \\
+        Band misalignment  & $-0.150$        & $-0.051$        & $66\%$    \\
+        Optical blur (PSF) & $-0.128$        & $+0.020$        & all of it \\
         \bottomrule
     \end{tabular}
     \caption{Degradation seen at inference only, against degradation present during training as well, for the distilled student at full severity.
@@ -247,12 +248,11 @@ It also reinforces the point that the gap here is not resolution-driven, which i
     \label{tab:ladder-adaptation}
 \end{table}
 
-One further comparison bears directly on what to do about these results.
 Repeating the sweep with each model trained on the same degraded condition it is evaluated on, instead of on clean data, recovers most of the loss (Table~\ref{tab:ladder-adaptation}).
 $84\%$ of the noise penalty and $66\%$ of the misalignment penalty disappear, and the blur ceases to be a penalty at all, since it scores marginally \emph{above} the clean baseline, in the manner of a mild augmentation.
 The gap measured in Table~\ref{tab:ladder-domain-gap} is therefore largely an adaptation gap rather than an information-loss gap, at least for noise and blur.
 Where the noise characteristics of the operating sensor are known in advance, which for a launched instrument they always are, simulating them during the training reclaims most of the achievable performance, and this without any domain-adaptation machinery at all.
-Misalignment is again the exception: a third of its cost survives training on the degraded condition, which is consistent with reading it as factor degrading the cross-band information.
+Misalignment is again the exception: a third of its cost survives training on the degraded condition, which is consistent with reading it as a factor that degrades the cross-band information.
 
 Three limitations bound these results.
 We vary the factors one at a time, whereas a real sensor pair presents all of them at once, and possibly interacting, so the ladder identifies which effects matter in isolation, and not how they compose.
@@ -328,7 +328,6 @@ The probe transfer, which asks the functional question directly, is the appropri
     \label{fig:pad-decision}
 \end{figure}
 
-This result should be stated precisely.
 With a domain-specific normalization, the encoder is domain-adaptive rather than domain-invariant: the convolutional weights are shared, the normalization statistics are not, and the target-sensor branch has to be selected at inference.
 The defensible claim is therefore that after a per-domain normalization, the structure learned on the source sensor is $97\%$ readable on the target one.
 That is weaker than a single sensor-agnostic encoder, but it is the property that an on-board deployment actually requires, since the acquiring instrument is always known.
@@ -336,27 +335,46 @@ That is weaker than a single sensor-agnostic encoder, but it is the property tha
 \section{Distillation Against a Supervised Baseline (RQ3)}
 \label{sec:rq3-results}
 
-Sensor adaptivity is only useful if it buys an accuracy that a simpler method would not.
-Our control is a student of identical architecture, trained directly on labelled $\Phi$-sat-2 with no teacher, no second sensor and no distillation, and holding constant the split, the normalization, the augmentation, the task loss, the optimiser, the schedule and the early-stopping criterion (Table~\ref{tab:hyperparameters}).
+Sensor adaptivity is only useful if it improves accuracy over a simpler method.
+The control for this is a student of identical architecture, trained directly on labelled $\Phi$-sat-2 with no teacher, no second sensor and no distillation.
+Some parameters are held constant for fairness: the split, the normalization, the augmentation, the task loss, the optimiser, the schedule and the early-stopping criterion (Table~\ref{tab:hyperparameters}).
 
-At a budget of $10{,}000$ labelled patches the distilled student reaches $0.4607$ best validation mIoU against the baseline's $0.3989$, a margin of $0.0618$ (Table~\ref{tab:main-results}).
-Figure~\ref{fig:dsbn-vs-baseline} shows the shape of that margin: the baseline is ahead for roughly the first twenty-five epochs, then the two curves cross, and the distilled run separates and keeps climbing after the baseline has flattened.
-Averaged over the $71$ epochs the two runs share, the distilled student leads by $0.0161$ mIoU and is ahead in $49$ of them.
+At a budget of $10{,}000$ labelled patches the distilled student reaches $0.4607$ best validation mIoU against the baseline's $0.3989$, an improvement of $+0.0618$ (Table~\ref{tab:main-results}).
+Figure~\ref{fig:dsbn-vs-baseline} shows the shape of that margin: the baseline is ahead during the first twenty-five epochs, then the two curves cross but the distilled run keeps climbing after the baseline has flattened and stalled due to early stopping.
 
-\wip[Settle the framing of the late overtake against the curves.]{%
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig_dsbn_vs_baseline.png}
+    \caption{Left: $\Phi$-sat-2 validation mIoU over training at $10{,}000$ labelled patches, with the best epoch marked. Dotted line marks teacher's accuracy on Sentinel-2.
+        Right: the residual accuracy difference between the two sensors for the distilled student, which crosses zero around epoch $55$ and oscillates.
+    }
+    \label{fig:dsbn-vs-baseline}
+\end{figure}
+
+This overtake could be read as 
+\wip[Settle the framing of the late overtake against the curves.
+]{%
     To write: an interpretation of \emph{why} the distilled run overtakes late rather than early.
     These runs do not establish the mechanism.
     The candidate explanations are that the teacher's signal becomes most useful once the student has enough capacity committed to the easy classes, or simply that the two-branch arm sees twice the supervision per epoch and therefore trails on wall-clock but not on epochs.
 }
 
-The distilled run had not converged.
-Its best epoch is the $89$th of the $101$ it ran, and it exhausted the full budget without ever triggering the early stopping, so $0.4607$ should be read as a lower bound on what this configuration reaches.
+The distilled run's best epoch is the $89$th of the $101$ it ran, and it exhausted the full budget without triggering the early stopping, so the result should be read as a lower bound on what this configuration reaches.
 The baseline, by contrast, early-stopped at epoch $80$.
 
 The per-class results (Figure~\ref{fig:per-class}) show that the gain is a broad one, and not concentrated in a single class.
 Distillation is ahead on nine of the eleven classes, most markedly on mangroves ($+0.144$), grassland ($+0.135$), moss/lichen ($+0.115$), tree cover ($+0.100$) and cropland ($+0.099$).
 It is behind on permanent water ($-0.019$) and level on shrubland ($-0.002$).
 The frequency-weighted IoU moves in the same direction as the macro average ($0.523$ against $0.454$), so this result is not an artefact of the rare-class weighting introduced in Section~\ref{sec:configuration}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig_per_class_dsbn.png}
+    \caption{Per-class test IoU at $10{,}000$ labelled patches, ordered by class prevalence, with each class's share of labelled pixels beneath its label.
+        Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them (Section~\ref{sec:configuration}).
+    }
+    \label{fig:per-class}
+\end{figure}
 
 \wip[Decide how much weight the two classes where the baseline wins deserve.]{%
     To write: the per-class discussion.
@@ -393,41 +411,18 @@ That residual is a compression gap rather than a domain gap, since Section~\ref{
     \label{tab:main-results}
 \end{table}
 
-Both test scores in Table~\ref{tab:main-results} are measured on the full $25{,}323$-patch split.
-The $10{,}000$-label baseline was originally evaluated on a $997$-patch subset, before the evaluation split was decoupled from the training budget (Section~\ref{sec:measurement-pitfalls}); its stored checkpoint was re-evaluated on the full split for this table, which moved its score from $0.3902$ to $0.3782$ and required no retraining.
-The size of that shift is worth noting on its own: the same frozen teacher scores $0.5788$ on the $997$-patch subset and $0.6351$ on the full split, so subset-to-subset differences of this magnitude are not negligible at all, and no number coming from the two evaluation regimes should be compared directly.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth]{figures/fig_dsbn_vs_baseline.png}
-    \caption{Left: $\Phi$-sat-2 validation mIoU over training at $10{,}000$ labelled patches, with the best epoch marked; the dotted line is the teacher's Sentinel-2 accuracy.
-        Right: the residual accuracy difference between the two sensors for the distilled student, which crosses zero around epoch $55$ and oscillates about it thereafter.
-    }
-    \label{fig:dsbn-vs-baseline}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth]{figures/fig_per_class_dsbn.png}
-    \caption{Per-class test IoU at $10{,}000$ labelled patches, ordered by class prevalence, with each class's share of labelled pixels beneath its label.
-        Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them (Section~\ref{sec:configuration}).
-    }
-    \label{fig:per-class}
-\end{figure}
-
 \section{Advantage Reversal on Small Label Budget}
 \label{sec:label-crossover}
 
-KD and UDA are usually motivated by a label scarcity in the target domain~\cite{kouw2019introductiondomainadaptationtransfer}, so we would expect the advantage above to grow as the target labels are removed, however the opposite is observed.
+KD and UDA are usually motivated by a label scarcity in the target domain~\cite{kouw2019introductiondomainadaptationtransfer}, so we would expect the advantage above to grow as the target labels are removed; the opposite is what we observe.
 At $1{,}000$ labelled patches the supervised baseline is ahead by every measure: best validation mIoU $0.2916$ against $0.2679$, test mIoU $0.2707$ against $0.2635$, and on matched epochs the distilled student leads in only $8$ of the $58$ epochs both runs share.
 It also does so at roughly a third of the cost, and this even though the distilled run had the larger budget available to it: it used its full hundred epochs without ever triggering the early stopping, while the baseline stopped at sixty-seven.
 Figure~\ref{fig:label-crossover} shows the crossover; both budgets are evaluated on the identical fixed $1{,}000$-patch validation split, so the two points are directly comparable.
 
 The reversal is consistent across every measure reported (best validation mIoU, test mIoU, and the epoch-by-epoch lead), but the two ends of the crossover are not equally well resolved.
-At $10{,}000$ labels the margin ($0.0543$ validation mIoU) is larger than the epoch-to-epoch variance noted at the start of this chapter; at $1{,}000$ labels it is not ($0.0237$ validation, $0.0072$ test), and the baseline's advantage at the small budget therefore rests mainly on the consistency of the epoch-by-epoch lead, not on the size of the final gap.
+At $10{,}000$ labels the margin ($0.0618$ validation mIoU) is larger than the epoch-to-epoch variance noted at the start of this chapter; at $1{,}000$ labels it is not ($0.0237$ validation, $0.0072$ test), and the baseline's advantage at the small budget therefore rests mainly on the consistency of the epoch-by-epoch lead, not on the size of the final gap.
 Replication across seeds is required before the small-budget end of the crossover can be treated as established, and that is the appropriate reading of it here.
-A plausible reading is that the distilled configuration carries substantially more machinery, which is a second forward pass, doubled normalization parameters, and a distillation term pulling toward a teacher that is itself imperfect at $0.5788$ mIoU, and that below a certain label threshold, the cost of all this machinery exceeds the value of the teacher's signal.
-This is offered as a hypothesis: with two budgets the crossing point is bracketed but not located, and intermediate budgets would be required to characterise it.
+One reading is that the distilled configuration carries substantial overhead, which is a second forward pass, doubled normalization parameters, and a distillation term pulling toward a teacher, and that below a certain label threshold the cost exceeds the value of the teacher's signal.
 
 \begin{figure}[htbp]
     \centering
@@ -470,7 +465,7 @@ We therefore hold the evaluation splits fixed and independent of the training bu
 All experiments use at most $10{,}000$ of the $202{,}582$ available training patches, under $5\%$, so the crossover of Section~\ref{sec:label-crossover} is characterised entirely within the low-data regime, and the ranking at full scale is untested.
 Single seeds are used everywhere except the degradation-ladder evaluation of Section~\ref{sec:ladder-results}, so apart from that section no result in this chapter is supported by independent replication; epoch-to-epoch validation variance is of the order of $0.02$ mIoU, and differences below roughly $0.03$, which includes the small-budget end of the crossover in Section~\ref{sec:label-crossover}, are consequently not resolved.
 Two further controls are outstanding at the time of writing: a shared-normalization distillation run isolating the contribution of domain-specific normalization (Section~\ref{sec:configuration}), and a recomputation of the invariance measures under shared and per-domain-standardised normalization (Section~\ref{sec:rq2-results}).
-The student is trained from a random initialisation because no pre-trained weights exist for this backbone, and this plausibly accounts for a substantial share of the remaining $0.15$ mIoU gap to the teacher, and it confounds any claim that this gap would be attributable to a domain shift.
+The student is trained from a random initialisation because no pre-trained weights exist for this backbone, and this plausibly accounts for a substantial share of the remaining $0.15$ mIoU gap to the teacher, and it confounds any claim that this gap is attributable to a domain shift.
 Finally, the work is scoped to a single sensor pair, so the finding that the gap is radiometric rather than resolution-driven (Section~\ref{sec:rq1-results}) should not be generalised beyond it.
 
 \subsection{Interpretation of the flood-robustness result}
