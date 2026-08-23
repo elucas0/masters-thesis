@@ -411,6 +411,45 @@ At a fixed compute budget rather than a fixed epoch count, the comparison would 
 Separately, the teacher reaches $0.6351$ mIoU on Sentinel-2 while the student reaches $0.4454$ on $\Phi$-sat-2, so roughly $0.19$ mIoU of the teacher--student gap remains unclosed.
 That residual is a compression gap rather than a domain gap, since Section~\ref{sec:rq2-results} shows that the student performs almost identically on the two sensors, so what separates it from the teacher is its capacity and its initialisation.
 
+\paragraph{Complexity against accuracy.}
+The comparison above holds the architecture fixed and varies only the training signal, so it says nothing about where either arm sits on the complexity axis.
+$\Phi$satNet answers that question directly: at $0.351$\,M parameters it is a twenty-eighth of the U-Net that both arms use, and it is the class of model a mission would actually carry on board.
+Table~\ref{tab:complexity} places the three side by side, with $\Phi$satNet trained on the same $10{,}000$ labelled patches, the same split, the same focal loss and class weighting, the same optimiser, schedule and early-stopping criterion as the supervised baseline.
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{lrrrc}
+        \toprule
+        Model                         & Encoder    & Decoder + head & Total              & Test mIoU         \\
+        \midrule
+        Distilled student (KD + DSBN) & $4.72$\,M  & $5.14$\,M      & $9.86$\,M          & $\mathbf{0.4454}$ \\
+        Supervised baseline U-Net     & $4.72$\,M  & $5.14$\,M      & $9.85$\,M          & $0.3739$          \\
+        $\Phi$satNet                  & $0.199$\,M & $0.152$\,M     & $\mathbf{0.351}$\,M & $0.3316$          \\
+        \bottomrule
+    \end{tabular}
+    \caption{Trainable parameters against accuracy at $10{,}000$ labelled patches.
+        Every parameter is trained in all three rows, so the totals are also the trainable counts.
+        Test mIoU is on the full $25{,}323$-patch test split, on the fixed eleven-class denominator of Section~\ref{sec:measurement-pitfalls}.
+        The frozen teacher ($94.4$\,M) and the projection heads ($0.34$\,M) are training-time cost only and are not carried at inference, so neither appears here.
+    }
+    \label{tab:complexity}
+\end{table}
+
+The accuracy ordering follows the parameter ordering, but very far from proportionally.
+$\Phi$satNet gives up $0.042$ test mIoU against the supervised baseline and $0.114$ against the distilled student, for $28.1$ times fewer parameters.
+Per million trainable parameters it returns $0.944$ mIoU against the baseline's $0.038$ and the distilled student's $0.045$, a factor of roughly twenty-five.
+The distilled student's own margin, by contrast, is bought at almost no parameter cost at all: the domain-specific normalization adds $6{,}848$ parameters to the shared architecture, $0.07\%$ of the total, and the two U-Net arms are otherwise identical in size (Section~\ref{sec:dsbn-contribution} treats how much of the accuracy gain that mechanism accounts for).
+
+Two differences keep the $\Phi$satNet row from being a strict architectural control.
+It consumes the eight-band stack its input stem was built for, including the panchromatic band, where the other two models take the seven-band Blue--NIR stack of Section~\ref{sec:normalization}.
+And it is not trained from a random initialisation: it is fine-tuned end to end from the released land-cover checkpoint, which was itself pre-trained on \emph{simulated} $\Phi$-sat-2 imagery.
+
+\wip[Run the matched from-scratch control before this paragraph says anything about pre-training.]{%
+    To write: whether $\Phi$satNet's $0.3316$ owes anything to its pre-training.
+    The row as it stands measures the architecture and the pre-training together and cannot separate them, because the matched control at this configuration but from a random initialisation has not been run.
+    Two prior observations make the null outcome a live possibility: the released land-cover model scores at chance on real $\Phi$-sat-2 before any training, and a short frozen-encoder sweep did not separate the pre-trained encoders from a random initialisation.
+}
+
 \section{Advantage Reversal on Small Label Budget}
 \label{sec:label-crossover}
 
@@ -438,6 +477,7 @@ One reading is that the distilled configuration carries substantial overhead, wh
 \label{sec:discussion}
 
 \subsection{Domain-specific normalization contribution}
+\label{sec:dsbn-contribution}
 
 The improvement brought by the domain-specific normalization is larger than what a pure domain-alignment effect would predict, and its shape is informative: the accuracy on the source sensor improved by a margin similar to the one on the target ($+0.116$ against $+0.185$ test mIoU relative to the preceding configuration).
 A mechanism that only aligned domains should have improved the target branch alone.
