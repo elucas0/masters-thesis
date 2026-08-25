@@ -13,7 +13,7 @@ This separation is present from the very first layer of the encoder, which point
 Naively fine-tuning on physics-simulated degraded data does not close this gap.
 An explicit domain-adaptation mechanism is required, and the co-registered sensor pairs collected for this thesis are what made it possible to test the candidate mechanisms against real data, instead of assuming that one of them would work.
 The mechanism that did close the gap, which is the domain-specific batch normalization, only needs to know which sensor produced a given input, and not that the inputs be paired across sensors.
-A paired-contrastive objective exploiting the pairing directly was also implemented, and it added nothing measurable beyond it on the LULC task.
+A paired-contrastive objective exploiting the pairing directly was also implemented, and it added nothing measurable beyond it on the \acref{LULC} task.
 Both mechanisms were applied during the knowledge distillation, which is the same step that is separately required to compress the model onto space-qualified hardware that cannot run its original Vision Transformer architecture at all.
 The deployable student is therefore domain-adaptive by construction, and not by a hoped-for inheritance from the teacher.
 
@@ -21,7 +21,7 @@ To answer whether this adaptation is worth implementing, we compared the distill
 Distilling with domain-specific normalization outperforms a supervised baseline at a representative label budget, but it loses to that same baseline at a much smaller one, so the advantage reverses between the two budgets, although the small-budget end of that reversal falls within the run-to-run variance this thesis is able to resolve.
 Treating the domain-gap problem and the compute-constraint problem as one single combined training objective, and not as two sequential and independent fixes, is the central methodological position of this thesis, with the important qualification that whether this combination is worth adopting depends on how many target-domain labels are actually available.
 
-This work is limited to a single mission and a single sensor pair, and to one specific pre-trained GeoFM.
+This work is limited to a single mission and a single sensor pair, and to one specific pre-trained \acref{GeoFM}.
 Whether the spectral-response-driven account of the domain gap generalizes to other on-board missions, and whether TerraMind's broad pre-training is in fact more label-efficient than a mission-specific model trained from scratch, are both open questions that this thesis frames precisely but does not close.
-The comparison against $\Phi$satNet, a bespoke GeoFM developed for the same mission and by the same research group, is the immediate next step toward closing the second one.
-A natural extension of this work would then be to repeat the analysis for other sensor pairs and other missions, or to attempt to train a custom foundation model instead of adapting an existing one, in order to test whether the findings here are specific to TerraMind, or general to the class of large and diversely pre-trained EO models it represents.
+The comparison against $\Phi$satNet, a bespoke \acref{GeoFM} developed for the same mission and by the same research group, is the immediate next step toward closing the second one.
+A natural extension of this work would then be to repeat the analysis for other sensor pairs and other missions, or to attempt to train a custom foundation model instead of adapting an existing one, in order to test whether the findings here are specific to TerraMind, or general to the class of large and diversely pre-trained \acref{EO} models it represents.

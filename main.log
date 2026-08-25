@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.31)  25 AUG 2026 10:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.31)  25 AUG 2026 11:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -504,24 +504,24 @@ File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count341
@@ -547,7 +547,7 @@ Package grfext Info: Graphics extension search list:
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 40.
+Package hyperref Info: Link coloring OFF on input line 41.
  (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
@@ -589,22 +589,35 @@ Package hyperref Info: Link coloring OFF on input line 40.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 53.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 54.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 53.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 54.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] (./chapters/00_abstract.tex)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] (./chapters/00_abstract.tex
+Package acronym Info: Label `acro:GeoFM' newly defined as it shall be overridden
+although it is yet undefined on input line 2.
+Package acronym Info: Label `acro:ViT' newly defined as it shall be overridden
+although it is yet undefined on input line 4.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 4.
+Package acronym Info: Label `acro:CNN' newly defined as it shall be overridden
+although it is yet undefined on input line 4.
+Package acronym Info: Label `acro:CNN' overridden on input line 10.
+Package acronym Info: Label `acro:mIoU' newly defined as it shall be overridden
+although it is yet undefined on input line 13.
+Package acronym Info: Label `acro:mIoU' overridden on input line 13.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 14.
+)
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.76 \end{abstract}
+l.77 \end{abstract}
                     [1]
-Overfull \hbox (7.91954pt too wide) in paragraph at lines 82--91
+Overfull \hbox (7.91954pt too wide) in paragraph at lines 83--92
  [][] 
  []
 
@@ -612,7 +625,7 @@ Overfull \hbox (7.91954pt too wide) in paragraph at lines 82--91
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.97 \tableofcontents
+l.98 \tableofcontents
                       [1] (./main.toc [2
 
 ])
@@ -629,6 +642,10 @@ Overfull \hbox (3.99356pt too wide) in paragraph at lines 8--8
  \T1/cmr/m/n/12 per cell). Right: dis-tri-bu-tion of patches by Köppen--Geiger cli-mate group[[]]. 
  []
 
+Package acronym Info: Label `acro:ESA' newly defined as it shall be overridden
+although it is yet undefined on input line 9.
+Package acronym Info: Label `acro:DN' newly defined as it shall be overridden
+although it is yet undefined on input line 12.
 
 Overfull \hbox (2.98167pt too wide) in paragraph at lines 12--12
  [][] [][]\T1/cmr/m/n/12 The same per-band den-si-ties af-ter per-sensor $\OML/cmm/m/it/12 z$\T1/cmr/m/n/12 -score nor-mal-iza-tion of $[]$. 
@@ -636,11 +653,44 @@ Overfull \hbox (2.98167pt too wide) in paragraph at lines 12--12
 
 [4
 
-] [5])
+]
+Package acronym Info: Label `acro:NIR' newly defined as it shall be overridden
+although it is yet undefined on input line 13.
+Package acronym Info: Label `acro:ESA' overridden on input line 14.
+Package acronym Info: Label `acro:SNR' newly defined as it shall be overridden
+although it is yet undefined on input line 18.
+Package acronym Info: Label `acro:MTF' newly defined as it shall be overridden
+although it is yet undefined on input line 18.
+Package acronym Info: Label `acro:API' newly defined as it shall be overridden
+although it is yet undefined on input line 18.
+Package acronym Info: Label `acro:DSBN' newly defined as it shall be overridden
+although it is yet undefined on input line 19.
+Package acronym Info: Label `acro:DSBN' overridden on input line 19.
+ [5]
+Package acronym Info: Label `acro:UMAP' newly defined as it shall be overridden
+although it is yet undefined on input line 22.
+Package acronym Info: Label `acro:PAD' newly defined as it shall be overridden
+although it is yet undefined on input line 25.
+Package acronym Info: Label `acro:PAD' overridden on input line 25.
+Package acronym Info: Label `acro:PAD' overridden on input line 25.
+Package acronym Info: Label `acro:mIoU' overridden on input line 26.
+Package acronym Info: Label `acro:IoU' newly defined as it shall be overridden
+although it is yet undefined on input line 27.
+Package acronym Info: Label `acro:mIoU' overridden on input line 28.
+)
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
- [6] [7] (./main.lot)
+ [6] [7] (./main.lot
+Package acronym Info: Label `acro:SNR' overridden on input line 7.
+Package acronym Info: Label `acro:IoU' overridden on input line 8.
+Package acronym Info: Label `acro:IoU' overridden on input line 10.
+Package acronym Info: Label `acro:LULC' newly defined as it shall be overridden
+although it is yet undefined on input line 11.
+Package acronym Info: Label `acro:mIoU' overridden on input line 11.
+Package acronym Info: Label `acro:mIoU' overridden on input line 11.
+Package acronym Info: Label `acro:mIoU' overridden on input line 12.
+)
 \tf@lot=\write7
 \openout7 = `main.lot'.
 
@@ -650,18 +700,123 @@ Overfull \hbox (2.98167pt too wide) in paragraph at lines 12--12
 
 ] [10] (./chapters/01_introduction.tex
 Chapter 1.
+Package acronym Info: Label `acro:EO' newly defined as it shall be overridden
+although it is yet undefined on input line 4.
+Package acronym Info: Label `acro:NRT' newly defined as it shall be overridden
+although it is yet undefined on input line 5.
+Package acronym Info: Label `acro:VPU' newly defined as it shall be overridden
+although it is yet undefined on input line 8.
+Package acronym Info: Label `acro:CNN' overridden on input line 11.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 13.
+Package acronym Info: Label `acro:EO' overridden on input line 14.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 14.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 17.
+Package acronym Info: Label `acro:ViT' overridden on input line 19.
+Package acronym Info: Label `acro:ViT' overridden on input line 19.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 21.
+Package acronym Info: Label `acro:ViT' overridden on input line 23.
 [11
 
-] [12]) (./chapters/02_background_litreview.tex [13] [14]
+]
+Package acronym Info: Label `acro:ESA' overridden on input line 27.
+Package acronym Info: Label `acro:CNN' overridden on input line 30.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 36.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 47.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 56.
+ [12]
+Package acronym Info: Label `acro:GeoFM' overridden on input line 59.
+Package acronym Info: Label `acro:CNN' overridden on input line 59.
+Package acronym Info: Label `acro:ViT' overridden on input line 59.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 60.
+Package acronym Info: Label `acro:ViT' overridden on input line 62.
+Package acronym Info: Label `acro:CNN' overridden on input line 62.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 67.
+Package acronym Info: Label `acro:CNN' overridden on input line 67.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 70.
+Package acronym Info: Label `acro:CNN' overridden on input line 75.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 79.
+) (./chapters/02_background_litreview.tex
+Overfull \hbox (5.86449pt too wide) in paragraph at lines 79--1
+[]\T1/cmr/m/n/12 Answering these ques-tions would show that the gen-er-al-iza-tion promise of large [][][][][][]s,
+ []
+
+[13] [14]
 Chapter 2.
-<figures/fig_onboard_workflow.png, id=597, 633.11531pt x 277.035pt>
+Package acronym Info: Label `acro:GeoFM' overridden on input line 4.
+Package acronym Info: Label `acro:EO' overridden on input line 13.
+<figures/fig_onboard_workflow.png, id=670, 633.11531pt x 277.035pt>
 File: figures/fig_onboard_workflow.png Graphic file (type png)
 <use figures/fig_onboard_workflow.png>
 Package pdftex.def Info: figures/fig_onboard_workflow.png  used on input line 22.
 (pdftex.def)             Requested size: 341.43306pt x 149.40643pt.
 [15
 
-] [16 <./figures/fig_onboard_workflow.png>] [17] [18] [19] [20]
+]
+Package acronym Info: Label `acro:CNN' overridden on input line 42.
+Package acronym Info: Label `acro:ViT' overridden on input line 43.
+Package acronym Info: Label `acro:CNN' overridden on input line 43.
+Package acronym Info: Label `acro:ViT' overridden on input line 44.
+Package acronym Info: Label `acro:EO' overridden on input line 44.
+Package acronym Info: Label `acro:ViT' overridden on input line 44.
+Package acronym Info: Label `acro:ViT' overridden on input line 44.
+Package acronym Info: Label `acro:ViT' overridden on input line 46.
+Package acronym Info: Label `acro:VPU' overridden on input line 47.
+Package acronym Info: Label `acro:ONNX' newly defined as it shall be overridden
+although it is yet undefined on input line 48.
+Package acronym Info: Label `acro:ViT' overridden on input line 48.
+ [16 <./figures/fig_onboard_workflow.png>]
+Package acronym Info: Label `acro:GeoFM' overridden on input line 58.
+Package acronym Info: Label `acro:EO' overridden on input line 59.
+Package acronym Info: Label `acro:ViT' overridden on input line 60.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 60.
+Package acronym Info: Label `acro:RGB' newly defined as it shall be overridden
+although it is yet undefined on input line 60.
+Package acronym Info: Label `acro:RTC' newly defined as it shall be overridden
+although it is yet undefined on input line 60.
+Package acronym Info: Label `acro:GRD' newly defined as it shall be overridden
+although it is yet undefined on input line 60.
+Package acronym Info: Label `acro:DEM' newly defined as it shall be overridden
+although it is yet undefined on input line 60.
+Package acronym Info: Label `acro:NDVI' newly defined as it shall be overridden
+although it is yet undefined on input line 60.
+Package acronym Info: Label `acro:LULC' overridden on input line 60.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 64.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 65.
+Package acronym Info: Label `acro:ViT' overridden on input line 67.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 69.
+ [17]
+Package acronym Info: Label `acro:DA' newly defined as it shall be overridden
+although it is yet undefined on input line 101.
+Package acronym Info: Label `acro:DA' overridden on input line 102.
+Package acronym Info: Label `acro:UDA' newly defined as it shall be overridden
+although it is yet undefined on input line 102.
+Package acronym Info: Label `acro:SDA' newly defined as it shall be overridden
+although it is yet undefined on input line 102.
+Package acronym Info: Label `acro:DA' overridden on input line 104.
+Package acronym Info: Label `acro:DA' overridden on input line 105.
+Package acronym Info: Label `acro:SDA' overridden on input line 106.
+Package acronym Info: Label `acro:CNN' overridden on input line 106.
+ [18]
+Package acronym Info: Label `acro:SDA' overridden on input line 109.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 110.
+Package acronym Info: Label `acro:DA' overridden on input line 110.
+Package acronym Info: Label `acro:MMD' newly defined as it shall be overridden
+although it is yet undefined on input line 116.
+Package acronym Info: Label `acro:DSBN' overridden on input line 123.
+Package acronym Info: Label `acro:UDA' overridden on input line 123.
+Package acronym Info: Label `acro:BN' newly defined as it shall be overridden
+although it is yet undefined on input line 124.
+Package acronym Info: Label `acro:DSBN' overridden on input line 125.
+Package acronym Info: Label `acro:BN' overridden on input line 125.
+Package acronym Info: Label `acro:MMD' overridden on input line 126.
+Package acronym Info: Label `acro:ESA' overridden on input line 132.
+ [19]
+Package acronym Info: Label `acro:KD' newly defined as it shall be overridden
+although it is yet undefined on input line 145.
+Package acronym Info: Label `acro:KD' overridden on input line 146.
+Package acronym Info: Label `acro:ViT' overridden on input line 148.
+Package acronym Info: Label `acro:ViT' overridden on input line 149.
+ [20]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 154.
@@ -674,158 +829,378 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 154.
 
+Package acronym Info: Label `acro:GeoFM' overridden on input line 157.
+Package acronym Info: Label `acro:ViT' overridden on input line 158.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 158.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 160.
 ) (./chapters/03_methodology.tex [21]
 Chapter 3.
+Package acronym Info: Label `acro:ESA' overridden on input line 11.
+Package acronym Info: Label `acro:ESA' overridden on input line 21.
+Package acronym Info: Label `acro:ESA' overridden on input line 21.
 [22
 
 ]
-<figures/fig_srf_s2_phisat2.png, id=762, 411.5375pt x 329.23pt>
+<figures/fig_srf_s2_phisat2.png, id=891, 411.5375pt x 329.23pt>
 File: figures/fig_srf_s2_phisat2.png Graphic file (type png)
 <use figures/fig_srf_s2_phisat2.png>
 Package pdftex.def Info: figures/fig_srf_s2_phisat2.png  used on input line 35.
 (pdftex.def)             Requested size: 341.43306pt x 273.14528pt.
-<figures/fig_patch_examples.png, id=766, 471.9231pt x 641.9985pt>
+Package acronym Info: Label `acro:LULC' overridden on input line 44.
+Package acronym Info: Label `acro:ESA' overridden on input line 44.
+<figures/fig_patch_examples.png, id=897, 471.9231pt x 641.9985pt>
 File: figures/fig_patch_examples.png Graphic file (type png)
 <use figures/fig_patch_examples.png>
 Package pdftex.def Info: figures/fig_patch_examples.png  used on input line 50.
 (pdftex.def)             Requested size: 341.43306pt x 464.49167pt.
+Package acronym Info: Label `acro:ESA' overridden on input line 62.
  [23 <./figures/fig_srf_s2_phisat2.png>] [24 <./figures/fig_patch_examples.png>]
-<figures/fig_acquisition.png, id=781, 681.0243pt x 220.4235pt>
+<figures/fig_acquisition.png, id=913, 681.0243pt x 220.4235pt>
 File: figures/fig_acquisition.png Graphic file (type png)
 <use figures/fig_acquisition.png>
 Package pdftex.def Info: figures/fig_acquisition.png  used on input line 66.
 (pdftex.def)             Requested size: 452.9679pt x 146.6134pt.
-<figures/fig_geography.png, id=783, 787.5021pt x 251.9814pt>
+<figures/fig_geography.png, id=915, 787.5021pt x 251.9814pt>
 File: figures/fig_geography.png Graphic file (type png)
 <use figures/fig_geography.png>
 Package pdftex.def Info: figures/fig_geography.png  used on input line 78.
 (pdftex.def)             Requested size: 452.9679pt x 144.93816pt.
-<figures/fig_landcover.png, id=787, 753.2943pt x 251.9814pt>
+Package acronym Info: Label `acro:ESA' overridden on input line 85.
+<figures/fig_landcover.png, id=920, 753.2943pt x 251.9814pt>
 File: figures/fig_landcover.png Graphic file (type png)
 <use figures/fig_landcover.png>
 Package pdftex.def Info: figures/fig_landcover.png  used on input line 90.
 (pdftex.def)             Requested size: 452.9679pt x 151.52066pt.
+Package acronym Info: Label `acro:ESA' overridden on input line 93.
+Package acronym Info: Label `acro:ESA' overridden on input line 93.
  [25 <./figures/fig_acquisition.png> <./figures/fig_geography.png>]
-<figures/fig_splits.png, id=798, 753.0534pt x 235.3593pt>
+<figures/fig_splits.png, id=932, 753.0534pt x 235.3593pt>
 File: figures/fig_splits.png Graphic file (type png)
 <use figures/fig_splits.png>
 Package pdftex.def Info: figures/fig_splits.png  used on input line 107.
 (pdftex.def)             Requested size: 452.9679pt x 141.57219pt.
  [26 <./figures/fig_landcover.png> <./figures/fig_splits.png>]
-<figures/hist_bands_raw.png, id=808, 929.874pt x 455.301pt>
+<figures/hist_bands_raw.png, id=942, 929.874pt x 455.301pt>
 File: figures/hist_bands_raw.png Graphic file (type png)
 <use figures/hist_bands_raw.png>
 Package pdftex.def Info: figures/hist_bands_raw.png  used on input line 128.
 (pdftex.def)             Requested size: 452.9679pt x 221.79333pt.
  [27 <./figures/hist_bands_raw.png>]
-<figures/hist_bands_normalized.png, id=819, 929.874pt x 455.301pt>
+<figures/hist_bands_normalized.png, id=953, 929.874pt x 455.301pt>
 File: figures/hist_bands_normalized.png Graphic file (type png)
 <use figures/hist_bands_normalized.png>
 Package pdftex.def Info: figures/hist_bands_normalized.png  used on input line 144.
 (pdftex.def)             Requested size: 452.9679pt x 221.79333pt.
-<figures/fig_spectral_signature.png, id=823, 427.8384pt x 254.3904pt>
+Package acronym Info: Label `acro:DN' overridden on input line 148.
+Package acronym Info: Label `acro:DN' overridden on input line 148.
+<figures/fig_spectral_signature.png, id=957, 427.8384pt x 254.3904pt>
 File: figures/fig_spectral_signature.png Graphic file (type png)
 <use figures/fig_spectral_signature.png>
 Package pdftex.def Info: figures/fig_spectral_signature.png  used on input line 160.
 (pdftex.def)             Requested size: 317.07614pt x 188.54094pt.
+Package acronym Info: Label `acro:NIR' overridden on input line 163.
+Package acronym Info: Label `acro:NIR' overridden on input line 163.
  [28 <./figures/hist_bands_normalized.png>]
-<figures/fig_approx_error_by_class.png, id=835, 787.22679pt x 425.36057pt>
+Package acronym Info: Label `acro:ESA' overridden on input line 180.
+<figures/fig_approx_error_by_class.png, id=969, 787.22679pt x 425.36057pt>
 File: figures/fig_approx_error_by_class.png Graphic file (type png)
 <use figures/fig_approx_error_by_class.png>
 Package pdftex.def Info: figures/fig_approx_error_by_class.png  used on input line 187.
 (pdftex.def)             Requested size: 452.9679pt x 244.74916pt.
-<figures/fig_triplet_overlay_019123.png, id=841, 1813.46078pt x 348.96086pt>
+Package acronym Info: Label `acro:ESA' overridden on input line 191.
+Package acronym Info: Label `acro:ESA' overridden on input line 191.
+Package acronym Info: Label `acro:LULC' overridden on input line 198.
+<figures/fig_triplet_overlay_019123.png, id=976, 1813.46078pt x 348.96086pt>
 File: figures/fig_triplet_overlay_019123.png Graphic file (type png)
 <use figures/fig_triplet_overlay_019123.png>
 Package pdftex.def Info: figures/fig_triplet_overlay_019123.png  used on input line 202.
 (pdftex.def)             Requested size: 452.9679pt x 87.16013pt.
  [29 <./figures/fig_spectral_signature.png>]
-<figures/fig_triplet_overlay_012943.png, id=852, 1813.46078pt x 349.47707pt>
+<figures/fig_triplet_overlay_012943.png, id=987, 1813.46078pt x 349.47707pt>
 File: figures/fig_triplet_overlay_012943.png Graphic file (type png)
 <use figures/fig_triplet_overlay_012943.png>
 Package pdftex.def Info: figures/fig_triplet_overlay_012943.png  used on input line 211.
 (pdftex.def)             Requested size: 452.9679pt x 87.28906pt.
-<figures/fig_triplet_overlay_019598.png, id=853, 1813.46078pt x 349.47707pt>
+<figures/fig_triplet_overlay_019598.png, id=988, 1813.46078pt x 349.47707pt>
 File: figures/fig_triplet_overlay_019598.png Graphic file (type png)
 <use figures/fig_triplet_overlay_019598.png>
 Package pdftex.def Info: figures/fig_triplet_overlay_019598.png  used on input line 218.
 (pdftex.def)             Requested size: 452.9679pt x 87.28906pt.
  [30 <./figures/fig_approx_error_by_class.png> <./figures/fig_triplet_overlay_019123.png>] [31 <./figures/fig_triplet_overlay_012943.png> <./figures/fig_triplet_overlay_019598.png>]
-<figures/fig_updated_simulator.png, id=880, 776.14969pt x 485.56406pt>
+Package acronym Info: Label `acro:ESA' overridden on input line 246.
+Package acronym Info: Label `acro:API' overridden on input line 252.
+<figures/fig_updated_simulator.png, id=1017, 776.14969pt x 485.56406pt>
 File: figures/fig_updated_simulator.png Graphic file (type png)
 <use figures/fig_updated_simulator.png>
 Package pdftex.def Info: figures/fig_updated_simulator.png  used on input line 256.
 (pdftex.def)             Requested size: 452.9679pt x 283.3833pt.
+Package acronym Info: Label `acro:SNR' overridden on input line 261.
+Package acronym Info: Label `acro:MTF' overridden on input line 261.
+Package acronym Info: Label `acro:API' overridden on input line 261.
+Package acronym Info: Label `acro:SNR' overridden on input line 261.
+Package acronym Info: Label `acro:MTF' overridden on input line 261.
+Package acronym Info: Label `acro:API' overridden on input line 261.
+Package acronym Info: Label `acro:TOA' newly defined as it shall be overridden
+although it is yet undefined on input line 265.
+Package acronym Info: Label `acro:TOA' overridden on input line 265.
  [32
 
-] [33 <./figures/fig_updated_simulator.png>] [34] [35] [36] [37]
-<figures/fig_bn_dsbn.png, id=948, 810.77907pt x 176.91093pt>
+] [33 <./figures/fig_updated_simulator.png>]
+Package acronym Info: Label `acro:API' overridden on input line 271.
+Package acronym Info: Label `acro:SNR' overridden on input line 287.
+Package acronym Info: Label `acro:SNR' overridden on input line 289.
+Package acronym Info: Label `acro:SNR' overridden on input line 292.
+Package acronym Info: Label `acro:SNR' overridden on input line 293.
+Package acronym Info: Label `acro:SNR' overridden on input line 293.
+Package acronym Info: Label `acro:SNR' overridden on input line 295.
+Package acronym Info: Label `acro:SNR' overridden on input line 300.
+Package acronym Info: Label `acro:SNR' overridden on input line 300.
+ [34]
+Package acronym Info: Label `acro:MTF' overridden on input line 304.
+Package acronym Info: Label `acro:PSF' newly defined as it shall be overridden
+although it is yet undefined on input line 305.
+Package acronym Info: Label `acro:MTF' overridden on input line 306.
+Package acronym Info: Label `acro:MTF' overridden on input line 306.
+Package acronym Info: Label `acro:MTF' overridden on input line 308.
+Package acronym Info: Label `acro:PSF' overridden on input line 311.
+Package acronym Info: Label `acro:MTF' overridden on input line 312.
+Package acronym Info: Label `acro:PAD' overridden on input line 332.
+Package acronym Info: Label `acro:LULC' overridden on input line 333.
+Package acronym Info: Label `acro:mIoU' overridden on input line 333.
+Package acronym Info: Label `acro:IoU' overridden on input line 333.
+ [35]
+Package acronym Info: Label `acro:LULC' overridden on input line 341.
+Package acronym Info: Label `acro:DSBN' overridden on input line 350.
+Package acronym Info: Label `acro:DSBN' overridden on input line 351.
+Package acronym Info: Label `acro:BN' overridden on input line 357.
+ [36]
+Package acronym Info: Label `acro:DSBN' overridden on input line 387.
+Package acronym Info: Label `acro:DSBN' overridden on input line 390.
+Package acronym Info: Label `acro:BN' overridden on input line 414.
+Package acronym Info: Label `acro:DSBN' overridden on input line 414.
+Package acronym Info: Label `acro:DSBN' overridden on input line 420.
+Package acronym Info: Label `acro:UDA' overridden on input line 420.
+ [37]
+<figures/fig_bn_dsbn.png, id=1127, 810.77907pt x 176.91093pt>
 File: figures/fig_bn_dsbn.png Graphic file (type png)
 <use figures/fig_bn_dsbn.png>
 Package pdftex.def Info: figures/fig_bn_dsbn.png  used on input line 428.
 (pdftex.def)             Requested size: 452.9679pt x 98.83998pt.
+Package acronym Info: Label `acro:DSBN' overridden on input line 434.
+Package acronym Info: Label `acro:DSBN' overridden on input line 434.
+Package acronym Info: Label `acro:DSBN' overridden on input line 434.
+Package acronym Info: Label `acro:DSBN' overridden on input line 434.
+Package acronym Info: Label `acro:DSBN' overridden on input line 439.
 
 Underfull \hbox (badness 10000) in paragraph at lines 443--443
 [][][][]$\T1/cmtt/m/n/10 https : / / docs . openvino . ai / 2023 . 3 / openvino _ docs _ ops _ normalization _
  []
 
+Package acronym Info: Label `acro:DSBN' overridden on input line 448.
 
 Overfull \hbox (8.79388pt too wide) in paragraph at lines 439--450
 \T1/cmr/m/n/12 ture. Batch nor-mal-iza-tion is rep-re-sentable in the de-ploy-ment for-mat: \T1/cmtt/m/n/12 BatchNormInference
  []
 
-[38 <./figures/fig_bn_dsbn.png>] [39] [40]) (./chapters/04_results_discussion.tex [41]
+Package acronym Info: Label `acro:MMD' overridden on input line 457.
+[38 <./figures/fig_bn_dsbn.png>]
+Package acronym Info: Label `acro:DSBN' overridden on input line 459.
+Package acronym Info: Label `acro:LULC' overridden on input line 460.
+Package acronym Info: Label `acro:DSBN' overridden on input line 460.
+Package acronym Info: Label `acro:ViT' overridden on input line 467.
+Package acronym Info: Label `acro:VPU' overridden on input line 467.
+Package acronym Info: Label `acro:ViT' overridden on input line 467.
+Package acronym Info: Label `acro:ViT' overridden on input line 468.
+Package acronym Info: Label `acro:CNN' overridden on input line 468.
+Package acronym Info: Label `acro:ViT' overridden on input line 468.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 468.
+Package acronym Info: Label `acro:LULC' overridden on input line 469.
+Package acronym Info: Label `acro:VPU' overridden on input line 471.
+Package acronym Info: Label `acro:DSBN' overridden on input line 477.
+ [39]
+Package acronym Info: Label `acro:ViT' overridden on input line 564.
+Package acronym Info: Label `acro:CNN' overridden on input line 564.
+Package acronym Info: Label `acro:BN' overridden on input line 564.
+Package acronym Info: Label `acro:KD' overridden on input line 564.
+Package acronym Info: Label `acro:PAD' overridden on input line 581.
+Package acronym Info: Label `acro:DSBN' overridden on input line 582.
+Package acronym Info: Label `acro:LULC' overridden on input line 583.
+Package acronym Info: Label `acro:LULC' overridden on input line 586.
+Package acronym Info: Label `acro:mIoU' overridden on input line 586.
+ [40]
+Package acronym Info: Label `acro:LULC' overridden on input line 593.
+Package acronym Info: Label `acro:HDF5' newly defined as it shall be overridden
+although it is yet undefined on input line 593.
+Package acronym Info: Label `acro:DSBN' overridden on input line 594.
+) (./chapters/04_results_discussion.tex [41]
 Chapter 4.
+Package acronym Info: Label `acro:mIoU' overridden on input line 8.
+Package acronym Info: Label `acro:LULC' overridden on input line 15.
+Package acronym Info: Label `acro:NIR' overridden on input line 18.
 [42
 
-] [43] [44]
-<figures/fig_embeddings_paired.png, id=1034, 831.5868pt x 387.1263pt>
+]
+Package acronym Info: Label `acro:mIoU' overridden on input line 29.
+Package acronym Info: Label `acro:IoU' overridden on input line 30.
+Package acronym Info: Label `acro:KD' overridden on input line 43.
+Package acronym Info: Label `acro:DSBN' overridden on input line 43.
+Package acronym Info: Label `acro:IoU' overridden on input line 53.
+Package acronym Info: Label `acro:IoU' overridden on input line 54.
+Package acronym Info: Label `acro:KL' newly defined as it shall be overridden
+although it is yet undefined on input line 63.
+Package acronym Info: Label `acro:BN' overridden on input line 68.
+Package acronym Info: Label `acro:PAD' overridden on input line 91.
+Package acronym Info: Label `acro:UMAP' overridden on input line 95.
+ [43] [44]
+Package acronym Info: Label `acro:PAD' overridden on input line 98.
+<figures/fig_embeddings_paired.png, id=1255, 831.5868pt x 387.1263pt>
 File: figures/fig_embeddings_paired.png Graphic file (type png)
 <use figures/fig_embeddings_paired.png>
 Package pdftex.def Info: figures/fig_embeddings_paired.png  used on input line 105.
 (pdftex.def)             Requested size: 452.9679pt x 210.87036pt.
-<figures/fig_cosine_sim_terramind.png, id=1037, 723.4227pt x 395.3169pt>
+Package acronym Info: Label `acro:UMAP' overridden on input line 109.
+Package acronym Info: Label `acro:UMAP' overridden on input line 109.
+Package acronym Info: Label `acro:PAD' overridden on input line 114.
+Package acronym Info: Label `acro:PAD' overridden on input line 115.
+<figures/fig_cosine_sim_terramind.png, id=1260, 723.4227pt x 395.3169pt>
 File: figures/fig_cosine_sim_terramind.png Graphic file (type png)
 <use figures/fig_cosine_sim_terramind.png>
 Package pdftex.def Info: figures/fig_cosine_sim_terramind.png  used on input line 119.
 (pdftex.def)             Requested size: 385.02547pt x 210.39763pt.
+Package acronym Info: Label `acro:SNR' overridden on input line 132.
+Package acronym Info: Label `acro:PSF' overridden on input line 132.
  [45 <./figures/fig_embeddings_paired.png>]
-<figures/fig_ladder_grid.png, id=1048, 1133.28394pt x 635.976pt>
+Package acronym Info: Label `acro:SNR' overridden on input line 140.
+Package acronym Info: Label `acro:PSF' overridden on input line 140.
+Package acronym Info: Label `acro:SNR' overridden on input line 152.
+Package acronym Info: Label `acro:SNR' overridden on input line 152.
+<figures/fig_ladder_grid.png, id=1275, 1133.28394pt x 635.976pt>
 File: figures/fig_ladder_grid.png Graphic file (type png)
 <use figures/fig_ladder_grid.png>
 Package pdftex.def Info: figures/fig_ladder_grid.png  used on input line 160.
 (pdftex.def)             Requested size: 452.9679pt x 254.2015pt.
- [46 <./figures/fig_cosine_sim_terramind.png>] [47 <./figures/fig_ladder_grid.png>] [48] [49] [50]
-<figures/fig_pad_decision_scores.png, id=1087, 794.7291pt x 457.9509pt>
+Package acronym Info: Label `acro:IoU' overridden on input line 180.
+Package acronym Info: Label `acro:SNR' overridden on input line 182.
+Package acronym Info: Label `acro:PSF' overridden on input line 188.
+Package acronym Info: Label `acro:IoU' overridden on input line 204.
+Package acronym Info: Label `acro:IoU' overridden on input line 204.
+Package acronym Info: Label `acro:IoU' overridden on input line 208.
+ [46 <./figures/fig_cosine_sim_terramind.png>] [47 <./figures/fig_ladder_grid.png>] [48]
+Package acronym Info: Label `acro:IoU' overridden on input line 213.
+Package acronym Info: Label `acro:IoU' overridden on input line 219.
+Package acronym Info: Label `acro:IoU' overridden on input line 223.
+Package acronym Info: Label `acro:PAD' overridden on input line 230.
+Package acronym Info: Label `acro:SNR' overridden on input line 240.
+Package acronym Info: Label `acro:PSF' overridden on input line 242.
+ [49]
+Package acronym Info: Label `acro:UMAP' overridden on input line 271.
+Package acronym Info: Label `acro:mIoU' overridden on input line 273.
+Package acronym Info: Label `acro:UMAP' overridden on input line 283.
+Package acronym Info: Label `acro:IoU' overridden on input line 288.
+Package acronym Info: Label `acro:IoU' overridden on input line 288.
+Package acronym Info: Label `acro:IoU' overridden on input line 295.
+Package acronym Info: Label `acro:IoU' overridden on input line 295.
+Package acronym Info: Label `acro:PAD' overridden on input line 306.
+ [50]
+Package acronym Info: Label `acro:PAD' overridden on input line 312.
+Package acronym Info: Label `acro:PAD' overridden on input line 319.
+<figures/fig_pad_decision_scores.png, id=1332, 794.7291pt x 457.9509pt>
 File: figures/fig_pad_decision_scores.png Graphic file (type png)
 <use figures/fig_pad_decision_scores.png>
 Package pdftex.def Info: figures/fig_pad_decision_scores.png  used on input line 323.
 (pdftex.def)             Requested size: 452.9679pt x 261.01376pt.
- [51] [52 <./figures/fig_pad_decision_scores.png>]
-<figures/fig_dsbn_vs_baseline.png, id=1100, 789.1884pt x 266.6763pt>
+Package acronym Info: Label `acro:PAD' overridden on input line 327.
+Package acronym Info: Label `acro:PAD' overridden on input line 327.
+Package acronym Info: Label `acro:PAD' overridden on input line 327.
+Package acronym Info: Label `acro:PAD' overridden on input line 327.
+Package acronym Info: Label `acro:PAD' overridden on input line 327.
+Package acronym Info: Label `acro:PAD' overridden on input line 327.
+ [51]
+Package acronym Info: Label `acro:mIoU' overridden on input line 346.
+Package acronym Info: Label `acro:mIoU' overridden on input line 346.
+Package acronym Info: Label `acro:KD' overridden on input line 348.
+Package acronym Info: Label `acro:DSBN' overridden on input line 348.
+Package acronym Info: Label `acro:KD' overridden on input line 351.
+Package acronym Info: Label `acro:DSBN' overridden on input line 351.
+Package acronym Info: Label `acro:LULC' overridden on input line 361.
+Package acronym Info: Label `acro:mIoU' overridden on input line 361.
+Package acronym Info: Label `acro:mIoU' overridden on input line 361.
+Package acronym Info: Label `acro:LULC' overridden on input line 361.
+Package acronym Info: Label `acro:mIoU' overridden on input line 361.
+Package acronym Info: Label `acro:mIoU' overridden on input line 361.
+Package acronym Info: Label `acro:mIoU' overridden on input line 365.
+ [52 <./figures/fig_pad_decision_scores.png>]
+<figures/fig_dsbn_vs_baseline.png, id=1352, 789.1884pt x 266.6763pt>
 File: figures/fig_dsbn_vs_baseline.png Graphic file (type png)
 <use figures/fig_dsbn_vs_baseline.png>
 Package pdftex.def Info: figures/fig_dsbn_vs_baseline.png  used on input line 370.
 (pdftex.def)             Requested size: 452.9679pt x 153.0691pt.
-<figures/fig_per_class_dsbn.png, id=1103, 680.7834pt x 246.6816pt>
+Package acronym Info: Label `acro:mIoU' overridden on input line 373.
+Package acronym Info: Label `acro:mIoU' overridden on input line 373.
+Package acronym Info: Label `acro:IoU' overridden on input line 391.
+<figures/fig_per_class_dsbn.png, id=1356, 680.7834pt x 246.6816pt>
 File: figures/fig_per_class_dsbn.png Graphic file (type png)
 <use figures/fig_per_class_dsbn.png>
 Package pdftex.def Info: figures/fig_per_class_dsbn.png  used on input line 395.
 (pdftex.def)             Requested size: 452.9679pt x 164.13153pt.
- [53 <./figures/fig_dsbn_vs_baseline.png>] [54 <./figures/fig_per_class_dsbn.png>]
-<figures/fig_label_crossover.png, id=1127, 398.9304pt x 257.0403pt>
+Package acronym Info: Label `acro:IoU' overridden on input line 398.
+Package acronym Info: Label `acro:IoU' overridden on input line 398.
+Package acronym Info: Label `acro:mIoU' overridden on input line 411.
+Package acronym Info: Label `acro:mIoU' overridden on input line 411.
+ [53 <./figures/fig_dsbn_vs_baseline.png>]
+Package acronym Info: Label `acro:mIoU' overridden on input line 423.
+Package acronym Info: Label `acro:KD' overridden on input line 425.
+Package acronym Info: Label `acro:DSBN' overridden on input line 425.
+Package acronym Info: Label `acro:mIoU' overridden on input line 434.
+Package acronym Info: Label `acro:mIoU' overridden on input line 434.
+Package acronym Info: Label `acro:mIoU' overridden on input line 439.
+Package acronym Info: Label `acro:mIoU' overridden on input line 440.
+ [54 <./figures/fig_per_class_dsbn.png>]
+Package acronym Info: Label `acro:NIR' overridden on input line 444.
+Package acronym Info: Label `acro:KD' overridden on input line 456.
+Package acronym Info: Label `acro:UDA' overridden on input line 456.
+Package acronym Info: Label `acro:mIoU' overridden on input line 457.
+Package acronym Info: Label `acro:mIoU' overridden on input line 457.
+Package acronym Info: Label `acro:mIoU' overridden on input line 461.
+Package acronym Info: Label `acro:mIoU' overridden on input line 461.
+Package acronym Info: Label `acro:mIoU' overridden on input line 462.
+<figures/fig_label_crossover.png, id=1396, 398.9304pt x 257.0403pt>
 File: figures/fig_label_crossover.png Graphic file (type png)
 <use figures/fig_label_crossover.png>
 Package pdftex.def Info: figures/fig_label_crossover.png  used on input line 468.
 (pdftex.def)             Requested size: 326.13744pt x 210.14687pt.
- [55] [56 <./figures/fig_label_crossover.png>] [57]) (./chapters/05_conclusion.tex [58]
+Package acronym Info: Label `acro:mIoU' overridden on input line 472.
+Package acronym Info: Label `acro:mIoU' overridden on input line 472.
+Package acronym Info: Label `acro:mIoU' overridden on input line 482.
+Package acronym Info: Label `acro:DA' overridden on input line 486.
+ [55]
+Package acronym Info: Label `acro:mIoU' overridden on input line 493.
+Package acronym Info: Label `acro:mIoU' overridden on input line 494.
+ [56 <./figures/fig_label_crossover.png>]
+Package acronym Info: Label `acro:mIoU' overridden on input line 506.
+Package acronym Info: Label `acro:mIoU' overridden on input line 508.
+Package acronym Info: Label `acro:LULC' overridden on input line 517.
+Package acronym Info: Label `acro:IoU' overridden on input line 519.
+Package acronym Info: Label `acro:IoU' overridden on input line 519.
+Package acronym Info: Label `acro:LULC' overridden on input line 522.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 526.
+ [57]) (./chapters/05_conclusion.tex [58]
 Chapter 5.
+Package acronym Info: Label `acro:LULC' overridden on input line 16.
 [59
 
-]) (./chapters/07_declarations.tex [60]) (./chapters/06_appendix.tex [61
+]
+Package acronym Info: Label `acro:GeoFM' overridden on input line 24.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 26.
+Package acronym Info: Label `acro:EO' overridden on input line 27.
+) (./chapters/07_declarations.tex [60]) (./chapters/06_appendix.tex [61
 
 ]
 Appendix A.
+Package acronym Info: Label `acro:LULC' overridden on input line 5.
+Package acronym Info: Label `acro:LULC' overridden on input line 10.
+Package acronym Info: Label `acro:mIoU' overridden on input line 15.
+Package acronym Info: Label `acro:LULC' overridden on input line 16.
 ) (./main.bbl [62
 
 ] [63
@@ -836,21 +1211,21 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 779E3C2CEBB3036A555A37C1CBD5A968;9682.
+(rerunfilecheck)             Checksum: 49FF983053CCF9EDB3DC7EA1878BBB83;9526.
  ) 
 Here is how much of TeX's memory you used:
- 24943 strings out of 468489
- 466633 string characters out of 5440514
- 901015 words of memory out of 6000000
- 53190 multiletter control sequences out of 15000+600000
+ 25147 strings out of 468489
+ 469309 string characters out of 5440514
+ 906187 words of memory out of 6000000
+ 53359 multiletter control sequences out of 15000+600000
  656363 words of font info for 121 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
- 84i,14n,94p,1060b,997s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,14n,94p,1081b,997s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on main.pdf (68 pages, 26960264 bytes).
+Output written on main.pdf (68 pages, 26969390 bytes).
 PDF statistics:
- 1376 PDF objects out of 1440 (max. 8388607)
- 1177 compressed objects within 12 object streams
- 228 named destinations out of 1000 (max. 500000)
+ 1671 PDF objects out of 1728 (max. 8388607)
+ 1460 compressed objects within 15 object streams
+ 263 named destinations out of 1000 (max. 500000)
  536 words of extra memory for PDF output out of 10000 (max. 10000000)
 

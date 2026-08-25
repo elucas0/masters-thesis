@@ -2,15 +2,15 @@
 \label{app:real-baseline}
 
 The results in Chapter~\ref{chap:results-discussion} are built around a source-vs-target evaluation protocol: a teacher fine-tuned only on Sentinel-2, a student distilled and adapted to $\Phi$-sat-2, and comparisons of both against real $\Phi$-sat-2 ground truth.
-An earlier protocol, run before this design was settled, instead fine-tuned TerraMind directly on real $\Phi$-sat-2 LULC data with no domain-adaptation mechanism and no second sensor involved at all.
+An earlier protocol, run before this design was settled, instead fine-tuned TerraMind directly on real $\Phi$-sat-2 \acref{LULC} data with no domain-adaptation mechanism and no second sensor involved at all.
 This appendix retains that result for reference. We do not incorporate it into the main results, because it cannot answer the research questions of Section~\ref{sec:research-objective}: a model trained and evaluated on the same sensor domain says nothing about whether a domain gap exists or has been closed.
 
 \section{Protocol}
 
-Two TerraMind variants, Tiny and Base, were fully fine-tuned on the real-$\Phi$-sat-2 branch of the triplet dataset (Section~\ref{sec:triplets}) for the eleven-class WorldCover LULC task, following the per-domain normalization protocol of Section~\ref{sec:normalization}.
+Two TerraMind variants, Tiny and Base, were fully fine-tuned on the real-$\Phi$-sat-2 branch of the triplet dataset (Section~\ref{sec:triplets}) for the eleven-class WorldCover \acref{LULC} task, following the per-domain normalization protocol of Section~\ref{sec:normalization}.
 Both were trained and evaluated on real $\Phi$-sat-2 data only.
 
 \section{Result}
 
-TerraMind fine-tuned this way achieves mIoU $0.47$ (Tiny) and $0.51$ (Base) on the held-out real test split.
-This establishes that the LULC task is learnable at this label budget on real $\Phi$-sat-2 data and was not itself a bottleneck, a useful sanity check at the time, but it is a same-domain result and is subject to the same patch-level (not product-level) train/test split caveat described in Section~\ref{sec:triplets}: every product contributing to the test split also contributes patches to training, so this figure, like the main results, should be read as an optimistic upper bound rather than a strict out-of-sample estimate.
+TerraMind fine-tuned this way achieves \acref{mIoU} $0.47$ (Tiny) and $0.51$ (Base) on the held-out real test split.
+This establishes that the \acref{LULC} task is learnable at this label budget on real $\Phi$-sat-2 data and was not itself a bottleneck, a useful sanity check at the time, but it is a same-domain result and is subject to the same patch-level (not product-level) train/test split caveat described in Section~\ref{sec:triplets}: every product contributing to the test split also contributes patches to training, so this figure, like the main results, should be read as an optimistic upper bound rather than a strict out-of-sample estimate.
