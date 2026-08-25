@@ -196,7 +196,6 @@ The three classes shown with the most extreme bars (moss and lichen, snow and ic
 \label{sec:triplet-qualitative}
 
 Figures~\ref{fig:triplet-overlay-a}--\ref{fig:triplet-overlay-c} show three individual patches, with the LULC mask overlaid on both sensor views alongside the approximation-error map of Equation~\eqref{eq:approx-error}.
-They illustrate the range that this dataset actually spans.
 
 \begin{figure}[htp]
     \centering
@@ -412,14 +411,13 @@ The running estimates are accumulated separately per domain as well,
 and at test time the examples of a domain are whitened with that domain's own $\bar{\mu}_d$ and $\bar{\sigma}_d$.
 
 Comparing Equation~\eqref{eq:dsbn} with Equation~\eqref{eq:bn}, the functional form is unchanged and the entire difference is the subscript $d$.
-The conversion is correspondingly mechanical: every BN layer of a base network $F(\cdot)$ is replaced by a DSBN layer, and each input is accompanied by its domain label, giving a domain-specific network $F_d(\cdot)$.
+Every BN layer of a base network $F(\cdot)$ is replaced by a DSBN layer, and each input domain is identified, giving a domain-specific network $F_d(\cdot)$.
 Only $\gamma_d$, $\beta_d$, $\bar{\mu}_d$ and $\bar{\sigma}_d$ are duplicated, which for a layer of $C$ channels is four $C$-vectors per domain, negligible beside the convolutional weights.
 Everything outside those layers, which is to say every learned filter in the student, stays shared and is trained on both sensors at once.
 The split is therefore placed exactly at the per-channel scale and shift, the part of the representation that the measurements of Section~\ref{sec:triplets} identify as the most sensor-dependent, while the filters, which ought to be common, remain so.
-Chang et al.\ argue that this is also why the shared weights learn better domain-invariant features: the domain-specific component of the activations can be removed effectively using the statistics and parameters of the domain the input actually came from.
+Chang et al.\ argue that this is also why the shared weights learn better domain-invariant features: the domain-specific component of the activations can be removed using the statistics and parameters of the domain the input came from.
 
-One boundary is worth stating explicitly.
-DSBN was introduced for \emph{unsupervised} domain adaptation, where the target domain carries no labels at all, and the original paper embeds the layer in a two-stage framework that first estimates pseudo-labels for the target domain and then trains on them.
+However, DSBN was introduced for UDA where the target domain carries no labels at all, and the original paper embeds the layer in a two-stage framework that first estimates pseudo-labels for the target domain and then trains on them.
 We adopt only the layer itself.
 Our target domain is labelled (Section~\ref{sec:triplets}), both branches are trained under supervision, and no pseudo-labelling stage is involved, so the mechanism is used here in a setting simpler than the one it was designed for.
 
@@ -573,8 +571,8 @@ Querying the teacher directly on $\Phi$-sat-2 would distil that error instead of
     \label{fig:kd-architecture}
 \end{figure}
 
-The distilled student is therefore domain-adaptive rather than domain-invariant in the strict sense: convolutional weights are shared across sensors, but normalization statistics are not, and the correct branch must be selected at inference according to which sensor produced the input.
-This is a weaker property than a single sensor-agnostic representation, but it is the property that an on-board deployment actually needs, since the acquiring instrument is always known at inference time, unlike for a model that is expected to generalize to sensors it never saw during training.
+The distilled student is therefore domain-adaptive instead of domain-invariant. The models share the same convolutional weights for both sensors, but normalization statistics are not. The correct branch must be selected at inference according to the input source.
+This is a weaker property than a single sensor-agnostic representation, but it is enough since the sensor domain is known at inference time, unlike for a model that is expected to generalize to sensors it never saw during training.
 
 \section{Evaluation Protocol}
 \label{sec:evaluation-protocol}

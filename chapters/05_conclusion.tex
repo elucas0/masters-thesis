@@ -17,8 +17,8 @@ A paired-contrastive objective exploiting the pairing directly was also implemen
 Both mechanisms were applied during the knowledge distillation, which is the same step that is separately required to compress the model onto space-qualified hardware that cannot run its original Vision Transformer architecture at all.
 The deployable student is therefore domain-adaptive by construction, and not by a hoped-for inheritance from the teacher.
 
-Whether this adaptation is actually worth its cost is answered conditionally rather than unconditionally.
-Distilling with domain-specific normalization outperforms a supervised baseline trained directly on the target sensor at a representative label budget, but it loses to that same baseline at a much smaller one, so the advantage reverses between the two budgets, although the small-budget end of that reversal falls within the run-to-run variance this thesis is able to resolve.
+To answer whether this adaptation is worth implementing, we compared the distilled, domain-adapted student against a supervised baseline of identical architecture trained directly on the target sensor.
+Distilling with domain-specific normalization outperforms a supervised baseline at a representative label budget, but it loses to that same baseline at a much smaller one, so the advantage reverses between the two budgets, although the small-budget end of that reversal falls within the run-to-run variance this thesis is able to resolve.
 Treating the domain-gap problem and the compute-constraint problem as one single combined training objective, and not as two sequential and independent fixes, is the central methodological position of this thesis, with the important qualification that whether this combination is worth adopting depends on how many target-domain labels are actually available.
 
 This work is limited to a single mission and a single sensor pair, and to one specific pre-trained GeoFM.

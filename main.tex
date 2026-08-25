@@ -10,6 +10,7 @@
 \usepackage{caption}
 \usepackage{xcolor}
 \usepackage{tikz}
+\usepackage[nohyperlinks]{acronym}
 \usetikzlibrary{positioning, shapes.geometric, arrows.meta, fit, backgrounds, calc}
 
 % ---------------------------------------------------------------------------
@@ -71,10 +72,81 @@
 \end{titlepage}
 
 \begin{abstract}
-\input{chapters/00_abstract}
+    \input{chapters/00_abstract}
 \end{abstract}
 
+\section*{Statement on the Usage of Artificial Intelligence}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{p{4.6cm}ll}
+        \toprule
+        AI Tool                                                                                              & Purpose / Use Case                     & Section of Thesis      \\
+        \midrule
+        Claude Code (\href{https://github.com/Imbad0202/academic-research-skills}{Academic Research Skills}) & Support for methodology framing        & Chapter 3              \\
+        Claude Opus 5                                                                                        & Detailed below\textsuperscript{$\ast$} & Chapter 1 to Chapter 5 \\
+        Gemini 3.1 Pro                                                                                       & Tikz Code Generation                   & Chapter 3, Figure 3.16 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Usage of Artificial Intelligence Tools}
+    \label{tab:aiuse}
+\end{table}
+
+\noindent\textsuperscript{$\ast$}\,Claude Opus 5 (Anthropic) was used during the preparation of this thesis, for the review of chapters, for critique of the argument structure, for the formatting of paragraphs, and for assistance with \LaTeX{} and code.
+
 \tableofcontents
+\addcontentsline{toc}{chapter}{Contents}
+\newpage
+
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\newpage
+
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\newpage
+
+\chapter*{List of Acronyms}
+\addcontentsline{toc}{chapter}{List of Acronyms}
+\begin{acronym}[DSBN]
+    \acro{AI}{Artificial Intelligence}
+    \acro{API}{Application Programming Interface}
+    \acro{BN}{Batch Normalization}
+    \acro{CNN}{Convolutional Neural Network}
+    \acro{DA}{Domain Adaptation}
+    \acro{DEM}{Digital Elevation Model}
+    \acro{DN}{Digital Number}
+    \acro{DSBN}{Domain-Specific Batch Normalization}
+    \acro{EO}{Earth Observation}
+    \acro{ESA}{European Space Agency}
+    \acro{GeoFM}{Geospatial Foundation Model}
+    \acro{GRD}{Ground Range Detected}
+    \acro{HDF5}{Hierarchical Data Format, version 5}
+    \acro{IoU}{Intersection over Union}
+    \acro{KD}{Knowledge Distillation}
+    \acro{KL}{Kullback--Leibler (divergence)}
+    \acro{LULC}{Land Use / Land Cover}
+    \acro{mIoU}{mean Intersection over Union}
+    \acro{MMD}{Maximum Mean Discrepancy}
+    \acro{MTF}{Modulation Transfer Function}
+    \acro{NDVI}{Normalized Difference Vegetation Index}
+    \acro{NIR}{Near-Infrared}
+    \acro{NRT}{Near Real-Time}
+    \acro{ONNX}{Open Neural Network Exchange}
+    \acro{PAD}{Proxy $\mathcal{A}$-Distance}
+    \acro{PSF}{Point Spread Function}
+    \acro{RE}{Red Edge (spectral band)}
+    \acro{RGB}{Red, Green, Blue}
+    \acro{RQ}{Research Question}
+    \acro{RTC}{Radiometric Terrain Corrected}
+    \acro{SDA}{Supervised Domain Adaptation}
+    \acro{SNR}{Signal-to-Noise Ratio}
+    \acro{TOA}{Top of Atmosphere}
+    \acro{UDA}{Unsupervised Domain Adaptation}
+    \acro{UMAP}{Uniform Manifold Approximation and Projection}
+    \acro{ViT}{Vision Transformer}
+    \acro{VPU}{Vision Processing Unit}
+\end{acronym}
 \newpage
 
 \input{chapters/01_introduction}

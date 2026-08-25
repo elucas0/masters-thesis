@@ -5,14 +5,14 @@ Earth observation (EO) satellites now capture more data than ground segments can
 Ground-based processing is enough for most applications, but the time-critical ones such as flood mapping\cite{tellman2021satellite} and wildfire detection\cite{taylor2013wildfire} need near real-time (NRT) inference, since the events they monitor can evolve within hours.
 Moving the inference step from the ground to the satellite itself removes this constraint: instead of downlinking large raw imagery for later processing, an on-board model directly downlinks a small processed data product.
 A growing number of missions have begun to demonstrate that this is technically feasible\cite{barretta2026onboardaireview}.
-The European Space Agency's $\Phi$-sat-2 mission is among the most complete demonstrations to date: a 6U CubeSat carrying an 8-band high-resolution multispectral imager alongside a space-qualified Intel Movidius Myriad 2 VPU (Vision Processing Unit)\cite{myriad2}.
+The European Space Agency's $\Phi$-sat-2 mission is among the most complete demonstrations to date: a 6U CubeSat carrying a high-resolution multispectral imager alongside a space-qualified Intel Movidius Myriad 2 VPU (Vision Processing Unit)\cite{myriad2}.
 Instead of running a single fixed application, $\Phi$-sat-2 uses the NanoSat MO Framework\cite{coelho2021phisat2} to install, update and orchestrate several AI applications on board, much as a smartphone runs installable apps.
 
 The applications created so far to run on board $\Phi$-sat-2 are small, task-specific convolutional neural networks (CNNs), each one trained, validated and uplinked individually for a specific job such as cloud masking, vessel detection or roadmap extraction\cite{marin2021phi}.
 Adding a new capability to the system therefore means repeating the entire pipeline from scratch.
 Geospatial Foundation Models (GeoFMs) offer a different model of development.
-Pre-trained on large and diverse archives of EO imagery, a GeoFM such as TerraMind\cite{jakubik2025terramind} learns a general-purpose semantic representation that downstream tasks can exploit with comparatively few labeled examples, and without a bespoke architecture and a full training run for every application.
-This property is crucial for applications like flood and burnt-area mapping, where labeled events are rare by nature, and where a mission cannot simply wait to accumulate a large annotated archive before becoming useful in an emergency.
+Pre-trained on large and diverse archives of EO imagery, a GeoFM such as TerraMind\cite{jakubik2025terramind} learns a general-purpose semantic representation that downstream tasks can exploit with comparatively few labeled examples, and without a full training run for every application.
+This advantage on few-shot learning is useful for emergency applications such as flood and burnt-area mapping because labeled events are rare and new missions don't have time to accumulate annotated events.
 
 Two challenges separate this promise from an operational on-board GeoFM.
 The first one is architectural, and it comes from the limits of the target hardware.
@@ -26,7 +26,7 @@ This thesis addresses both obstacles at once, with TerraMind and $\Phi$-sat-2 as
 The approach combines three elements.
 First, a physics-based sensor degradation pipeline, based on the simulator developed for the ESA $\Phi$-lab OrbitalAI challenge\cite{longepe2024orbitalai}, processes Sentinel-2 imagery to simulate the $\Phi$-sat-2 sensor characteristics.
 This gives us labeled training data for a target sensor that hasn't accumulated data for flood segmentation yet.
-Second, a triplets dataset of spatially and temporally co-registered acquisitions from real $\Phi$-sat-2, real Sentinel-2 and simulated $\Phi$-sat-2 enables us to measure the domain gap directly in latent space, and to test adaptation mechanisms against it.
+Second, a triplets dataset of spatially and temporally co-registered acquisitions from real $\Phi$-sat-2, real Sentinel-2 and simulated $\Phi$-sat-2 enables us to measure the domain gap and to test adaptation mechanisms against it.
 Third, domain-specific batch normalization\cite{chang2019dsbn} is applied during the knowledge distillation\cite{hinton2015distilling} of the TerraMind encoder into a lightweight CNN. With this method, the deployable model adapts to the sensor its getting data from at inference.
 A paired-contrastive alignment objective exploiting the co-registered triplets directly was also implemented and evaluated as an alternative mechanism, but it did not improve downstream task performance beyond what domain-specific normalization already provides.
 
