@@ -106,7 +106,7 @@ Re-splitting at product level instead of at patch level is the direct remedy, an
     \centering
     \includegraphics[width=\textwidth]{fig_splits.png}
     \caption{Left: class prior is stable across the train/validation/test split.
-        Right: every one of the 1,287 products contributing to the test set also contributes patches to the training set: the split is patch-level, not scene-level.
+        Right: every one of the 1,287 products contributing to the test set also contributes patches to the training set as the split is patch-level.
     }
     \label{fig:splits}
 \end{figure}
@@ -115,11 +115,10 @@ Re-splitting at product level instead of at patch level is the direct remedy, an
 
 Three independent measurements quantify the sensor discrepancy this dataset is designed to expose, and they do so before any model is involved.
 
-First, the raw radiometric scales of the two sensors differ substantially (Figure~\ref{fig:band-boxplots}): real $\Phi$-sat-2 digital numbers are concentrated an order of magnitude below Sentinel-2 and simulated-$\Phi$-sat-2, whose density curves overlap so closely in every band that the Sentinel-2B trace is entirely hidden beneath the simulated one.
-That is a more direct confirmation of their near-identical raw statistics than a summary boxplot gives, since the full distributions, not just their quartiles, coincide.
-The distribution of the real $\Phi$-sat-2 is not simply shifted lower, however.
-Alongside its dominant low-value mode, it carries a smaller secondary lobe that reaches into the same value range as Sentinel-2/simulated, and that overlaps with their peak in every band.
-This secondary lobe is consistent with the measurable saturation (2.1--2.2\% of pixels in the RE1/RE2 bands) and dropout (0.3--0.36\% in RE2/RE3) already established for the real sensor: a small but non-negligible population of real pixels sits far from the sensor's typical response.
+First, the raw radiometric scales of the two sensors differ substantially (Figure~\ref{fig:band-boxplots}): real $\Phi$-sat-2 digital numbers are concentrated below Sentinel-2 and simulated-$\Phi$-sat-2, whose density curves overlap so closely in every band that the Sentinel-2B trace is entirely hidden beneath the simulated one.
+However, the distribution of the real $\Phi$-sat-2 is not simply shifted lower.
+Alongside its dominant low-value, it carries a smaller secondary lobe that reaches into the same value range as Sentinel-2/simulated, and that overlaps with their peak in every band.
+This secondary lobe is consistent with the measurable saturation (2.1--2.2\% of pixels in the RE1/RE2 bands) and dropout (0.3--0.36\% in RE2/RE3) already established for the real sensor: a small group of real pixels sits far from the sensor's typical response.
 At this level, the simulated and the raw Sentinel-2 domains remain close to statistically indistinguishable, which confirms that the physics-based degradation pipeline (Section~\ref{sec:degradation-pipeline}) perturbs the fine spatial and spectral structure while leaving the intensity statistics largely untouched.
 The domain gap this thesis is concerned with is therefore a real-vs-simulated gap, not a simulated-vs-source gap.
 
@@ -127,24 +126,22 @@ The domain gap this thesis is concerned with is therefore a real-vs-simulated ga
     \centering
     \includegraphics[width=\textwidth]{hist_bands_raw.png}
     \caption{Per-band raw digital-number density by sensor (log-scaled $x$-axis; 400{,}000 sampled pixels).
-        Sentinel-2B (blue) and simulated $\Phi$-sat-2 (orange) overlap so closely that blue is not visible beneath orange in any panel.
-        Real $\Phi$-sat-2 (green) is concentrated roughly one order of magnitude lower, with a smaller secondary lobe extending into the Sentinel-2B/simulated value range in every band.
+        Sentinel-2B (orange) and simulated $\Phi$-sat-2 (green) overlap.
+        Real $\Phi$-sat-2 (blue) is concentrated in lower values, with a smaller secondary lobe extending into the Sentinel-2B/simulated value range in every band.
     }
     \label{fig:band-boxplots}
 \end{figure}
 
 Per-domain normalization (Section~\ref{sec:normalization}) aligns the location and scale of the three distributions, but not their shape (Figure~\ref{fig:band-boxplots-normalized}).
 Sentinel-2B and simulated $\Phi$-sat-2 remain unimodal and closely overlapping, while real $\Phi$-sat-2 is distinctly bimodal in every band: a taller, narrower primary mode near $z\approx-0.7$ than either reference domain reaches, plus a separate secondary mode around $z\approx+0.5$ to $+1.5$ that Sentinel-2B and simulated $\Phi$-sat-2 do not have at all.
-In the red and red-edge bands (B04--B08) this secondary population sharpens further into a narrow spike near $z\approx2.3$--$2.5$, consistent with the same RE1/RE2-concentrated saturation noted above: the smooth clip in the normalization protocol (Section~\ref{sec:normalization}) compresses this population instead of removing it, so it survives as a pile-up near the clip boundary instead of a hard ceiling.
-This is a structural difference in distribution shape, not merely a difference in spread.
-The domain-adaptation mechanism of Section~\ref{sec:da-mechanism} must close this shape mismatch, not the location or scale offset that per-domain normalization already removes.
+In the red and red-edge bands (B04--B08) this secondary group sharpens further into a narrow spike near $z\approx2.3$--$2.5$, consistent with the same RE1/RE2-concentrated saturation noted above: the smooth clip in the normalization protocol (Section~\ref{sec:normalization}) compresses these values instead of removing them.
+The domain-adaptation mechanism of Section~\ref{sec:da-mechanism} must close this shape mismatch, since the per-domain normalization already removes the location and scale offset.
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{hist_bands_normalized.png}
     \caption{The same per-band densities after per-sensor $z$-score normalization of $\sqrt{\text{\acs{DN}}}$.
-        Sentinel-2B and simulated $\Phi$-sat-2 stay unimodal and closely overlapping; real $\Phi$-sat-2 is bimodal in every band, with a second mode near $z\approx+0.5$--$1.5$ that sharpens into a distinct spike near $z\approx2.3$--$2.5$ in bands B04--B08, plausibly the smooth-clipped saturation population.
-        Location and scale are aligned, but this shape difference is not something normalization alone can close.
+        Sentinel-2B and simulated $\Phi$-sat-2 stay unimodal and closely overlapping; real $\Phi$-sat-2 is bimodal in every band, with a second mode near $z\approx+0.5$--$1.5$ that sharpens into a distinct spike near $z\approx2.3$--$2.5$ in bands B04--B08, due to the smooth-clipped saturation.
     }
     \label{fig:band-boxplots-normalized}
 \end{figure}

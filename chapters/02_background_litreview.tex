@@ -170,7 +170,7 @@ Chapter~\ref{chap:results-discussion} returns to this positioning, but that comp
 \section{Synthesis}
 
 Through all of the works cited above, none isolate sensor-induced covariate shift using co-registered source/target data.
-This thesis gives a cross-architecture distillation student an explicit, domain-aware adaptation mechanism, and verifies that this adaptivity, not only task accuracy, survives compression into hardware-deployable form.
+This thesis gives a cross-architecture distillation student an explicit, domain-aware adaptation mechanism, and verifies that the task accuracy transfers into hardware-deployable form.
 The spatially and temporally co-registered $\Phi$-sat-2/Sentinel-2/simulated triplet dataset used in this thesis is what makes that isolation possible; the domain-specific batch normalization applied during cross-architecture distillation (Chapter~\ref{chap:methodology}) is what makes the adaptation and its verification possible.
 The co-registered triplets serve, in addition, as the diagnostic instrument that shows a paired-contrastive alternative does not do better than the simpler domain-specific normalization.
 The real-acquisition component also separates this work from the mission-specific alternative as $\Phi$satNet is pre-trained and benchmarked on simulated $\Phi$-sat-2 imagery, so the assumption that simulation stands in for the real sensor is one both approaches make and only real, co-registered data can check.
