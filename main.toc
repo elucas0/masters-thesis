@@ -11,55 +11,54 @@
 \contentsline {section}{\numberline {2.2}Geospatial Foundation Models}{17}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Domain Gap}{18}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Domain Adaptation}{18}{subsection.2.3.1}%
-\contentsline {section}{\numberline {2.4}Physics-Based Sensor Degradation Simulation}{20}{section.2.4}%
+\contentsline {section}{\numberline {2.4}Physics-Based Sensor Degradation Simulation}{19}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Knowledge Distillation Across Architectures}{20}{section.2.5}%
 \contentsline {section}{\numberline {2.6}$\Phi $satNet}{21}{section.2.6}%
 \contentsline {section}{\numberline {2.7}Synthesis}{21}{section.2.7}%
 \contentsline {chapter}{\numberline {3}Methodology}{22}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Data}{22}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}The co-registered triplet dataset}{22}{subsection.3.1.1}%
-\contentsline {subsubsection}{Scale and coverage}{23}{section*.10}%
-\contentsline {subsubsection}{Train/validation/test split}{26}{section*.14}%
-\contentsline {subsubsection}{Measured sensor discrepancy}{27}{section*.16}%
-\contentsline {subsubsection}{Qualitative examples}{30}{section*.21}%
+\contentsline {subsubsection}{Scale and coverage}{25}{section*.11}%
+\contentsline {subsubsection}{Train/validation/test split}{26}{section*.15}%
+\contentsline {subsubsection}{Measured sensor discrepancy}{27}{section*.17}%
+\contentsline {subsubsection}{Qualitative examples}{30}{section*.22}%
 \contentsline {subsection}{\numberline {3.1.2}Simulated degraded flood-segmentation dataset}{32}{subsection.3.1.2}%
 \contentsline {section}{\numberline {3.2}Physics-Based Sensor Degradation Pipeline}{32}{section.3.2}%
-\contentsline {paragraph}{Radiance--reflectance conversion.}{34}{section*.26}%
-\contentsline {paragraph}{Spatial resampling.}{34}{section*.27}%
-\contentsline {paragraph}{Band-to-band misalignment.}{34}{section*.28}%
-\contentsline {paragraph}{Signal-to-noise degradation.}{34}{section*.29}%
-\contentsline {paragraph}{Optical blur via MTF/PSF.}{35}{section*.30}%
+\contentsline {paragraph}{Radiance--reflectance conversion.}{34}{section*.27}%
+\contentsline {paragraph}{Spatial resampling.}{34}{section*.28}%
+\contentsline {paragraph}{Band-to-band misalignment.}{34}{section*.29}%
+\contentsline {paragraph}{Signal-to-noise degradation.}{34}{section*.30}%
+\contentsline {paragraph}{Optical blur via MTF/PSF.}{35}{section*.31}%
 \contentsline {section}{\numberline {3.3}Domain Gap Measurement}{35}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Normalization protocol}{35}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}Direct and indirect evidence}{36}{subsection.3.3.2}%
 \contentsline {section}{\numberline {3.4}Domain-Adaptation Strategy}{36}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}Fine-tuning on degraded data}{36}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Domain-specific batch normalization}{36}{subsection.3.4.2}%
-\contentsline {paragraph}{Batch normalization.}{36}{section*.31}%
-\contentsline {paragraph}{Domain-specific batch normalization.}{37}{section*.32}%
+\contentsline {paragraph}{Batch normalization.}{36}{section*.32}%
+\contentsline {paragraph}{Domain-specific batch normalization.}{37}{section*.33}%
 \contentsline {subsection}{\numberline {3.4.3}Paired-contrastive triplet alignment}{39}{subsection.3.4.3}%
 \contentsline {section}{\numberline {3.5}Cross-Architecture Knowledge Distillation}{39}{section.3.5}%
 \contentsline {section}{\numberline {3.6}Evaluation Protocol}{40}{section.3.6}%
 \contentsline {section}{\numberline {3.7}Tools, Software Environment, and Reproducibility}{41}{section.3.7}%
 \contentsline {chapter}{\numberline {4}Results and Discussion}{42}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Experimental Configuration}{42}{section.4.1}%
-\contentsline {paragraph}{Domain-specific batch normalization.}{42}{section*.35}%
-\contentsline {paragraph}{Class-imbalanced task loss.}{43}{section*.36}%
+\contentsline {paragraph}{Domain-specific batch normalization.}{42}{section*.36}%
+\contentsline {paragraph}{Class-imbalanced task loss.}{43}{section*.37}%
 \contentsline {section}{\numberline {4.2}Sensor Gap in TerraMind Latent Space}{43}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Degradation Factor effects on Downstream Task Gap}{46}{section.4.3}%
+\contentsline {section}{\numberline {4.3}Degradation effects on Downstream Task Gap}{46}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Sensor Adaptivity in the Distilled Student}{50}{section.4.4}%
 \contentsline {section}{\numberline {4.5}Distillation Against a Supervised Baseline}{52}{section.4.5}%
-\contentsline {paragraph}{Complexity against accuracy.}{54}{section*.49}%
+\contentsline {paragraph}{Complexity against accuracy.}{53}{section*.50}%
 \contentsline {section}{\numberline {4.6}Advantage Reversal on Small Label Budget}{55}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Discussion}{56}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{56}{subsection.4.7.1}%
-\contentsline {subsection}{\numberline {4.7.2}Measurement pitfalls}{56}{subsection.4.7.2}%
-\contentsline {subsection}{\numberline {4.7.3}Limitations}{57}{subsection.4.7.3}%
-\contentsline {subsection}{\numberline {4.7.4}Interpretation of the flood-robustness result}{57}{subsection.4.7.4}%
-\contentsline {subsection}{\numberline {4.7.5}Positioning with $\Phi $satNet}{58}{subsection.4.7.5}%
-\contentsline {subsection}{\numberline {4.7.6}Practical recommendations}{58}{subsection.4.7.6}%
+\contentsline {section}{\numberline {4.7}Discussion}{55}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{55}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Limitations}{56}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}Interpretation of the flood-robustness result}{57}{subsection.4.7.3}%
+\contentsline {subsection}{\numberline {4.7.4}Positioning with $\Phi $satNet}{57}{subsection.4.7.4}%
+\contentsline {subsection}{\numberline {4.7.5}Practical recommendations}{58}{subsection.4.7.5}%
 \contentsline {chapter}{\numberline {5}Conclusion}{59}{chapter.5}%
-\contentsline {chapter}{Declarations}{61}{chapter*.52}%
+\contentsline {chapter}{Declarations}{61}{chapter*.53}%
 \contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{62}{chapter.A}%
 \contentsline {section}{\numberline {A.1}Protocol}{62}{section.A.1}%
 \contentsline {section}{\numberline {A.2}Result}{62}{section.A.2}%

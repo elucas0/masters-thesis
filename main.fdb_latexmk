@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1787650106.519 "main.aux" "main.bbl" "main" 1787650111.45707 0
+["bibtex main"] 1787686053.74695 "main.aux" "main.bbl" "main" 1787687786.72226 0
   "./references.bib" 1787270411.84716 18755 f63438e3f7d3f36ef5a4c7e44ec713fe ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/ieeetr.bst" 1777593600 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "main.aux" 1787650111.23094 95758 633145ddf272a73509b644dca9a27ece "pdflatex"
+  "main.aux" 1787687786.49091 92382 3aace357ef0e458bf3890aca362e3c82 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1787650106.55818 "/home/elouann/copernicus/research/masters-thesis/main.tex" "main.pdf" "main" 1787650111.45738 0
-  "/home/elouann/copernicus/research/masters-thesis/main.tex" 1787649980.74344 6888 0f8945c28f15a066bff23c404a1538ef ""
+["pdflatex"] 1787687781.42704 "/home/elouann/copernicus/research/masters-thesis/main.tex" "main.pdf" "main" 1787687786.72273 0
+  "/home/elouann/copernicus/research/masters-thesis/main.tex" 1787664027.54123 6859 420dddd193235f3dad0d2417a7def6ae ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1136768653 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
@@ -218,9 +218,9 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1785499327 3336106 2f40f4ac9505aea9aab9489bf7c247d8 ""
   "chapters/00_abstract.tex" 1787649563.57679 3129 a7dde23697a760178fa9eca173e0dc9c ""
   "chapters/01_introduction.tex" 1787650069.75621 10912 ca5e02abfe37309c9d34d5399f6a3473 ""
-  "chapters/02_background_litreview.tex" 1787650101.28398 25503 f0a00a4a8b075132f449006907e20626 ""
-  "chapters/03_methodology.tex" 1787649563.57897 57983 32e18cf76bf20551cf5ec8bbffbae223 ""
-  "chapters/04_results_discussion.tex" 1787649563.58138 53832 449a97e46c72b00b04e1d82b9f078d5f ""
+  "chapters/02_background_litreview.tex" 1787664276.58806 25462 64a02779e0d5516dcb11e06124e4a7bf ""
+  "chapters/03_methodology.tex" 1787687781.08677 57406 ee5328fd46c4009073fcb4364a58f523 ""
+  "chapters/04_results_discussion.tex" 1787686094.42743 53532 ac3f4fd47868d48686116302b0cf1c5b ""
   "chapters/05_conclusion.tex" 1787649563.5819 4574 62e257f45e9d383de0b2f65a8c929326 ""
   "chapters/06_appendix.tex" 1787649563.58211 1880 8ee76df78995453abcf18fe2e13bae85 ""
   "chapters/07_declarations.tex" 1787649563.58223 1192 100cec152bfdb9e5bc6a300feace8476 ""
@@ -247,13 +247,14 @@
   "figures/fig_updated_simulator.png" 1786544314.32653 135523 365829ae28a0c7eb1c241da6b28f969f ""
   "figures/hist_bands_normalized.png" 1787417902.10793 107603 89eed89b0c44037283b37540335a23df ""
   "figures/hist_bands_raw.png" 1787417924.16244 108662 cc4c6e27972dd5da5fac7cab79cf810a ""
-  "main.aux" 1787650111.23094 95758 633145ddf272a73509b644dca9a27ece "pdflatex"
-  "main.bbl" 1787650106.55259 11479 f829a5072eb24996c338c1a3034c168e "bibtex main"
-  "main.lof" 1787650111.23894 11174 1443b6d0cc3f09dfef6ff5035bc4c7f6 "pdflatex"
-  "main.lot" 1787650111.23894 3447 ca985cbd918feb4716e1465807bf6096 "pdflatex"
-  "main.out" 1787650111.23894 9526 49ff983053ccf9edb3dc7ea1878bbb83 "pdflatex"
-  "main.tex" 1787649980.74344 6888 0f8945c28f15a066bff23c404a1538ef ""
-  "main.toc" 1787650111.23894 5465 7a394543023e0a70334566ae7902eab2 "pdflatex"
+  "figures/triplets_example_wc_mask.png" 1787666991.78093 748413 eeb14038abeaa43dd20af4435a09e569 ""
+  "main.aux" 1787687786.49091 92382 3aace357ef0e458bf3890aca362e3c82 "pdflatex"
+  "main.bbl" 1787686053.78181 11479 f829a5072eb24996c338c1a3034c168e "bibtex main"
+  "main.lof" 1787687786.49859 11250 af7db3e831d78d2566845ceebfecd279 "pdflatex"
+  "main.lot" 1787687786.49859 3439 23ab36b500e2704d751287cd23a449b6 "pdflatex"
+  "main.out" 1787687786.49791 9323 e83c3f9ff26de3faf4271f3fb4ac7c3f "pdflatex"
+  "main.tex" 1787664027.54123 6859 420dddd193235f3dad0d2417a7def6ae ""
+  "main.toc" 1787687786.49859 5367 6a6f76c828e48d44fc630a225c56e0bc "pdflatex"
   (generated)
   "main.aux"
   "main.lof"

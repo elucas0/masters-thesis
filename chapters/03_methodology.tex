@@ -22,18 +22,27 @@ The main dataset is a collection of spatially and temporally co-registered image
 Candidate scenes were filtered by spatio-temporal proximity between the $\Phi$-sat-2 and Sentinel-2 overpasses and by a cloud-cover threshold on both acquisitions, and precise pixel-level alignment was achieved using the LightGlue deep feature-matching algorithm \cite{Lindenberger_2023_ICCV}.
 This algorithm was chosen for its ability to identify corresponding semantic keypoints across the two sensors despite their differing spatial and radiometric characteristics.
 
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=12cm]{fig_patch_examples.png}
+    \caption{Four representative triplets, each row showing the same scene as observed by real $\Phi$-sat-2, the physics-simulated $\Phi$-sat-2 rendering, and Sentinel-2B (each channel independently contrast-stretched for display).
+        The real acquisitions shows blurier scenes despite the higher resolution and a noisy texture compared to the simulated or source Sentinel-2 view.
+    }
+    \label{fig:patch-examples}
+\end{figure}
+
 The choice of Sentinel-2 as the paired source sensor follows from the two instruments' band layouts.
 Figure~\ref{fig:srf} compares their spectral response functions and their per-band spatial resolutions.
 Across 400--900\,nm each $\Phi$-sat-2 multispectral band has a Sentinel-2 counterpart at a comparable centre wavelength, and it is that correspondence which makes Sentinel-2 usable both as the paired view in the triplets and as the source the degradation pipeline (Section~\ref{sec:degradation-pipeline}) projects into the $\Phi$-sat-2 domain.
 The correspondence is close but it is not exact, and $\Phi$-sat-2 additionally carries a panchromatic band that has no Sentinel-2 equivalent.
 Spatially, $\Phi$-sat-2 samples every band at a uniform 4.75\,m, whereas Sentinel-2 provides 10\,m for B2, B3, B4 and B8 and 20\,m for B5, B6 and B7.
 This spatial resolution mismatch is a factor we take into account when interpreting the domain gap in Chapter~\ref{chap:results-discussion}.
-The target sensor is the finer of the two, so a resolution mismatch cannot by itself account for a loss of performance on $\Phi$-sat-2, whereas the spectral differences visible in panel~(a) do remain a candidate explanation.
+The target sensor is the finer of the two, so a resolution mismatch cannot account for a loss of performance on $\Phi$-sat-2, whereas the spectral differences visible in panel~(a) remains a potential explanation.
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=12cm]{fig_srf_s2_phisat2.png}
-    \caption{Band correspondence between Sentinel-2B and $\Phi$-sat-2, after Long\'ep\'e et al.~\cite{longepe2024orbitalai}.
+    \includegraphics[width=10cm]{fig_srf_s2_phisat2.png}
+    \caption{Band correspondence between Sentinel-2B and $\Phi$-sat-2, from Longépé et al.~\cite{longepe2024orbitalai}.
         (a) Normalized spectral response functions, Sentinel-2B above and $\Phi$-sat-2 below.
         (b) Per-band spatial resolution.
         The correspondence in (a) makes Sentinel-2 usable as the paired source; the residual differences in both panels are the sensor gap this thesis aims to measure.
@@ -41,25 +50,23 @@ The target sensor is the finer of the two, so a resolution mismatch cannot by it
     \label{fig:srf}
 \end{figure}
 
-This dataset carries labels for a single task: land-use/land-cover (\acref{LULC}) classification, derived from \acref{ESA} WorldCover 2021 and rasterized onto each triplet's real-$\Phi$-sat-2 footprint.
-Its role in this thesis is twofold.
-It is the only real-sensor ground truth available to us for any downstream task, and its co-registration is what makes it possible to measure the sensor-induced covariate shift in TerraMind's latent space (Section~\ref{sec:gap-measurement}), without the scene-content and geography confounds that are present in the prior domain-gap studies comparing unrelated source and target datasets.
+This dataset carries labels for a single task: land-use/land-cover (\acref{LULC}) classification as shown in Figure~\ref{fig:triplets-example}. These labels are derived from \acref{ESA} WorldCover 2021 \cite{zanaga2022worldcover} and were rasterized onto each triplet's real-$\Phi$-sat-2 footprint by the team at the $\Phi$-lab.
+It is the only real-sensor ground truth available to us for any downstream task, and the co-registration allows us to measure the sensor-induced covariate shift in TerraMind's latent space (Section~\ref{sec:gap-measurement}).
+Prior domain-gap studies have been limited by the scene-content and geography confounds, comparing unrelated source and target datasets.
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=12cm]{fig_patch_examples.png}
-    \caption{Four representative triplets, each row showing the same scene as observed by real $\Phi$-sat-2, the physics-simulated $\Phi$-sat-2 rendering, and Sentinel-2B (each channel independently contrast-stretched for display).
-        The real acquisitions show visibly grainier, noisier texture than either the simulated or source Sentinel-2 view, consistent with the sensor noise characteristics the degradation pipeline (Section~\ref{sec:degradation-pipeline}) is designed to reproduce.
+    \includegraphics[width=\textwidth]{triplets_example_wc_mask.png}
+    \caption{A representative triplet, each row showing the same scene as observed by real $\Phi$-sat-2, the physics-simulated $\Phi$-sat-2 rendering, and Sentinel-2B (each channel independently contrast-stretched for display).
+        The real acquisitions shows heavy band misalignment artifacts compared to the simulated or source Sentinel-2 view.
     }
-    \label{fig:patch-examples}
+    \label{fig:triplets-example}
 \end{figure}
+\newpage
 
 \subsubsection{Scale and coverage}
 
 After discarding a small number of corrupted source products, the dataset comprises 253{,}228 co-registered triplet patches drawn from 1{,}299 distinct $\Phi$-sat-2 products (individual acquisitions), a median of 209 patches per product (up to 713 for the largest).
-Acquisitions span 2024-08-21 to 2026-04-15 (21 months), with collection volume markedly higher from mid-2025 onward than in the initial ramp-up period.
-Real-$\Phi$-sat-2 and Sentinel-2 acquisitions are not simultaneous: their dates are matched to within a median of 6.8 days and a maximum of 14.9 days, an acceptable temporal offset for a largely stable target such as land cover.
-73.1\% of retained patches have under 5\% total cloud cover, and only 0.199\% of pixels are unlabelled after the \acref{ESA} WorldCover rasterization step.
 
 \begin{figure}[htp]
     \centering
@@ -70,8 +77,9 @@ Real-$\Phi$-sat-2 and Sentinel-2 acquisitions are not simultaneous: their dates 
     \label{fig:acquisition}
 \end{figure}
 
-Geographically, the 1{,}299 source products span latitudes $-54^{\circ}$ to $76^{\circ}$ with global but uneven coverage, concentrated over western North America, the southern Andes, the Mediterranean basin and Middle East, and parts of East and South Asia (Figure~\ref{fig:geography}).
-By K\"oppen--Geiger climate group, the patch population is dominated by arid (41\%) and temperate (29\%) climates, with tropical (14\%), continental (10\%), and polar (1\%) regions comparatively under-represented (4\% unclassified).
+Acquisitions span 2024-08-21 to 2026-04-15 (21 months), with collection volume higher from mid-2025 onward than in the initial period.
+Real-$\Phi$-sat-2 and Sentinel-2 acquisitions are not simultaneous: their dates are matched to within a median of 6.8 days and a maximum of 14.9 days, an acceptable temporal offset for a largely stable target such as land cover.
+73.1\% of retained patches have under 5\% total cloud cover, and only 0.199\% of pixels are unlabelled after the \acref{ESA} WorldCover rasterization step.
 
 \begin{figure}[htp]
     \centering
@@ -82,8 +90,11 @@ By K\"oppen--Geiger climate group, the patch population is dominated by arid (41
     \label{fig:geography}
 \end{figure}
 
-The eleven \acref{ESA} WorldCover classes present are similarly imbalanced by construction rather than by sampling choice: grassland (20.8\%), tree cover (20.0\%), bare/sparse vegetation (16.2\%), built-up (14.4\%), and cropland (13.4\%) account for the large majority of labelled pixels, while snow/ice, mangroves, and moss/lichen each fall below 0.6\% (Figure~\ref{fig:landcover}).
-The typical patch is fairly homogeneous: a single class occupies a median of 73\% of any given patch's labelled area.
+Geographically, the 1{,}299 source products span latitudes $-54^{\circ}$ to $76^{\circ}$ with global but uneven coverage (Figure~\ref{fig:geography}).
+By K\"oppen--Geiger climate group, the patch population is dominated by arid (41\%) and temperate (29\%) climates, with tropical (14\%), continental (10\%), and polar (1\%) regions under-represented (4\% unclassified).
+
+\newpage
+The eleven \acref{ESA} WorldCover classes present are similarly imbalanced by construction: grassland (20.8\%), tree cover (20.0\%), bare/sparse vegetation (16.2\%), built-up (14.4\%), and cropland (13.4\%) represent the majority of labelled pixels, while snow/ice, mangroves, and moss/lichen classes are only present at 0.6\% (Figure~\ref{fig:landcover}).
 
 \begin{figure}[htp]
     \centering
@@ -113,7 +124,7 @@ Re-splitting at product level instead of at patch level is the direct remedy, an
 
 \subsubsection{Measured sensor discrepancy}
 
-Three independent measurements quantify the sensor discrepancy this dataset is designed to expose, and they do so before any model is involved.
+Three measurements quantify the sensor discrepancy, without any model being involved.
 
 First, the raw radiometric scales of the two sensors differ substantially (Figure~\ref{fig:band-boxplots}): real $\Phi$-sat-2 digital numbers are concentrated below Sentinel-2 and simulated-$\Phi$-sat-2, whose density curves overlap so closely in every band that the Sentinel-2B trace is entirely hidden beneath the simulated one.
 However, the distribution of the real $\Phi$-sat-2 is not simply shifted lower.
@@ -161,7 +172,7 @@ This analysis gives us a quantitative support for attributing the domain gap pri
     \label{fig:spectral-signature}
 \end{figure}
 
-These measured per-domain statistics, which are the mean, the standard deviation and the clip value per band, computed separately for the real, the Sentinel-2 and the simulated domains, are what parametrize the per-domain normalization protocol of Section~\ref{sec:normalization}.
+These measured per-domain statistics (mean, standard deviation and clip value per band) are computed separately for the real, the Sentinel-2 and the simulated domains. They parametrize the per-domain normalization protocol of Section~\ref{sec:normalization}.
 
 \vspace{5mm}
 
@@ -214,7 +225,7 @@ Figures~\ref{fig:triplet-overlay-a}--\ref{fig:triplet-overlay-c} show three indi
     \centering
     \includegraphics[width=\textwidth]{fig_triplet_overlay_019598.png}
     \caption{Patch showing cropland (mean approximation error $0.90$).
-        This real flight data shows a similar phenomenon that Equation~\eqref{eq:misalign-l1a} models synthetically.
+        This real data shows the band misalignment that Equation~\eqref{eq:misalign-l1a} models synthetically.
         The scalar mean approximation error for this patch ($0.90$) is close to the dataset-wide mean despite the heavy artifact: Equation~\eqref{eq:approx-error} averages absolute per-band intensity differences and is insensitive to spatial/geometric coherence, so it under-represents local misalignment, which is a limitation of the metric.
     }
     \label{fig:triplet-overlay-c}
@@ -240,7 +251,7 @@ Chapter~\ref{chap:results-discussion} reports how the teacher responds across th
 \section{Physics-Based Sensor Degradation Pipeline}
 \label{sec:degradation-pipeline}
 
-The degradation pipeline adapts the simulator developed for the \acref{ESA} $\Phi$-lab OrbitalAI challenge \cite{longepe2024orbitalai}, which projects labeled Sentinel-2 L1C tiles into the $\Phi$-sat-2 sensor domain by modeling the physical differences between the two instruments as a sequence of operations in radiance space.
+The degradation pipeline adapts the simulator developed for the \acref{ESA} $\Phi$-lab OrbitalAI challenge \cite{longepe2024orbitalai}. This simulator projects labeled Sentinel-2 L1C tiles into the $\Phi$-sat-2 sensor domain by modeling the physical differences between the two instruments as a sequence of operations in radiance space.
 Because these effects are defined physically on radiance, not reflectance, the pipeline converts source reflectance to top-of-atmosphere radiance, applies each degradation in turn, and converts back to reflectance to output a simulated L1C product.
 Pixel coordinates are written $(i,j)$ and spectral band index $b_n$ throughout.
 
@@ -475,7 +486,7 @@ Two candidate mechanisms were implemented at the student level: domain-specific 
 Giving each domain its own running statistics closes this gap as a side effect of the same mechanism.
 
 Figure~\ref{fig:kd-architecture} sets out the resulting training scheme.
-Its defining feature is that we query the teacher only on Sentinel-2, which is the domain it was pre-trained and fine-tuned on, and the only one where its predictions are trustworthy.
+In this configuration, we query the teacher only on Sentinel-2, which is the domain it was pre-trained and fine-tuned on, and where its predictions are most accurate.
 A single teacher forward pass then supervises both student branches, so the student's $\Phi$-sat-2 predictions are distilled against a teacher output computed from the Sentinel-2 view of the same ground.
 This transfer of supervision across sensors is only possible because the two views are co-registered, and it is also what keeps the teacher's own domain-shift error out of the student.
 Querying the teacher directly on $\Phi$-sat-2 would distil that error instead of correcting it.
@@ -574,9 +585,9 @@ This is a weaker property than a single sensor-agnostic representation, but it i
 \section{Evaluation Protocol}
 \label{sec:evaluation-protocol}
 
-Four evaluations follow from the mechanisms above, and they correspond to the three research questions of Section~\ref{sec:research-objective}.
-First, whether the sensor gap is visible in the teacher's representation itself: paired cosine similarity, per-layer \acref{PAD}, and cross-domain linear-probe transfer between the two sensor views of the same co-registered patches.
-Second, whether the distilled student's representation inverts these measurements relative to the teacher, and which of the two candidate mechanisms (\acref{DSBN}, contrastive alignment) is responsible.
+Four evaluation methods follow from the mechanisms described, and they correspond to the three research questions of Section~\ref{sec:research-objective}.
+First, whether the sensor gap is visible in the teacher's representation is measured by paired cosine similarity, per-layer \acref{PAD}, and cross-domain linear-probe transfer between the two input domains.
+Second, whether the distilled student's representation inverts these measurements relative to the teacher, and which of the two candidate mechanisms is effective (\acref{DSBN}, contrastive alignment).
 Third, whether distillation with the adopted mechanism improves \acref{LULC} task performance over a supervised baseline of identical student architecture trained directly on labelled $\Phi$-sat-2 with no teacher and no second sensor, at a label budget large enough to be representative and, separately, at a much smaller budget, since the direction of this comparison is not assumed to be constant across label budgets.
 Fourth, flood segmentation across the simulated degradation ladder, to characterize how gracefully performance degrades with increasing sensor-noise severity.
 A few-shot label-efficiency comparison against $\Phi$satNet (Section~\ref{sec:phisatnet-background}) on matched small label budgets, testing directly whether adapting TerraMind's broad, diverse pre-training generalizes to $\Phi$-sat-2 with fewer labels than $\Phi$satNet's mission-specific pre-training requires, remains planned but has not been run (Section~\ref{sec:discussion-comparison}).

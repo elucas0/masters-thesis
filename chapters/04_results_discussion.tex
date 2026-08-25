@@ -49,7 +49,7 @@ Everything the two conditions could share is held constant: architecture, initia
         Learning rate           & \multicolumn{2}{l}{$1\times10^{-4}$}                                                                        \\
         Weight decay            & \multicolumn{2}{l}{$1\times10^{-4}$}                                                                        \\
         LR schedule             & \multicolumn{2}{l}{ReduceLROnPlateau, factor $0.5$, patience $5$}                                           \\
-        Batch size              & \multicolumn{2}{l}{$8$ patches}                                                                             \\
+        Batch size              & \multicolumn{2}{l}{$8$}                                                                             \\
         Early stopping          & \multicolumn{2}{l}{Patience $12$ on target-sensor validation \acref{IoU}}                                           \\
         Model selection         & \multicolumn{2}{l}{Best target-sensor validation \acref{IoU}}                                                       \\
         Task loss               & \multicolumn{2}{l}{Focal, $\gamma = 2.0$}                                                                   \\
@@ -74,15 +74,6 @@ Everything the two conditions could share is held constant: architecture, initia
     }
     \label{tab:hyperparameters}
 \end{table}
-
-One asymmetry in this comparison is structural rather than incidental.
-The distilled arm applies the task loss to both sensor views of each patch, so within one epoch it draws twice as much supervision from the same labels as the single-branch baseline does.
-This is inherent to what the comparison is testing, since the baseline has no second view by definition, but it does mean that the per-epoch comparisons reported below are not matched on gradient signal, and it also contributes, alongside the forward pass of the frozen teacher, to the cost difference quantified in Section~\ref{sec:rq3-results}.
-
-\wip{A second ablation, isolating domain-specific normalization from distillation itself, is in progress and is not reported here.
-    It requires a distilled student trained with a single shared set of batch-normalization statistics, which is the condition that would separate the contribution of the domain-specific variant from that of the two-branch distillation scheme and the class-balanced loss adopted alongside it.
-    Until that run completes, the attribution of the invariance results of Section~\ref{sec:rq2-results} to domain-specific normalization specifically should be read as provisional: what the results below establish is that the configuration as a whole produces the reported behaviour, not which of its components is responsible.
-}
 
 \section{Sensor Gap in TerraMind Latent Space}
 \label{sec:rq1-results}
@@ -122,7 +113,9 @@ This is a supplementary observation, on a different model scale and with a diffe
     \label{fig:cosine-sim-tiny}
 \end{figure}
 
-\section{Degradation Factor effects on Downstream Task Gap}
+\newpage
+
+\section{Degradation effects on Downstream Task Gap}
 \label{sec:ladder-results}
 
 This section takes up the last part of the previous research question, which asks which of the physical differences between the two instruments is the one that produces the gap.
@@ -257,10 +250,6 @@ Three limitations bound these results.
 We vary the factors one at a time, whereas a real sensor pair presents all of them at once, and possibly interacting, so the ladder identifies which effects matter in isolation, and not how they compose.
 The degradations are simulated, so the conclusion concerns the simulator's model of the instrument difference and not the instrument difference itself, and it is the absence of real labelled $\Phi$-sat-2 flood data (Section~\ref{sec:sen1floods-sim}) that makes this unavoidable.
 Finally, the supervised U-Net baseline is not included in Table~\ref{tab:ladder-domain-gap}, so these results characterise the distilled and foundation-model encoders but do not establish whether distillation itself changed robustness relative to training on the target sensor directly.
-
-\wip{Two further pieces of this evaluation are prepared but not yet included: a latent-space view of how the ladder displaces the U-Net's representation, and the corresponding domain-gap metrics of Section~\ref{sec:gap-measurement} computed per rung.
-    Both are expected to test the same attribution from the representation side rather than the task side, and the reading above should be revisited if they disagree with it.
-}
 
 \section{Sensor Adaptivity in the Distilled Student}
 \label{sec:rq2-results}
@@ -398,12 +387,6 @@ The frequency-weighted \acref{IoU} moves in the same direction as the macro aver
     \label{fig:per-class}
 \end{figure}
 
-\wip[Decide how much weight the two classes where the baseline wins deserve.]{%
-    To write: the per-class discussion.
-    Permanent water is the only class where the undistilled baseline is ahead ($-0.013$), and it is spectrally distinctive and not rare enough for the class weighting to be doing the work, though a margin that size is not resolved by a single run (Section~\ref{sec:limitations}).
-    This needs a sentence on whether that pattern is meaningful, or whether it sits within the per-class noise of a single seed.
-}
-
 Two costs qualify this result.
 The distillation requires $7.9$ minutes per epoch against the $3.3$ of the baseline, which is a factor of $2.4$, and it is dominated by the forward pass of the frozen teacher and by the second student branch.
 At a fixed compute budget rather than a fixed epoch count, the comparison would therefore be much closer.
@@ -497,20 +480,6 @@ The most likely explanation is the train/test normalization inconsistency descri
 On that reading, part of what is reported here as a domain-adaptation gain is the repair of a latent defect in the two-branch training scheme.
 That caveat does not diminish the practical result, but it does bear on how much of it should be attributed to \acref{DA}.
 
-\subsection{Measurement pitfalls}
-\label{sec:measurement-pitfalls}
-
-Two artefacts we encountered during this work are worth recording, since both of them would silently corrupt a comparison of exactly this kind.
-
-First, the macro-averaged \acref{mIoU} implemented by standard libraries excludes classes with zero union from its average, so its denominator depends on which classes a given model happens to predict.
-Where a rare class is absent from a small evaluation split, two models are then averaged over a different number of classes and their \acref{mIoU} values are simply not comparable.
-This effect inflated an apparent advantage by roughly a factor of three in an early version of the label-budget experiment.
-All results in this chapter are reported on a fixed denominator over all eleven classes.
-
-Second, an evaluation split sized as a fixed fraction of the training split makes a label-scarcity study vary its measurement and its treatment at the same time.
-At the smallest budget, this left us with one hundred evaluation patches, in which the rarest class does not occur at all.
-We therefore hold the evaluation splits fixed and independent of the training budget throughout.
-
 \subsection{Limitations}
 \label{sec:limitations}
 
@@ -523,15 +492,10 @@ Finally, the work is scoped to a single sensor pair, so the finding that the gap
 \subsection{Interpretation of the flood-robustness result}
 \label{sec:discussion-comparison}
 
-\wip{The flood-segmentation evaluation is only partially complete at the time of writing, and the scope of what follows should be read accordingly.
-    The robustness assessment across the simulated degradation ladder (Section~\ref{sec:ladder-results}) covers TerraMind, in both frozen and fine-tuned configurations, and the distilled student; the supervised U-Net baseline has not been run across the ladder, so no statement is yet possible about whether distillation changed flood-task robustness relative to training on the target sensor directly.
-    The invariance and label-budget findings above therefore still rest on the \acref{LULC} task alone, and no claim is made yet about whether they carry over to flood segmentation.
-}
-
-The mild flood-\acref{IoU} degradation observed for the teacher across the simulated degradation ladder (Section~\ref{sec:ladder-results}, at worst $-0.152$ \acref{IoU} under full-severity noise and $-0.008$ under full-severity blur) is not unique to this thesis.
+The flood-\acref{IoU} degradation observed for the teacher across the simulated degradation ladder (Section~\ref{sec:ladder-results}, at worst $-0.152$ \acref{IoU} under full-severity noise and $-0.008$ under full-severity blur) is expected.
 Du et al.~\cite{du2025onorbitdemonstrationgeospatialfoundation} independently report that flood detection was anomalously robust to the sensor domain gap on Kanyini, in contrast to an approximately $47\%$ drop in cloud-detection performance on the same platform.
-Two independent studies therefore observe the same pattern, and a plausible explanation is that the strong near-infrared absorption contrast of water survives the sensor noise and the band mismatch much better than the texture-dependent and boundary-dependent cues that cloud detection or general land-cover classification rely on.
-Flood segmentation may then understate the severity of the domain-gap problem, and this is part of why we adopted the \acref{LULC} task as the primary benchmark.
+We observe the same pattern, and a plausible explanation is that the strong near-infrared absorption contrast of water survives the sensor noise and the band mismatch much better than the texture-dependent and boundary-dependent cues that cloud detection or general land-cover classification rely on.
+Flood segmentation may then understate the severity of the domain-gap problem.
 
 \subsection{Positioning with \texorpdfstring{$\Phi$}{Phi}satNet}
 \label{sec:positioning-phisatnet}
