@@ -55,10 +55,10 @@
 \contentsline {section}{\numberline {4.5}Distillation Against a Supervised Baseline}{53}{section.4.5}%
 \contentsline {paragraph}{Complexity against accuracy.}{55}{section*.55}%
 \contentsline {section}{\numberline {4.6}Accuracy Drop with Few Labels}{56}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Discussion}{57}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{57}{subsection.4.7.1}%
-\contentsline {subsection}{\numberline {4.7.2}Limitations}{58}{subsection.4.7.2}%
-\contentsline {subsection}{\numberline {4.7.3}Interpretation of the flood-robustness result}{58}{subsection.4.7.3}%
+\contentsline {section}{\numberline {4.7}Discussion}{56}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{56}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Limitations}{57}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}Interpretation of the flood-robustness result}{57}{subsection.4.7.3}%
 \contentsline {subsection}{\numberline {4.7.4}Positioning with $\Phi $satNet}{58}{subsection.4.7.4}%
 \contentsline {subsection}{\numberline {4.7.5}Practical recommendations}{59}{subsection.4.7.5}%
 \contentsline {chapter}{\numberline {5}Conclusion}{60}{chapter.5}%

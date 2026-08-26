@@ -508,25 +508,24 @@
 \newlabel{tab:invariance}{{4.5}{51}{Sensor invariance of the teacher and the distilled student, over $800$ co-registered test patches. Paired cosine and probe transfer compare the two sensor views of the same ground. Probe transfer fits a linear classifier on Sentinel-2 embeddings and applies it to $\Phi $-sat-2 embeddings; retention is the ratio of the two accuracies. The \acs {IoU} difference is measured on the full test split rather than on the $800$-patch embedding sample}{table.caption.49}{}}
 \acronymused{PAD}
 \acronymused{PAD}
-\acronymused{PAD}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Distribution of the domain probe's out-of-fold decision score, the quantity from which \acs {PAD} is computed. Separated modes imply a probe that never errs (\acs {PAD} $\rightarrow 2$); overlapping modes imply chance (\acs {PAD} $\rightarrow 0$). After standardising each domain on its own statistics (right column) the separability vanishes for both models, showing that all of it was per-channel mean and scale, not representational structure. }}{52}{figure.caption.50}\protected@file@percent }
 \acronymused{PAD}
 \acronymused{PAD}
 \acronymused{PAD}
 \newlabel{fig:pad-decision}{{4.4}{52}{Distribution of the domain probe's out-of-fold decision score, the quantity from which \acs {PAD} is computed. Separated modes imply a probe that never errs (\acs {PAD} $\rightarrow 2$); overlapping modes imply chance (\acs {PAD} $\rightarrow 0$). After standardising each domain on its own statistics (right column) the separability vanishes for both models, showing that all of it was per-channel mean and scale, not representational structure}{figure.caption.50}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Four patches from the validation set of the \acs {KD}~$+$~\acs {DSBN} run, at epoch $98$ of $101$. Left to right: the real $\Phi $-sat-2, its Sentinel-2 co-registered view, WorldCover label map, frozen teacher evaluated on Sentinel-2, and the student's two branches. The teacher sees only the Sentinel-2 view, and one teacher output supervises both student branches (Figure~\ref {fig:kd-architecture}). Row~4 shows a failure case on a real acquisition, where the $\Phi $-sat-2 branch degrades and the Sentinel-2 branch does not. }}{53}{figure.caption.51}\protected@file@percent }
+\acronymused{KD}
+\acronymused{DSBN}
+\newlabel{fig:qualitative}{{4.5}{53}{Four patches from the validation set of the \acs {KD}~$+$~\acs {DSBN} run, at epoch $98$ of $101$. Left to right: the real $\Phi $-sat-2, its Sentinel-2 co-registered view, WorldCover label map, frozen teacher evaluated on Sentinel-2, and the student's two branches. The teacher sees only the Sentinel-2 view, and one teacher output supervises both student branches (Figure~\ref {fig:kd-architecture}). Row~4 shows a failure case on a real acquisition, where the $\Phi $-sat-2 branch degrades and the Sentinel-2 branch does not}{figure.caption.51}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.5}Distillation Against a Supervised Baseline}{53}{section.4.5}\protected@file@percent }
 \newlabel{sec:rq3-results}{{4.5}{53}{Distillation Against a Supervised Baseline}{section.4.5}{}}
 \acronymused{KD}
 \acronymused{DSBN}
-\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces Main results on the \acs {LULC} task. Validation \acs {mIoU} is the best epoch, on the fixed $1{,}000$-patch validation split shared by every run; because the splits are nested prefixes of one shuffled ordering, the two label budgets are evaluated on the identical patches. Test \acs {mIoU} is on the full $25{,}323$-patch test split. Cost is total wall-clock for the run. }}{53}{table.caption.52}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces Main results on the \acs {LULC} task. Validation \acs {mIoU} is the best epoch, on the fixed $1{,}000$-patch validation split shared by every run; because the splits are nested prefixes of one shuffled ordering, the two label budgets are evaluated on the identical patches. Test \acs {mIoU} is on the full $25{,}323$-patch test split. Cost is total wall-clock for the run. }}{54}{table.caption.52}\protected@file@percent }
 \acronymused{LULC}
 \acronymused{mIoU}
 \acronymused{mIoU}
-\newlabel{tab:main-results}{{4.6}{53}{Main results on the \acs {LULC} task. Validation \acs {mIoU} is the best epoch, on the fixed $1{,}000$-patch validation split shared by every run; because the splits are nested prefixes of one shuffled ordering, the two label budgets are evaluated on the identical patches. Test \acs {mIoU} is on the full $25{,}323$-patch test split. Cost is total wall-clock for the run}{table.caption.52}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Four validation patches from the \acs {KD}~$+$~\acs {DSBN} run, at epoch $98$ of $101$. Columns: the real $\Phi $-sat-2 and Sentinel-2 views (each channel independently contrast-stretched for display), the shared WorldCover label map, the frozen teacher evaluated on Sentinel-2, and the student's two branches. The teacher sees only the Sentinel-2 view, and one teacher output supervises both student branches (Figure~\ref {fig:kd-architecture}). Only the six classes present in these patches are shown in the legend. Rows 1--3 illustrate the cross-sensor agreement quantified in Table~\ref {tab:invariance}; row~4 is a failure case on a noisy real acquisition, where the $\Phi $-sat-2 branch degrades and the Sentinel-2 branch does not. This is a training-time snapshot rather than the selected checkpoint, which is epoch~$89$. }}{54}{figure.caption.51}\protected@file@percent }
-\acronymused{KD}
-\acronymused{DSBN}
-\newlabel{fig:qualitative}{{4.5}{54}{Four validation patches from the \acs {KD}~$+$~\acs {DSBN} run, at epoch $98$ of $101$. Columns: the real $\Phi $-sat-2 and Sentinel-2 views (each channel independently contrast-stretched for display), the shared WorldCover label map, the frozen teacher evaluated on Sentinel-2, and the student's two branches. The teacher sees only the Sentinel-2 view, and one teacher output supervises both student branches (Figure~\ref {fig:kd-architecture}). Only the six classes present in these patches are shown in the legend. Rows 1--3 illustrate the cross-sensor agreement quantified in Table~\ref {tab:invariance}; row~4 is a failure case on a noisy real acquisition, where the $\Phi $-sat-2 branch degrades and the Sentinel-2 branch does not. This is a training-time snapshot rather than the selected checkpoint, which is epoch~$89$}{figure.caption.51}{}}
+\newlabel{tab:main-results}{{4.6}{54}{Main results on the \acs {LULC} task. Validation \acs {mIoU} is the best epoch, on the fixed $1{,}000$-patch validation split shared by every run; because the splits are nested prefixes of one shuffled ordering, the two label budgets are evaluated on the identical patches. Test \acs {mIoU} is on the full $25{,}323$-patch test split. Cost is total wall-clock for the run}{table.caption.52}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Left: $\Phi $-sat-2 validation \acs {mIoU} over training at $10{,}000$ labelled patches, with the best epoch marked. Dotted line marks teacher's accuracy on Sentinel-2. Right: the residual accuracy difference between the two sensors for the distilled student, which crosses zero around epoch $55$ and oscillates. }}{54}{figure.caption.53}\protected@file@percent }
 \acronymused{mIoU}
 \newlabel{fig:dsbn-vs-baseline}{{4.6}{54}{Left: $\Phi $-sat-2 validation \acs {mIoU} over training at $10{,}000$ labelled patches, with the best epoch marked. Dotted line marks teacher's accuracy on Sentinel-2. Right: the residual accuracy difference between the two sensors for the distilled student, which crosses zero around epoch $55$ and oscillates}{figure.caption.53}{}}
@@ -534,30 +533,30 @@
 \acronymused{IoU}
 \newlabel{fig:per-class}{{4.7}{55}{Per-class test \acs {IoU} at $10{,}000$ labelled patches, ordered by class prevalence, with each class's share of labelled pixels beneath its label. Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them (Section~\ref {sec:configuration})}{figure.caption.54}{}}
 \@writefile{toc}{\contentsline {paragraph}{Complexity against accuracy.}{55}{section*.55}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces Trainable parameters against accuracy at $10{,}000$ labelled patches. Every parameter is trained in all five rows, so the totals are also the trainable counts. Test mIoU is on the full $25{,}323$-patch test split. }}{55}{table.caption.56}\protected@file@percent }
+\newlabel{tab:complexity}{{4.7}{55}{Trainable parameters against accuracy at $10{,}000$ labelled patches. Every parameter is trained in all five rows, so the totals are also the trainable counts. Test mIoU is on the full $25{,}323$-patch test split}{table.caption.56}{}}
 \citation{kouw2019introductiondomainadaptationtransfer}
-\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces Trainable parameters against accuracy at $10{,}000$ labelled patches. Every parameter is trained in all five rows, so the totals are also the trainable counts. Test mIoU is on the full $25{,}323$-patch test split. }}{56}{table.caption.56}\protected@file@percent }
-\newlabel{tab:complexity}{{4.7}{56}{Trainable parameters against accuracy at $10{,}000$ labelled patches. Every parameter is trained in all five rows, so the totals are also the trainable counts. Test mIoU is on the full $25{,}323$-patch test split}{table.caption.56}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.6}Accuracy Drop with Few Labels}{56}{section.4.6}\protected@file@percent }
 \newlabel{sec:label-crossover}{{4.6}{56}{Accuracy Drop with Few Labels}{section.4.6}{}}
 \acronymused{KD}
 \acronymused{UDA}
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Discussion}{56}{section.4.7}\protected@file@percent }
+\newlabel{sec:discussion}{{4.7}{56}{Discussion}{section.4.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{56}{subsection.4.7.1}\protected@file@percent }
+\newlabel{sec:dsbn-contribution}{{4.7.1}{56}{Domain-specific normalization contribution}{subsection.4.7.1}{}}
+\citation{du2025onorbitdemonstrationgeospatialfoundation}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Best validation \acs {mIoU} against labelled training budget. The two methods cross: distillation is worse at $1{,}000$ labelled patches and better at $10{,}000$. Both budgets share the same fixed validation split. }}{57}{figure.caption.57}\protected@file@percent }
 \acronymused{mIoU}
 \newlabel{fig:label-crossover}{{4.8}{57}{Best validation \acs {mIoU} against labelled training budget. The two methods cross: distillation is worse at $1{,}000$ labelled patches and better at $10{,}000$. Both budgets share the same fixed validation split}{figure.caption.57}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.7}Discussion}{57}{section.4.7}\protected@file@percent }
-\newlabel{sec:discussion}{{4.7}{57}{Discussion}{section.4.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{57}{subsection.4.7.1}\protected@file@percent }
-\newlabel{sec:dsbn-contribution}{{4.7.1}{57}{Domain-specific normalization contribution}{subsection.4.7.1}{}}
 \acronymused{DA}
-\citation{du2025onorbitdemonstrationgeospatialfoundation}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.2}Limitations}{57}{subsection.4.7.2}\protected@file@percent }
+\newlabel{sec:limitations}{{4.7.2}{57}{Limitations}{subsection.4.7.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.3}Interpretation of the flood-robustness result}{57}{subsection.4.7.3}\protected@file@percent }
+\newlabel{sec:discussion-comparison}{{4.7.3}{57}{Interpretation of the flood-robustness result}{subsection.4.7.3}{}}
 \citation{phisatnet}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.2}Limitations}{58}{subsection.4.7.2}\protected@file@percent }
-\newlabel{sec:limitations}{{4.7.2}{58}{Limitations}{subsection.4.7.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.3}Interpretation of the flood-robustness result}{58}{subsection.4.7.3}\protected@file@percent }
-\newlabel{sec:discussion-comparison}{{4.7.3}{58}{Interpretation of the flood-robustness result}{subsection.4.7.3}{}}
+\citation{phisatnet}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.7.4}Positioning with $\Phi $satNet}{58}{subsection.4.7.4}\protected@file@percent }
 \newlabel{sec:positioning-phisatnet}{{4.7.4}{58}{Positioning with \texorpdfstring {$\Phi $}{Phi}satNet}{subsection.4.7.4}{}}
-\citation{phisatnet}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.7.5}Practical recommendations}{59}{subsection.4.7.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{60}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}

@@ -238,12 +238,12 @@ It also reinforces the point that the gap here is not resolution-driven, which i
 Repeating the sweep with each model trained on the same degraded condition it is evaluated on, instead of on clean data, recovers most of the loss (Table~\ref{tab:ladder-adaptation}).
 $84\%$ of the noise penalty and $66\%$ of the misalignment penalty disappear, and the blur stops being a penalty, since it scores marginally above the clean baseline, like a mild augmentation.
 The gap measured in Table~\ref{tab:ladder-domain-gap} is therefore largely an adaptation gap rather than an information-loss gap, at least for noise and blur.
-Where the noise characteristics of the operating sensor are known in advance, which for a launched instrument they always are, simulating them during the training recovers most of the achievable performance, without any domain-adaptation machinery.
+Where the noise characteristics of the operating sensor are known in advance, simulating them during the training recovers most of the achievable performance, without any domain-adaptation machinery.
 Misalignment is again the exception: a third of its cost survives training on the degraded condition, which is consistent with reading it as a factor that degrades the cross-band information.
 
 Three limitations bound these results.
 We vary the factors one at a time, whereas a real sensor pair presents all of them at once, and possibly interacting, so the ladder identifies which effects matter in isolation, and not how they compose.
-The degradations are simulated, so the conclusion concerns the simulator's model of the instrument difference and not the instrument difference itself, and it is the absence of real labelled $\Phi$-sat-2 flood data (Section~\ref{sec:sen1floods-sim}) that makes this unavoidable.
+The degradations are simulated, so the conclusion concerns the simulator's model of the instrument difference, and the absence of real labelled $\Phi$-sat-2 flood data (Section~\ref{sec:sen1floods-sim}) that makes it necessary.
 Finally, the supervised U-Net baseline is not included in Table~\ref{tab:ladder-domain-gap}, so these results characterise the distilled and foundation-model encoders but do not establish whether distillation itself changed robustness relative to training on the target sensor directly.
 
 \section{Sensor Adaptivity in the Distilled Student}
@@ -292,14 +292,14 @@ A constant per-channel offset distinguishes the domains by construction, and a l
 Standardising each domain on its own statistics removes the first and second moments that a per-domain affine can express, and it drops the probe to chance for both models.
 Figure~\ref{fig:pad-decision} shows the underlying quantity: in the raw setting the two domains' probe scores are separated by an empty margin, and after per-domain standardisation they collapse onto one another.
 
-\acref{PAD} is therefore not a valid instrument for a model that carries a domain-specific normalization, even though it is scale-free and otherwise well suited to comparing representations of different dimensionality.
+\acref{PAD} is therefore not a valid measurement for a model that carries a domain-specific normalization, even though it is scale-free and otherwise well suited to comparing representations of different dimensionality.
 The probe transfer, which asks the functional question directly, is the appropriate measure here, and it is the one we report above.
 
-\wip{The same caution applies in weaker form to the two measures this section does rely on.
-    Domain-specific normalization aligns each domain's first and second moments by construction, and both paired cosine similarity and probe transfer are sensitive to that alignment, so some part of the improvement reported above may share an origin with the \acref{PAD} artefact instead of reflecting semantic alignment alone.
-    Recomputing both measures on a student trained with shared normalization, and after standardising each domain on its own statistics, is in progress and is the check that would settle how much of the gain is representational.
-    Until it completes, the magnitude of the invariance improvement should be read as an upper bound, though the direction of the effect is not in doubt: the teacher's representation does not transfer across the sensor pair at all, and the student's does.
-}
+% \wip{The same caution applies in weaker form to the two measures this section does rely on.
+%     Domain-specific normalization aligns each domain's first and second moments by construction, and both paired cosine similarity and probe transfer are sensitive to that alignment, so some part of the improvement reported above may share an origin with the \acref{PAD} artefact instead of reflecting semantic alignment alone.
+%     Recomputing both measures on a student trained with shared normalization, and after standardising each domain on its own statistics, is in progress and is the check that would settle how much of the gain is representational.
+%     Until it completes, the magnitude of the invariance improvement should be read as an upper bound, though the direction of the effect is not in doubt: the teacher's representation does not transfer across the sensor pair at all, and the student's does.
+% }
 
 \begin{figure}[htbp]
     \centering
@@ -326,12 +326,10 @@ The parity reported above is therefore a property of the split average and not a
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/fig_qualitative_predictions.png}
-    \caption{Four validation patches from the \acs{KD}~$+$~\acs{DSBN} run, at epoch $98$ of $101$.
-        Columns: the real $\Phi$-sat-2 and Sentinel-2 views (each channel independently contrast-stretched for display), the shared WorldCover label map, the frozen teacher evaluated on Sentinel-2, and the student's two branches.
+    \caption{Four patches from the validation set of the \acs{KD}~$+$~\acs{DSBN} run, at epoch $98$ of $101$.
+        Left to right: the real $\Phi$-sat-2, its Sentinel-2 co-registered view, WorldCover label map, frozen teacher evaluated on Sentinel-2, and the student's two branches.
         The teacher sees only the Sentinel-2 view, and one teacher output supervises both student branches (Figure~\ref{fig:kd-architecture}).
-        Only the six classes present in these patches are shown in the legend.
-        Rows 1--3 illustrate the cross-sensor agreement quantified in Table~\ref{tab:invariance}; row~4 is a failure case on a noisy real acquisition, where the $\Phi$-sat-2 branch degrades and the Sentinel-2 branch does not.
-        This is a training-time snapshot rather than the selected checkpoint, which is epoch~$89$.
+        Row~4 shows a failure case on a real acquisition, where the $\Phi$-sat-2 branch degrades and the Sentinel-2 branch does not.
     }
     \label{fig:qualitative}
 \end{figure}
@@ -378,12 +376,6 @@ Figure~\ref{fig:dsbn-vs-baseline} shows the shape of that margin: the baseline i
     }
     \label{fig:dsbn-vs-baseline}
 \end{figure}
-
-This overtake could be read as \wip[Settle the framing of the late overtake against the curves.
-]{%
-    To write: an interpretation of why the distilled run overtakes late rather than early.
-    The candidate explanations are that the teacher's signal becomes most useful once the student has enough capacity committed to the easy classes, or simply that the two-branch arm sees twice the supervision per epoch and therefore trails on wall-clock but not on epochs.
-}
 
 The distilled run's best epoch is the $89$th of the $101$ it ran, and it exhausted the full budget without triggering the early stopping, so the result should be read as a lower bound on what this configuration reaches.
 The baseline, by contrast, early-stopped at epoch $73$.

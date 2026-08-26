@@ -90,7 +90,7 @@ It is useful to separate three kinds of shift, since they have different causes 
     \item[--] \emph{Concept shift} is a change in what a given label looks like: a forest in Brittany and a tropical forest in Vietnam carry the same land-cover label while containing different species with different spectral signatures, so the mapping from label to appearance is no longer the one the model learned.
 \end{itemize}
 
-This thesis is concerned with the covariate shift, and specifically with the part of it that is attributable to the instrument.
+This thesis is concerned with the covariate shift, and specifically with the part of it that is attributable to the instrument sensor.
 The three kinds are difficult to separate in practice, because two datasets acquired by different sensors normally also differ in where and when they were acquired, and therefore in class balance and in scene content: a measured drop in accuracy then confounds all three.
 The co-registered triplets described in Chapter~\ref{chap:methodology} are constructed to remove that confound.
 Since each triplet holds views of the same ground at very nearly the same time, the label distribution and the underlying scene are held fixed across those views by construction, which leaves the sensor as the only factor that varies, and the shift it induces as the only one being measured.

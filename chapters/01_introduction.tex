@@ -58,7 +58,7 @@ However, the source and target domains they compare come from different benchmar
 
 Within the $\Phi$-lab, a \acref{GeoFM} named $\Phi$satNet was developed specifically for on-board execution on $\Phi$-sat-2 hardware. Built on the U-Net architecture (\acref{CNN}-based), it avoids the \acref{ViT}-compatibility problem, and it is pre-trained from scratch on physics-simulated $\Phi$-sat-2 data.
 Neither of these works isolates the sensor-only covariate shift using co-registered data, and neither tests whether an existing \acref{GeoFM}'s broad and diverse pre-training transfers to a new sensor with fewer labels.
-This thesis addresses the first point directly; the second one involves a matched label-efficiency comparison against $\Phi$satNet, which is framed here but left to future work (Section~\ref{sec:discussion-comparison}).
+This thesis addresses the first point directly; the second one involves a matched label-efficiency comparison against $\Phi$satNet.
 The gap this thesis addresses is therefore threefold: (i) whether the domain gap between $\Phi$-sat-2 and Sentinel-2-pretrained TerraMind can be measured directly, in latent space, using data that isolates the sensor-induced covariate shift; (ii) whether that gap can be closed through an explicit domain-adaptation mechanism; and (iii) whether the resulting adaptivity survives compression into a hardware-deployable, cross-architecture (\acref{ViT}-to-\acref{CNN}) student model.
 
 \section{Research Objective and Problem Statement}
