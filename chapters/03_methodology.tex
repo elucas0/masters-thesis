@@ -586,8 +586,8 @@ The complete objective is therefore:
         \;+\; \lambda^{S}_{\mathrm{task}}\, \mathcal{L}_{\mathrm{task}}\big(S_S(x_s),\, y\big)                     \\
         {} + {}            & \lambda_{\mathrm{KD}} \Big[\, \mathcal{L}_{\mathrm{KD}}\big(S_T(x_t),\, T(x_s)\big)
         \;+\; \mathcal{L}_{\mathrm{KD}}\big(S_S(x_s),\, T(x_s)\big) \Big]                                          \\
-        {} + {}            & r(e) \Big[\, \lambda_{\mathrm{inst}}\, \mathcal{L}_{\mathrm{inst}}
-        \;+\; \lambda_{\mathrm{pix}}\, \mathcal{L}_{\mathrm{pix}} \Big],
+        {} + {}            & \lambda_{\mathrm{inst}}\, \mathcal{L}_{\mathrm{inst}}
+        \;+\; \lambda_{\mathrm{pix}}\, \mathcal{L}_{\mathrm{pix}},
     \end{aligned}
     \label{eq:kd-total}
 \end{equation}
@@ -603,7 +603,6 @@ $\mathcal{L}_{\mathrm{task}}$ is the focal loss of Lin et al.~\cite{lin2017focal
     \label{eq:focal}
 \end{equation}
 with focusing parameter $\gamma = 2$ and per-class weights $\alpha_c \propto f_c^{-1/2}$ derived from the measured pixel frequencies $f_c$ of Section~\ref{sec:triplets}, rescaled to unit mean.
-The average is taken over the number of valid pixels, and the weights are rescaled to mean one.
 
 \paragraph{Distillation term.}
 $\mathcal{L}_{\mathrm{KD}}$ is the temperature-scaled \acref{KL} divergence of Hinton et al.~\cite{hinton2015distilling}, applied independently at every pixel of the map $\mathcal{P}$,
@@ -627,7 +626,7 @@ Second, the sum runs over every pixel of the map, including those the WorldCover
 \paragraph{Contrastive terms.}
 $\mathcal{L}_{\mathrm{inst}}$ is a symmetric NT-Xent between the pooled, $\ell_2$-normalised bottleneck embeddings of the two sensor views of a patch, at temperature $0.1$, taking the co-registered view as the positive and all remaining in-batch embeddings as negatives.
 $\mathcal{L}_{\mathrm{pix}}$ is its class-conditional dense counterpart, pulling each pixel embedding toward an exponential-moving-average prototype of its own class that is shared between the two domains and pushing it from the other class prototypes, similar to the dense multi-sensor alignment loss of X-STARS~\cite{marsocci2025cross}.
-Both weights are zero in every result reported in Chapter~\ref{chap:results-discussion}, so Equation~\eqref{eq:kd-total} reduces there to its first two lines and $r(e)$ plays no role; they are stated here because Section~\ref{sec:rq2-results} reports their ablation.
+Both weights are zero in every result reported in Chapter~\ref{chap:results-discussion}, so Equation~\eqref{eq:kd-total} reduces there to its first two lines; they are stated here because Section~\ref{sec:rq2-results} reports their ablation.
 
 \begin{table}[htbp]
     \centering
@@ -644,7 +643,6 @@ Both weights are zero in every result reported in Chapter~\ref{chap:results-disc
         $\gamma$                        & Focal focusing parameter                   & $2.0$                     \\
         $\alpha_c$                      & Class weights, rescaled to unit mean       & $\propto f_c^{-1/2}$      \\
         $\tau$                          & Distillation temperature                   & $4.0$                     \\
-        $E_{\mathrm{warm}}$             & Contrastive warm-up epochs                 & $1$                       \\
         \bottomrule
     \end{tabular}
     \caption{Coefficients of the training objective, Equation~\eqref{eq:kd-total}.
