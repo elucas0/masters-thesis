@@ -469,6 +469,11 @@ INPUT ./figures/fig_pad_decision_scores.png
 INPUT ./figures/fig_pad_decision_scores.png
 INPUT ./figures/fig_pad_decision_scores.png
 INPUT ./figures/fig_pad_decision_scores.png
+INPUT ./figures/fig_qualitative_predictions.png
+INPUT ./figures/fig_qualitative_predictions.png
+INPUT ./figures/fig_qualitative_predictions.png
+INPUT ./figures/fig_qualitative_predictions.png
+INPUT ./figures/fig_qualitative_predictions.png
 INPUT ./figures/fig_dsbn_vs_baseline.png
 INPUT ./figures/fig_dsbn_vs_baseline.png
 INPUT ./figures/fig_dsbn_vs_baseline.png

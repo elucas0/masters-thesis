@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1787703055.28032 "main.aux" "main.bbl" "main" 1787703800.57899 0
+["bibtex main"] 1787737871.67036 "main.aux" "main.bbl" "main" 1787737948.71438 0
   "./references.bib" 1787439446.256 18755 f63438e3f7d3f36ef5a4c7e44ec713fe ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/ieeetr.bst" 1292289607 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "main.aux" 1787703800.43865 52648 a0876223bc0060172d5d7c00b7173e12 "pdflatex"
+  "main.aux" 1787737948.59735 56081 eb200721f9fecd04bdc0f074c3d0ef74 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1787703795.77767 "/home/elouann/masters-thesis/main.tex" "main.pdf" "main" 1787703800.57919 0
+["pdflatex"] 1787737944.1813 "/home/elouann/masters-thesis/main.tex" "main.pdf" "main" 1787737948.71463 0
   "/etc/texmf/web2c/texmf.cnf" 1785273456.31736 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk" 1785865326.42803 28952 a33fd789247e67a097653131d1b7521b ""
   "/home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk" 1785273559.42189 31928 411f8c2fef1ba2e0bda1d5f11fa1b6cd ""
@@ -224,11 +224,11 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1787690780 6800786 e77923d0e374dacdcce9ec09cbd60052 ""
   "chapters/00_abstract.tex" 1787689458.97085 3129 a7dde23697a760178fa9eca173e0dc9c ""
   "chapters/01_introduction.tex" 1787689458.97113 10912 ca5e02abfe37309c9d34d5399f6a3473 ""
-  "chapters/02_background_litreview.tex" 1787700370.40628 25462 64a02779e0d5516dcb11e06124e4a7bf ""
-  "chapters/03_methodology.tex" 1787703795.47144 56431 d574e4840467e2cf793b4ca94f5baf9b ""
-  "chapters/04_results_discussion.tex" 1787703181.30622 49539 997c4cefb17b14c63fe60d6a08962b31 ""
-  "chapters/05_conclusion.tex" 1787689458.97285 4574 62e257f45e9d383de0b2f65a8c929326 ""
-  "chapters/06_appendix.tex" 1787689458.97299 1880 8ee76df78995453abcf18fe2e13bae85 ""
+  "chapters/02_background_litreview.tex" 1787737433.98258 25356 d167fbed726e41b5810eff904400ba21 ""
+  "chapters/03_methodology.tex" 1787737943.87828 62274 1a74b03aa307d028f91efbcde8d8d672 ""
+  "chapters/04_results_discussion.tex" 1787733474.08988 51775 6456b3fa8daf9f3375a75b01b40dce7e ""
+  "chapters/05_conclusion.tex" 1787703979.47236 4572 473233415f077fc3537221dd629f986f ""
+  "chapters/06_appendix.tex" 1787704023.5286 1824 3c7195e5966da3cdc988dcc7b8b8d96b ""
   "chapters/07_declarations.tex" 1787691654.79827 1044 9a73e951577553d5f0be6abdc234be46 ""
   "figures/fig_acquisition.png" 1785705372.20997 148243 2ffa26039956eccdc77020e9d4c17d62 ""
   "figures/fig_approx_error_by_class.png" 1786492067.54851 110256 7280f7ae4e4b22ab5c15506c9a2ea5fd ""
@@ -244,6 +244,7 @@
   "figures/fig_pad_decision_scores.png" 1785705682.5915 260761 7290f836d31ed644e83e365a29baedea ""
   "figures/fig_patch_examples.png" 1785705372.22094 5964432 1ce02a0dee6a73493b2bd1bc423aedf8 ""
   "figures/fig_per_class_dsbn.png" 1787482231.34975 193308 e541aa83ea3019f9bd5cba58dd4b9f60 ""
+  "figures/fig_qualitative_predictions.png" 1787733474.09722 2215439 78343ac339d77927fe381a0e98124ff1 ""
   "figures/fig_spectral_signature.png" 1785705372.22462 149805 654b58d3f831e900a97d259b1eba01f6 ""
   "figures/fig_splits.png" 1785705372.22529 225442 cd2e308091d554b03452340930cd098d ""
   "figures/fig_srf_s2_phisat2.png" 1786039063.9934 95181 ce6e6572a04ce541f217ae60d48fff6b ""
@@ -254,13 +255,13 @@
   "figures/hist_bands_normalized.png" 1787439446.17608 107603 89eed89b0c44037283b37540335a23df ""
   "figures/hist_bands_raw.png" 1787439446.17684 108662 cc4c6e27972dd5da5fac7cab79cf810a ""
   "figures/triplets_example_wc_mask.png" 1787690504.38411 748413 eeb14038abeaa43dd20af4435a09e569 ""
-  "main.aux" 1787703800.43865 52648 a0876223bc0060172d5d7c00b7173e12 "pdflatex"
-  "main.bbl" 1787703055.29444 11479 f829a5072eb24996c338c1a3034c168e "bibtex main"
-  "main.lof" 1787703800.44288 10963 a1d6bf03aa30a2bd387d34075830047c "pdflatex"
-  "main.lot" 1787703800.44288 3200 807a152a7600beccdad858ac6a0ca8ea "pdflatex"
-  "main.out" 1787703800.43954 9268 4c6fce0b44144faa45a0e13d2be7b058 "pdflatex"
+  "main.aux" 1787737948.59735 56081 eb200721f9fecd04bdc0f074c3d0ef74 "pdflatex"
+  "main.bbl" 1787737871.68268 11479 f829a5072eb24996c338c1a3034c168e "bibtex main"
+  "main.lof" 1787737948.60092 11874 ee7e36946ed2db4593eadde3c54f277e "pdflatex"
+  "main.lot" 1787737948.60092 3572 1889edbf7332ccbcebb2d192d7b0f0cf "pdflatex"
+  "main.out" 1787737948.59964 9423 ef6db637bcffda1b89f32819ca430c18 "pdflatex"
   "main.tex" 1787690504.48079 6859 420dddd193235f3dad0d2417a7def6ae ""
-  "main.toc" 1787703800.44288 5357 22bf10f67b2ee7dc81ee4e50e123cf0c "pdflatex"
+  "main.toc" 1787737948.60092 5630 1e7593e41a3a177edf0190c996c9810b "pdflatex"
   (generated)
   "main.aux"
   "main.lof"

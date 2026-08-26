@@ -252,7 +252,7 @@ Chapter~\ref{chap:results-discussion} reports how the teacher responds across th
 
 The degradation pipeline adapts the simulator developed for the \acref{ESA} $\Phi$-lab OrbitalAI challenge \cite{longepe2024orbitalai}. This simulator projects labeled Sentinel-2 L1C tiles into the $\Phi$-sat-2 sensor domain by modeling the physical differences between the two instruments as a sequence of operations in radiance space.
 Because these effects are defined physically on radiance, not reflectance, the pipeline converts source reflectance to top-of-atmosphere radiance, applies each degradation in turn, and converts back to reflectance to output a simulated L1C product.
-Pixel coordinates are written $(i,j)$ and spectral band index $b_n$ throughout.
+Pixel coordinates are written $(i,j)$ and spectral band index $b_n$.
 
 The implementation used here is an updated version of that simulator, summarised in Figure~\ref{fig:simulator}.
 Each stage draws its parameters from its own intermediate input instead of from a single fixed configuration, so an individual effect can be varied or disabled without disturbing the others, and this is what permits the factor-isolation use described in Section~\ref{sec:sen1floods-sim}.
@@ -515,14 +515,14 @@ Querying the teacher directly on $\Phi$-sat-2 would distil that error instead of
 
             % --- data -------------------------------------------------------
             \node[database] (data_s2)  at (0,  2.8) {Real Sentinel-2\\(source $x_s$)};
-            \node[database] (data_phi) at (0, -1.0) {Real $\Phi$-sat-2\\(target $x_t$)};
+            \node[database] (data_phi) at (0, -0.9) {Real $\Phi$-sat-2\\(target $x_t$)};
             \node[labels]   (mask)     at (0, -4.4) {WorldCover labels\\(shared)};
 
             % --- models -----------------------------------------------------
             \node[frozen] (teacher) at (6.2,  4.0)
-            {TerraMind teacher Base (\acref{ViT})\\fine-tuned on Sentinel-2, \textbf{frozen}};
+            {TerraMind teacher Base (ViT)\\fine-tuned on Sentinel-2, \textbf{frozen}};
             \node[model]  (student) at (6.2, -0.4)
-            {\acref{CNN} student (U-Net)\\shared convolutional weights\\\textbf{domain-specific \acref{BN}}};
+            {CNN student (U-Net)\\shared convolutional weights\\\textbf{domain-specific BN}};
 
             % --- outputs ----------------------------------------------------
             \node[feature] (t_soft)   at (11.8,  4.0) {Teacher soft\\predictions $T(x_s)$};
@@ -530,9 +530,9 @@ Querying the teacher directly on $\Phi$-sat-2 would distil that error instead of
             \node[feature] (s_target) at (11.8, -1.6) {Student logits\\target branch $S(x_t)$};
 
             % --- losses -----------------------------------------------------
-            \node[loss]    (kd)   at (16.8,  3.0) {\acref{KD} loss\\KL, $T=4$};
-            \node[loss]    (task) at (16.8,  0.2) {Task loss\\focal, class-weighted};
-            \node[ablated] (con)  at (16.8, -2.8) {Contrastive terms\\weight $0$ (ablated)};
+            \node[loss]    (kd)   at (16.8,  3.0) {KD loss\\KL, $T=4$};
+            \node[loss]    (task) at (18.0,  0.0) {Task loss\\focal, class-weighted};
+            \node[ablated] (con)  at (16.8, -3.0) {Contrastive terms\\weight $0$};
 
             % --- forward routing --------------------------------------------
             \draw[arrow] (data_s2.east)  -- ++(1.2,0) |- (teacher.west);
@@ -544,20 +544,15 @@ Querying the teacher directly on $\Phi$-sat-2 would distil that error instead of
             \draw[arrow] (student.east) -- ++(0.9,0) |- (s_target.west);
 
             % one teacher output supervises BOTH student branches
-            \draw[arrow] (t_soft.east)   -- ++(1.1,0) |- (kd.north);
+            \draw[arrow] (t_soft.east)   -- ++(0,0) |- (kd.north);
             \draw[arrow] (s_source.east) -- ++(0.6,0) |- (kd.west);
-            \draw[arrow] (s_target.east) -- ++(1.5,0) |- (kd.south);
+            \draw[arrow] (s_target.east) -- ++(0.6,0) |- (kd.west);
 
             \draw[arrow] (s_source.east) -- ++(0.6,0) |- (task.north);
             \draw[arrow] (s_target.east) -- ++(0.6,0) |- (task.west);
-            \draw[arrow] (mask.east) -- (19.9,-4.4) -- (19.9,0.2) -- (task.east);
+            \draw[arrow] (mask.east) -- (20.75,-4.4) -- (task.east);
 
-            \draw[arrow, gray, dashed] (s_target.south) -- ++(0,-1.2) -| (con.west);
-
-            % --- backpropagation --------------------------------------------
-            \draw[backarrow] (task.south) -- (16.8,-5.9) -- node[above, black]
-            {\footnotesize gradients update the student only; the teacher stays frozen}
-            (6.2,-5.9) -- (student.south);
+            \draw[arrow, gray, dashed] (s_target.south) -- ++(0,-0.85) -| (con.west);
 
             % --- grouping ---------------------------------------------------
             \begin{scope}[on background layer]
@@ -580,10 +575,10 @@ Querying the teacher directly on $\Phi$-sat-2 would distil that error instead of
 \subsection{Training objective}
 \label{sec:kd-objective}
 
-Write $x_s$ for the Sentinel-2 view of a patch, $x_t$ for its co-registered $\Phi$-sat-2 view, and $y$ for the single WorldCover label map that the two share.
+Write $x_s$ for the Sentinel-2 view of a patch, $x_t$ for its co-registered $\Phi$-sat-2 view, and $y$ the WorldCover label map.
 Let $S_d(\cdot)$ denote the student evaluated through the normalization branch of domain $d$ (Section~\ref{sec:dsbn-mechanism}), so that $S_S(x_s)$ and $S_T(x_t)$ are the two forward passes of Figure~\ref{fig:kd-architecture}, and let $T(\cdot)$ denote the frozen teacher.
-Every term below acts on dense logit maps at the label resolution, bilinearly resampled where a stage does not already produce that resolution.
-The complete objective is
+Every term acts on dense logit maps after bilinear sampling to label resolution.
+The complete objective is therefore:
 
 \begin{equation}
     \begin{aligned}
@@ -608,10 +603,7 @@ $\mathcal{L}_{\mathrm{task}}$ is the focal loss of Lin et al.~\cite{lin2017focal
     \label{eq:focal}
 \end{equation}
 with focusing parameter $\gamma = 2$ and per-class weights $\alpha_c \propto f_c^{-1/2}$ derived from the measured pixel frequencies $f_c$ of Section~\ref{sec:triplets}, rescaled to unit mean.
-Setting $\gamma = 0$ recovers weighted cross-entropy exactly, which is how the unweighted and unfocused ablations of Chapter~\ref{chap:results-discussion} are obtained from the same code path.
-Two normalization choices in Equation~\eqref{eq:focal} are deliberate.
-The average is taken over the number of valid pixels rather than over the sum of their class weights, and the weights themselves are rescaled to mean one, so that neither the class-weighting scheme nor the particular classes that happen to fall in a batch can silently rescale this term relative to the distillation term it is summed against.
-For the same reason it is worth stating that $\gamma > 0$ makes the modulating factor no greater than one and therefore shrinks $\mathcal{L}_{\mathrm{task}}$ outright, which raises the effective weight of distillation: the change from cross-entropy to focal is not weight-neutral, and $\lambda_{\mathrm{KD}}$ has to be read against it.
+The average is taken over the number of valid pixels, and the weights are rescaled to mean one.
 
 \paragraph{Distillation term.}
 $\mathcal{L}_{\mathrm{KD}}$ is the temperature-scaled \acref{KL} divergence of Hinton et al.~\cite{hinton2015distilling}, applied independently at every pixel of the map $\mathcal{P}$,
@@ -632,11 +624,10 @@ The teacher is evaluated once per patch, on the Sentinel-2 view alone, and its o
 This is what keeps the teacher's own domain-shift error out of the objective, and it is available only because the two views are co-registered.
 Second, the sum runs over every pixel of the map, including those the WorldCover rasterization left unlabelled, which is where distillation contributes supervision that Equation~\eqref{eq:focal} cannot.
 
-\paragraph{Contrastive terms and their ramp.}
+\paragraph{Contrastive terms.}
 $\mathcal{L}_{\mathrm{inst}}$ is a symmetric NT-Xent between the pooled, $\ell_2$-normalised bottleneck embeddings of the two sensor views of a patch, at temperature $0.1$, taking the co-registered view as the positive and all remaining in-batch embeddings as negatives.
-$\mathcal{L}_{\mathrm{pix}}$ is its class-conditional dense counterpart, pulling each pixel embedding toward an exponential-moving-average prototype of its own class that is shared between the two domains and pushing it from the other class prototypes, in the spirit of the dense multi-sensor alignment loss of X-STARS~\cite{marsocci2025cross}.
-Both are gated by a linear warm-up $r(e) = \min\{1,\, (e+1)/(E_{\mathrm{warm}} + 1)\}$ over epoch index $e$, because the projection heads and the class prototypes carry no meaningful geometry at initialisation and would otherwise inject noise into the encoder from the first step.
-Both weights are zero in every result reported in Chapter~\ref{chap:results-discussion}, so Equation~\eqref{eq:kd-total} reduces there to its first two lines and $r(e)$ plays no role; they are stated here because Section~\ref{sec:rq2-results} reports their ablation, and because the objective as implemented is what Equation~\eqref{eq:kd-total} describes.
+$\mathcal{L}_{\mathrm{pix}}$ is its class-conditional dense counterpart, pulling each pixel embedding toward an exponential-moving-average prototype of its own class that is shared between the two domains and pushing it from the other class prototypes, similar to the dense multi-sensor alignment loss of X-STARS~\cite{marsocci2025cross}.
+Both weights are zero in every result reported in Chapter~\ref{chap:results-discussion}, so Equation~\eqref{eq:kd-total} reduces there to its first two lines and $r(e)$ plays no role; they are stated here because Section~\ref{sec:rq2-results} reports their ablation.
 
 \begin{table}[htbp]
     \centering
@@ -662,8 +653,10 @@ Both weights are zero in every result reported in Chapter~\ref{chap:results-disc
     \label{tab:loss-weights}
 \end{table}
 
-The distilled student is therefore domain-adaptive instead of domain-invariant. The models share the same convolutional weights for both sensors, but normalization statistics are not. The correct branch must be selected at inference according to the input source.
-This is a weaker property than a single sensor-agnostic representation, but it is enough since the sensor domain is known at inference time, unlike for a model that is expected to generalize to sensors it never saw during training.
+The distilled student is therefore domain-adaptive instead of domain-invariant. The models share the same convolutional weights for both sensors, but not normalization statistics. The correct branch must be selected at inference according to the input source.
+This is a weaker property than a single sensor-agnostic representation, but it is enough since the sensor domain is known at inference time.
+
+\newpage
 
 \section{Evaluation Protocol}
 \label{sec:evaluation-protocol}

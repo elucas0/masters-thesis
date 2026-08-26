@@ -32,6 +32,8 @@
 \acronymused{PAD}
 \acronymused{PAD}
 \acronymused{PAD}
+\acronymused{KD}
+\acronymused{DSBN}
 \acronymused{mIoU}
 \acronymused{IoU}
 \acronymused{mIoU}
@@ -42,7 +44,7 @@
 \acronymused{LULC}
 \acronymused{mIoU}
 \acronymused{mIoU}
-\@writefile{toc}{\contentsline {chapter}{List of Tables}{8}{chapter*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{List of Tables}{9}{chapter*.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {chapter}{List of Acronyms}{9}{chapter*.6}\protected@file@percent }
 \newacro{API}[\AC@hyperlink{API}{API}]{Application Programming Interface}
 \newacro{BN}[\AC@hyperlink{BN}{BN}]{Batch Normalization}
@@ -409,21 +411,31 @@
 \acronymused{LULC}
 \acronymused{VPU}
 \acronymused{DSBN}
-\acronymused{ViT}
-\acronymused{CNN}
-\acronymused{BN}
-\acronymused{KD}
+\citation{lin2017focal}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.17}{\ignorespaces Cross-architecture distillation with domain-specific normalization. The frozen TerraMind teacher is evaluated only on the Sentinel-2 view, where it is trustworthy; its soft predictions supervise both student branches, which is possible because the two sensor views depict the same scene. The student is forwarded twice per patch, once per sensor, selecting its own batch-normalization statistics each time while sharing all convolutional weights. Both branches also receive the task loss against the single shared WorldCover label map. The contrastive terms were implemented and evaluated but carry zero weight in every result reported in Chapter~\ref {chap:results-discussion}. }}{40}{figure.caption.35}\protected@file@percent }
 \newlabel{fig:kd-architecture}{{3.17}{40}{Cross-architecture distillation with domain-specific normalization. The frozen TerraMind teacher is evaluated only on the Sentinel-2 view, where it is trustworthy; its soft predictions supervise both student branches, which is possible because the two sensor views depict the same scene. The student is forwarded twice per patch, once per sensor, selecting its own batch-normalization statistics each time while sharing all convolutional weights. Both branches also receive the task loss against the single shared WorldCover label map. The contrastive terms were implemented and evaluated but carry zero weight in every result reported in Chapter~\ref {chap:results-discussion}}{figure.caption.35}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.6}Evaluation Protocol}{40}{section.3.6}\protected@file@percent }
-\newlabel{sec:evaluation-protocol}{{3.6}{40}{Evaluation Protocol}{section.3.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Training objective}{40}{subsection.3.5.1}\protected@file@percent }
+\newlabel{sec:kd-objective}{{3.5.1}{40}{Training objective}{subsection.3.5.1}{}}
+\newlabel{eq:kd-total}{{3.15}{40}{Training objective}{equation.3.5.15}{}}
+\citation{hinton2015distilling}
+\citation{marsocci2025cross}
+\@writefile{toc}{\contentsline {paragraph}{Task term.}{41}{section*.36}\protected@file@percent }
+\newlabel{eq:focal}{{3.16}{41}{Task term}{equation.3.5.16}{}}
+\@writefile{toc}{\contentsline {paragraph}{Distillation term.}{41}{section*.37}\protected@file@percent }
+\acronymused{KL}
+\newlabel{eq:kd-kl}{{3.17}{41}{Distillation term}{equation.3.5.17}{}}
+\@writefile{toc}{\contentsline {paragraph}{Contrastive terms.}{41}{section*.38}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Coefficients of the training objective, Equation~\eqref  {eq:kd-total}. The two contrastive weights are zero throughout Chapter~\ref {chap:results-discussion}; the values of $\gamma $, $\alpha _c$ and $\tau $ are shared by the supervised baseline wherever the corresponding term exists in it. }}{42}{table.caption.39}\protected@file@percent }
+\newlabel{tab:loss-weights}{{3.1}{42}{Coefficients of the training objective, Equation~\eqref {eq:kd-total}. The two contrastive weights are zero throughout Chapter~\ref {chap:results-discussion}; the values of $\gamma $, $\alpha _c$ and $\tau $ are shared by the supervised baseline wherever the corresponding term exists in it}{table.caption.39}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Evaluation Protocol}{42}{section.3.6}\protected@file@percent }
+\newlabel{sec:evaluation-protocol}{{3.6}{42}{Evaluation Protocol}{section.3.6}{}}
 \acronymused{PAD}
 \acronymused{DSBN}
 \acronymused{LULC}
 \acronymused{LULC}
 \acronymused{mIoU}
-\@writefile{toc}{\contentsline {section}{\numberline {3.7}Tools, Software Environment, and Reproducibility}{41}{section.3.7}\protected@file@percent }
-\newlabel{sec:reproducibility}{{3.7}{41}{Tools, Software Environment, and Reproducibility}{section.3.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.7}Tools, Software Environment, and Reproducibility}{42}{section.3.7}\protected@file@percent }
+\newlabel{sec:reproducibility}{{3.7}{42}{Tools, Software Environment, and Reproducibility}{section.3.7}{}}
 \acronymused{LULC}
 \acronymused{HDF5}
 \acronymused{DSBN}
@@ -434,134 +446,138 @@
 \citation{chang2019dsbn}
 \citation{lin2017focal}
 \citation{cui2019classbalanced}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Results and Discussion}{42}{chapter.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Results and Discussion}{44}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:results-discussion}{{4}{42}{Results and Discussion}{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Experimental Configuration}{42}{section.4.1}\protected@file@percent }
-\newlabel{sec:configuration}{{4.1}{42}{Experimental Configuration}{section.4.1}{}}
+\newlabel{chap:results-discussion}{{4}{44}{Results and Discussion}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Experimental Configuration}{44}{section.4.1}\protected@file@percent }
+\newlabel{sec:configuration}{{4.1}{44}{Experimental Configuration}{section.4.1}{}}
 \acronymused{LULC}
 \acronymused{NIR}
-\@writefile{toc}{\contentsline {paragraph}{Domain-specific batch normalization.}{42}{section*.36}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Class-imbalanced task loss.}{42}{section*.37}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Domain-specific batch normalization.}{44}{section*.40}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Class-imbalanced task loss.}{44}{section*.41}\protected@file@percent }
 \citation{bendavid2010theory}
 \citation{mcinnes2018umap}
 \acronymused{KD}
 \acronymused{DSBN}
 \acronymused{KL}
 \acronymused{BN}
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Training configuration for the two methods. Settings above the rule are identical by construction; those below apply to the distilled method only. }}{43}{table.caption.38}\protected@file@percent }
-\newlabel{tab:hyperparameters}{{4.1}{43}{Training configuration for the two methods. Settings above the rule are identical by construction; those below apply to the distilled method only}{table.caption.38}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Sensor Gap in TerraMind Latent Space}{43}{section.4.2}\protected@file@percent }
-\newlabel{sec:rq1-results}{{4.2}{43}{Sensor Gap in TerraMind Latent Space}{section.4.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Training configuration for the two methods. Settings above the rule are identical by construction; those below apply to the distilled method only. }}{45}{table.caption.42}\protected@file@percent }
+\newlabel{tab:hyperparameters}{{4.1}{45}{Training configuration for the two methods. Settings above the rule are identical by construction; those below apply to the distilled method only}{table.caption.42}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Sensor Gap in TerraMind Latent Space}{45}{section.4.2}\protected@file@percent }
+\newlabel{sec:rq1-results}{{4.2}{45}{Sensor Gap in TerraMind Latent Space}{section.4.2}{}}
 \acronymused{PAD}
 \citation{du2025onorbitdemonstrationgeospatialfoundation}
 \acronymused{UMAP}
 \acronymused{PAD}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces \acs {UMAP} projection of pooled embeddings for $800$ co-registered test patches, teacher (left) and distilled student (right), each projected independently. Grey lines join the two sensor views of the same patch. In the teacher's space the paired views are far apart (median link $6.15$ units); in the student's they are effectively coincident ($0.40$ units). }}{44}{figure.caption.39}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces \acs {UMAP} projection of pooled embeddings for $800$ co-registered test patches, teacher (left) and distilled student (right), each projected independently. Grey lines join the two sensor views of the same patch. In the teacher's space the paired views are far apart (median link $6.15$ units); in the student's they are effectively coincident ($0.40$ units). }}{46}{figure.caption.43}\protected@file@percent }
 \acronymused{UMAP}
-\newlabel{fig:embeddings-paired}{{4.1}{44}{\acs {UMAP} projection of pooled embeddings for $800$ co-registered test patches, teacher (left) and distilled student (right), each projected independently. Grey lines join the two sensor views of the same patch. In the teacher's space the paired views are far apart (median link $6.15$ units); in the student's they are effectively coincident ($0.40$ units)}{figure.caption.39}{}}
+\newlabel{fig:embeddings-paired}{{4.1}{46}{\acs {UMAP} projection of pooled embeddings for $800$ co-registered test patches, teacher (left) and distilled student (right), each projected independently. Grey lines join the two sensor views of the same patch. In the teacher's space the paired views are far apart (median link $6.15$ units); in the student's they are effectively coincident ($0.40$ units)}{figure.caption.43}{}}
 \acronymused{PAD}
 \acronymused{PAD}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Per-layer cosine similarity between raw paired Sentinel-2B and real-$\Phi $-sat-2 patch embeddings from the TerraMind Tiny encoder, averaged over $800$ samples (shaded band: one standard deviation). }}{45}{figure.caption.40}\protected@file@percent }
-\newlabel{fig:cosine-sim-tiny}{{4.2}{45}{Per-layer cosine similarity between raw paired Sentinel-2B and real-$\Phi $-sat-2 patch embeddings from the TerraMind Tiny encoder, averaged over $800$ samples (shaded band: one standard deviation)}{figure.caption.40}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Degradation effects on Downstream Task Gap}{45}{section.4.3}\protected@file@percent }
-\newlabel{sec:ladder-results}{{4.3}{45}{Degradation effects on Downstream Task Gap}{section.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Per-layer cosine similarity between raw paired Sentinel-2B and real-$\Phi $-sat-2 patch embeddings from the TerraMind Tiny encoder, averaged over $800$ samples (shaded band: one standard deviation). }}{47}{figure.caption.44}\protected@file@percent }
+\newlabel{fig:cosine-sim-tiny}{{4.2}{47}{Per-layer cosine similarity between raw paired Sentinel-2B and real-$\Phi $-sat-2 patch embeddings from the TerraMind Tiny encoder, averaged over $800$ samples (shaded band: one standard deviation)}{figure.caption.44}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Degradation effects on Downstream Task Gap}{47}{section.4.3}\protected@file@percent }
+\newlabel{sec:ladder-results}{{4.3}{47}{Degradation effects on Downstream Task Gap}{section.4.3}{}}
 \acronymused{SNR}
 \acronymused{PSF}
 \acronymused{SNR}
 \acronymused{PSF}
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces The degradation ladder. Level~4 reproduces the joint simulator configuration; each step down halves the perturbation. \acs {SNR} is drawn per scene from the stated range and the noise amplitude scales as its reciprocal, so the four ranges correspond to relative noise of $1/8$, $1/4$, $1/2$ and $1$. Blur and misalignment parameters are in resampled $4.75$\,m pixels. }}{45}{table.caption.41}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces The degradation ladder. Level~4 reproduces the joint simulator configuration; each step down halves the perturbation. \acs {SNR} is drawn per scene from the stated range and the noise amplitude scales as its reciprocal, so the four ranges correspond to relative noise of $1/8$, $1/4$, $1/2$ and $1$. Blur and misalignment parameters are in resampled $4.75$\,m pixels. }}{47}{table.caption.45}\protected@file@percent }
 \acronymused{SNR}
-\newlabel{tab:ladder-definition}{{4.2}{45}{The degradation ladder. Level~4 reproduces the joint simulator configuration; each step down halves the perturbation. \acs {SNR} is drawn per scene from the stated range and the noise amplitude scales as its reciprocal, so the four ranges correspond to relative noise of $1/8$, $1/4$, $1/2$ and $1$. Blur and misalignment parameters are in resampled $4.75$\,m pixels}{table.caption.41}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces A degradation ladder sample from the Sen1Floods benchmark (scene Nigeria 81933, $256\times 256$\,px at $4.75$\,m resolution). Each row varies one factor in isolation across the four severities of Table~\ref {tab:ladder-definition}, from undegraded (left) to full severity L4 (right), while every other stage of the simulator is held fixed. A single contrast stretch, fixed on the undegraded scene, is applied to every panel. }}{46}{figure.caption.42}\protected@file@percent }
-\newlabel{fig:ladder-grid}{{4.3}{46}{A degradation ladder sample from the Sen1Floods benchmark (scene Nigeria 81933, $256\times 256$\,px at $4.75$\,m resolution). Each row varies one factor in isolation across the four severities of Table~\ref {tab:ladder-definition}, from undegraded (left) to full severity L4 (right), while every other stage of the simulator is held fixed. A single contrast stretch, fixed on the undegraded scene, is applied to every panel}{figure.caption.42}{}}
+\newlabel{tab:ladder-definition}{{4.2}{47}{The degradation ladder. Level~4 reproduces the joint simulator configuration; each step down halves the perturbation. \acs {SNR} is drawn per scene from the stated range and the noise amplitude scales as its reciprocal, so the four ranges correspond to relative noise of $1/8$, $1/4$, $1/2$ and $1$. Blur and misalignment parameters are in resampled $4.75$\,m pixels}{table.caption.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces A degradation ladder sample from the Sen1Floods benchmark (scene Nigeria 81933, $256\times 256$\,px at $4.75$\,m resolution). Each row varies one factor in isolation across the four severities of Table~\ref {tab:ladder-definition}, from undegraded (left) to full severity L4 (right), while every other stage of the simulator is held fixed. A single contrast stretch, fixed on the undegraded scene, is applied to every panel. }}{48}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:ladder-grid}{{4.3}{48}{A degradation ladder sample from the Sen1Floods benchmark (scene Nigeria 81933, $256\times 256$\,px at $4.75$\,m resolution). Each row varies one factor in isolation across the four severities of Table~\ref {tab:ladder-definition}, from undegraded (left) to full severity L4 (right), while every other stage of the simulator is held fixed. A single contrast stretch, fixed on the undegraded scene, is applied to every panel}{figure.caption.46}{}}
 \acronymused{SNR}
 \acronymused{PSF}
-\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Domain gap across the degradation ladder: change in positive-class \acs {IoU} relative to the undegraded test split, for a model trained only on undegraded data. Values are the mean over three seeds of the within-seed drop, $\pm $ one standard deviation of those drops. The two model families are scored under different evaluation geometry (the student on $256$-pixel centre crops, TerraMind on full $1077$-pixel scenes), so the clean baselines are not comparable between columns and only the drops are. }}{47}{table.caption.43}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Domain gap across the degradation ladder: change in positive-class \acs {IoU} relative to the undegraded test split, for a model trained only on undegraded data. Values are the mean over three seeds of the within-seed drop, $\pm $ one standard deviation of those drops. The two model families are scored under different evaluation geometry (the student on $256$-pixel centre crops, TerraMind on full $1077$-pixel scenes), so the clean baselines are not comparable between columns and only the drops are. }}{49}{table.caption.47}\protected@file@percent }
 \acronymused{IoU}
-\newlabel{tab:ladder-domain-gap}{{4.3}{47}{Domain gap across the degradation ladder: change in positive-class \acs {IoU} relative to the undegraded test split, for a model trained only on undegraded data. Values are the mean over three seeds of the within-seed drop, $\pm $ one standard deviation of those drops. The two model families are scored under different evaluation geometry (the student on $256$-pixel centre crops, TerraMind on full $1077$-pixel scenes), so the clean baselines are not comparable between columns and only the drops are}{table.caption.43}{}}
+\newlabel{tab:ladder-domain-gap}{{4.3}{49}{Domain gap across the degradation ladder: change in positive-class \acs {IoU} relative to the undegraded test split, for a model trained only on undegraded data. Values are the mean over three seeds of the within-seed drop, $\pm $ one standard deviation of those drops. The two model families are scored under different evaluation geometry (the student on $256$-pixel centre crops, TerraMind on full $1077$-pixel scenes), so the clean baselines are not comparable between columns and only the drops are}{table.caption.47}{}}
 \citation{du2025onorbitdemonstrationgeospatialfoundation}
 \acronymused{PAD}
 \acronymused{SNR}
 \acronymused{PSF}
-\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Degradation seen at inference only, against degradation present during training as well, for the distilled student at full severity. The matched-condition column is a single seed and is not directly comparable in precision to the three-seed cross-condition column; it is reported to establish the size of the effect, which is large, not its exact value. }}{48}{table.caption.44}\protected@file@percent }
-\newlabel{tab:ladder-adaptation}{{4.4}{48}{Degradation seen at inference only, against degradation present during training as well, for the distilled student at full severity. The matched-condition column is a single seed and is not directly comparable in precision to the three-seed cross-condition column; it is reported to establish the size of the effect, which is large, not its exact value}{table.caption.44}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Sensor Adaptivity in the Distilled Student}{49}{section.4.4}\protected@file@percent }
-\newlabel{sec:rq2-results}{{4.4}{49}{Sensor Adaptivity in the Distilled Student}{section.4.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Degradation seen at inference only, against degradation present during training as well, for the distilled student at full severity. The matched-condition column is a single seed and is not directly comparable in precision to the three-seed cross-condition column; it is reported to establish the size of the effect, which is large, not its exact value. }}{50}{table.caption.48}\protected@file@percent }
+\newlabel{tab:ladder-adaptation}{{4.4}{50}{Degradation seen at inference only, against degradation present during training as well, for the distilled student at full severity. The matched-condition column is a single seed and is not directly comparable in precision to the three-seed cross-condition column; it is reported to establish the size of the effect, which is large, not its exact value}{table.caption.48}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Sensor Adaptivity in the Distilled Student}{51}{section.4.4}\protected@file@percent }
+\newlabel{sec:rq2-results}{{4.4}{51}{Sensor Adaptivity in the Distilled Student}{section.4.4}{}}
 \acronymused{UMAP}
 \acronymused{UMAP}
-\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces Sensor invariance of the teacher and the distilled student, over $800$ co-registered test patches. Paired cosine and probe transfer compare the two sensor views of the same ground. Probe transfer fits a linear classifier on Sentinel-2 embeddings and applies it to $\Phi $-sat-2 embeddings; retention is the ratio of the two accuracies. The \acs {IoU} difference is measured on the full test split rather than on the $800$-patch embedding sample. }}{49}{table.caption.45}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces Sensor invariance of the teacher and the distilled student, over $800$ co-registered test patches. Paired cosine and probe transfer compare the two sensor views of the same ground. Probe transfer fits a linear classifier on Sentinel-2 embeddings and applies it to $\Phi $-sat-2 embeddings; retention is the ratio of the two accuracies. The \acs {IoU} difference is measured on the full test split rather than on the $800$-patch embedding sample. }}{51}{table.caption.49}\protected@file@percent }
 \acronymused{IoU}
-\newlabel{tab:invariance}{{4.5}{49}{Sensor invariance of the teacher and the distilled student, over $800$ co-registered test patches. Paired cosine and probe transfer compare the two sensor views of the same ground. Probe transfer fits a linear classifier on Sentinel-2 embeddings and applies it to $\Phi $-sat-2 embeddings; retention is the ratio of the two accuracies. The \acs {IoU} difference is measured on the full test split rather than on the $800$-patch embedding sample}{table.caption.45}{}}
+\newlabel{tab:invariance}{{4.5}{51}{Sensor invariance of the teacher and the distilled student, over $800$ co-registered test patches. Paired cosine and probe transfer compare the two sensor views of the same ground. Probe transfer fits a linear classifier on Sentinel-2 embeddings and applies it to $\Phi $-sat-2 embeddings; retention is the ratio of the two accuracies. The \acs {IoU} difference is measured on the full test split rather than on the $800$-patch embedding sample}{table.caption.49}{}}
 \acronymused{PAD}
 \acronymused{PAD}
 \acronymused{PAD}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Distribution of the domain probe's out-of-fold decision score, the quantity from which \acs {PAD} is computed. Separated modes imply a probe that never errs (\acs {PAD} $\rightarrow 2$); overlapping modes imply chance (\acs {PAD} $\rightarrow 0$). After standardising each domain on its own statistics (right column) the separability vanishes for both models, showing that all of it was per-channel mean and scale, not representational structure. }}{50}{figure.caption.46}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Distribution of the domain probe's out-of-fold decision score, the quantity from which \acs {PAD} is computed. Separated modes imply a probe that never errs (\acs {PAD} $\rightarrow 2$); overlapping modes imply chance (\acs {PAD} $\rightarrow 0$). After standardising each domain on its own statistics (right column) the separability vanishes for both models, showing that all of it was per-channel mean and scale, not representational structure. }}{52}{figure.caption.50}\protected@file@percent }
 \acronymused{PAD}
 \acronymused{PAD}
 \acronymused{PAD}
-\newlabel{fig:pad-decision}{{4.4}{50}{Distribution of the domain probe's out-of-fold decision score, the quantity from which \acs {PAD} is computed. Separated modes imply a probe that never errs (\acs {PAD} $\rightarrow 2$); overlapping modes imply chance (\acs {PAD} $\rightarrow 0$). After standardising each domain on its own statistics (right column) the separability vanishes for both models, showing that all of it was per-channel mean and scale, not representational structure}{figure.caption.46}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Distillation Against a Supervised Baseline}{51}{section.4.5}\protected@file@percent }
-\newlabel{sec:rq3-results}{{4.5}{51}{Distillation Against a Supervised Baseline}{section.4.5}{}}
+\newlabel{fig:pad-decision}{{4.4}{52}{Distribution of the domain probe's out-of-fold decision score, the quantity from which \acs {PAD} is computed. Separated modes imply a probe that never errs (\acs {PAD} $\rightarrow 2$); overlapping modes imply chance (\acs {PAD} $\rightarrow 0$). After standardising each domain on its own statistics (right column) the separability vanishes for both models, showing that all of it was per-channel mean and scale, not representational structure}{figure.caption.50}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Distillation Against a Supervised Baseline}{53}{section.4.5}\protected@file@percent }
+\newlabel{sec:rq3-results}{{4.5}{53}{Distillation Against a Supervised Baseline}{section.4.5}{}}
 \acronymused{KD}
 \acronymused{DSBN}
-\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces Main results on the \acs {LULC} task. Validation \acs {mIoU} is the best epoch, on the fixed $1{,}000$-patch validation split shared by every run; because the splits are nested prefixes of one shuffled ordering, the two label budgets are evaluated on the identical patches. Test \acs {mIoU} is on the full $25{,}323$-patch test split. Cost is total wall-clock for the run. }}{51}{table.caption.47}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces Main results on the \acs {LULC} task. Validation \acs {mIoU} is the best epoch, on the fixed $1{,}000$-patch validation split shared by every run; because the splits are nested prefixes of one shuffled ordering, the two label budgets are evaluated on the identical patches. Test \acs {mIoU} is on the full $25{,}323$-patch test split. Cost is total wall-clock for the run. }}{53}{table.caption.52}\protected@file@percent }
 \acronymused{LULC}
 \acronymused{mIoU}
 \acronymused{mIoU}
-\newlabel{tab:main-results}{{4.6}{51}{Main results on the \acs {LULC} task. Validation \acs {mIoU} is the best epoch, on the fixed $1{,}000$-patch validation split shared by every run; because the splits are nested prefixes of one shuffled ordering, the two label budgets are evaluated on the identical patches. Test \acs {mIoU} is on the full $25{,}323$-patch test split. Cost is total wall-clock for the run}{table.caption.47}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Left: $\Phi $-sat-2 validation \acs {mIoU} over training at $10{,}000$ labelled patches, with the best epoch marked. Dotted line marks teacher's accuracy on Sentinel-2. Right: the residual accuracy difference between the two sensors for the distilled student, which crosses zero around epoch $55$ and oscillates. }}{52}{figure.caption.48}\protected@file@percent }
+\newlabel{tab:main-results}{{4.6}{53}{Main results on the \acs {LULC} task. Validation \acs {mIoU} is the best epoch, on the fixed $1{,}000$-patch validation split shared by every run; because the splits are nested prefixes of one shuffled ordering, the two label budgets are evaluated on the identical patches. Test \acs {mIoU} is on the full $25{,}323$-patch test split. Cost is total wall-clock for the run}{table.caption.52}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Four validation patches from the \acs {KD}~$+$~\acs {DSBN} run, at epoch $98$ of $101$. Columns: the real $\Phi $-sat-2 and Sentinel-2 views (each channel independently contrast-stretched for display), the shared WorldCover label map, the frozen teacher evaluated on Sentinel-2, and the student's two branches. The teacher sees only the Sentinel-2 view, and one teacher output supervises both student branches (Figure~\ref {fig:kd-architecture}). Only the six classes present in these patches are shown in the legend. Rows 1--3 illustrate the cross-sensor agreement quantified in Table~\ref {tab:invariance}; row~4 is a failure case on a noisy real acquisition, where the $\Phi $-sat-2 branch degrades and the Sentinel-2 branch does not. This is a training-time snapshot rather than the selected checkpoint, which is epoch~$89$. }}{54}{figure.caption.51}\protected@file@percent }
+\acronymused{KD}
+\acronymused{DSBN}
+\newlabel{fig:qualitative}{{4.5}{54}{Four validation patches from the \acs {KD}~$+$~\acs {DSBN} run, at epoch $98$ of $101$. Columns: the real $\Phi $-sat-2 and Sentinel-2 views (each channel independently contrast-stretched for display), the shared WorldCover label map, the frozen teacher evaluated on Sentinel-2, and the student's two branches. The teacher sees only the Sentinel-2 view, and one teacher output supervises both student branches (Figure~\ref {fig:kd-architecture}). Only the six classes present in these patches are shown in the legend. Rows 1--3 illustrate the cross-sensor agreement quantified in Table~\ref {tab:invariance}; row~4 is a failure case on a noisy real acquisition, where the $\Phi $-sat-2 branch degrades and the Sentinel-2 branch does not. This is a training-time snapshot rather than the selected checkpoint, which is epoch~$89$}{figure.caption.51}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Left: $\Phi $-sat-2 validation \acs {mIoU} over training at $10{,}000$ labelled patches, with the best epoch marked. Dotted line marks teacher's accuracy on Sentinel-2. Right: the residual accuracy difference between the two sensors for the distilled student, which crosses zero around epoch $55$ and oscillates. }}{54}{figure.caption.53}\protected@file@percent }
 \acronymused{mIoU}
-\newlabel{fig:dsbn-vs-baseline}{{4.5}{52}{Left: $\Phi $-sat-2 validation \acs {mIoU} over training at $10{,}000$ labelled patches, with the best epoch marked. Dotted line marks teacher's accuracy on Sentinel-2. Right: the residual accuracy difference between the two sensors for the distilled student, which crosses zero around epoch $55$ and oscillates}{figure.caption.48}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Per-class test \acs {IoU} at $10{,}000$ labelled patches, ordered by class prevalence, with each class's share of labelled pixels beneath its label. Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them (Section~\ref {sec:configuration}). }}{52}{figure.caption.49}\protected@file@percent }
+\newlabel{fig:dsbn-vs-baseline}{{4.6}{54}{Left: $\Phi $-sat-2 validation \acs {mIoU} over training at $10{,}000$ labelled patches, with the best epoch marked. Dotted line marks teacher's accuracy on Sentinel-2. Right: the residual accuracy difference between the two sensors for the distilled student, which crosses zero around epoch $55$ and oscillates}{figure.caption.53}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Per-class test \acs {IoU} at $10{,}000$ labelled patches, ordered by class prevalence, with each class's share of labelled pixels beneath its label. Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them (Section~\ref {sec:configuration}). }}{55}{figure.caption.54}\protected@file@percent }
 \acronymused{IoU}
-\newlabel{fig:per-class}{{4.6}{52}{Per-class test \acs {IoU} at $10{,}000$ labelled patches, ordered by class prevalence, with each class's share of labelled pixels beneath its label. Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them (Section~\ref {sec:configuration})}{figure.caption.49}{}}
-\@writefile{toc}{\contentsline {paragraph}{Complexity against accuracy.}{52}{section*.50}\protected@file@percent }
+\newlabel{fig:per-class}{{4.7}{55}{Per-class test \acs {IoU} at $10{,}000$ labelled patches, ordered by class prevalence, with each class's share of labelled pixels beneath its label. Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them (Section~\ref {sec:configuration})}{figure.caption.54}{}}
+\@writefile{toc}{\contentsline {paragraph}{Complexity against accuracy.}{55}{section*.55}\protected@file@percent }
 \citation{kouw2019introductiondomainadaptationtransfer}
-\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces Trainable parameters against accuracy at $10{,}000$ labelled patches. Every parameter is trained in all five rows, so the totals are also the trainable counts. Test mIoU is on the full $25{,}323$-patch test split. }}{53}{table.caption.51}\protected@file@percent }
-\newlabel{tab:complexity}{{4.7}{53}{Trainable parameters against accuracy at $10{,}000$ labelled patches. Every parameter is trained in all five rows, so the totals are also the trainable counts. Test mIoU is on the full $25{,}323$-patch test split}{table.caption.51}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Accuracy Drop with Few Labels}{53}{section.4.6}\protected@file@percent }
-\newlabel{sec:label-crossover}{{4.6}{53}{Accuracy Drop with Few Labels}{section.4.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces Trainable parameters against accuracy at $10{,}000$ labelled patches. Every parameter is trained in all five rows, so the totals are also the trainable counts. Test mIoU is on the full $25{,}323$-patch test split. }}{56}{table.caption.56}\protected@file@percent }
+\newlabel{tab:complexity}{{4.7}{56}{Trainable parameters against accuracy at $10{,}000$ labelled patches. Every parameter is trained in all five rows, so the totals are also the trainable counts. Test mIoU is on the full $25{,}323$-patch test split}{table.caption.56}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Accuracy Drop with Few Labels}{56}{section.4.6}\protected@file@percent }
+\newlabel{sec:label-crossover}{{4.6}{56}{Accuracy Drop with Few Labels}{section.4.6}{}}
 \acronymused{KD}
 \acronymused{UDA}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Best validation \acs {mIoU} against labelled training budget. The two methods cross: distillation is worse at $1{,}000$ labelled patches and better at $10{,}000$. Both budgets share the same fixed validation split. }}{54}{figure.caption.52}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Best validation \acs {mIoU} against labelled training budget. The two methods cross: distillation is worse at $1{,}000$ labelled patches and better at $10{,}000$. Both budgets share the same fixed validation split. }}{57}{figure.caption.57}\protected@file@percent }
 \acronymused{mIoU}
-\newlabel{fig:label-crossover}{{4.7}{54}{Best validation \acs {mIoU} against labelled training budget. The two methods cross: distillation is worse at $1{,}000$ labelled patches and better at $10{,}000$. Both budgets share the same fixed validation split}{figure.caption.52}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.7}Discussion}{54}{section.4.7}\protected@file@percent }
-\newlabel{sec:discussion}{{4.7}{54}{Discussion}{section.4.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{54}{subsection.4.7.1}\protected@file@percent }
-\newlabel{sec:dsbn-contribution}{{4.7.1}{54}{Domain-specific normalization contribution}{subsection.4.7.1}{}}
+\newlabel{fig:label-crossover}{{4.8}{57}{Best validation \acs {mIoU} against labelled training budget. The two methods cross: distillation is worse at $1{,}000$ labelled patches and better at $10{,}000$. Both budgets share the same fixed validation split}{figure.caption.57}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Discussion}{57}{section.4.7}\protected@file@percent }
+\newlabel{sec:discussion}{{4.7}{57}{Discussion}{section.4.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{57}{subsection.4.7.1}\protected@file@percent }
+\newlabel{sec:dsbn-contribution}{{4.7.1}{57}{Domain-specific normalization contribution}{subsection.4.7.1}{}}
 \acronymused{DA}
 \citation{du2025onorbitdemonstrationgeospatialfoundation}
 \citation{phisatnet}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.2}Limitations}{55}{subsection.4.7.2}\protected@file@percent }
-\newlabel{sec:limitations}{{4.7.2}{55}{Limitations}{subsection.4.7.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.3}Interpretation of the flood-robustness result}{55}{subsection.4.7.3}\protected@file@percent }
-\newlabel{sec:discussion-comparison}{{4.7.3}{55}{Interpretation of the flood-robustness result}{subsection.4.7.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.4}Positioning with $\Phi $satNet}{55}{subsection.4.7.4}\protected@file@percent }
-\newlabel{sec:positioning-phisatnet}{{4.7.4}{55}{Positioning with \texorpdfstring {$\Phi $}{Phi}satNet}{subsection.4.7.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.2}Limitations}{58}{subsection.4.7.2}\protected@file@percent }
+\newlabel{sec:limitations}{{4.7.2}{58}{Limitations}{subsection.4.7.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.3}Interpretation of the flood-robustness result}{58}{subsection.4.7.3}\protected@file@percent }
+\newlabel{sec:discussion-comparison}{{4.7.3}{58}{Interpretation of the flood-robustness result}{subsection.4.7.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.4}Positioning with $\Phi $satNet}{58}{subsection.4.7.4}\protected@file@percent }
+\newlabel{sec:positioning-phisatnet}{{4.7.4}{58}{Positioning with \texorpdfstring {$\Phi $}{Phi}satNet}{subsection.4.7.4}{}}
 \citation{phisatnet}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.5}Practical recommendations}{56}{subsection.4.7.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{57}{chapter.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.5}Practical recommendations}{59}{subsection.4.7.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{60}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:conclusion}{{5}{57}{Conclusion}{chapter.5}{}}
+\newlabel{chap:conclusion}{{5}{60}{Conclusion}{chapter.5}{}}
 \acronymused{LULC}
 \acronymused{GeoFM}
 \acronymused{GeoFM}
 \acronymused{EO}
-\@writefile{toc}{\contentsline {chapter}{Declarations}{59}{chapter*.53}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Declarations}{62}{chapter*.58}\protected@file@percent }
 \bibstyle{ieeetr}
 \bibdata{references}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{60}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{63}{appendix.A}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{app:real-baseline}{{A}{60}{Real-Data LULC Baseline}{appendix.A}{}}
+\newlabel{app:real-baseline}{{A}{63}{Real-Data LULC Baseline}{appendix.A}{}}
 \acronymused{LULC}
-\@writefile{toc}{\contentsline {section}{\numberline {A.1}Protocol}{60}{section.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}Protocol}{63}{section.A.1}\protected@file@percent }
 \acronymused{LULC}
-\@writefile{toc}{\contentsline {section}{\numberline {A.2}Result}{60}{section.A.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}Result}{63}{section.A.2}\protected@file@percent }
 \acronymused{mIoU}
 \acronymused{LULC}
 \bibcite{razzano2024ai}{1}
@@ -605,4 +621,4 @@
 \bibcite{lin2017focal}{39}
 \bibcite{cui2019classbalanced}{40}
 \bibcite{mcinnes2018umap}{41}
-\gdef \@abspage@last{66}
+\gdef \@abspage@last{69}

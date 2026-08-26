@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.25)  26 AUG 2026 02:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.25)  26 AUG 2026 11:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -645,11 +645,11 @@ Overfull \hbox (2.98167pt too wide) in paragraph at lines 13--13
  [][] [][]\T1/cmr/m/n/12 The same per-band den-si-ties af-ter per-sensor $\OML/cmm/m/it/12 z$\T1/cmr/m/n/12 -score nor-mal-iza-tion of $[]$. 
  []
 
-[5])
+[5] [6])
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
- [6] [7] (./main.lot)
+ [7] (./main.lot)
 \tf@lot=\write7
 \openout7 = `main.lot'.
 
@@ -668,7 +668,7 @@ Overfull \hbox (5.86449pt too wide) in paragraph at lines 79--1
 
 [13] [14]
 Chapter 2.
-<figures/fig_onboard_workflow.png, id=658, 633.11531pt x 277.035pt>
+<figures/fig_onboard_workflow.png, id=684, 633.11531pt x 277.035pt>
 File: figures/fig_onboard_workflow.png Graphic file (type png)
 <use figures/fig_onboard_workflow.png>
 Package pdftex.def Info: figures/fig_onboard_workflow.png  used on input line 22.
@@ -682,19 +682,19 @@ File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 ) [16 <./figures/fig_onboard_workflow.png>] [17] [18] [19] [20]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 154.
+(hyperref)                removing `math shift' on input line 155.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Phi' on input line 154.
+(hyperref)                removing `\Phi' on input line 155.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 154.
+(hyperref)                removing `math shift' on input line 155.
 
 ) (./chapters/03_methodology.tex [21]
 Chapter 3.
-<figures/fig_patch_examples.png, id=823, 471.9231pt x 641.9985pt>
+<figures/fig_patch_examples.png, id=849, 471.9231pt x 641.9985pt>
 File: figures/fig_patch_examples.png Graphic file (type png)
 <use figures/fig_patch_examples.png>
 Package pdftex.def Info: figures/fig_patch_examples.png  used on input line 27.
@@ -702,78 +702,78 @@ Package pdftex.def Info: figures/fig_patch_examples.png  used on input line 27.
 [22
 
 ] [23 <./figures/fig_patch_examples.png>]
-<figures/fig_srf_s2_phisat2.png, id=839, 411.5375pt x 329.23pt>
+<figures/fig_srf_s2_phisat2.png, id=865, 411.5375pt x 329.23pt>
 File: figures/fig_srf_s2_phisat2.png Graphic file (type png)
 <use figures/fig_srf_s2_phisat2.png>
 Package pdftex.def Info: figures/fig_srf_s2_phisat2.png  used on input line 44.
 (pdftex.def)             Requested size: 284.52756pt x 227.62106pt.
-<figures/triplets_example_wc_mask.png, id=847, 1196.21906pt x 296.60812pt>
+<figures/triplets_example_wc_mask.png, id=873, 1196.21906pt x 296.60812pt>
 File: figures/triplets_example_wc_mask.png Graphic file (type png)
 <use figures/triplets_example_wc_mask.png>
 Package pdftex.def Info: figures/triplets_example_wc_mask.png  used on input line 59.
 (pdftex.def)             Requested size: 452.9679pt x 112.31398pt.
  [24 <./figures/fig_srf_s2_phisat2.png>]
-<figures/fig_acquisition.png, id=853, 681.0243pt x 220.4235pt>
+<figures/fig_acquisition.png, id=879, 681.0243pt x 220.4235pt>
 File: figures/fig_acquisition.png Graphic file (type png)
 <use figures/fig_acquisition.png>
 Package pdftex.def Info: figures/fig_acquisition.png  used on input line 73.
 (pdftex.def)             Requested size: 452.9679pt x 146.6134pt.
-<figures/fig_geography.png, id=855, 787.5021pt x 251.9814pt>
+<figures/fig_geography.png, id=881, 787.5021pt x 251.9814pt>
 File: figures/fig_geography.png Graphic file (type png)
 <use figures/fig_geography.png>
 Package pdftex.def Info: figures/fig_geography.png  used on input line 86.
 (pdftex.def)             Requested size: 452.9679pt x 144.93816pt.
  [25 <./figures/triplets_example_wc_mask.png> <./figures/fig_acquisition.png>]
-<figures/fig_landcover.png, id=868, 753.2943pt x 251.9814pt>
+<figures/fig_landcover.png, id=894, 753.2943pt x 251.9814pt>
 File: figures/fig_landcover.png Graphic file (type png)
 <use figures/fig_landcover.png>
 Package pdftex.def Info: figures/fig_landcover.png  used on input line 101.
 (pdftex.def)             Requested size: 452.9679pt x 151.52066pt.
-<figures/fig_splits.png, id=873, 753.0534pt x 235.3593pt>
+<figures/fig_splits.png, id=899, 753.0534pt x 235.3593pt>
 File: figures/fig_splits.png Graphic file (type png)
 <use figures/fig_splits.png>
 Package pdftex.def Info: figures/fig_splits.png  used on input line 118.
 (pdftex.def)             Requested size: 452.9679pt x 141.57219pt.
  [26 <./figures/fig_geography.png> <./figures/fig_landcover.png>]
-<figures/hist_bands_raw.png, id=883, 929.874pt x 455.301pt>
+<figures/hist_bands_raw.png, id=909, 929.874pt x 455.301pt>
 File: figures/hist_bands_raw.png Graphic file (type png)
 <use figures/hist_bands_raw.png>
 Package pdftex.def Info: figures/hist_bands_raw.png  used on input line 138.
 (pdftex.def)             Requested size: 452.9679pt x 221.79333pt.
-<figures/hist_bands_normalized.png, id=888, 929.874pt x 455.301pt>
+<figures/hist_bands_normalized.png, id=914, 929.874pt x 455.301pt>
 File: figures/hist_bands_normalized.png Graphic file (type png)
 <use figures/hist_bands_normalized.png>
 Package pdftex.def Info: figures/hist_bands_normalized.png  used on input line 153.
 (pdftex.def)             Requested size: 452.9679pt x 221.79333pt.
  [27 <./figures/fig_splits.png>] [28 <./figures/hist_bands_raw.png> <./figures/hist_bands_normalized.png>]
-<figures/fig_spectral_signature.png, id=904, 427.8384pt x 254.3904pt>
+<figures/fig_spectral_signature.png, id=930, 427.8384pt x 254.3904pt>
 File: figures/fig_spectral_signature.png Graphic file (type png)
 <use figures/fig_spectral_signature.png>
 Package pdftex.def Info: figures/fig_spectral_signature.png  used on input line 167.
 (pdftex.def)             Requested size: 317.07614pt x 188.54094pt.
  [29 <./figures/fig_spectral_signature.png>]
-<figures/fig_approx_error_by_class.png, id=919, 787.22679pt x 425.36057pt>
+<figures/fig_approx_error_by_class.png, id=946, 787.22679pt x 425.36057pt>
 File: figures/fig_approx_error_by_class.png Graphic file (type png)
 <use figures/fig_approx_error_by_class.png>
 Package pdftex.def Info: figures/fig_approx_error_by_class.png  used on input line 194.
 (pdftex.def)             Requested size: 452.9679pt x 244.74916pt.
-<figures/fig_triplet_overlay_019123.png, id=926, 1813.46078pt x 348.96086pt>
+<figures/fig_triplet_overlay_019123.png, id=953, 1813.46078pt x 348.96086pt>
 File: figures/fig_triplet_overlay_019123.png Graphic file (type png)
 <use figures/fig_triplet_overlay_019123.png>
 Package pdftex.def Info: figures/fig_triplet_overlay_019123.png  used on input line 209.
 (pdftex.def)             Requested size: 452.9679pt x 87.16013pt.
-<figures/fig_triplet_overlay_012943.png, id=929, 1813.46078pt x 349.47707pt>
+<figures/fig_triplet_overlay_012943.png, id=956, 1813.46078pt x 349.47707pt>
 File: figures/fig_triplet_overlay_012943.png Graphic file (type png)
 <use figures/fig_triplet_overlay_012943.png>
 Package pdftex.def Info: figures/fig_triplet_overlay_012943.png  used on input line 218.
 (pdftex.def)             Requested size: 452.9679pt x 87.28906pt.
-<figures/fig_triplet_overlay_019598.png, id=930, 1813.46078pt x 349.47707pt>
+<figures/fig_triplet_overlay_019598.png, id=957, 1813.46078pt x 349.47707pt>
 File: figures/fig_triplet_overlay_019598.png Graphic file (type png)
 <use figures/fig_triplet_overlay_019598.png>
 Package pdftex.def Info: figures/fig_triplet_overlay_019598.png  used on input line 225.
 (pdftex.def)             Requested size: 452.9679pt x 87.28906pt.
  [30 <./figures/fig_approx_error_by_class.png> <./figures/fig_triplet_overlay_019123.png>] [31 <./figures/fig_triplet_overlay_012943.png> <./figures/fig_triplet_overlay_019598.png>]
-<figures/fig_updated_simulator.png, id=960, 776.14969pt x 485.56406pt>
+<figures/fig_updated_simulator.png, id=986, 776.14969pt x 485.56406pt>
 File: figures/fig_updated_simulator.png Graphic file (type png)
 <use figures/fig_updated_simulator.png>
 Package pdftex.def Info: figures/fig_updated_simulator.png  used on input line 263.
@@ -781,7 +781,7 @@ Package pdftex.def Info: figures/fig_updated_simulator.png  used on input line 2
  [32
 
 ] [33 <./figures/fig_updated_simulator.png>] [34] [35] [36] [37]
-<figures/fig_bn_dsbn.png, id=1070, 810.77907pt x 176.91093pt>
+<figures/fig_bn_dsbn.png, id=1096, 810.77907pt x 176.91093pt>
 File: figures/fig_bn_dsbn.png Graphic file (type png)
 <use figures/fig_bn_dsbn.png>
 Package pdftex.def Info: figures/fig_bn_dsbn.png  used on input line 435.
@@ -796,84 +796,89 @@ Overfull \hbox (8.79388pt too wide) in paragraph at lines 446--457
 \T1/cmr/m/n/12 ture. Batch nor-mal-iza-tion is rep-re-sentable in the de-ploy-ment for-mat: \T1/cmtt/m/n/12 BatchNormInference
  []
 
-[38 <./figures/fig_bn_dsbn.png>] [39] [40]) (./chapters/04_results_discussion.tex [41]
+[38 <./figures/fig_bn_dsbn.png>] [39] [40] [41]) (./chapters/04_results_discussion.tex [42] [43]
 Chapter 4.
-[42
+[44
 
-] [43]
-<figures/fig_embeddings_paired.png, id=1186, 831.5868pt x 387.1263pt>
+] [45]
+<figures/fig_embeddings_paired.png, id=1238, 831.5868pt x 387.1263pt>
 File: figures/fig_embeddings_paired.png Graphic file (type png)
 <use figures/fig_embeddings_paired.png>
 Package pdftex.def Info: figures/fig_embeddings_paired.png  used on input line 91.
 (pdftex.def)             Requested size: 452.9679pt x 210.87036pt.
-<figures/fig_cosine_sim_terramind.png, id=1191, 723.4227pt x 395.3169pt>
+<figures/fig_cosine_sim_terramind.png, id=1243, 723.4227pt x 395.3169pt>
 File: figures/fig_cosine_sim_terramind.png Graphic file (type png)
 <use figures/fig_cosine_sim_terramind.png>
 Package pdftex.def Info: figures/fig_cosine_sim_terramind.png  used on input line 105.
 (pdftex.def)             Requested size: 385.02547pt x 210.39763pt.
- [44 <./figures/fig_embeddings_paired.png>] [45 <./figures/fig_cosine_sim_terramind.png>]
-<figures/fig_ladder_grid.png, id=1211, 1133.28394pt x 635.976pt>
+ [46 <./figures/fig_embeddings_paired.png>] [47 <./figures/fig_cosine_sim_terramind.png>]
+<figures/fig_ladder_grid.png, id=1264, 1133.28394pt x 635.976pt>
 File: figures/fig_ladder_grid.png Graphic file (type png)
 <use figures/fig_ladder_grid.png>
 Package pdftex.def Info: figures/fig_ladder_grid.png  used on input line 148.
 (pdftex.def)             Requested size: 452.9679pt x 254.2015pt.
- [46 <./figures/fig_ladder_grid.png>] [47] [48] [49]
-<figures/fig_pad_decision_scores.png, id=1253, 794.7291pt x 457.9509pt>
+ [48 <./figures/fig_ladder_grid.png>] [49] [50] [51]
+<figures/fig_pad_decision_scores.png, id=1306, 794.7291pt x 457.9509pt>
 File: figures/fig_pad_decision_scores.png Graphic file (type png)
 <use figures/fig_pad_decision_scores.png>
 Package pdftex.def Info: figures/fig_pad_decision_scores.png  used on input line 306.
 (pdftex.def)             Requested size: 452.9679pt x 261.01376pt.
- [50 <./figures/fig_pad_decision_scores.png>]
-<figures/fig_dsbn_vs_baseline.png, id=1264, 789.1884pt x 266.6763pt>
+ [52 <./figures/fig_pad_decision_scores.png>]
+<figures/fig_qualitative_predictions.png, id=1316, 513.117pt x 351.2322pt>
+File: figures/fig_qualitative_predictions.png Graphic file (type png)
+<use figures/fig_qualitative_predictions.png>
+Package pdftex.def Info: figures/fig_qualitative_predictions.png  used on input line 328.
+(pdftex.def)             Requested size: 452.9679pt x 310.07141pt.
+<figures/fig_dsbn_vs_baseline.png, id=1326, 789.1884pt x 266.6763pt>
 File: figures/fig_dsbn_vs_baseline.png Graphic file (type png)
 <use figures/fig_dsbn_vs_baseline.png>
-Package pdftex.def Info: figures/fig_dsbn_vs_baseline.png  used on input line 353.
+Package pdftex.def Info: figures/fig_dsbn_vs_baseline.png  used on input line 374.
 (pdftex.def)             Requested size: 452.9679pt x 153.0691pt.
- [51]
-<figures/fig_per_class_dsbn.png, id=1271, 680.7834pt x 246.6816pt>
+ [53] [54 <./figures/fig_qualitative_predictions.png> <./figures/fig_dsbn_vs_baseline.png>]
+<figures/fig_per_class_dsbn.png, id=1340, 680.7834pt x 246.6816pt>
 File: figures/fig_per_class_dsbn.png Graphic file (type png)
 <use figures/fig_per_class_dsbn.png>
-Package pdftex.def Info: figures/fig_per_class_dsbn.png  used on input line 377.
+Package pdftex.def Info: figures/fig_per_class_dsbn.png  used on input line 398.
 (pdftex.def)             Requested size: 452.9679pt x 164.13153pt.
- [52 <./figures/fig_dsbn_vs_baseline.png> <./figures/fig_per_class_dsbn.png>] [53]
-<figures/fig_label_crossover.png, id=1296, 398.9304pt x 257.0403pt>
+ [55 <./figures/fig_per_class_dsbn.png>] [56]
+<figures/fig_label_crossover.png, id=1362, 398.9304pt x 257.0403pt>
 File: figures/fig_label_crossover.png Graphic file (type png)
 <use figures/fig_label_crossover.png>
-Package pdftex.def Info: figures/fig_label_crossover.png  used on input line 442.
+Package pdftex.def Info: figures/fig_label_crossover.png  used on input line 463.
 (pdftex.def)             Requested size: 326.13744pt x 210.14687pt.
- [54 <./figures/fig_label_crossover.png>] [55]) (./chapters/05_conclusion.tex [56]
+ [57 <./figures/fig_label_crossover.png>] [58]) (./chapters/05_conclusion.tex [59]
 Chapter 5.
-[57
+[60
 
-]) (./chapters/07_declarations.tex [58]) (./chapters/06_appendix.tex [59
+]) (./chapters/07_declarations.tex [61]) (./chapters/06_appendix.tex [62
 
 ]
 Appendix A.
-) (./main.bbl [60
+) (./main.bbl [63
 
-] [61
+] [64
 
-] [62] [63]) [64] (./main.aux)
+] [65] [66]) [67] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 4C6FCE0B44144FAA45A0E13D2BE7B058;9268.
+(rerunfilecheck)             Checksum: EF6DB637BCFFDA1B89F32819CA430C18;9423.
  ) 
 Here is how much of TeX's memory you used:
- 24922 strings out of 476182
- 466392 string characters out of 5795595
- 1954975 words of memory out of 5000000
- 46222 multiletter control sequences out of 15000+600000
+ 24946 strings out of 476182
+ 466940 string characters out of 5795595
+ 1957975 words of memory out of 5000000
+ 46234 multiletter control sequences out of 15000+600000
  586711 words of font info for 117 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,14n,87p,1061b,1009s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,14n,87p,1061b,1010s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (66 pages, 28242263 bytes).
+Output written on main.pdf (69 pages, 30910083 bytes).
 PDF statistics:
- 2127 PDF objects out of 2487 (max. 8388607)
- 1365 compressed objects within 14 object streams
- 261 named destinations out of 1000 (max. 500000)
- 533 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2198 PDF objects out of 2487 (max. 8388607)
+ 1425 compressed objects within 15 object streams
+ 273 named destinations out of 1000 (max. 500000)
+ 546 words of extra memory for PDF output out of 10000 (max. 10000000)
 

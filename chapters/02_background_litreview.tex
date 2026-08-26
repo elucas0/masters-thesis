@@ -137,8 +137,8 @@ Their processing chain is the one described above: a conversion to top-of-atmosp
 They trained on simulated $\Phi$-sat-2 patches and deployed the models on the same Intel Myriad 2 accelerator this thesis targets, which makes their work a useful independent confirmation that the simulator can support a full development cycle from a mission that has not yet delivered labelled data.
 
 This study also illustrates the limit of the approach.
-Its performance was established on simulated imagery throughout, and its authors identify two pieces of work still to be done: validating the system on in-flight data, and sensitivity testing against individual sensor phenomena such as noise and spectral deregistration.
-The simulator makes the pre-launch development possible, but it cannot establish how far the simulated sensor stands in for the real one.
+Its performance was established on simulated imagery, and its authors identify two pieces of work still to be done: validating the system on in-flight data, and sensitivity testing against individual sensor phenomena such as noise and spectral deregistration.
+The simulator makes the pre-launch development possible, but it cannot establish how well the simulation stands in for the real sensor.
 This is the question the co-registered real acquisitions of Chapter~\ref{chap:methodology} are assembled to answer.
 
 \section{Knowledge Distillation Across Architectures}
@@ -163,7 +163,7 @@ $\Phi$satNet optimizes for a hardware-native architecture trained on a curated, 
 One property of $\Phi$satNet is directly related to the problem this thesis addresses.
 Its pre-training method and its $n$-shot benchmarks are built entirely on simulated $\Phi$-sat-2 imagery derived from Sentinel-2, and not on real acquisitions~\cite{phisatnet}.
 $\Phi$satNet therefore does not escape the sensor domain gap by being mission-specific, it only moves it.
-Its reported few-shot advantage rests on the assumption that a physically simulated imagery stands in adequately for the real sensor, and its own evidence base, being simulated throughout, cannot test that assumption.
+Its reported few-shot advantage rests on the assumption that a physically simulated imagery stands in for the real sensor, and its base being simulated, cannot test that assumption.
 The sim-to-real question is therefore one that the bespoke and the adapted approach both inherit, and co-registered real acquisitions are what either of them would need to answer it.
 A matched few-shot comparison against $\Phi$satNet on a shared task and label budget remains the appropriate test of the label-efficiency claim.
 Chapter~\ref{chap:results-discussion} returns to this positioning, but that comparison has not been run and is left for future work.
