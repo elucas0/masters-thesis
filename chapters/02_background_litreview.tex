@@ -119,7 +119,7 @@ X-STARS~\cite{marsocci2025cross} is a close example to the setting of this thesi
 It adapts a model pre-trained on one optical sensor to a second sensor through a multi-sensor alignment dense loss, which is a patch-wise contrastive objective applied between paired acquisitions of the same area by both sensors, within a continual-pretraining framework.
 It establishes that a paired-contrastive objective is effective when the sensor change is primarily one of spatial resolution, which is not the regime this thesis operates in: the $\Phi$-sat-2/Sentinel-2 gap measured in Chapter~\ref{chap:results-discussion} is driven mainly by a differing spectral response.
 
-A separate line of domain-adaptation work sidesteps the alignment losses entirely, by giving the model domain-specific normalization statistics instead.
+A separate line of domain-adaptation work avoids the alignment losses entirely, by giving the model domain-specific normalization statistics instead.
 Domain-Specific Batch Normalization (\acref{DSBN})~\cite{chang2019dsbn} is a generic technique, originally for \acref{UDA}, and it is designed to be integrated into deep networks that use batch normalization layers.
 Batch normalization (\acref{BN})\cite{ioffe2015batchnorm} is a technique used in deep learning to normalize the inputs of each layer, which helps stabilize and accelerate the training.
 \acref{DSBN} extends \acref{BN} by keeping a single set of convolutional weights, but a separate batch-normalization affine transform and separate running statistics (mean and variance) per domain.
@@ -138,7 +138,8 @@ They trained on simulated $\Phi$-sat-2 patches and deployed the models on the sa
 
 This study also illustrates the limit of the approach.
 Its performance was established on simulated imagery throughout, and its authors identify two pieces of work still to be done: validating the system on in-flight data, and sensitivity testing against individual sensor phenomena such as noise and spectral deregistration.
-The simulator makes the pre-launch development possible; on its own, it cannot establish how far the simulated sensor stands in for the real one, which is precisely the question the co-registered real acquisitions of Chapter~\ref{chap:methodology} are assembled to answer.
+The simulator makes the pre-launch development possible, but it cannot establish how far the simulated sensor stands in for the real one.
+This is the question the co-registered real acquisitions of Chapter~\ref{chap:methodology} are assembled to answer.
 
 \section{Knowledge Distillation Across Architectures}
 
@@ -159,11 +160,11 @@ By training a compact, non-transformer architecture from scratch, $\Phi$satNet a
 This is a different design philosophy from the one pursued here.
 $\Phi$satNet optimizes for a hardware-native architecture trained on a curated, mission-specific task suite, while this thesis asks whether an existing, diversely pre-trained \acref{GeoFM} can be adapted to new tasks with fewer labels than training a mission-specific model requires.
 
-One property of $\Phi$satNet bears directly on the problem this thesis addresses.
+One property of $\Phi$satNet is directly related to the problem this thesis addresses.
 Its pre-training method and its $n$-shot benchmarks are built entirely on simulated $\Phi$-sat-2 imagery derived from Sentinel-2, and not on real acquisitions~\cite{phisatnet}.
-$\Phi$satNet therefore does not escape the sensor domain gap by being mission-specific; it relocates it.
+$\Phi$satNet therefore does not escape the sensor domain gap by being mission-specific, it only moves it.
 Its reported few-shot advantage rests on the assumption that a physically simulated imagery stands in adequately for the real sensor, and its own evidence base, being simulated throughout, cannot test that assumption.
-The sim-to-real question is thus one that the bespoke and the adapted approach inherit alike, and co-registered real acquisitions are what either of them would need in order to answer it.
+The sim-to-real question is therefore one that the bespoke and the adapted approach both inherit, and co-registered real acquisitions are what either of them would need to answer it.
 A matched few-shot comparison against $\Phi$satNet on a shared task and label budget remains the appropriate test of the label-efficiency claim.
 Chapter~\ref{chap:results-discussion} returns to this positioning, but that comparison has not been run and is left for future work.
 
@@ -172,5 +173,5 @@ Chapter~\ref{chap:results-discussion} returns to this positioning, but that comp
 Through all of the works cited above, none isolate sensor-induced covariate shift using co-registered source/target data.
 This thesis gives a cross-architecture distillation student an explicit, domain-aware adaptation mechanism, and verifies that the task accuracy transfers into hardware-deployable form.
 The spatially and temporally co-registered $\Phi$-sat-2/Sentinel-2/simulated triplet dataset used in this thesis is what makes that isolation possible; the domain-specific batch normalization applied during cross-architecture distillation (Chapter~\ref{chap:methodology}) is what makes the adaptation and its verification possible.
-The co-registered triplets serve, in addition, as the diagnostic instrument that shows a paired-contrastive alternative does not do better than the simpler domain-specific normalization.
+The co-registered triplets also serve to show that a paired-contrastive alternative does not do better than the simpler domain-specific normalization.
 The real-acquisition component also separates this work from the mission-specific alternative as $\Phi$satNet is pre-trained and benchmarked on simulated $\Phi$-sat-2 imagery, so the assumption that simulation stands in for the real sensor is one both approaches make and only real, co-registered data can check.

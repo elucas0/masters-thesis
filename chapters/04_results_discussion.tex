@@ -1,23 +1,18 @@
 \chapter{Results and Discussion}
 \label{chap:results-discussion}
 
-This chapter reports the experiments that evaluate the three research questions of Section~\ref{sec:research-objective}: whether a measurable sensor domain gap exists in the latent space of a geospatial foundation model, where it concentrates and which physical sensor difference produces it, whether cross-architecture distillation from that model can produce a sensor-adaptive compact student, and whether doing so is preferable to simply training the compact model on the target sensor directly.
+This chapter reports the experiments that evaluate the three research questions of Section~\ref{sec:research-objective}.
 All the results below use the single configuration set out in Section~\ref{sec:configuration}, which is a distillation with domain-specific batch normalization, and the comparison of interest throughout is against a supervised baseline of identical architecture trained without any distillation.
-With one exception, every condition reported in this chapter was run once, with a single fixed seed.
-We therefore report the comparisons descriptively, as differences between training curves and between best-epoch scores, and not as statistical inferences.
-The epoch-to-epoch validation variance is of the order of $0.02$ \acref{mIoU}, so differences smaller than roughly $0.03$ should not be treated as resolved.
-The exception is the degradation-ladder evaluation of Section~\ref{sec:ladder-results}, which we replicated over three seeds and for which the drops are reported with a measured seed-to-seed deviation.
-That section is consequently the only one in this chapter whose smaller effects are resolved.
 
 \section{Experimental Configuration}
 \label{sec:configuration}
 
 The teacher is TerraMind~\cite{jakubik2025terramind} at the \texttt{base} scale, fine-tuned on the Sentinel-2 branch of the triplet dataset (Section~\ref{sec:triplets}) for the eleven-class WorldCover \acref{LULC} task~\cite{zanaga2022worldcover}, and frozen thereafter.
 The student is a U-Net~\cite{ronneberger2015unet} with $9.85$\,M parameters, trained from a random initialisation, since no pre-trained weights are available for this backbone.
-This is a material constraint, and we return to it in Section~\ref{sec:limitations}.
+We return to this constraint in Section~\ref{sec:limitations}.
 Both models consume the seven-band Blue-\acref{NIR} stack under the per-domain normalization protocol of Section~\ref{sec:normalization}.
 
-Two elements of this configuration deserve to be stated explicitly, since we arrived at both of them empirically and both of them materially change the results.
+Two elements of this configuration need to be stated explicitly, since we arrived at both of them empirically and both of them change the results.
 
 \paragraph{Domain-specific batch normalization.}
 The student carries a separate set of batch-normalization~\cite{ioffe2015batchnorm} statistics and affine parameters for each sensor, with all convolutional weights shared, following Chang et al.~\cite{chang2019dsbn}.
@@ -26,51 +21,51 @@ The two sensors are forwarded in separate passes, so during the training each pa
 The encoder would therefore never encounter at test time the normalization under which it was optimised.
 
 \paragraph{Class-imbalanced task loss.}
-The WorldCover class prior on this dataset is severely imbalanced: the three rarest classes (snow/ice, mangroves, moss/lichen) together account for $1.2\%$ of labelled pixels but, under a macro-averaged \acref{mIoU}, for $27\%$ of the metric.
-Under unweighted cross-entropy the student never predicted these classes at all, scoring exactly zero \acref{IoU} on them in training as well as validation.
+The WorldCover class prior on this dataset is severely imbalanced: the three rarest classes (snow/ice, mangroves, moss/lichen) together account for $1.2\%$ of labelled pixels but, under a macro-averaged mIoU, for $27\%$ of the metric.
+Under unweighted cross-entropy the student never predicted these classes at all, scoring exactly zero IoU on them in training as well as validation.
 All the runs reported here therefore use a focal loss~\cite{lin2017focal} with $\gamma = 2$, and an inverse-square-root class weighting derived from the measured pixel frequencies, which is a milder variant of the effective-number scheme of Cui et al.~\cite{cui2019classbalanced}.
 
 The contrastive representation-alignment objectives (Section~\ref{sec:contrastive-mechanism}) were implemented and ablated, but they are disabled in all the results below, since their weights are zero throughout.
-That ablation is reported separately and it is not the subject of this chapter.
+That ablation is reported separately.
 
-Table~\ref{tab:hyperparameters} lists the settings of both arms.
-Everything the two conditions could share is held constant: architecture, initialisation, split, seed, normalization, augmentation, task loss, optimiser, schedule, and early-stopping criterion are identical, and the arms differ only in the presence of the teacher, the second sensor branch, and domain-specific normalization.
+Table~\ref{tab:hyperparameters} lists the settings of both methods.
+Everything the two conditions could share is held constant: architecture, initialisation, split, seed, normalization, augmentation, task loss, optimiser, schedule, and early-stopping criterion are identical, and the methods differ only in the presence of the teacher, the second sensor branch, and domain-specific normalization.
 
 \begin{table}[htbp]
     \centering
     \begin{tabular}{lll}
         \toprule
-        Setting                 & \acref{KD} + \acref{DSBN}                                                                             & Supervised baseline \\
+        Setting                    & \acref{KD} + \acref{DSBN}                                                             & Supervised baseline \\
         \midrule
-        \multicolumn{3}{l}{\emph{Shared}}                                                                                                     \\
-        Student architecture    & \multicolumn{2}{l}{U-Net, 7 input bands, 32 decoder channels, $1{\times}1$ conv head}                       \\
-        Initialisation          & \multicolumn{2}{l}{Random (no pre-trained weights available)}                                               \\
-        Optimiser               & \multicolumn{2}{l}{AdamW}                                                                                   \\
-        Learning rate           & \multicolumn{2}{l}{$1\times10^{-4}$}                                                                        \\
-        Weight decay            & \multicolumn{2}{l}{$1\times10^{-4}$}                                                                        \\
-        LR schedule             & \multicolumn{2}{l}{ReduceLROnPlateau, factor $0.5$, patience $5$}                                           \\
-        Batch size              & \multicolumn{2}{l}{$8$}                                                                             \\
-        Early stopping          & \multicolumn{2}{l}{Patience $12$ on target-sensor validation \acref{IoU}}                                           \\
-        Model selection         & \multicolumn{2}{l}{Best target-sensor validation \acref{IoU}}                                                       \\
-        Task loss               & \multicolumn{2}{l}{Focal, $\gamma = 2.0$}                                                                   \\
-        Class weighting         & \multicolumn{2}{l}{Inverse square-root of measured pixel frequency}                                         \\
-        Augmentation            & \multicolumn{2}{l}{Joint geometric (flips, $90^{\circ}$ rotations)}                                         \\
-        Random seed             & \multicolumn{2}{l}{$42$}                                                                                    \\
-        Numerical precision     & \multicolumn{2}{l}{$32$-bit}                                                                                \\
+        \multicolumn{3}{l}{\emph{Shared}}                                                                                                        \\
+        Student architecture       & \multicolumn{2}{l}{U-Net, 7 input bands, 32 decoder channels, $1{\times}1$ conv head}                       \\
+        Initialisation             & \multicolumn{2}{l}{Random (no pre-trained weights available)}                                               \\
+        Optimiser                  & \multicolumn{2}{l}{AdamW}                                                                                   \\
+        Learning rate              & \multicolumn{2}{l}{$1\times10^{-4}$}                                                                        \\
+        Weight decay               & \multicolumn{2}{l}{$1\times10^{-4}$}                                                                        \\
+        LR schedule                & \multicolumn{2}{l}{ReduceLROnPlateau, factor $0.5$, patience $5$}                                           \\
+        Batch size                 & \multicolumn{2}{l}{$8$}                                                                                     \\
+        Early stopping             & \multicolumn{2}{l}{Patience $12$ on target-sensor validation IoU}                                   \\
+        Model selection            & \multicolumn{2}{l}{Best target-sensor validation IoU}                                               \\
+        Task loss                  & \multicolumn{2}{l}{Focal, $\gamma = 2.0$}                                                                   \\
+        Class weighting            & \multicolumn{2}{l}{Inverse square-root of measured pixel frequency}                                         \\
+        Augmentation               & \multicolumn{2}{l}{Joint geometric (flips, $90^{\circ}$ rotations)}                                         \\
+        Random seed                & \multicolumn{2}{l}{$42$}                                                                                    \\
+        Numerical precision        & \multicolumn{2}{l}{$32$-bit}                                                                                \\
         \midrule
-        \multicolumn{3}{l}{\emph{Distillation-specific}}                                                                                      \\
-        Teacher                 & TerraMind, frozen                                                                     & ---                 \\
-        Distillation loss       & \acref{KL} on logits, $T = 4.0$                                                               & ---                 \\
-        Distillation applied to & All pixels, both branches                                                             & ---                 \\
-        Task-loss weight        & $1.0$ target $+$ $1.0$ source                                                         & $1.0$ target        \\
-        Distillation weight     & $1.0$                                                                                 & ---                 \\
-        Contrastive weights     & $0$ (instance and pixel)                                                              & ---                 \\
-        Domain-specific \acref{BN}      & Enabled                                                                               & ---                 \\
-        Sensor branches         & Two ($\Phi$-sat-2, Sentinel-2)                                                        & One ($\Phi$-sat-2)  \\
+        \multicolumn{3}{l}{\emph{Distillation-specific}}                                                                                         \\
+        Teacher                    & TerraMind, frozen                                                                     & ---                 \\
+        Distillation loss          & \acref{KL} on logits, $T = 4.0$                                                       & ---                 \\
+        Distillation applied to    & All pixels, both branches                                                             & ---                 \\
+        Task-loss weight           & $1.0$ target $+$ $1.0$ source                                                         & $1.0$ target        \\
+        Distillation weight        & $1.0$                                                                                 & ---                 \\
+        Contrastive weights        & $0$ (instance and pixel)                                                              & ---                 \\
+        Domain-specific \acref{BN} & Enabled                                                                               & ---                 \\
+        Sensor branches            & Two ($\Phi$-sat-2, Sentinel-2)                                                        & One ($\Phi$-sat-2)  \\
         \bottomrule
     \end{tabular}
-    \caption{Training configuration for the two arms.
-        Settings above the rule are identical by construction; those below apply to the distilled arm only.
+    \caption{Training configuration for the two methods.
+        Settings above the rule are identical by construction; those below apply to the distilled method only.
     }
     \label{tab:hyperparameters}
 \end{table}
@@ -108,7 +103,7 @@ This is a supplementary observation, on a different model scale and with a diffe
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.85\textwidth]{figures/fig_cosine_sim_terramind.png}
-    \caption{Per-layer cosine similarity between paired Sentinel-2B and real-$\Phi$-sat-2 patch embeddings from the TerraMind Tiny encoder, averaged over $800$ samples (shaded band: one standard deviation).
+    \caption{Per-layer cosine similarity between raw paired Sentinel-2B and real-$\Phi$-sat-2 patch embeddings from the TerraMind Tiny encoder, averaged over $800$ samples (shaded band: one standard deviation).
     }
     \label{fig:cosine-sim-tiny}
 \end{figure}
@@ -130,12 +125,12 @@ A severity axis common to all three is defined by setting level~4 to the operati
     \centering
     \begin{tabular}{lcccc}
         \toprule
-        Level & Severity & \acref{SNR} range  & \acref{PSF} $\sigma$ (px) & Misalignment $\sigma$ (px) \\
+        Level & Severity & \acref{SNR} range & \acref{PSF} $\sigma$ (px) & Misalignment $\sigma$ (px) \\
         \midrule
-        L1    & $0.125$  & $[40, 80]$ & $0.5$             & $1.25$                     \\
-        L2    & $0.250$  & $[20, 40]$ & $1.0$             & $2.50$                     \\
-        L3    & $0.500$  & $[10, 20]$ & $2.0$             & $5.00$                     \\
-        L4    & $1.000$  & $[5, 10]$  & $4.0$             & $10.00$                    \\
+        L1    & $0.125$  & $[40, 80]$        & $0.5$                     & $1.25$                     \\
+        L2    & $0.250$  & $[20, 40]$        & $1.0$                     & $2.50$                     \\
+        L3    & $0.500$  & $[10, 20]$        & $2.0$                     & $5.00$                     \\
+        L4    & $1.000$  & $[5, 10]$         & $4.0$                     & $10.00$                    \\
         \bottomrule
     \end{tabular}
     \caption{The degradation ladder.
@@ -167,28 +162,28 @@ Table~\ref{tab:ladder-domain-gap} reports the results.
     \centering
     \begin{tabular}{lccc}
         \toprule
-                             & Distilled student           & TerraMind base     & TerraMind base              \\
-                             & (encoder frozen)            & (encoder frozen)   & (fine-tuned)                \\
+                                     & Distilled student           & TerraMind base     & TerraMind base              \\
+                                     & (encoder frozen)            & (encoder frozen)   & (fine-tuned)                \\
         \midrule
-        Clean baseline (\acref{IoU}) & $\mathbf{0.814} \pm 0.002$  & $0.739 \pm 0.057$  & $0.773 \pm 0.033$           \\
+        Clean baseline (IoU) & $\mathbf{0.814} \pm 0.002$  & $0.739 \pm 0.057$  & $0.773 \pm 0.033$           \\
         \midrule
         \multicolumn{4}{l}{\emph{Sensor noise (\acref{SNR})}}                                                         \\
-        \quad L1             & $-0.031 \pm 0.024$          & $+0.002 \pm 0.003$ & $-0.001 \pm 0.001$          \\
-        \quad L2             & $-0.114 \pm 0.099$          & $+0.003 \pm 0.006$ & $-0.004 \pm 0.002$          \\
-        \quad L3             & $-0.280 \pm 0.234$          & $-0.018 \pm 0.017$ & $-0.041 \pm 0.014$          \\
-        \quad L4             & $\mathbf{-0.458} \pm 0.267$ & $-0.088 \pm 0.066$ & $-0.152 \pm 0.030$          \\
+        \quad L1                     & $-0.031 \pm 0.024$          & $+0.002 \pm 0.003$ & $-0.001 \pm 0.001$          \\
+        \quad L2                     & $-0.114 \pm 0.099$          & $+0.003 \pm 0.006$ & $-0.004 \pm 0.002$          \\
+        \quad L3                     & $-0.280 \pm 0.234$          & $-0.018 \pm 0.017$ & $-0.041 \pm 0.014$          \\
+        \quad L4                     & $\mathbf{-0.458} \pm 0.267$ & $-0.088 \pm 0.066$ & $-0.152 \pm 0.030$          \\
         \addlinespace
         \multicolumn{4}{l}{\emph{Optical blur (\acref{PSF})}}                                                         \\
-        \quad L1             & $-0.002 \pm 0.000$          & $-0.004 \pm 0.003$ & $0.000 \pm 0.000$           \\
-        \quad L2             & $-0.013 \pm 0.003$          & $-0.010 \pm 0.007$ & $0.000 \pm 0.001$           \\
-        \quad L3             & $-0.048 \pm 0.014$          & $-0.016 \pm 0.012$ & $0.000 \pm 0.003$           \\
-        \quad L4             & $-0.110 \pm 0.030$          & $-0.025 \pm 0.016$ & $\mathbf{-0.008} \pm 0.009$ \\
+        \quad L1                     & $-0.002 \pm 0.000$          & $-0.004 \pm 0.003$ & $0.000 \pm 0.000$           \\
+        \quad L2                     & $-0.013 \pm 0.003$          & $-0.010 \pm 0.007$ & $0.000 \pm 0.001$           \\
+        \quad L3                     & $-0.048 \pm 0.014$          & $-0.016 \pm 0.012$ & $0.000 \pm 0.003$           \\
+        \quad L4                     & $-0.110 \pm 0.030$          & $-0.025 \pm 0.016$ & $\mathbf{-0.008} \pm 0.009$ \\
         \addlinespace
-        \multicolumn{4}{l}{\emph{Band misalignment}}                                                          \\
-        \quad L1             & $-0.006 \pm 0.001$          & $-0.008 \pm 0.003$ & $-0.003 \pm 0.001$          \\
-        \quad L2             & $-0.031 \pm 0.001$          & $-0.033 \pm 0.005$ & $-0.013 \pm 0.003$          \\
-        \quad L3             & $-0.082 \pm 0.004$          & $-0.065 \pm 0.005$ & $-0.051 \pm 0.007$          \\
-        \quad L4             & $-0.140 \pm 0.007$          & $-0.119 \pm 0.009$ & $\mathbf{-0.109} \pm 0.012$ \\
+        \multicolumn{4}{l}{\emph{Band misalignment}}                                                                  \\
+        \quad L1                     & $-0.006 \pm 0.001$          & $-0.008 \pm 0.003$ & $-0.003 \pm 0.001$          \\
+        \quad L2                     & $-0.031 \pm 0.001$          & $-0.033 \pm 0.005$ & $-0.013 \pm 0.003$          \\
+        \quad L3                     & $-0.082 \pm 0.004$          & $-0.065 \pm 0.005$ & $-0.051 \pm 0.007$          \\
+        \quad L4                     & $-0.140 \pm 0.007$          & $-0.119 \pm 0.009$ & $\mathbf{-0.109} \pm 0.012$ \\
         \bottomrule
     \end{tabular}
     \caption{Domain gap across the degradation ladder: change in positive-class \acs{IoU} relative to the undegraded test split, for a model trained only on undegraded data.
@@ -198,21 +193,21 @@ Table~\ref{tab:ladder-domain-gap} reports the results.
     \label{tab:ladder-domain-gap}
 \end{table}
 
-On clean data the distilled student is the strongest of the three, at $0.814$ \acref{IoU} against $0.773$ for fine-tuned TerraMind and $0.739$ for frozen TerraMind.
+On clean data the distilled student is the strongest of the three, at $0.814$ IoU against $0.773$ for fine-tuned TerraMind and $0.739$ for frozen TerraMind.
 That the smaller student outperforms the foundation model on this clean task can be attributed to its stronger local representation, whereas TerraMind is a general-purpose encoder given only a task head and a fine-tuning pass.
 The comparison of interest here is the response to degradation.
 
 Band misalignment is the only factor that degrades every configuration significantly, monotonically, and by a similar amount.
 Its full-severity cost varies only between $-0.109$ and $-0.140$ IoU across models that differ in trainable parameters and by architecture family, and it is the only factor resolved at the mildest severity in all three columns, where a $1.25$-pixel shift already costs a small but reproducible amount.
 Its seed-to-seed deviation is also the smallest in the table.
-A perturbation whose cost is that insensitive to the model absorbing it is best read as a damage to the input signal, rather than as a weakness of any particular representation.
-Band-to-band shifts corrupt precisely the cross-band relationships on which a water/land decision rests, and no amount of encoder capacity recovers information that the shift has already destroyed.
+A perturbation whose cost barely changes with the model absorbing it is a damage to the input signal, rather than a weakness of any particular representation.
+Band-to-band shifts corrupt the cross-band relationships on which a water/land decision rests, and no amount of encoder capacity recovers information that the shift has already destroyed.
 
 Sensor noise produces the largest single degradation, but its magnitude is a property of the model rather than of the perturbation, and it is the least reproducible quantity in the table.
 At full severity it costs the distilled student $-0.458$ IoU on average and fine-tuned TerraMind $-0.152$, a threefold difference that holds at every severity.
 
 Optical blur is the least damaging factor in every configuration, but the three differ in how cleanly the effect is resolved.
-For fine-tuned TerraMind it is indistinguishable from zero: four severities spanning a twenty-four-fold reduction in image gradient energy move the score by at most $0.008$ \acref{IoU}.
+For fine-tuned TerraMind it is indistinguishable from zero: four severities spanning a twenty-four-fold reduction in image gradient energy move the score by at most $0.008$ IoU.
 For frozen TerraMind the response is monotone and uniformly negative but never clears the significance threshold, reaching $-0.025$ at full severity.
 For the distilled student it is small but unambiguous, significant at all four severities with the tightest deviations in the table, rising from $-0.002$ to $-0.110$.
 Blur is therefore real for the student and negligible for TerraMind, yet even for the student it remains the smallest of the three factors, costing a quarter of what noise costs at the same nominal severity.
@@ -226,11 +221,11 @@ It also reinforces the point that the gap here is not resolution-driven, which i
     \centering
     \begin{tabular}{lccc}
         \toprule
-        Factor at L4       & Trained clean,  & Trained,        & Recovered \\
-                           & tested degraded & tested degraded             \\
+        Factor at L4               & Trained clean,  & Trained,        & Recovered \\
+                                   & tested degraded & tested degraded             \\
         \midrule
         Sensor noise (\acref{SNR}) & $-0.455$        & $-0.072$        & $84\%$    \\
-        Band misalignment  & $-0.150$        & $-0.051$        & $66\%$    \\
+        Band misalignment          & $-0.150$        & $-0.051$        & $66\%$    \\
         Optical blur (\acref{PSF}) & $-0.128$        & $+0.020$        & all of it \\
         \bottomrule
     \end{tabular}
@@ -241,9 +236,9 @@ It also reinforces the point that the gap here is not resolution-driven, which i
 \end{table}
 
 Repeating the sweep with each model trained on the same degraded condition it is evaluated on, instead of on clean data, recovers most of the loss (Table~\ref{tab:ladder-adaptation}).
-$84\%$ of the noise penalty and $66\%$ of the misalignment penalty disappear, and the blur ceases to be a penalty at all, since it scores marginally \emph{above} the clean baseline, in the manner of a mild augmentation.
+$84\%$ of the noise penalty and $66\%$ of the misalignment penalty disappear, and the blur stops being a penalty, since it scores marginally above the clean baseline, like a mild augmentation.
 The gap measured in Table~\ref{tab:ladder-domain-gap} is therefore largely an adaptation gap rather than an information-loss gap, at least for noise and blur.
-Where the noise characteristics of the operating sensor are known in advance, which for a launched instrument they always are, simulating them during the training reclaims most of the achievable performance, and this without any domain-adaptation machinery at all.
+Where the noise characteristics of the operating sensor are known in advance, which for a launched instrument they always are, simulating them during the training recovers most of the achievable performance, without any domain-adaptation machinery.
 Misalignment is again the exception: a third of its cost survives training on the degraded condition, which is consistent with reading it as a factor that degrades the cross-band information.
 
 Three limitations bound these results.
@@ -258,26 +253,26 @@ The distilled student inverts every one of these measurements.
 The paired cosine similarity rises from $0.098$ to $0.948$, and the probe transfer from $33\%$ to $97\%$ ($0.663 \rightarrow 0.646$), which means that a classifier fitted on the student's Sentinel-2 features is very nearly as accurate on its $\Phi$-sat-2 features.
 In Figure~\ref{fig:embeddings-paired} the paired links collapse to $0.40$ \acref{UMAP} units, a fifteen-fold reduction.
 The downstream consequence is visible in the right panel of Figure~\ref{fig:dsbn-vs-baseline}.
-The accuracy of the student on the two sensors converges on parity: on the test split it scores $0.4481$ on $\Phi$-sat-2 against $0.4640$ on Sentinel-2, which is a residual difference of $-0.016$ mIoU, and this against a teacher whose representation does not usefully transfer at all.
+The accuracy of the student on the two sensors converges on parity: on the test split it scores $0.4481$ on $\Phi$-sat-2 against $0.4640$ on Sentinel-2, which is a residual difference of $-0.016$ mIoU, against a teacher whose representation does not usefully transfer.
 Table~\ref{tab:invariance} collects the three measures side by side.
 
 \begin{table}[htbp]
     \centering
     \begin{tabular}{lcc}
         \toprule
-        Measure                                      & TerraMind teacher & Distilled student \\
+        Measure                                                     & TerraMind teacher & Distilled student \\
         \midrule
-        Paired cosine similarity                     & $0.098$           & $\mathbf{0.948}$  \\
-        Median paired link (\acref{UMAP} units)              & $6.15$            & $\mathbf{0.40}$   \\
-        Probe: Sentinel-2 $\rightarrow$ Sentinel-2   & $0.754$           & $0.663$           \\
-        Probe: Sentinel-2 $\rightarrow$ $\Phi$-sat-2 & $0.250$           & $\mathbf{0.646}$  \\
-        Probe transfer retention                     & $33\%$            & $\mathbf{97\%}$   \\
+        Paired cosine similarity                                    & $0.098$           & $\mathbf{0.948}$  \\
+        Median paired link (\acref{UMAP} units)                     & $6.15$            & $\mathbf{0.40}$   \\
+        Probe: Sentinel-2 $\rightarrow$ Sentinel-2                  & $0.754$           & $0.663$           \\
+        Probe: Sentinel-2 $\rightarrow$ $\Phi$-sat-2                & $0.250$           & $\mathbf{0.646}$  \\
+        Probe transfer retention                                    & $33\%$            & $\mathbf{97\%}$   \\
         \addlinespace
-        \acref{IoU}($\Phi$-sat-2) $-$ \acref{IoU}(Sentinel-2), test  & ---               & $\mathbf{-0.004}$ \\
+        IoU($\Phi$-sat-2) $-$ IoU(Sentinel-2), test & ---               & $\mathbf{-0.004}$ \\
         \bottomrule
     \end{tabular}
     \caption{Sensor invariance of the teacher and the distilled student, over $800$ co-registered test patches.
-        Paired cosine and probe transfer compare the two sensor views of the \emph{same} ground.
+        Paired cosine and probe transfer compare the two sensor views of the same ground.
         Probe transfer fits a linear classifier on Sentinel-2 embeddings and applies it to $\Phi$-sat-2 embeddings; retention is the ratio of the two accuracies.
         The \acs{IoU} difference is measured on the full test split rather than on the $800$-patch embedding sample.
     }
@@ -286,7 +281,7 @@ Table~\ref{tab:invariance} collects the three measures side by side.
 
 \wip[Decide how to frame the probe row that cuts against the student.]{%
     To write: a remark on the one row that cuts against the student.
-    The teacher is the stronger encoder \emph{within} Sentinel-2 ($0.754$ against $0.663$ same-domain probe accuracy), and its advantage only disappears once the probe is asked to cross the sensor gap.
+    The teacher is the stronger encoder within Sentinel-2 ($0.754$ against $0.663$ same-domain probe accuracy), and its advantage only disappears once the probe is asked to cross the sensor gap.
     This can be framed either as a limitation of the student, or as the precise statement of what the distillation bought.
 }
 
@@ -294,10 +289,10 @@ One measurement in this set behaves counter-intuitively, and it illustrates a re
 The raw \acref{PAD} is maximal for the student ($2.000$, against $1.955$ for the teacher), which means that a linear probe separates the two domains perfectly.
 This is an artefact of the mechanism itself, since the domain-specific normalization gives each sensor its own affine transform.
 A constant per-channel offset distinguishes the domains by construction, and a linear probe finds it trivially regardless of how well the semantic content is aligned.
-Standardising each domain on its own statistics removes exactly the first and second moments that a per-domain affine can express, and it drops the probe to chance for both models.
+Standardising each domain on its own statistics removes the first and second moments that a per-domain affine can express, and it drops the probe to chance for both models.
 Figure~\ref{fig:pad-decision} shows the underlying quantity: in the raw setting the two domains' probe scores are separated by an empty margin, and after per-domain standardisation they collapse onto one another.
 
-\acref{PAD} is therefore not a valid instrument for a model that carries a domain-specific normalization, even though it is scale-free and hence otherwise well suited to comparing representations of different dimensionality.
+\acref{PAD} is therefore not a valid instrument for a model that carries a domain-specific normalization, even though it is scale-free and otherwise well suited to comparing representations of different dimensionality.
 The probe transfer, which asks the functional question directly, is the appropriate measure here, and it is the one we report above.
 
 \wip{The same caution applies in weaker form to the two measures this section does rely on.
@@ -318,7 +313,7 @@ The probe transfer, which asks the functional question directly, is the appropri
 
 With a domain-specific normalization, the encoder is domain-adaptive rather than domain-invariant: the convolutional weights are shared, the normalization statistics are not, and the target-sensor branch has to be selected at inference.
 The defensible claim is therefore that after a per-domain noralization, the structure learned on the source sensor is $97\%$ readable on the target one.
-That is weaker than a single sensor-agnostic encoder, but it is the property that an on-board deployment actually requires, since the acquiring instrument is always known.
+That is weaker than a single sensor-agnostic encoder, but it is the property that an on-board deployment requires, since the acquiring instrument is always known.
 
 \section{Distillation Against a Supervised Baseline}
 \label{sec:rq3-results}
@@ -331,15 +326,15 @@ Some parameters are held constant for fairness: the split, the normalization, th
     \centering
     \begin{tabular}{llccc}
         \toprule
-        Labels                                                        & Method              & Val.\ \acref{mIoU}        & Test \acref{mIoU}         & Cost (h)       \\
+        Labels                                                        & Method                    & Val.\ mIoU & Test mIoU & Cost (h)       \\
         \midrule
-        $10{,}000$                                                    & KD + DSBN           & $\mathbf{0.4607}$ & $\mathbf{0.4481}$ & $13.3$         \\
-        $10{,}000$                                                    & Supervised baseline & $0.3720$          & $0.3739$          & $\mathbf{4.0}$ \\
+        $10{,}000$                                                    & KD + DSBN                 & $\mathbf{0.4607}$  & $\mathbf{0.4481}$ & $13.3$         \\
+        $10{,}000$                                                    & Supervised baseline       & $0.3720$           & $0.3739$          & $\mathbf{4.0}$ \\
         \addlinespace
-        $1{,}000$                                                     & \acref{KD} + \acref{DSBN}           & $0.2679$          & $0.2635$          & $2.2$          \\
-        $1{,}000$                                                     & Supervised baseline & $\mathbf{0.2916}$ & $\mathbf{0.2707}$ & $\mathbf{0.6}$ \\
+        $1{,}000$                                                     & \acref{KD} + \acref{DSBN} & $0.2679$           & $0.2635$          & $2.2$          \\
+        $1{,}000$                                                     & Supervised baseline       & $\mathbf{0.2916}$  & $\mathbf{0.2707}$ & $\mathbf{0.6}$ \\
         \midrule
-        \multicolumn{2}{l}{TerraMind teacher (Sentinel-2, reference)} & ---                 & $0.6351$          & ---                                \\
+        \multicolumn{2}{l}{TerraMind teacher (Sentinel-2, reference)} & ---                       & $0.6351$           & ---                                \\
         \bottomrule
     \end{tabular}
     \caption{Main results on the \acs{LULC} task.
@@ -350,33 +345,32 @@ Some parameters are held constant for fairness: the split, the normalization, th
     \label{tab:main-results}
 \end{table}
 
-At a budget of $10{,}000$ labelled patches the distilled student reaches $0.4607$ best validation mIoU against the baseline's $0.3720$, an improvement of $+0.0887$ and $0.4481$ against $0.3739$ on the test split (Table~\ref{tab:main-results}).
+At a budget of $10{,}000$ labelled patches the distilled student has $0.4607$ best validation mIoU against the baseline's $0.3720$, an improvement of $+0.0887$ and $0.4481$ against $0.3739$ on the test split (Table~\ref{tab:main-results}).
 Figure~\ref{fig:dsbn-vs-baseline} shows the shape of that margin: the baseline is ahead during the first twenty-five epochs, then the two curves cross but the distilled run keeps climbing after the baseline has flattened and stalled due to early stopping.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/fig_dsbn_vs_baseline.png}
-    \caption{Left: $\Phi$-sat-2 validation \acs{mIoU} over training at $10{,}000$ labelled patches, with the best epoch marked. Dotted line marks teacher's accuracy on Sentinel-2.
+    \caption{Left: $\Phi$-sat-2 validation \acs{mIoU} over training at $10{,}000$ labelled patches, with the best epoch marked.
+        Dotted line marks teacher's accuracy on Sentinel-2.
         Right: the residual accuracy difference between the two sensors for the distilled student, which crosses zero around epoch $55$ and oscillates.
     }
     \label{fig:dsbn-vs-baseline}
 \end{figure}
 
-This overtake could be read as 
-\wip[Settle the framing of the late overtake against the curves.
+This overtake could be read as \wip[Settle the framing of the late overtake against the curves.
 ]{%
-    To write: an interpretation of \emph{why} the distilled run overtakes late rather than early.
-    These runs do not establish the mechanism.
+    To write: an interpretation of why the distilled run overtakes late rather than early.
     The candidate explanations are that the teacher's signal becomes most useful once the student has enough capacity committed to the easy classes, or simply that the two-branch arm sees twice the supervision per epoch and therefore trails on wall-clock but not on epochs.
 }
 
 The distilled run's best epoch is the $89$th of the $101$ it ran, and it exhausted the full budget without triggering the early stopping, so the result should be read as a lower bound on what this configuration reaches.
 The baseline, by contrast, early-stopped at epoch $73$.
 
-The per-class results (Figure~\ref{fig:per-class}) show that the gain is a broad one, and not concentrated in a single class.
+The per-class results (Figure~\ref{fig:per-class}) show that the gain is broad.
 Distillation is ahead on ten of the eleven classes, most markedly on moss/lichen ($+0.148$), snow/ice ($+0.124$), mangroves ($+0.120$), cropland ($+0.112$), tree cover ($+0.097$) and grassland ($+0.096$).
-Permanent water is the sole exception ($-0.013$).
-The frequency-weighted \acref{IoU} moves in the same direction as the macro average ($0.523$ against $0.454$), so this result is not an artefact of the rare-class weighting introduced in Section~\ref{sec:configuration}.
+Permanent water is the only exception ($-0.013$).
+The frequency-weighted IoU moves in the same direction as the macro average ($0.523$ against $0.454$), so this result is not an artefact of the rare-class weighting introduced in Section~\ref{sec:configuration}.
 
 \begin{figure}[htbp]
     \centering
@@ -387,75 +381,60 @@ The frequency-weighted \acref{IoU} moves in the same direction as the macro aver
     \label{fig:per-class}
 \end{figure}
 
-Two costs qualify this result.
-The distillation requires $7.9$ minutes per epoch against the $3.3$ of the baseline, which is a factor of $2.4$, and it is dominated by the forward pass of the frozen teacher and by the second student branch.
-At a fixed compute budget rather than a fixed epoch count, the comparison would therefore be much closer.
-Separately, the teacher reaches $0.6351$ mIoU on Sentinel-2 while the student reaches $0.4481$ on $\Phi$-sat-2, so roughly $0.19$ mIoU of the teacher--student gap remains unclosed.
-That residual is a compression gap rather than a domain gap, since Section~\ref{sec:rq2-results} shows that the student performs almost identically on the two sensors, so what separates it from the teacher is its capacity and its initialisation.
+The TerraMind teacher has $0.6351$ mIoU on Sentinel-2 while the student reaches $0.4481$ on $\Phi$-sat-2.
+This difference is a compression gap rather than a domain gap, since Section~\ref{sec:rq2-results} shows that the student performs similarly on the two domains, so what separates it from the teacher is its capacity and its initialisation.
 
 \paragraph{Complexity against accuracy.}
-The comparison above holds the architecture fixed and varies only the training signal, so it says nothing about where either arm sits on the complexity axis.
-$\Phi$satNet answers that question directly: at $0.351$\,M parameters it is a twenty-eighth of the U-Net that both arms use, and it is the class of model a mission would actually carry on board.
-Table~\ref{tab:complexity} places them side by side, with $\Phi$satNet trained on the same $10{,}000$ labelled patches, the same split, the same focal loss and class weighting, the same optimiser, schedule and early-stopping criterion as the supervised baseline, and in two initialisations: from the released land-cover checkpoint, and from scratch.
+
+The comparison above holds the architecture fixed and varies only the training signal, but for a space-constrained deployment the question is how much accuracy can be gained for a given parameter budget.
+$\Phi$satNet has a clear advantage at only $351$\,k parameters compared to the U-Net that both methods use, and it is the class of model a mission would actually carry on board.
+Table~\ref{tab:complexity} compares $\Phi$satNet trained on the same $10{,}000$ labelled patches and configuration as the supervised baseline, from two initialisations: the released weights for land-cover pre-training, and from scratch.
 
 \begin{table}[htbp]
     \centering
     \begin{tabular}{lrrrc}
         \toprule
-        Model                         & Encoder    & Decoder + head & Total              & Test \acref{mIoU}         \\
+        Model                         & Encoder   & Decoder + head & Total             & Test mIoU \\
         \midrule
-        Distilled student (KD + DSBN) & $4.72$\,M  & $5.14$\,M      & $9.86$\,M          & $\mathbf{0.4481}$ \\
-        Supervised baseline U-Net     & $4.72$\,M  & $5.14$\,M      & $9.85$\,M          & $0.3739$          \\
-        $\Phi$satNet, pre-trained     & $199$\,k & $152$\,k     & $\mathbf{0.351}$\,M & $0.3316$          \\
-        $\Phi$satNet + KD + DSBN      & $199$\,k & $152$\,k     & $0.352$\,M          & $0.3268$          \\
-        $\Phi$satNet, random init     & $199$\,k & $152$\,k     & $\mathbf{0.351}$\,M & $0.3215$          \\
+        Distilled student (KD + DSBN) & $4.72$\,M & $5.14$\,M      & $9.86$\,M         & $\mathbf{0.4481}$ \\
+        Supervised baseline U-Net     & $4.72$\,M & $5.14$\,M      & $9.85$\,M         & $0.3739$          \\
+        $\Phi$satNet, pre-trained     & $199$\,k  & $152$\,k       & $\mathbf{351}$\,k & $0.3316$          \\
+        $\Phi$satNet + KD + DSBN      & $199$\,k  & $152$\,k       & $\mathbf{352}$\,k & $0.3268$          \\
+        $\Phi$satNet, random init     & $199$\,k  & $152$\,k       & $\mathbf{351}$\,k & $0.3215$          \\
         \bottomrule
     \end{tabular}
     \caption{Trainable parameters against accuracy at $10{,}000$ labelled patches.
         Every parameter is trained in all five rows, so the totals are also the trainable counts.
-        Test mIoU is on the full $25{,}323$-patch test split, on the fixed eleven-class denominator of Section~\ref{sec:measurement-pitfalls}.
-        The frozen teacher ($94.4$\,M) and the projection heads ($0.34$\,M) are training-time cost only and are not carried at inference, so neither appears here.
+        Test mIoU is on the full $25{,}323$-patch test split.
     }
     \label{tab:complexity}
 \end{table}
 
-The accuracy ordering follows the parameter ordering, but very far from proportionally.
-$\Phi$satNet gives up $0.042$ test mIoU against the supervised baseline and $0.117$ against the distilled student, for $28.1$ times fewer parameters.
-Per million trainable parameters it returns $0.944$ mIoU against the baseline's $0.038$ and the distilled student's $0.045$, a factor of roughly twenty-five.
-The distilled student's own margin, by contrast, is bought at almost no parameter cost at all: the domain-specific normalization adds $6{,}848$ parameters to the shared architecture, $0.07\%$ of the total, and the two U-Net arms are otherwise identical in size (Section~\ref{sec:dsbn-contribution} treats how much of the accuracy gain that mechanism accounts for).
+$\Phi$satNet drops to $0.042$ test mIoU compared to the supervised baseline and $0.117$ against the distilled student, but it has $28.1$ times fewer parameters.
+The distilled student's own margin is bought for a small parameter cost: domain-specific normalization adds $6{,}848$ parameters to the shared architecture.
+Section~\ref{sec:dsbn-contribution} treats how much this mechanism contributes to the accuracy gain.
 
-Distilling into $\Phi$satNet does not move it.
-Running the distillation of Section~\ref{sec:rq3-results} unchanged --- same teacher, same objective, same domain-specific normalization, same label budget --- but with $\Phi$satNet in place of the U-Net student yields $0.3268$ test mIoU, which is $0.005$ \emph{below} the same architecture trained supervised and $0.005$ above it from a random initialisation.
-All three $\Phi$satNet configurations sit inside a band of $0.01$, while the identical intervention is worth $+0.074$ to the U-Net.
-The teacher is not the difference: its own score on the source sensor is $0.6351$ in both distillation runs.
+Running the distillation of Section~\ref{sec:rq3-results} with the same settings (TerraMind teacher) but with $\Phi$satNet in place of the U-Net student gives $0.3268$ test mIoU, which is $0.005$ below the same architecture trained supervised and $0.005$ above it from a random initialisation.
+All three $\Phi$satNet configurations sit inside a band of $0.01$, which is statistically insignificant.
 
-The natural reading is a capacity ceiling.
 A $0.35$\,M student has no representational room left for the teacher's soft targets to occupy once the task loss has claimed it, so the additional supervision has nothing to buy.
 The per-class pattern supports this, because the U-Net's distillation gain is concentrated in the rare tail and that is precisely where the small student cannot follow: on snow and ice the distilled U-Net reaches $0.523$ against $\Phi$satNet's $0.248$, on mangroves $0.341$ against $0.094$, and on moss and lichen $0.263$ against $0.001$.
 On the common classes the two are close, and on permanent water the small model is marginally ahead ($0.634$ against $0.631$).
 This is the compression gap of Section~\ref{sec:rq3-results} measured rather than asserted: the residual between teacher and student does not shrink when the teacher's signal is handed to a smaller student, because what separates them is capacity and not supervision.
 
-One difference keeps the $\Phi$satNet rows from being a strict architectural control: they consume the eight-band stack their input stem was built for, including the panchromatic band, where the other two models take the seven-band Blue--NIR stack of Section~\ref{sec:normalization}.
-
-The two $\Phi$satNet rows differ only in their initialisation, and together they say what the mission-specific pre-training is worth on this task: very little.
-Fine-tuning from the released land-cover checkpoint, itself pre-trained on \emph{simulated} $\Phi$-sat-2 imagery, beats the same architecture from a random initialisation by $0.0102$ test mIoU.
-The per-class pattern does not look like a systematic lift either: the pre-trained run leads on six of the eleven classes and trails on five, and only cropland ($+0.070$) and snow/ice ($+0.065$) move by more than $0.03$ either way.
+Fine-tuning from the released land-cover checkpoint, pre-trained on simulated $\Phi$-sat-2 imagery, beats the same architecture from a random initialisation by $0.0102$ test mIoU.
+The two $\Phi$satNet rows differ only in their initialisation, and they show that the mission-specific pre-training does not buy a measurable advantage on this task.
 Two further observations point the same direction.
-Run on real $\Phi$-sat-2 with no training at all, the released land-cover model scores between $0.0008$ and $0.0413$ mIoU across the ten published checkpoints, against the $0.0376$ that a uniform-random predictor scores on these eleven class frequencies; and a frozen-encoder sweep over those same checkpoints did not separate any of them from a random initialisation.
-On this task and at this budget it is therefore the architecture, and not the pre-training corpus, that accounts for the $\Phi$satNet result.
-Each configuration is a single seed, so a margin of $0.01$ is not resolved by these runs (Section~\ref{sec:limitations}).
+Zero-shot with real $\Phi$-sat-2 on the released land-cover model scores between $0.0008$ and $0.0413$ mIoU across the ten published checkpoints, against the $0.0376$ that a uniform-random predictor scores on the eleven class frequencies.
+On this task and at this budget it is therefore the architecture, and not the pre-training that accounts for the $\Phi$satNet result.
 
-\section{Advantage Reversal on Small Label Budget}
+\section{Accuracy Drop with Few Labels}
 \label{sec:label-crossover}
 
 \acref{KD} and \acref{UDA} are usually motivated by a label scarcity in the target domain~\cite{kouw2019introductiondomainadaptationtransfer}, so we would expect the advantage above to grow as the target labels are removed; the opposite is what we observe.
-At $1{,}000$ labelled patches the supervised baseline is ahead by every measure: best validation \acref{mIoU} $0.2916$ against $0.2679$, test \acref{mIoU} $0.2707$ against $0.2635$, and on matched epochs the distilled student leads in only $8$ of the $58$ epochs both runs share.
-It also does so at roughly a third of the cost, and this even though the distilled run had the larger budget available to it: it used its full hundred epochs without ever triggering the early stopping, while the baseline stopped at sixty-seven.
+At $1{,}000$ labelled patches the supervised baseline is ahead by every measure: best validation mIoU $0.2916$ against $0.2679$, test mIoU $0.2707$ against $0.2635$, and on matched epochs the distilled student leads in only $8$ of the $58$ epochs both runs share.
+It also does so at roughly a third of the cost, and this even though the distilled run had the larger budget available to it: it used its full hundred epochs without triggering the early stopping, while the baseline stopped at sixty-seven.
 Figure~\ref{fig:label-crossover} shows the crossover with both budgets evaluated on the identical fixed $1{,}000$-patch validation split.
-
-The reversal is consistent across every measure reported (best validation \acref{mIoU}, test \acref{mIoU}, and the epoch-by-epoch lead), but the two ends of the crossover are not equally well resolved.
-At $10{,}000$ labels the margin ($0.0618$ validation \acref{mIoU}) is larger than the epoch-to-epoch variance noted at the start of this chapter; at $1{,}000$ labels it is not ($0.0237$ validation, $0.0072$ test), and the baseline's advantage at the small budget therefore rests mainly on the consistency of the epoch-by-epoch lead, not on the size of the final gap.
-Replication across seeds is required before the small-budget end of the crossover can be treated as established, and that is the appropriate reading of it here.
 One reading is that the distilled configuration carries substantial overhead, which is a second forward pass, doubled normalization parameters, and a distillation term pulling toward a teacher, and that below a certain label threshold the cost exceeds the value of the teacher's signal.
 
 \begin{figure}[htbp]
@@ -474,9 +453,10 @@ One reading is that the distilled configuration carries substantial overhead, wh
 \subsection{Domain-specific normalization contribution}
 \label{sec:dsbn-contribution}
 
-The improvement brought by the domain-specific normalization is larger than what a pure domain-alignment effect would predict, and its shape is informative: the accuracy on the source sensor improved by a margin similar to the one on the target ($+0.116$ against $+0.185$ test \acref{mIoU} relative to the preceding configuration).
+The improvement brought by the domain-specific normalization is larger than what a pure domain-alignment effect would predict.
+The accuracy on the source sensor improved by a margin similar to the one on the target ($+0.116$ against $+0.185$ test mIoU relative to the preceding configuration).
 A mechanism that only aligned domains should have improved the target branch alone.
-The most likely explanation is the train/test normalization inconsistency described in Section~\ref{sec:configuration}: the prior configurations were evaluated through a normalization path that the encoder had never been optimised under, which depressed the two branches at once.
+The most likely explanation is that the train/test normalization inconsistency described in Section~\ref{sec:configuration}: the prior configurations were evaluated through a normalization path that the encoder had never been optimised under, which depressed the two branches at once.
 On that reading, part of what is reported here as a domain-adaptation gain is the repair of a latent defect in the two-branch training scheme.
 That caveat does not diminish the practical result, but it does bear on how much of it should be attributed to \acref{DA}.
 
@@ -484,15 +464,15 @@ That caveat does not diminish the practical result, but it does bear on how much
 \label{sec:limitations}
 
 All experiments use at most $10{,}000$ of the $202{,}582$ available training patches, under $5\%$, so the crossover of Section~\ref{sec:label-crossover} is characterised entirely within the low-data regime, and the ranking at full scale is untested.
-Single seeds are used everywhere except the degradation-ladder evaluation of Section~\ref{sec:ladder-results}, so apart from that section no result in this chapter is supported by independent replication; epoch-to-epoch validation variance is of the order of $0.02$ \acref{mIoU}, and differences below roughly $0.03$, which includes the small-budget end of the crossover in Section~\ref{sec:label-crossover}, are consequently not resolved.
+Single seeds are used everywhere except the degradation-ladder evaluation of Section~\ref{sec:ladder-results}, so apart from that section no result in this chapter is supported by independent replication; epoch-to-epoch validation variance is of the order of $0.02$ mIoU, and differences below roughly $0.03$, which includes the small-budget end of the crossover in Section~\ref{sec:label-crossover}, are consequently not resolved.
 Two further controls are outstanding at the time of writing: a shared-normalization distillation run isolating the contribution of domain-specific normalization (Section~\ref{sec:configuration}), and a recomputation of the invariance measures under shared and per-domain-standardised normalization (Section~\ref{sec:rq2-results}).
-The student is trained from a random initialisation because no pre-trained weights exist for this backbone, and this plausibly accounts for a substantial share of the remaining $0.15$ \acref{mIoU} gap to the teacher, and it confounds any claim that this gap is attributable to a domain shift.
+The student is trained from a random initialisation because no pre-trained weights exist for this backbone, and this plausibly accounts for a substantial share of the remaining $0.15$ mIoU gap to the teacher, and it confounds any claim that this gap is attributable to a domain shift.
 Finally, the work is scoped to a single sensor pair, so the finding that the gap is radiometric rather than resolution-driven (Section~\ref{sec:rq1-results}) should not be generalised beyond it.
 
 \subsection{Interpretation of the flood-robustness result}
 \label{sec:discussion-comparison}
 
-The flood-\acref{IoU} degradation observed for the teacher across the simulated degradation ladder (Section~\ref{sec:ladder-results}, at worst $-0.152$ \acref{IoU} under full-severity noise and $-0.008$ under full-severity blur) is expected.
+The flood-IoU degradation observed for the teacher across the simulated degradation ladder (Section~\ref{sec:ladder-results}, at worst $-0.152$ IoU under full-severity noise and $-0.008$ under full-severity blur) is expected.
 Du et al.~\cite{du2025onorbitdemonstrationgeospatialfoundation} independently report that flood detection was anomalously robust to the sensor domain gap on Kanyini, in contrast to an approximately $47\%$ drop in cloud-detection performance on the same platform.
 We observe the same pattern, and a plausible explanation is that the strong near-infrared absorption contrast of water survives the sensor noise and the band mismatch much better than the texture-dependent and boundary-dependent cues that cloud detection or general land-cover classification rely on.
 Flood segmentation may then understate the severity of the domain-gap problem.
@@ -509,11 +489,11 @@ Per parameter it is far ahead of both; in absolute accuracy it is behind both.
 Which of those two readings should govern is a deployment question rather than a scientific one, and under the power and memory budget of an on-board processor it is not obvious that the absolute reading wins.
 
 The more informative result is the one the matched initialisation control gives.
-On this task the $\Phi$satNet \emph{pre-training} contributes almost nothing: fine-tuning from the released land-cover checkpoint beats the identical architecture from a random initialisation by $0.0102$ test mIoU, and that same checkpoint, run on real $\Phi$-sat-2 without any training, scores at the level of a uniform-random predictor.
+On this task the $\Phi$satNet pre-training contributes almost nothing: fine-tuning from the released land-cover checkpoint beats the identical architecture from a random initialisation by $0.0102$ test mIoU, and that same checkpoint, run on real $\Phi$-sat-2 without any training, scores at the level of a uniform-random predictor.
 What $\Phi$satNet contributes in this comparison is its architecture and its parameter efficiency, not transfer from its mission-specific corpus.
 
 This is not evidence against the claim in~\cite{phisatnet}, which concerns a different benchmark suite.
-It is, however, the same problem this thesis is about, displaced one level: the released $\Phi$satNet weights were pre-trained on \emph{simulated} $\Phi$-sat-2 imagery, and Section~\ref{sec:rq1-results} shows that a gap of this kind originates in low-level radiometry rather than in semantics, which is exactly the part of a sensor a simulator has to get right and the part it is hardest to get right.
+It is, however, the same problem this thesis is about, displaced one level: the released $\Phi$satNet weights were pre-trained on simulated $\Phi$-sat-2 imagery, and Section~\ref{sec:rq1-results} shows that a gap of this kind originates in low-level radiometry rather than in semantics, which is exactly the part of a sensor a simulator has to get right and the part it is hardest to get right.
 A narrow pre-training corpus only earns its narrowness if it matches the sensor that is eventually flown.
 Where that corpus is a simulation, the sensor gap becomes a property of the pre-training data itself, and the comparison is less a contest between a general and a specialised model than a restatement of the same measurement problem.
 We did not measure the real-to-simulated $\Phi$-sat-2 distance directly, so this reading is an interpretation of the control rather than a result in its own right.
@@ -526,6 +506,7 @@ Each configuration here is a single seed, so the margins of order $0.01$ separat
 \subsection{Practical recommendations}
 
 Three recommendations are stated.
-First, the missions intended to host on-board foundation models should prioritise collecting co-registered calibration data early in their operational life. The alignement with some existing acquisition from Sentinel-2 made the measurements of this chapter possible.
+First, the missions intended to host on-board foundation models should prioritise collecting co-registered calibration data early in their operational life.
+The alignement with some existing acquisition from Sentinel-2 made the measurements of this chapter possible.
 Second, when the deployed sensor is known at inference, domain-specific batch normalization is a valuable mechanism to bridge the domain gap as it only adds a few thousand additional parameters to the model, and it doesn't require to change training objective.
 Third, the label budget should be measured before adopting a distillation pipeline, since below the crossover of Section~\ref{sec:label-crossover}, the simpler supervised baseline was both more accurate and roughly three times cheaper.

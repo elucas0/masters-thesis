@@ -143,16 +143,15 @@ The domain gap this thesis is concerned with is therefore a real-vs-simulated ga
     \label{fig:band-boxplots}
 \end{figure}
 
-Per-domain normalization (Section~\ref{sec:normalization}) aligns the location and scale of the three distributions, but not their shape (Figure~\ref{fig:band-boxplots-normalized}).
-Sentinel-2B and simulated $\Phi$-sat-2 remain unimodal and closely overlapping, while real $\Phi$-sat-2 is distinctly bimodal in every band: a taller, narrower primary mode near $z\approx-0.7$ than either reference domain reaches, plus a separate secondary mode around $z\approx+0.5$ to $+1.5$ that Sentinel-2B and simulated $\Phi$-sat-2 do not have at all.
-In the red and red-edge bands (B04--B08) this secondary group sharpens further into a narrow spike near $z\approx2.3$--$2.5$, consistent with the same RE1/RE2-concentrated saturation noted above: the smooth clip in the normalization protocol (Section~\ref{sec:normalization}) compresses these values instead of removing them.
-The domain-adaptation mechanism of Section~\ref{sec:da-mechanism} must close this shape mismatch, since the per-domain normalization already removes the location and scale offset.
+Per-domain normalization (Section~\ref{sec:normalization}) alighs the three distributions, but their shape still differ (Figure~\ref{fig:band-boxplots-normalized}).
+Sentinel-2B and simulated $\Phi$-sat-2 remain closely overlapping, while real $\Phi$-sat-2 is distinctly bimodal in every band: a high peak near $z\approx-0.7$, and a separate peak around $z\approx+0.5$ to $+1.5$.
+In the red and red-edge bands (B04--B08) this second spike sharpens further into a narrow spike near $z\approx2.3$--$2.5$, consistent with the same RE1/RE2-concentrated saturation noted above: the smooth clip in the normalization protocol (Section~\ref{sec:normalization}) compresses these values instead of removing them.
+The domain-adaptation mechanism of Section~\ref{sec:da-mechanism} must close this shape mismatch.
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{hist_bands_normalized.png}
     \caption{The same per-band densities after per-sensor $z$-score normalization of $\sqrt{\text{\acs{DN}}}$.
-        Sentinel-2B and simulated $\Phi$-sat-2 stay unimodal and closely overlapping; real $\Phi$-sat-2 is bimodal in every band, with a second mode near $z\approx+0.5$--$1.5$ that sharpens into a distinct spike near $z\approx2.3$--$2.5$ in bands B04--B08, due to the smooth-clipped saturation.
     }
     \label{fig:band-boxplots-normalized}
 \end{figure}
@@ -183,7 +182,7 @@ For a pair of normalized views of the same patch, a per-pixel approximation erro
     \label{eq:approx-error}
 \end{equation}
 where $x^{\text{real}}$ and $x^{\text{s2b}}$ are the per-domain-normalized (Section~\ref{sec:normalization}) real-$\Phi$-sat-2 and Sentinel-2B views of the same co-registered patch.
-Because both views are already standardized on their own statistics, Equation~\eqref{eq:approx-error} isolates exactly the part of the gap that the marginal alignment does not explain: the point spread function, the band response, the view geometry and the residual co-registration error, rather than the location/scale offset that the normalization protocol already removes.
+Because both views are already standardized on their own statistics, Equation~\eqref{eq:approx-error} isolates the part of the gap that the marginal alignment does not explain: the point spread function, the band response, the view geometry and the residual co-registration error, rather than the location/scale offset that the normalization protocol already removes.
 
 Aggregated over 5,000 patches and broken down by the dominant \acref{ESA} WorldCover class of each pixel, the pixel-weighted mean approximation error is $0.91$ (Figure~\ref{fig:approx-error-class}).
 Among the five best-supported classes (13--21\% of pixels each), the error is not uniform: bare/sparse vegetation and permanent water ($\approx 1.06$--$1.07$) disagree between sensors noticeably more than tree cover and shrubland ($\approx 0.73$), with cropland, built-up, and grassland in between ($\approx 0.85$--$0.88$).
@@ -332,8 +331,8 @@ This thesis uses the output of the pipeline in a new way: we stress-test the bas
 Raw $\Phi$-sat-2 digital numbers are heavy-tailed; a square-root transform is applied first to bring the distribution closer to Gaussian, followed by a smooth (soft-saturating) clip toward a domain-specific clip value in place of a hard clip, and finally per-domain $z$-score standardization using mean and standard deviation statistics computed separately for each sensor domain (real $\Phi$-sat-2, real Sentinel-2, simulated $\Phi$-sat-2).
 An early baseline was corrupted by a normalization defect that caused weight saturation and an artificially depressed performance estimate; correcting it was a precondition for every result reported in Chapter~\ref{chap:results-discussion}.
 
-The per-domain normalization could itself account for an apparent domain gap that is really just a difference in raw value scale, so we ran the domain-gap measurement below both with and without it.
-The two conditions produced similar overall results, and per-domain normalization gave lower cosine similarity between domains in the encoder's early layers, the opposite of what a normalization artifact would predict, indicating that the measured gap in early layers is a representational effect and not a calibration artifact.
+The per-domain normalization could itself account for an apparent domain gap due to a difference in raw value scale, so we ran the domain-gap measurement below both with and without it.
+The two conditions produced similar overall results, and per-domain normalization gave lower cosine similarity between domains in the encoder's early layers.
 
 \subsection{Direct and indirect evidence}
 
@@ -453,7 +452,7 @@ In practice, however, the operator is not emitted at all, because at inference a
 OpenVINO's model conversion folds the transform into the weights of the preceding convolution by default.
 The domain-specific normalization only changes how many such constant sets exist during the training, since there is one per sensor domain.
 Because the acquiring instrument is always known on board, only the target-sensor branch is exported, and its statistics fold into the convolution weights as a single-domain model's would.
-The deployed graph therefore carries no batch-normalization operation at all, and \acref{DSBN} adds neither an operator-support risk nor an inference cost relative to the supervised baseline, since its additional parameters only exist while training.
+The deployed graph therefore carries no batch-normalization operation, and \acref{DSBN} adds neither an operator-support risk nor an inference cost relative to the supervised baseline, since its additional parameters only exist while training.
 This argument follows from the documented conversion behaviour of the toolchain, not from an export of the student to the $\Phi$-sat-2 processor, which has not been carried out.
 
 \subsection{Paired-contrastive triplet alignment}
@@ -480,9 +479,8 @@ We chose it for its simple encoder-decoder structure, which is a natural fit for
 
 We considered two placements for a domain-adaptation mechanism: baking the invariance into the frozen teacher and letting the student inherit it passively by mimicking the teacher's outputs, or giving the student its own adaptation mechanism directly.
 This thesis adopts the second one, for a reason that is independent of which specific mechanism is used.
-The student model is the one to be deployed, so whatever mechanism is used should be evaluated on the student's own representation, and not assumed to transfer from the teacher.
-Two candidate mechanisms were implemented at the student level: domain-specific batch normalization (Section~\ref{sec:dsbn-mechanism}), adopted as the mechanism responsible for every headline result in Chapter~\ref{chap:results-discussion}, and a paired-contrastive triplet loss (Section~\ref{sec:contrastive-mechanism}), evaluated as an ablation on top of it and found not to improve downstream performance further.
-\acref{DSBN} also incidentally repairs a train/test inconsistency inherent to the two-branch training scheme: the two sensors are forwarded in separate passes, so during training each pass would otherwise be normalized by its own domain's batch statistics while a single shared set of running averages (a blend of both domains) is used at inference, meaning the encoder would never encounter, at test time, the normalization under which it was optimised.
+Two candidate mechanisms were implemented at the student level: domain-specific batch normalization (Section~\ref{sec:dsbn-mechanism}), adopted as the mechanism for the results in Chapter~\ref{chap:results-discussion}, and a paired-contrastive triplet loss (Section~\ref{sec:contrastive-mechanism}), evaluated as an ablation and found not to improve downstream performance further.
+\acref{DSBN} also repairs a train/test inconsistency inherent to the two-branch training scheme: the two sensors are forwarded in separate passes, so during training each pass would otherwise be normalized by its own domain's batch statistics while a single shared set of running averages (a blend of both domains) is used at inference, meaning the encoder would never encounter, at test time, the normalization under which it was optimised.
 Giving each domain its own running statistics closes this gap as a side effect of the same mechanism.
 
 Figure~\ref{fig:kd-architecture} sets out the resulting training scheme.
@@ -600,4 +598,4 @@ It is not the main baseline of interest, however, because it does not test the c
 The degradation pipeline and dataset construction are implemented as modular EOTask objects within the \texttt{eo-learn} framework, orchestrated through a versioned simulation configuration object instead of hard-coded parameters, so that a given degradation run (baseline-calibrated or extended-sweep) is fully specified by its configuration.
 Triplet and \acref{LULC} datasets are stored in \acref{HDF5} with an accompanying manifest recording per-patch provenance and train/validation/test split assignment (fixed random seed, positional split), enabling exact reproduction of any reported split.
 Model training (TerraMind fine-tuning, \acref{DSBN}-based distillation, the contrastive-alignment ablation) is implemented in PyTorch.
-The codebase is organized as a single versioned Python package, with submodules separating the data simulation, the dataset loading, the model training tasks and the drift analysis, under a standard git version control, so that each experiment reported in Chapter~\ref{chap:results-discussion} corresponds to a specific and retrievable commit and configuration.
+The codebase is organized as a single versioned Python package, with submodules separating the data simulation, the dataset loading, the model training tasks and the drift analysis, under a standard git version control, so that each experiment reported in Chapter~\ref{chap:results-discussion} corresponds to a retrievable configuration.

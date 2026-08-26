@@ -44,21 +44,21 @@
 \contentsline {chapter}{\numberline {4}Results and Discussion}{42}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Experimental Configuration}{42}{section.4.1}%
 \contentsline {paragraph}{Domain-specific batch normalization.}{42}{section*.36}%
-\contentsline {paragraph}{Class-imbalanced task loss.}{43}{section*.37}%
+\contentsline {paragraph}{Class-imbalanced task loss.}{42}{section*.37}%
 \contentsline {section}{\numberline {4.2}Sensor Gap in TerraMind Latent Space}{43}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Degradation effects on Downstream Task Gap}{46}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Sensor Adaptivity in the Distilled Student}{50}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Distillation Against a Supervised Baseline}{52}{section.4.5}%
-\contentsline {paragraph}{Complexity against accuracy.}{53}{section*.50}%
-\contentsline {section}{\numberline {4.6}Advantage Reversal on Small Label Budget}{55}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Discussion}{55}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{55}{subsection.4.7.1}%
-\contentsline {subsection}{\numberline {4.7.2}Limitations}{56}{subsection.4.7.2}%
-\contentsline {subsection}{\numberline {4.7.3}Interpretation of the flood-robustness result}{57}{subsection.4.7.3}%
-\contentsline {subsection}{\numberline {4.7.4}Positioning with $\Phi $satNet}{57}{subsection.4.7.4}%
-\contentsline {subsection}{\numberline {4.7.5}Practical recommendations}{58}{subsection.4.7.5}%
-\contentsline {chapter}{\numberline {5}Conclusion}{59}{chapter.5}%
-\contentsline {chapter}{Declarations}{61}{chapter*.53}%
-\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{62}{chapter.A}%
-\contentsline {section}{\numberline {A.1}Protocol}{62}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Result}{62}{section.A.2}%
+\contentsline {section}{\numberline {4.3}Degradation effects on Downstream Task Gap}{45}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Sensor Adaptivity in the Distilled Student}{49}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Distillation Against a Supervised Baseline}{51}{section.4.5}%
+\contentsline {paragraph}{Complexity against accuracy.}{52}{section*.50}%
+\contentsline {section}{\numberline {4.6}Accuracy Drop with Few Labels}{53}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Discussion}{54}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{54}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Limitations}{55}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}Interpretation of the flood-robustness result}{55}{subsection.4.7.3}%
+\contentsline {subsection}{\numberline {4.7.4}Positioning with $\Phi $satNet}{55}{subsection.4.7.4}%
+\contentsline {subsection}{\numberline {4.7.5}Practical recommendations}{56}{subsection.4.7.5}%
+\contentsline {chapter}{\numberline {5}Conclusion}{57}{chapter.5}%
+\contentsline {chapter}{Declarations}{59}{chapter*.53}%
+\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{60}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Protocol}{60}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Result}{60}{section.A.2}%
