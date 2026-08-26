@@ -315,6 +315,27 @@ With a domain-specific normalization, the encoder is domain-adaptive rather than
 The defensible claim is therefore that after a per-domain noralization, the structure learned on the source sensor is $97\%$ readable on the target one.
 That is weaker than a single sensor-agnostic encoder, but it is the property that an on-board deployment requires, since the acquiring instrument is always known.
 
+Figure~\ref{fig:qualitative} shows what that parity looks like on individual patches.
+In the first three rows the two student columns are close to interchangeable: the same field boundaries, the same built-up extent, the same forest fragments, produced from two sensors whose raw digital numbers do not even share a scale (Section~\ref{sec:triplets}).
+The student also recovers finer structure than the teacher does on the first row, where the teacher's map smooths the ridged vegetation pattern that both student branches keep.
+Two of the rows are worth reading against the rest of this chapter.
+The second row carries visible band-to-band colour fringing along the right edge of the real $\Phi$-sat-2 view, which is the artefact Equation~\eqref{eq:misalign-l1a} models synthetically and which Section~\ref{sec:ladder-results} identifies as one of the two factors that actually carry the gap.
+The fourth row is a failure, and an asymmetric one: on a visibly noisy real acquisition the $\Phi$-sat-2 branch collapses to permanent water and herbaceous wetland across most of the patch, while the Sentinel-2 branch of the same weights stays close to the label map.
+The parity reported above is therefore a property of the split average and not a per-patch guarantee, and the residual per-patch disagreement concentrates where the real sensor's own acquisition quality is poorest.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig_qualitative_predictions.png}
+    \caption{Four validation patches from the \acs{KD}~$+$~\acs{DSBN} run, at epoch $98$ of $101$.
+        Columns: the real $\Phi$-sat-2 and Sentinel-2 views (each channel independently contrast-stretched for display), the shared WorldCover label map, the frozen teacher evaluated on Sentinel-2, and the student's two branches.
+        The teacher sees only the Sentinel-2 view, and one teacher output supervises both student branches (Figure~\ref{fig:kd-architecture}).
+        Only the six classes present in these patches are shown in the legend.
+        Rows 1--3 illustrate the cross-sensor agreement quantified in Table~\ref{tab:invariance}; row~4 is a failure case on a noisy real acquisition, where the $\Phi$-sat-2 branch degrades and the Sentinel-2 branch does not.
+        This is a training-time snapshot rather than the selected checkpoint, which is epoch~$89$.
+    }
+    \label{fig:qualitative}
+\end{figure}
+
 \section{Distillation Against a Supervised Baseline}
 \label{sec:rq3-results}
 
