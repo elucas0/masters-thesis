@@ -7,8 +7,10 @@ Then, the protocol for measuring the domain gap is described, with the domain-ad
 The chapter closes with the tooling and the reproducibility practices used throughout the process.
 
 This work uses two distinct datasets compiled specifically for the $\Phi$-sat-2 mission, each with a different purpose.
-The first is the co-registered triplet dataset. Real $\Phi$-sat-2 acquisitions are matched to concurrent Sentinel-2 scenes using the LightGlue deep feature-matching algorithm \cite{Lindenberger_2023_ICCV}. Simulated $\Phi$-sat-2 renderings of the Sentinel-2 scenes are also produced with the physics-based degradation pipeline described in Section~\ref{sec:degradation-pipeline}.
-This dataset carries land-cover labels derived from \acref{ESA} WorldCover 2021\cite{zanaga2022worldcover}, and its purpose is to have a downstream task with which to measure the domain gap caused by the sensor differences between Sentinel-2 and $\Phi$-sat-2.
+The first is the co-registered triplet dataset.
+Real $\Phi$-sat-2 acquisitions are matched to concurrent Sentinel-2 scenes using the LightGlue deep feature-matching algorithm ~\cite{Lindenberger_2023_ICCV}.
+Simulated $\Phi$-sat-2 renderings of the Sentinel-2 scenes are also produced with the physics-based degradation pipeline described in Section~\ref{sec:degradation-pipeline}.
+This dataset carries land-cover labels derived from \acref{ESA} WorldCover 2021~\cite{zanaga2022worldcover}, and its purpose is to have a downstream task with which to measure the domain gap caused by the sensor differences between Sentinel-2 and $\Phi$-sat-2.
 The second dataset is a physics-degraded version of the Sen1Floods flood-segmentation benchmark, produced with the same degradation pipeline.
 It stands in place of a real labeled $\Phi$-sat-2 flood dataset, which does not yet exist because the mission has not captured an annotated flood event.
 
@@ -19,7 +21,7 @@ It stands in place of a real labeled $\Phi$-sat-2 flood dataset, which does not 
 \label{sec:triplets}
 
 The main dataset is a collection of spatially and temporally co-registered image triplets, produced in collaboration with the \acref{ESA} $\Phi$-lab: real $\Phi$-sat-2 acquisitions (obtained via the \acref{ESA} Insula Perception platform), the corresponding real Sentinel-2B scene, and a physics-simulated $\Phi$-sat-2 rendering of that same Sentinel-2 scene (Section~\ref{sec:degradation-pipeline}).
-Candidate scenes were filtered by spatio-temporal proximity between the $\Phi$-sat-2 and Sentinel-2 overpasses and by a cloud-cover threshold on both acquisitions, and precise pixel-level alignment was achieved using the LightGlue deep feature-matching algorithm \cite{Lindenberger_2023_ICCV}.
+Candidate scenes were filtered by spatio-temporal proximity between the $\Phi$-sat-2 and Sentinel-2 overpasses and by a cloud-cover threshold on both acquisitions, and precise pixel-level alignment was achieved using the LightGlue deep feature-matching algorithm ~\cite{Lindenberger_2023_ICCV}.
 This algorithm was chosen for its ability to identify corresponding semantic keypoints across the two sensors despite their differing spatial and radiometric characteristics.
 
 \begin{figure}[htp]
@@ -36,7 +38,7 @@ Figure~\ref{fig:srf} compares their spectral response functions and their per-ba
 Across 400--900\,nm each $\Phi$-sat-2 multispectral band has a Sentinel-2 counterpart at a comparable centre wavelength, and it is that correspondence which makes Sentinel-2 usable both as the paired view in the triplets and as the source the degradation pipeline (Section~\ref{sec:degradation-pipeline}) projects into the $\Phi$-sat-2 domain.
 The correspondence is close but it is not exact, and $\Phi$-sat-2 additionally carries a panchromatic band that has no Sentinel-2 equivalent.
 Spatially, $\Phi$-sat-2 samples every band at a uniform 4.75\,m, whereas Sentinel-2 provides 10\,m for B2, B3, B4 and B8 and 20\,m for B5, B6 and B7.
-This spatial resolution mismatch is a factor we take into account when interpreting the domain gap in Chapter~\ref{chap:results-discussion}.
+This spatial resolution mismatch is a factor taken into account when interpreting the domain gap in Chapter~\ref{chap:results-discussion}.
 The target sensor is the finer of the two, so a resolution mismatch cannot account for a loss of performance on $\Phi$-sat-2, whereas the spectral differences visible in panel~(a) remains a potential explanation.
 
 \begin{figure}[htp]
@@ -50,7 +52,8 @@ The target sensor is the finer of the two, so a resolution mismatch cannot accou
     \label{fig:srf}
 \end{figure}
 
-This dataset carries labels for a single task: land-use/land-cover (\acref{LULC}) classification as shown in Figure~\ref{fig:triplets-example}. These labels are derived from \acref{ESA} WorldCover 2021 \cite{zanaga2022worldcover} and were rasterized onto each triplet's real-$\Phi$-sat-2 footprint by the team at the $\Phi$-lab.
+This dataset carries labels for a single task: land-use/land-cover (\acref{LULC}) classification as shown in Figure~\ref{fig:triplets-example}.
+These labels are derived from \acref{ESA} WorldCover 2021 ~\cite{zanaga2022worldcover} and were rasterized onto each triplet's real-$\Phi$-sat-2 footprint by the team at the $\Phi$-lab.
 It is the only real-sensor ground truth available to us for any downstream task, and the co-registration allows us to measure the sensor-induced covariate shift in TerraMind's latent space (Section~\ref{sec:gap-measurement}).
 Prior domain-gap studies have been limited by the scene-content and geography confounds, comparing unrelated source and target datasets.
 
@@ -79,13 +82,14 @@ After discarding a small number of corrupted source products, the dataset compri
 
 Acquisitions span 2024-08-21 to 2026-04-15 (21 months), with collection volume higher from mid-2025 onward than in the initial period.
 Real-$\Phi$-sat-2 and Sentinel-2 acquisitions are not simultaneous: their dates are matched to within a median of 6.8 days and a maximum of 14.9 days, an acceptable temporal offset for a largely stable target such as land cover.
-73.1\% of retained patches have under 5\% total cloud cover, and only 0.199\% of pixels are unlabelled after the \acref{ESA} WorldCover rasterization step.
+73.1\% of retained patches have under 5\% total cloud cover, and only 0.199\% of pixels are unlabelled after the \acref{ESA}
+WorldCover rasterization step.
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_geography.png}
     \caption{Left: spatial density of $\Phi$-sat-2 products (hexbin, log-scaled patch count per cell).
-        Right: distribution of patches by K\"oppen--Geiger climate group\cite{beck2018present}.
+        Right: distribution of patches by K\"oppen--Geiger climate group~\cite{beck2018present}.
     }
     \label{fig:geography}
 \end{figure}
@@ -94,12 +98,14 @@ Geographically, the 1{,}299 source products span latitudes $-54^{\circ}$ to $76^
 By K\"oppen--Geiger climate group, the patch population is dominated by arid (41\%) and temperate (29\%) climates, with tropical (14\%), continental (10\%), and polar (1\%) regions under-represented (4\% unclassified).
 
 \newpage
-The eleven \acref{ESA} WorldCover classes present are similarly imbalanced by construction: grassland (20.8\%), tree cover (20.0\%), bare/sparse vegetation (16.2\%), built-up (14.4\%), and cropland (13.4\%) represent the majority of labelled pixels, while snow/ice, mangroves, and moss/lichen classes are only present at 0.6\% (Figure~\ref{fig:landcover}).
+The eleven \acref{ESA}
+WorldCover classes present are similarly imbalanced by construction: grassland (20.8\%), tree cover (20.0\%), bare/sparse vegetation (16.2\%), built-up (14.4\%), and cropland (13.4\%) represent the majority of labelled pixels, while snow/ice, mangroves, and moss/lichen classes are only present at 0.6\% (Figure~\ref{fig:landcover}).
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_landcover.png}
-    \caption{Left: share of all labelled pixels by \acs{ESA} WorldCover class.
+    \caption{Left: share of all labelled pixels by \acs{ESA}
+        WorldCover class.
         Right: number of patches in which each class is the dominant (plurality) class.
     }
     \label{fig:landcover}
@@ -159,7 +165,7 @@ The domain-adaptation mechanism of Section~\ref{sec:da-mechanism} must close thi
 The second measurement is the most directly relevant one to the degradation-driver hypothesis discussed in Chapter~\ref{chap:results-discussion}.
 The shape of the spectral signature, which is each sensor's per-band median normalized by its own overall band mean so that the absolute scale is divided out, differs between real $\Phi$-sat-2 and Sentinel-2/simulated-$\Phi$-sat-2 (Figure~\ref{fig:spectral-signature}).
 Sentinel-2 and the simulated domain are, again, visually indistinguishable from each other.
-Real $\Phi$-sat-2, in contrast, shows a pronounced peak at the red band (1.85 relative to its own mean, against 0.85 for Sentinel-2/simulated) and a dip at the near-infrared band (0.70 against 1.21), a difference in relative spectral shape, not only absolute intensity.
+Real $\Phi$-sat-2, in contrast, shows a pronounced peak at the red band (1.85 relative to its own mean, against 0.85 for Sentinel-2/simulated) and a dip at the near-infrared band (0.70 against 1.21).
 This analysis gives us a quantitative support for attributing the domain gap primarily to a spectral response function mismatch (Section~\ref{sec:rq1-results}), and not to the spatial resolution or the noise level, since a resolution-driven or noise-driven gap would not be expected to alter the relative shape of the spectral signature this distinctly.
 
 \begin{figure}[htp]
@@ -171,7 +177,8 @@ This analysis gives us a quantitative support for attributing the domain gap pri
     \label{fig:spectral-signature}
 \end{figure}
 
-These measured per-domain statistics (mean, standard deviation and clip value per band) are computed separately for the real, the Sentinel-2 and the simulated domains. They parametrize the per-domain normalization protocol of Section~\ref{sec:normalization}.
+These measured per-domain statistics (mean, standard deviation and clip value per band) are computed separately for the real, the Sentinel-2 and the simulated domains.
+They parametrize the per-domain normalization protocol of Section~\ref{sec:normalization}.
 
 \vspace{5mm}
 
@@ -192,7 +199,8 @@ The three classes shown with the most extreme bars (moss and lichen, snow and ic
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_approx_error_by_class.png}
-    \caption{Mean cross-sensor approximation error (Equation~\eqref{eq:approx-error}) by dominant \acs{ESA} WorldCover class, over 5,000 patches.
+    \caption{Mean cross-sensor approximation error (Equation~\eqref{eq:approx-error}) by dominant \acs{ESA}
+        WorldCover class, over 5,000 patches.
         Error bars are one standard deviation; the percentage above each bar is that class's share of labelled pixels in the sample.
         Three classes show >1\% presence in the sample (moss and lichen, snow and ice, mangroves) because they are rare in the dataset, they are still reported for completeness.
     }
@@ -216,7 +224,9 @@ Figures~\ref{fig:triplet-overlay-a}--\ref{fig:triplet-overlay-c} show three indi
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_triplet_overlay_012943.png}
-    \caption{Patch showing a grassland cutting a forest. This simple scene has a low mean approximation error ($0.96$).}
+    \caption{Patch showing a grassland cutting a forest.
+        This simple scene has a low mean approximation error ($0.96$).
+    }
     \label{fig:triplet-overlay-b}
 \end{figure}
 
@@ -235,7 +245,8 @@ Figures~\ref{fig:triplet-overlay-a}--\ref{fig:triplet-overlay-c} show three indi
 \subsection{Simulated degraded flood-segmentation dataset}
 \label{sec:sen1floods-sim}
 
-No real $\Phi$-sat-2 flood dataset exists, because the mission has not yet captured and labeled a flood event; this is a common limitation of any new mission, as reported by Barretta et al. \cite{barretta2026onboardaireview}.
+No real $\Phi$-sat-2 flood dataset exists, because the mission has not yet captured and labeled a flood event; this is a common limitation of any new mission, as reported by Barretta et al.
+~\cite{barretta2026onboardaireview}.
 To obtain labeled data for the flood-segmentation task that motivates this thesis, we pass the Sen1Floods benchmark through the same degradation pipeline used to build the triplets, which produces a graded ladder of $\Phi$-sat-2-like flood scenes at increasing degradation severity.
 This simulated dataset plays a different role from the triplets: it is the training and evaluation substrate for the flood task itself, not the substrate for measuring the domain gap, since it lacks a real-$\Phi$-sat-2 counterpart against which to validate the simulation directly.
 
@@ -245,13 +256,15 @@ This reimplementation makes it possible to control each physical effect individu
 The triplets establish that a domain gap exists in TerraMind's representation (Section~\ref{sec:gap-measurement}) but not which physical difference between the two instruments produces it, and the two sensors differ in several respects at once, so no measurement on real pairs can separate the causes.
 Degrading a fixed set of scenes one factor at a time, at graded severities within each factor, is what makes that separation possible.
 The scene content is identical across the ladder by construction, so any change in the response of the base TerraMind encoder is attributable to the effect being varied.
-Chapter~\ref{chap:results-discussion} reports how the teacher responds across this ladder by isolating which individual factor carries the effect. This experiment complements the answer to the first research question.
+Chapter~\ref{chap:results-discussion} reports how the teacher responds across this ladder by isolating which individual factor carries the effect.
+This experiment complements the answer to the first research question.
 
 \section{Physics-Based Sensor Degradation Pipeline}
 \label{sec:degradation-pipeline}
 
-The degradation pipeline adapts the simulator developed for the \acref{ESA} $\Phi$-lab OrbitalAI challenge \cite{longepe2024orbitalai}. This simulator projects labeled Sentinel-2 L1C tiles into the $\Phi$-sat-2 sensor domain by modeling the physical differences between the two instruments as a sequence of operations in radiance space.
-Because these effects are defined physically on radiance, not reflectance, the pipeline converts source reflectance to top-of-atmosphere radiance, applies each degradation in turn, and converts back to reflectance to output a simulated L1C product.
+The degradation pipeline adapts the simulator developed for the \acref{ESA} $\Phi$-lab OrbitalAI challenge ~\cite{longepe2024orbitalai}.
+This simulator projects labeled Sentinel-2 L1C tiles into the $\Phi$-sat-2 sensor domain by modeling the physical differences between the two instruments as a sequence of operations in radiance space.
+Because these effects are defined physically on radiance, the pipeline converts source reflectance to top-of-atmosphere radiance, applies each degradation in turn, and converts back to reflectance to output a simulated L1C product.
 Pixel coordinates are written $(i,j)$ and spectral band index $b_n$.
 
 The implementation used here is an updated version of that simulator, summarised in Figure~\ref{fig:simulator}.
@@ -293,10 +306,7 @@ For the geometrically corrected L1C product used throughout this thesis, an on-b
 
 \paragraph{Signal-to-noise degradation.} The baseline formulation draws a per-band noise sample from $\mathcal{N}(0,1)$ scaled by the ratio of a reference radiance to a specified \acref{SNR},
 \begin{equation}
-    L_{\text{noise}}(i,j,b_n) = \frac{L_{\text{ref}}(b_n)}{\text{\acref{SNR}}(b_n)}\,\mathcal{N}(0,1),
-    \label{eq:snr-const}
-\end{equation}
-This formulation implicitly treats noise variance as signal-independent, and matches the specified \acref{SNR} only near $L_{\text{ref}}$.
+    L_{\text{noise}}(i,j,b_n) = \frac{L_{\text{ref}}(b_n)}{\text{\acref{SNR}}(b_n)}\,\mathcal{N}(0,1), \label{eq:snr-const} \end{equation} This formulation implicitly treats noise variance as signal-independent, and matches the specified \acref{SNR} only near $L_{\text{ref}}$.
 A signal-dependent variant, consistent with a shot-noise regime in which \acref{SNR} scales with the square root of collected signal, rescales the reference \acref{SNR} to an effective, radiance-dependent value and samples
 \begin{equation}
     L_{\text{noise}}(i,j,b_n) = \frac{\sqrt{L_{\text{in}}(i,j,b_n)\,L_{\text{ref}}(b_n)}}{\text{\acref{SNR}}(b_n)}\,\mathcal{N}(0,1).
@@ -305,7 +315,7 @@ A signal-dependent variant, consistent with a shot-noise regime in which \acref{
 The implementation used for the calibrated baseline degradation level applies Equation~\eqref{eq:snr-signal}.
 The extended sweep pushes beyond the nominal $\Phi$-sat-2 noise conditions, since the domain-invariance has to be stress-tested under a more severe degradation than the flight-validated parameters cover.
 For that sweep, a simplified variant samples a base \acref{SNR} uniformly from a specified range and scales noise by the ratio of that \acref{SNR} to the batch-wise maximum radiance, trading exact photometric fidelity for the ability to sweep degradation severity beyond the calibrated regime.
-The trade-off is a deliberate design choice, not an approximation error: the baseline level is flight-parameter-calibrated, and only the extended sweep sacrifices fidelity for range.
+The baseline level is flight-parameter-calibrated, and the extended sweep trades fidelity for range.
 
 \paragraph{Optical blur via MTF/PSF.}
 Optical blur is modeled through the system modulation transfer function (\acref{MTF}), aggregating static (optics, detector), dynamic (jitter, platform instability), and smearing (motion) contributions.
@@ -354,12 +364,12 @@ Standard supervised fine-tuning, even on physics-degraded data, doesn't translat
 \label{sec:dsbn-mechanism}
 
 The mechanism we adopted only requires that the domain of each training example is known.
-Domain-Specific Batch Normalization (\acref{DSBN}) \cite{chang2019dsbn} gives the student a separate batch-normalization affine transform and running statistics per sensor domain, on top of otherwise fully shared convolutional weights.
+Domain-Specific Batch Normalization (\acref{DSBN}) ~\cite{chang2019dsbn} gives the student a separate batch-normalization affine transform and running statistics per sensor domain, on top of otherwise fully shared convolutional weights.
 Concretely, the two-branch distillation scheme (Section~\ref{sec:kd}) forwards a Sentinel-2 batch and a $\Phi$-sat-2 batch through the student separately at each training step, and \acref{DSBN} lets each pass use the normalization statistics of its own domain, instead of a single set of statistics blended across the two.
 
 \paragraph{Batch normalization.}
 Write $x \in \mathbb{R}^{H \times W \times N}$ for the activations of a single channel over a mini-batch of $N$ examples, indexed by spatial position $(i,j)$ and example $n$.
-A batch-normalization layer \cite{ioffe2015batchnorm} whitens those activations and rescales them with learned per-channel affine parameters $\gamma$ and $\beta$:
+A batch-normalization layer ~\cite{ioffe2015batchnorm} whitens those activations and rescales them with learned per-channel affine parameters $\gamma$ and $\beta$:
 \begin{equation}
     \mathrm{\acref{BN}}\big(x[i,j,n];\, \gamma, \beta\big) = \gamma \cdot \hat{x}[i,j,n] + \beta,
     \label{eq:bn}
@@ -385,10 +395,11 @@ At the $t$-th mini-batch,
     \big(\bar{\sigma}^{\,t+1}\big)^{2} = (1 - \alpha)\,\big(\bar{\sigma}^{\,t}\big)^{2} + \alpha\,\big(\sigma^{t}\big)^{2},
     \label{eq:bn-ema}
 \end{equation}
-and it is these accumulated values, not the batch statistics, that whiten activations at test time.
+these accumulated values whiten activations at test time.
 
-Equation~\eqref{eq:bn-stats} is where a single-branch network fails under a sensor gap: the sums run over every example in the mini-batch irrespective of which sensor produced it, so the running estimates of Equation~\eqref{eq:bn-ema} converge to a blend of the two sensors' statistics and describe neither of them.
-Chang et al.\ make the same observation in general terms, that sharing the mean and variance across source and target is inappropriate when the domain shift is significant; the raw-scale and distribution-shape differences measured in Section~\ref{sec:triplets} put this sensor pair well inside that regime.
+Equation~\eqref{eq:bn-stats} is where a single-branch network fails under domain gap: the sums run over every example in the mini-batch regardless of which sensor produced it, so the running estimates of Equation~\eqref{eq:bn-ema} converge to a blend of the two sensors' statistics.
+Chang et al.
+\ make the same observation in general terms, that sharing the mean and variance across source and target is inappropriate when the domain shift is significant; the raw-scale and distribution-shape differences measured in Section~\ref{sec:triplets} fit this description.
 
 \paragraph{Domain-specific batch normalization.}
 \acref{DSBN} keeps one complete set of normalization parameters and statistics per domain label $d \in \{S, T\}$, here $S$ for Sentinel-2 and $T$ for $\Phi$-sat-2.
@@ -422,7 +433,8 @@ Every \acref{BN} layer of a base network $F(\cdot)$ is replaced by a \acref{DSBN
 Only $\gamma_d$, $\beta_d$, $\bar{\mu}_d$ and $\bar{\sigma}_d$ are duplicated, which for a layer of $C$ channels is four $C$-vectors per domain, negligible beside the convolutional weights.
 Everything outside those layers, which is to say every learned filter in the student, stays shared and is trained on both sensors at once.
 The split is therefore placed exactly at the per-channel scale and shift, the part of the representation that the measurements of Section~\ref{sec:triplets} identify as the most sensor-dependent, while the filters, which ought to be common, remain so.
-Chang et al.\ argue that this is also why the shared weights learn better domain-invariant features: the domain-specific component of the activations can be removed using the statistics and parameters of the domain the input came from.
+Chang et al.
+\ argue that this is also why the shared weights learn better domain-invariant features: the domain-specific component of the activations can be removed using the statistics and parameters of the domain the input came from.
 
 However, \acref{DSBN} was introduced for \acref{UDA} where the target domain carries no labels at all, and the original paper embeds the layer in a two-stage framework that first estimates pseudo-labels for the target domain and then trains on them.
 We adopt only the layer itself.
@@ -446,13 +458,12 @@ Because the deployed sensor on board $\Phi$-sat-2 is always known at inference, 
 Since the student must eventually run on the target hardware (Myriad~2), we also have to establish the cost of the \acref{DSBN} mechanism and its implications for the model architecture.
 Batch normalization is representable in the deployment format: \texttt{BatchNormInference} belongs to \texttt{opset1}, the earliest OpenVINO operator set, and is therefore within the operator set available to the 2020.3 release that supports this processor.
 \footnote{\url{https://docs.openvino.ai/2023.3/openvino_docs_ops_normalization_BatchNormInference_1.html}.
-    Operator specifications are versioned by opset, not by release; the 2020.3 documentation set has been withdrawn by Intel, so the current page is cited for an operator whose opset membership predates it.
+    Operator specifications are versioned by opset: the 2020.3 documentation set has been withdrawn by Intel, so the current page is cited for an operator whose opset membership predates it.
 }
 In practice, however, the operator is not emitted at all, because at inference a batch-normalization layer reduces to a fixed per-channel affine transform.
 OpenVINO's model conversion folds the transform into the weights of the preceding convolution by default.
-The domain-specific normalization only changes how many such constant sets exist during the training, since there is one per sensor domain.
-Because the acquiring instrument is always known on board, only the target-sensor branch is exported, and its statistics fold into the convolution weights as a single-domain model's would.
-The deployed graph therefore carries no batch-normalization operation, and \acref{DSBN} adds neither an operator-support risk nor an inference cost relative to the supervised baseline, since its additional parameters only exist while training.
+Since we are only interested in the target sensor, only the target-sensor branch is exported, and its statistics fold into the convolution weights just like a normal single-domain model.
+Therefore, the deployed model carries no batch-normalization operation, and \acref{DSBN} adds neither an operator-support risk nor an inference cost relative to the supervised baseline.
 This argument follows from the documented conversion behaviour of the toolchain, not from an export of the student to the $\Phi$-sat-2 processor, which has not been carried out.
 
 \subsection{Paired-contrastive triplet alignment}
@@ -463,18 +474,17 @@ This allows a directly supervised alignment objective in place of an unpaired on
 The contrastive loss pulls the embeddings of matched real-$\Phi$-sat-2, real-Sentinel-2, and simulated-$\Phi$-sat-2 patches of the same scene together, while pushing apart embeddings of unrelated scenes, regardless of which sensor produced each embedding.
 This directly penalizes the encoder for representing the sensor identity and not only the scene content, and it does so with the strongest supervisory signal available to us, which is an exact scene correspondence, instead of matching marginal distributions between unpaired sensor domains as an \acref{MMD}-style objective would.
 
-This objective was implemented and evaluated on top of the \acref{DSBN} configuration above, with the co-registered triplets used as designed: to test a training mechanism, not only to measure the gap.
+This objective was implemented and evaluated on top of the \acref{DSBN} configuration above, with the co-registered triplets used to test a training mechanism.
 On the \acref{LULC} task, it did not improve downstream performance beyond the \acref{DSBN}-only configuration (Section~\ref{sec:rq2-results}), and all headline results in Chapter~\ref{chap:results-discussion} are reported with its weight set to zero.
-We report this as a negative ablation result rather than omitting it.
-%The co-registered pairing that makes a contrastive objective possible is an advantage of this dataset, and the fact that exploiting it directly didn't add measurable improvement on top of simpler per-domain normalization scheme is informative, both about where the sensor gap actually lives (Section~\ref{sec:rq1-results}) and about how much machinery is needed to close it.
+The co-registered pairing that makes a contrastive objective possible is an advantage of this dataset, but the fact that exploiting it directly didn't add measurable improvement on top of simpler per-domain normalization scheme is informative about where the sensor gap lives (Section~\ref{sec:rq1-results}).
 
 \section{Cross-Architecture Knowledge Distillation}
 \label{sec:kd}
 
 TerraMind's \acref{ViT}-based encoder cannot run on the $\Phi$-sat-2 on-board processor: the Myriad 2 \acref{VPU}'s supported operator set has no dynamic-axes support, which \acref{ViT} inference requires regardless of model size.
-The compression must therefore cross architecture families, from a \acref{ViT} teacher to a \acref{CNN} student, instead of compressing within the \acref{ViT} family as some prior on-board \acref{GeoFM} work does\cite{du2025onorbitdemonstrationgeospatialfoundation}.
+The compression must therefore cross architecture families, from a \acref{ViT} teacher to a \acref{CNN} student, instead of compressing within the \acref{ViT} family as some prior on-board \acref{GeoFM} work does~\cite{du2025onorbitdemonstrationgeospatialfoundation}.
 The teacher is TerraMind in its base variant, fine-tuned on the Sentinel-2 branch of the triplet dataset for the \acref{LULC} task and then frozen.
-The student is a U-Net\cite{ronneberger2015unet} trained from random initialisation.
+The student is a U-Net~\cite{ronneberger2015unet} trained from random initialisation.
 We chose it for its simple encoder-decoder structure, which is a natural fit for the segmentation task, and for its low operator set requirements, which are compatible with the Myriad 2 \acref{VPU}, as the $\Phi$satNet baseline demonstrates (Section~\ref{sec:phisatnet-background}).
 
 We considered two placements for a domain-adaptation mechanism: baking the invariance into the frozen teacher and letting the student inherit it passively by mimicking the teacher's outputs, or giving the student its own adaptation mechanism directly.
@@ -582,11 +592,11 @@ The complete objective is therefore:
 
 \begin{equation}
     \begin{aligned}
-        \mathcal{L} = {}   & \lambda^{T}_{\mathrm{task}}\, \mathcal{L}_{\mathrm{task}}\big(S_T(x_t),\, y\big)
-        \;+\; \lambda^{S}_{\mathrm{task}}\, \mathcal{L}_{\mathrm{task}}\big(S_S(x_s),\, y\big)                     \\
-        {} + {}            & \lambda_{\mathrm{KD}} \Big[\, \mathcal{L}_{\mathrm{KD}}\big(S_T(x_t),\, T(x_s)\big)
-        \;+\; \mathcal{L}_{\mathrm{KD}}\big(S_S(x_s),\, T(x_s)\big) \Big]                                          \\
-        {} + {}            & \lambda_{\mathrm{inst}}\, \mathcal{L}_{\mathrm{inst}}
+        \mathcal{L} = {} & \lambda^{T}_{\mathrm{task}}\, \mathcal{L}_{\mathrm{task}}\big(S_T(x_t),\, y\big)
+        \;+\; \lambda^{S}_{\mathrm{task}}\, \mathcal{L}_{\mathrm{task}}\big(S_S(x_s),\, y\big)                 \\
+        {} + {}          & \lambda_{\mathrm{KD}} \Big[\, \mathcal{L}_{\mathrm{KD}}\big(S_T(x_t),\, T(x_s)\big)
+        \;+\; \mathcal{L}_{\mathrm{KD}}\big(S_S(x_s),\, T(x_s)\big) \Big]                                      \\
+        {} + {}          & \lambda_{\mathrm{inst}}\, \mathcal{L}_{\mathrm{inst}}
         \;+\; \lambda_{\mathrm{pix}}\, \mathcal{L}_{\mathrm{pix}},
     \end{aligned}
     \label{eq:kd-total}
@@ -632,17 +642,17 @@ Both weights are zero in every result reported in Chapter~\ref{chap:results-disc
     \centering
     \begin{tabular}{llc}
         \toprule
-        Symbol                          & Term                                       & Value                     \\
+        Symbol                        & Term                                   & Value                \\
         \midrule
-        $\lambda^{T}_{\mathrm{task}}$   & Task loss, $\Phi$-sat-2 branch             & $1.0$                     \\
-        $\lambda^{S}_{\mathrm{task}}$   & Task loss, Sentinel-2 branch               & $1.0$                     \\
-        $\lambda_{\mathrm{KD}}$         & Distillation, applied to both branches     & $1.0$                     \\
-        $\lambda_{\mathrm{inst}}$       & Instance-level cross-sensor contrast       & $0$                       \\
-        $\lambda_{\mathrm{pix}}$        & Class-conditional pixel contrast           & $0$                       \\
+        $\lambda^{T}_{\mathrm{task}}$ & Task loss, $\Phi$-sat-2 branch         & $1.0$                \\
+        $\lambda^{S}_{\mathrm{task}}$ & Task loss, Sentinel-2 branch           & $1.0$                \\
+        $\lambda_{\mathrm{KD}}$       & Distillation, applied to both branches & $1.0$                \\
+        $\lambda_{\mathrm{inst}}$     & Instance-level cross-sensor contrast   & $0$                  \\
+        $\lambda_{\mathrm{pix}}$      & Class-conditional pixel contrast       & $0$                  \\
         \addlinespace
-        $\gamma$                        & Focal focusing parameter                   & $2.0$                     \\
-        $\alpha_c$                      & Class weights, rescaled to unit mean       & $\propto f_c^{-1/2}$      \\
-        $\tau$                          & Distillation temperature                   & $4.0$                     \\
+        $\gamma$                      & Focal focusing parameter               & $2.0$                \\
+        $\alpha_c$                    & Class weights, rescaled to unit mean   & $\propto f_c^{-1/2}$ \\
+        $\tau$                        & Distillation temperature               & $4.0$                \\
         \bottomrule
     \end{tabular}
     \caption{Coefficients of the training objective, Equation~\eqref{eq:kd-total}.
@@ -651,7 +661,9 @@ Both weights are zero in every result reported in Chapter~\ref{chap:results-disc
     \label{tab:loss-weights}
 \end{table}
 
-The distilled student is therefore domain-adaptive instead of domain-invariant. The models share the same convolutional weights for both sensors, but not normalization statistics. The correct branch must be selected at inference according to the input source.
+The distilled student is therefore domain-adaptive instead of domain-invariant.
+The models share the same convolutional weights for both sensors, but not normalization statistics.
+The correct branch must be selected at inference according to the input source.
 This is a weaker property than a single sensor-agnostic representation, but it is enough since the sensor domain is known at inference time.
 
 \newpage

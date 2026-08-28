@@ -10,11 +10,11 @@ We present them in turn, and a closing synthesis states what combination of them
 The volume of data returned by Earth observation missions keeps growing, driven both by the number of platforms in orbit and by the increasing capability of their instruments, whether through a finer spatial resolution or, in the hyperspectral case, a far denser spectral sampling.
 The result is a body of products that covers the globe repeatedly and serves a wide range of applications.
 Extracting value from it means moving from observations to information, and ultimately to decisions taken by users who are not themselves remote sensing specialists.
-Machine learning is well suited to automating that step, since it can interpret the complex, high-dimensional structure of \acref{EO} acquisitions for tasks such as predictive analytics and anomaly detection\cite{barretta2026onboardaireview}.
+Machine learning is well suited to automating that step, since it can interpret the complex, high-dimensional structure of \acref{EO} acquisitions for tasks such as predictive analytics and anomaly detection~\cite{barretta2026onboardaireview}.
 
 The conventional way of applying such models keeps the whole inference stage on the ground.
 Models are trained on datasets compiled from the archives of one or several missions, and each new acquisition is downlinked in full before any information is extracted from it.
-This is the bent-pipe architecture (Figure~\ref{fig:workflow}), in which the satellite acts as a passive relay: it acquires the data, applies at most a minimal preprocessing, and transmits the result to a ground station without interpreting it\cite{razzano2024ai}.
+This is the bent-pipe architecture (Figure~\ref{fig:workflow}), in which the satellite acts as a passive relay: it acquires the data, applies at most a minimal preprocessing, and transmits the result to a ground station without interpreting it~\cite{razzano2024ai}.
 The arrangement keeps the mission design simple, but it also makes the useful output of a mission dependent on ground infrastructure, and bounds it by downlink bandwidth and latency, which is exactly what prevents a near-real-time response.
 
 \begin{figure}[htp]
@@ -29,35 +29,35 @@ The arrangement keeps the mission design simple, but it also makes the useful ou
 
 Because the satellite is not part of the information extraction process under this arrangement, and because modern missions add to an already large archive faster than it can be exploited, there is a growing interest in running the inference on board, on the imagery as the sensor captures it.
 Not every platform can host such a model.
-Image-processing networks, and convolutional and deep neural networks in particular, are poorly matched to the processors typically flown, which are chosen for their reliability and their power efficiency instead of their throughput, and which offer a limited computation and memory\cite{barretta2026onboardaireview}.
+Image-processing networks, and convolutional and deep neural networks in particular, are poorly matched to the processors typically flown, which are chosen for their reliability and their power efficiency instead of their throughput, and which offer a limited computation and memory~\cite{barretta2026onboardaireview}.
 An AI-enabled satellite therefore carries a model that is uplinked from the ground and trained for that mission specifically.
 
-$\Phi$-sat-1 was the first mission to demonstrate that this is achievable, by running a cloud-detection network on board a hyperspectral imager, and it established on-board AI as a reliable and accurate tool for that task\cite{giuffrida2021phisat1}.
+$\Phi$-sat-1 was the first mission to demonstrate that this is achievable, by running a cloud-detection network on board a hyperspectral imager, and it established on-board AI as a reliable and accurate tool for that task~\cite{giuffrida2021phisat1}.
 Two constraints shaped the result.
 The first one was the on-board hardware: a dedicated processing had to be developed for the mission, operating within the power budget of the platform and tolerating the faults that radiation induces in orbit.
 The second one was the lack of data, since there wasn't enough imagery from the HyperScout product line to train a network to label every pixel as cloudy or clear.
 This is a recurring difficulty for space imagers, since a bespoke camera is generally developed for each new mission and its archive necessarily begins empty.
-The network eventually deployed was a custom segmentation architecture designed around the limits of the accelerator, and the bound on intra-layer memory in particular governed how its convolutional and deconvolutional layers could be implemented\cite{giuffrida2020cloudscout}.
+The network eventually deployed was a custom segmentation architecture designed around the limits of the accelerator, and the bound on intra-layer memory in particular governed how its convolutional and deconvolutional layers could be implemented~\cite{giuffrida2020cloudscout}.
 
 \acref{CNN}-based models of this kind are efficient, but their locality leaves them less able to capture the long-range patterns and the contextual dependencies that more demanding remote sensing tasks require.
-\acref{ViT} architectures have become popular in computer vision because they capture the global context through self-attention, and they often outperform \acref{CNN}s on a variety of tasks\cite{han2022survey}.
+\acref{ViT} architectures have become popular in computer vision because they capture the global context through self-attention, and they often outperform \acref{CNN}s on a variety of tasks~\cite{han2022survey}.
 This makes \acref{ViT}-based models strong candidates for on-board \acref{EO} applications, and in a comparative study of \acref{ViT} variants for onboard satellite image classification, Le et al.~\cite{le2024onboard} report that pre-trained \acref{ViT}s consistently outperform equivalent models trained from scratch.
 These pre-trained models also cost less to compute and are more resilient to noise, which is close to the combination an on-board setting needs the most.
-Their cost nonetheless remains the primary barrier to deployment, since the large parameter counts and the attention computation that give \acref{ViT}s their advantage are precisely what a resource-constrained satellite can least afford\cite{chou2023edge}.
+Their cost nonetheless remains the primary barrier to deployment, since the large parameter counts and the attention computation that give \acref{ViT}s their advantage are precisely what a resource-constrained satellite can least afford~\cite{chou2023edge}.
 The hardware on board $\Phi$-sat-2 is a key constraint on what can be deployed there, as the CogniSAT-XE1 payload carries the Intel Movidius Myriad 2 \acref{VPU}~\cite{myriad2}, whose support ended in 2020, which makes it legacy hardware.
 The $\Phi$satNet effort reports that the most recent OpenVINO release supporting this hardware is version 2020.3, that experimental testing confirmed only \acref{ONNX} opset 8--11 are available\footnote{Supported operations: \url{https://docs.openvino.ai/2023.3/openvino_docs_ops_opset11.html}}, and that the resulting lack of dynamic-axes support renders transformer-based architectures such as \acref{ViT} incompatible with the target~\cite{phisatnet}.
 These constraints are the main motivation for a cross-architecture distillation, in place of a direct deployment or a same-family compression.
 
 \section{Geospatial Foundation Models}
 
-Foundation models are a class of large, pre-trained neural networks that can be adapted to many downstream tasks with a minimal additional training\cite{bommasani2021opportunities}.
+Foundation models are a class of large, pre-trained neural networks that can be adapted to many downstream tasks with a minimal additional training~\cite{bommasani2021opportunities}.
 They are pre-trained with self-supervised learning on massive and diverse datasets, which is what gives them the ability to generalize across tasks and domains.
 The approach is now widely adopted in natural language processing and in computer vision, where models such as BERT, GPT and CLIP perform well across a range of tasks.
 Once it is pre-trained, such a model is fine-tuned per task instead of being trained from scratch.
 
-\acref{GeoFM}s\cite{lu2025vision} extend this paradigm from natural images to Earth observation.
+\acref{GeoFM}s~\cite{lu2025vision} extend this paradigm from natural images to Earth observation.
 Pre-training a single large backbone on diverse, multi-modal \acref{EO} archives means that many downstream tasks can be solved by fine-tuning a small task-specific head, instead of training a full model from scratch.
-TerraMind\cite{jakubik2025terramind} is a \acref{ViT}-based, multimodal \acref{GeoFM} pre-trained on the multimodal TerraMesh dataset\cite{blumenstiel2025terramesh}, which includes over 9 million multi-seasonal samples with eight spatiotemporal aligned modalities (Sentinel-2 at L2A, L1C, \acref{RGB}, Sentinel-1 \acref{RTC} and \acref{GRD}, \acref{DEM}, \acref{NDVI}, \acref{LULC}).
+TerraMind~\cite{jakubik2025terramind} is a \acref{ViT}-based, multimodal \acref{GeoFM} pre-trained on the multimodal TerraMesh dataset~\cite{blumenstiel2025terramesh}, which includes over 9 million multi-seasonal samples with eight spatiotemporal aligned modalities (Sentinel-2 at L2A, L1C, \acref{RGB}, Sentinel-1 \acref{RTC} and \acref{GRD}, \acref{DEM}, \acref{NDVI}, \acref{LULC}).
 It is explicitly designed to produce transferable semantic representations rather than task-specific features.
 However, that capacity has so far mostly been demonstrated on data drawn from the same sensor family the model was pre-trained on, so how it behaves under different sensor conditions is still an open question.
 
@@ -82,7 +82,7 @@ Ben-David et al.~\cite{bendavid2010theory} formalize this intuition with a bound
 Only the second of these describes the gap itself, and it is the term any adaptation method has to act on.
 
 This problem is particularly relevant in on-board AI, where the model is fixed at uplink time while the acquisitions keep varying with the illumination, the atmosphere, the season, the geography and the behaviour of the instrument itself.
-It is useful to separate three kinds of shift, since they have different causes and can be minimized in different ways\cite{kouw2019introductiondomainadaptationtransfer}.
+It is useful to separate three kinds of shift, since they have different causes and can be minimized in different ways~\cite{kouw2019introductiondomainadaptationtransfer}.
 
 \begin{itemize}
     \item[--] \emph{Covariate shift} is a change in the distribution of the inputs while the labelling rule stays the same: the same scene content is represented differently, for instance because the imagery carries blur, sensor noise or haze that the training data did not.
@@ -98,16 +98,16 @@ Since each triplet holds views of the same ground at very nearly the same time, 
 \subsection{Domain Adaptation}
 \label{sec:domain-adaptation}
 
-Domain adaptation (\acref{DA}) addresses the general problem of a model trained on a source distribution being applied to a target distribution with different input statistics but unchanged semantics\cite{kouw2019introductiondomainadaptationtransfer}.
+Domain adaptation (\acref{DA}) addresses the general problem of a model trained on a source distribution being applied to a target distribution with different input statistics but unchanged semantics~\cite{kouw2019introductiondomainadaptationtransfer}.
 In remote sensing applications, when target data is available, there are two main types of \acref{DA}: unsupervised (\acref{UDA}), where the target data is unlabeled, and supervised (\acref{SDA}), where a small amount of labeled target data is available.
 Within satellite on-board AI, Du et al.
-\cite{du2024domainadaptation} demonstrated \acref{DA} for onboard multispectral cloud detection in the context of the $\Phi$-sat-1 mission.
+~\cite{du2024domainadaptation} demonstrated \acref{DA} for onboard multispectral cloud detection in the context of the $\Phi$-sat-1 mission.
 They proposed novel task definitions for \acref{DA}, which they named \emph{offline adaptation} and \emph{online adaptation}.
 Offline adaptation relies on \acref{SDA} and downlinking to update the \acref{CNN} remotely as new labeled data of the target domain becomes available during the mission.
 Online adaptation demonstrates \emph{test-time} adaptation, where the model is updated on-board with unlabeled data, using a self-supervised loss.
 
 This thesis focuses on an initial \acref{SDA} step, where a small amount of labeled target data is available for adaptation and evaluation, and does not address the online adaptation problem.
-The main author also reports a follow-up work \cite{du2025onorbitdemonstrationgeospatialfoundation}, where they deployed a compressed Prithvi-family \acref{GeoFM} on Kanyini and the IMAGIN-e payload, and adapted it via a real-label head retraining instead of an encoder-level \acref{DA}.
+The main author also reports a follow-up work ~\cite{du2025onorbitdemonstrationgeospatialfoundation}, where they deployed a compressed Prithvi-family \acref{GeoFM} on Kanyini and the IMAGIN-e payload, and adapted it via a real-label head retraining instead of an encoder-level \acref{DA}.
 They measure the domain gap only indirectly, through the downstream task performance on source and target benchmark datasets that differ in geography and content as well as in sensor.
 This is the central limitation that the data design of this thesis addresses, because without co-registered source/target pairs of the same scene, a measured performance drop cannot distinguish the sensor-induced covariate shift from the confounding differences in what the two datasets depict.
 
@@ -121,15 +121,15 @@ It establishes that a paired-contrastive objective is effective when the sensor 
 
 A separate line of domain-adaptation work avoids the alignment losses entirely, by giving the model domain-specific normalization statistics instead.
 Domain-Specific Batch Normalization (\acref{DSBN})~\cite{chang2019dsbn} is a generic technique, originally for \acref{UDA}, and it is designed to be integrated into deep networks that use batch normalization layers.
-Batch normalization (\acref{BN})\cite{ioffe2015batchnorm} is a technique used in deep learning to normalize the inputs of each layer, which helps stabilize and accelerate the training.
+Batch normalization (\acref{BN})~\cite{ioffe2015batchnorm} is a technique used in deep learning to normalize the inputs of each layer, which helps stabilize and accelerate the training.
 \acref{DSBN} extends \acref{BN} by keeping a single set of convolutional weights, but a separate batch-normalization affine transform and separate running statistics (mean and variance) per domain.
 This only requires that the domain of each example is known, which is a much smaller requirement than the paired-contrastive or \acref{MMD} loss objectives discussed above, and, unlike them, it is directly applicable wherever the deployed sensor is known at inference.
 
 \section{Physics-Based Sensor Degradation Simulation}
 
-Because labeled data from a satellite sensor does not exist before the satellite is launched, and accumulates slowly afterward for rare events, a physics-based simulation of a target sensor's characteristics from an existing labeled source (typically Sentinel-2) has become a standard tool for pre-mission model development\cite{segl2012eetes}\cite{segl2015s2etes}.
+Because labeled data from a satellite sensor does not exist before the satellite is launched, and accumulates slowly afterward for rare events, a physics-based simulation of a target sensor's characteristics from an existing labeled source (typically Sentinel-2) has become a standard tool for pre-mission model development~\cite{segl2012eetes}~\cite{segl2015s2etes}.
 % Explain more details about other simulators and their characteristics, and how they compare to the one used in this thesis, to provide a comprehensive overview of the field.
-The simulator developed for the \acref{ESA} $\Phi$-lab OrbitalAI challenge\cite{longepe2024orbitalai} models this transformation as a sequence of physical operations in radiance space, calibrated against real flight data from related missions: a spectral and spatial resampling to the target sensor's band configuration and ground sampling distance, a band-to-band misalignment consistent with the push-broom acquisition geometry, a signal-to-noise degradation, and an optical blur modeled through the sensor's modulation transfer function.
+The simulator developed for the \acref{ESA} $\Phi$-lab OrbitalAI challenge~\cite{longepe2024orbitalai} models this transformation as a sequence of physical operations in radiance space, calibrated against real flight data from related missions: a spectral and spatial resampling to the target sensor's band configuration and ground sampling distance, a band-to-band misalignment consistent with the push-broom acquisition geometry, a signal-to-noise degradation, and an optical blur modeled through the sensor's modulation transfer function.
 This simulator underlies both the degradation pipeline used in this thesis and, independently, the pre-training and benchmarking datasets used by $\Phi$satNet (Section~\ref{sec:phisatnet-background}).
 It is a shared and validated infrastructure within this research context, and neither work claims it as its own contribution.
 Goudemant et al.~\cite{goudemant2024onboardanomaly} built an on-board marine anomaly detector for oil spills, algal blooms and sediment flooding, using the same OrbitalAI simulators to generate representative $\Phi$-sat-2 and IMAGIN-e imagery from Sentinel-2 L1C scenes of documented pollution events.
@@ -143,9 +143,9 @@ This is the question the co-registered real acquisitions of Chapter~\ref{chap:me
 
 \section{Knowledge Distillation Across Architectures}
 
-Knowledge distillation (\acref{KD})\cite{hinton2015distilling} compresses a large "teacher" model into a smaller "student", by training the student to reproduce the teacher's output distribution.
+Knowledge distillation (\acref{KD})~\cite{hinton2015distilling} compresses a large "teacher" model into a smaller "student", by training the student to reproduce the teacher's output distribution.
 By transferring the teacher's semantic knowledge, \acref{KD} allows the student to generalize better on large datasets, and with a lower computational cost.
-Some feature-based variants exist that use the intermediate representations of the teacher, instead of training the student only against hard labels\cite{heo2019comprehensive}.
+Some feature-based variants exist that use the intermediate representations of the teacher, instead of training the student only against hard labels~\cite{heo2019comprehensive}.
 Le et al.~\cite{le2025semantic} proposed a distillation method between a \acref{ViT} teacher and a ResNet student for image classification, which uses a dynamic weighting mechanism to adjust each teacher's influence on the student, based on the teacher's confidence in its predictions.
 A cross-architecture distillation is a necessary step here, since \acref{ViT} inference is not supported on the $\Phi$-sat-2 on-board hardware (Section~\ref{sec:onboard-ai}).
 On top of it, this thesis gives the student itself a domain-adaptation mechanism (the domain-specific batch normalization of Section~\ref{sec:kd}).
@@ -162,11 +162,9 @@ $\Phi$satNet optimizes for a hardware-native architecture trained on a curated, 
 
 One property of $\Phi$satNet is directly related to the problem this thesis addresses.
 Its pre-training method and its $n$-shot benchmarks are built entirely on simulated $\Phi$-sat-2 imagery derived from Sentinel-2, and not on real acquisitions~\cite{phisatnet}.
-$\Phi$satNet therefore does not escape the sensor domain gap by being mission-specific, it only moves it.
+$\Phi$satNet therefore does not solve the sensor domain gap by being mission-specific.
 Its reported few-shot advantage rests on the assumption that a physically simulated imagery stands in for the real sensor, and its base being simulated, cannot test that assumption.
-The sim-to-real question is therefore one that the bespoke and the adapted approach both inherit, and co-registered real acquisitions are what either of them would need to answer it.
-A matched few-shot comparison against $\Phi$satNet on a shared task and label budget remains the appropriate test of the label-efficiency claim.
-Chapter~\ref{chap:results-discussion} returns to this positioning, but that comparison has not been run and is left for future work.
+A comparison against $\Phi$satNet on a shared task and label budget is the appropriate test of the label-efficiency claim.
 
 \section{Synthesis}
 

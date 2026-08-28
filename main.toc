@@ -1,6 +1,6 @@
 \contentsline {chapter}{Contents}{3}{chapter*.3}%
 \contentsline {chapter}{List of Figures}{7}{chapter*.4}%
-\contentsline {chapter}{List of Tables}{9}{chapter*.5}%
+\contentsline {chapter}{List of Tables}{8}{chapter*.5}%
 \contentsline {chapter}{List of Acronyms}{9}{chapter*.6}%
 \contentsline {chapter}{\numberline {1}Introduction}{11}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Problem Definition}{12}{section.1.1}%
@@ -31,38 +31,38 @@
 \contentsline {paragraph}{Optical blur via MTF/PSF.}{35}{section*.31}%
 \contentsline {section}{\numberline {3.3}Domain Gap Measurement}{35}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Normalization protocol}{35}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Direct and indirect evidence}{36}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Direct and indirect evidence}{35}{subsection.3.3.2}%
 \contentsline {section}{\numberline {3.4}Domain-Adaptation Strategy}{36}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}Fine-tuning on degraded data}{36}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Domain-specific batch normalization}{36}{subsection.3.4.2}%
 \contentsline {paragraph}{Batch normalization.}{36}{section*.32}%
 \contentsline {paragraph}{Domain-specific batch normalization.}{37}{section*.33}%
-\contentsline {subsection}{\numberline {3.4.3}Paired-contrastive triplet alignment}{39}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.3}Paired-contrastive triplet alignment}{38}{subsection.3.4.3}%
 \contentsline {section}{\numberline {3.5}Cross-Architecture Knowledge Distillation}{39}{section.3.5}%
 \contentsline {subsection}{\numberline {3.5.1}Training objective}{40}{subsection.3.5.1}%
-\contentsline {paragraph}{Task term.}{41}{section*.36}%
+\contentsline {paragraph}{Task term.}{40}{section*.36}%
 \contentsline {paragraph}{Distillation term.}{41}{section*.37}%
 \contentsline {paragraph}{Contrastive terms.}{41}{section*.38}%
 \contentsline {section}{\numberline {3.6}Evaluation Protocol}{42}{section.3.6}%
 \contentsline {section}{\numberline {3.7}Tools, Software Environment, and Reproducibility}{42}{section.3.7}%
-\contentsline {chapter}{\numberline {4}Results and Discussion}{44}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Experimental Configuration}{44}{section.4.1}%
-\contentsline {paragraph}{Domain-specific batch normalization.}{44}{section*.40}%
-\contentsline {paragraph}{Class-imbalanced task loss.}{44}{section*.41}%
-\contentsline {section}{\numberline {4.2}Sensor Gap in TerraMind Latent Space}{45}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Degradation effects on Downstream Task Gap}{47}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Sensor Adaptivity in the Distilled Student}{51}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Distillation Against a Supervised Baseline}{53}{section.4.5}%
-\contentsline {paragraph}{Complexity against accuracy.}{55}{section*.55}%
-\contentsline {section}{\numberline {4.6}Accuracy Drop with Few Labels}{56}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Discussion}{56}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{56}{subsection.4.7.1}%
-\contentsline {subsection}{\numberline {4.7.2}Limitations}{57}{subsection.4.7.2}%
-\contentsline {subsection}{\numberline {4.7.3}Interpretation of the flood-robustness result}{57}{subsection.4.7.3}%
-\contentsline {subsection}{\numberline {4.7.4}Positioning with $\Phi $satNet}{58}{subsection.4.7.4}%
-\contentsline {subsection}{\numberline {4.7.5}Practical recommendations}{59}{subsection.4.7.5}%
-\contentsline {chapter}{\numberline {5}Conclusion}{60}{chapter.5}%
-\contentsline {chapter}{Declarations}{62}{chapter*.58}%
-\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{63}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Protocol}{63}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Result}{63}{section.A.2}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{43}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Experimental Configuration}{43}{section.4.1}%
+\contentsline {paragraph}{Domain-specific batch normalization.}{43}{section*.40}%
+\contentsline {paragraph}{Class-imbalanced task loss.}{43}{section*.41}%
+\contentsline {section}{\numberline {4.2}Sensor Gap in TerraMind Latent Space}{44}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Degradation effects on Downstream Task Gap}{46}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Sensor Adaptivity in the Distilled Student}{49}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Distillation Against a Supervised Baseline}{51}{section.4.5}%
+\contentsline {paragraph}{Complexity against accuracy.}{54}{section*.55}%
+\contentsline {section}{\numberline {4.6}Accuracy Drop with Few Labels}{55}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Discussion}{55}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Domain-specific normalization contribution}{55}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Limitations}{56}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}Interpretation of the flood-robustness result}{56}{subsection.4.7.3}%
+\contentsline {subsection}{\numberline {4.7.4}Positioning with $\Phi $satNet}{56}{subsection.4.7.4}%
+\contentsline {subsection}{\numberline {4.7.5}Practical recommendations}{57}{subsection.4.7.5}%
+\contentsline {chapter}{\numberline {5}Conclusion}{58}{chapter.5}%
+\contentsline {chapter}{Declarations}{60}{chapter*.58}%
+\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{61}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Protocol}{61}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Result}{61}{section.A.2}%

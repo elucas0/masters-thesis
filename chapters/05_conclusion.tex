@@ -3,7 +3,7 @@
 
 On-board processing exists to shorten the path from the acquisition to the actionable information, for time-critical Earth observation applications such as flood and wildfire response, where the value of a detection decays with every hour spent waiting for a ground-based product.
 Because the data of a mission's own sensor cannot exist before its launch, and because labeled examples of rare events accumulate slowly afterward, foundation models pre-trained on the archives of other missions are an attractive way to reach a useful performance with few mission-specific labels.
-This attractiveness is conditional, however, on the question this thesis set out to answer directly: whether the learned representation of such a model actually survives contact with a sensor it was never trained on, and, if it does not, whether this can be fixed deliberately instead of being assumed away.
+This interest is conditional, however, on the question this thesis set out to answer directly: whether the learned representation of such a model survives contact with a sensor it was never trained on, and, if it does not, whether this can be fixed deliberately instead of being assumed away.
 
 The evidence we gathered here says that it can, but not for free, and not through the mechanism this thesis originally expected.
 TerraMind's latent representation of real $\Phi$-sat-2 imagery does differ measurably from its representation of Sentinel-2 imagery of the same scenes.
@@ -19,7 +19,7 @@ The deployable student is therefore domain-adaptive by construction, and not by 
 
 To answer whether this adaptation is worth implementing, we compared the distilled, domain-adapted student against a supervised baseline of identical architecture trained directly on the target sensor.
 Distilling with domain-specific normalization outperforms a supervised baseline at a representative label budget, but it loses to that same baseline at a much smaller one, so the advantage reverses between the two budgets, although the small-budget end of that reversal falls within the run-to-run variance this thesis is able to resolve.
-Treating the domain-gap problem and the compute-constraint problem as one single combined training objective, and not as two sequential and independent fixes, is the central methodological position of this thesis, with the important qualification that whether this combination is worth adopting depends on how many target-domain labels are actually available.
+Treating the domain-gap problem and the compute-constraint problem as one single combined training objective, and not as two sequential and independent fixes, is the central methodological position of this thesis, with the important qualification that whether this combination is worth adopting depends on how many target-domain labels are available.
 
 This work is limited to a single mission and a single sensor pair, and to one specific pre-trained \acref{GeoFM}.
 Whether the spectral-response-driven account of the domain gap generalizes to other on-board missions, and whether TerraMind's broad pre-training is in fact more label-efficient than a mission-specific model trained from scratch, are both open questions that this thesis frames clearly but does not close.
