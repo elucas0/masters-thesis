@@ -189,7 +189,9 @@ For a pair of normalized views of the same patch, a per-pixel approximation erro
     \label{eq:approx-error}
 \end{equation}
 where $x^{\text{real}}$ and $x^{\text{s2b}}$ are the per-domain-normalized (Section~\ref{sec:normalization}) real-$\Phi$-sat-2 and Sentinel-2B views of the same co-registered patch.
-Because both views are already standardized on their own statistics, Equation~\eqref{eq:approx-error} isolates the part of the gap that the marginal alignment does not explain: the point spread function, the band response, the view geometry and the residual co-registration error, rather than the location/scale offset that the normalization protocol already removes.
+Because both views are already standardized on their own statistics, 
+Equation~\eqref{eq:approx-error} averages the absolute differences across the 7 spectral bands to isolate the part of the gap that the marginal alignment does not explain.
+This mean-over-bands $\ell_1$ distance directly captures the hardware-induced covariate shift, including the point spread function, the band response, the view geometry, and the residual co-registration error.
 
 Aggregated over 5,000 patches and broken down by the dominant \acref{ESA} WorldCover class of each pixel, the pixel-weighted mean approximation error is $0.91$ (Figure~\ref{fig:approx-error-class}).
 Among the five best-supported classes (13--21\% of pixels each), the error is not uniform: bare/sparse vegetation and permanent water ($\approx 1.06$--$1.07$) disagree between sensors noticeably more than tree cover and shrubland ($\approx 0.73$), with cropland, built-up, and grassland in between ($\approx 0.85$--$0.88$).
@@ -398,7 +400,7 @@ At the $t$-th mini-batch,
 these accumulated values whiten activations at test time.
 
 Equation~\eqref{eq:bn-stats} is where a single-branch network fails under domain gap: the sums run over every example in the mini-batch regardless of which sensor produced it, so the running estimates of Equation~\eqref{eq:bn-ema} converge to a blend of the two sensors' statistics.
-Chang et al.
+Chang et al. \cite{chang2019dsbn}
 \ make the same observation in general terms, that sharing the mean and variance across source and target is inappropriate when the domain shift is significant; the raw-scale and distribution-shape differences measured in Section~\ref{sec:triplets} fit this description.
 
 \paragraph{Domain-specific batch normalization.}
@@ -433,7 +435,7 @@ Every \acref{BN} layer of a base network $F(\cdot)$ is replaced by a \acref{DSBN
 Only $\gamma_d$, $\beta_d$, $\bar{\mu}_d$ and $\bar{\sigma}_d$ are duplicated, which for a layer of $C$ channels is four $C$-vectors per domain, negligible beside the convolutional weights.
 Everything outside those layers, which is to say every learned filter in the student, stays shared and is trained on both sensors at once.
 The split is therefore placed exactly at the per-channel scale and shift, the part of the representation that the measurements of Section~\ref{sec:triplets} identify as the most sensor-dependent, while the filters, which ought to be common, remain so.
-Chang et al.
+Chang et al. \cite{chang2019dsbn}
 \ argue that this is also why the shared weights learn better domain-invariant features: the domain-specific component of the activations can be removed using the statistics and parameters of the domain the input came from.
 
 However, \acref{DSBN} was introduced for \acref{UDA} where the target domain carries no labels at all, and the original paper embeds the layer in a two-stage framework that first estimates pseudo-labels for the target domain and then trains on them.

@@ -63,6 +63,6 @@
 \contentsline {subsection}{\numberline {4.7.5}Practical recommendations}{57}{subsection.4.7.5}%
 \contentsline {chapter}{\numberline {5}Conclusion}{58}{chapter.5}%
 \contentsline {chapter}{Declarations}{60}{chapter*.58}%
-\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{61}{appendix.A}%
+\contentsline {chapter}{\numberline {A}Real-Data LULC Baseline}{61}{chapter.A}%
 \contentsline {section}{\numberline {A.1}Protocol}{61}{section.A.1}%
 \contentsline {section}{\numberline {A.2}Result}{61}{section.A.2}%

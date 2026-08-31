@@ -83,7 +83,7 @@ Figure~\ref{fig:embeddings-paired} shows this directly: grey lines join the two 
 \acref{PAD} between the two domains is $1.90$--$1.98$ at every transformer block on a scale of $2$.
 A gap that was semantic in origin would be expected to emerge in the deeper and more abstract layers, whereas one that is present from the first block points instead to low-level radiometry.
 This is consistent with the spectral analysis of Section~\ref{sec:gap-measurement}, which found that the two sensors' digital numbers differ largely and that their per-band shapes differ heavily.
-This anal is also the reverse of the resolution-driven account emphasised in related on-orbit work~\cite{du2025onorbitdemonstrationgeospatialfoundation}, since the $4.75$\,m ground sampling distance of $\Phi$-sat-2 is finer than Sentinel-2's.
+This analysis is also the reverse of the resolution-driven account emphasised in related on-orbit work~\cite{du2025onorbitdemonstrationgeospatialfoundation}, since the $4.75$\,m ground sampling distance of $\Phi$-sat-2 is finer than Sentinel-2's.
 
 \begin{figure}[htbp]
     \centering
@@ -260,7 +260,7 @@ Table~\ref{tab:invariance} collects the three measures side by side.
         \midrule
         Paired cosine similarity                     & $0.098$           & $\mathbf{0.948}$  \\
         Median paired link (\acref{UMAP} units)      & $6.15$            & $\mathbf{0.40}$   \\
-        Probe: Sentinel-2 $\rightarrow$ Sentinel-2   & $0.754$           & $0.663$           \\
+        Probe: Sentinel-2 $\rightarrow$ Sentinel-2   & $\mathbf{0.754}$           & $0.663$           \\
         Probe: Sentinel-2 $\rightarrow$ $\Phi$-sat-2 & $0.250$           & $\mathbf{0.646}$  \\
         Probe transfer retention                     & $33\%$            & $\mathbf{97\%}$   \\
         \addlinespace
@@ -275,11 +275,9 @@ Table~\ref{tab:invariance} collects the three measures side by side.
     \label{tab:invariance}
 \end{table}
 
-\wip[Decide how to frame the probe row that cuts against the student.]{%
-    To write: a remark on the one row that cuts against the student.
-    The teacher is the stronger encoder within Sentinel-2 ($0.754$ against $0.663$ same-domain probe accuracy), and its advantage only disappears once the probe is asked to cross the sensor gap.
-    This can be framed either as a limitation of the student, or as the precise statement of what the distillation bought.
-}
+The teacher remains a stronger encoder within the source Sentinel-2 domain ($0.754$ against $0.663$ on same-domain probe accuracy). 
+This performance drop shows the capacity bottleneck when distilling a large GeoFM into a lightweight U-Net. 
+The student lacks the parameter space to fully retain the teacher's representations, sacrificing in-domain accuracy to achieve cross-sensor adapatation.
 
 One measurement in this set behaves counter-intuitively, and it illustrates a real trap in evaluating this class of method.
 The raw \acref{PAD} is maximal for the student ($2.000$, against $1.955$ for the teacher), which means that a linear probe separates the two domains perfectly.
@@ -295,8 +293,8 @@ The probe transfer, which asks the functional question directly, is the appropri
     \centering
     \includegraphics[width=\textwidth]{figures/fig_pad_decision_scores.png}
     \caption{Distribution of the domain probe's out-of-fold decision score, the quantity from which \acs{PAD} is computed.
-        Separated modes imply a probe that never errs (\acs{PAD} $\rightarrow 2$); overlapping modes imply chance (\acs{PAD} $\rightarrow 0$).
-        After standardising each domain on its own statistics (right column) the separability disappears for both models, showing that all of it was per-channel mean and scale, not representational structure.
+        Separated modes imply a probe that perfectly separates the domains (\acs{PAD} $\rightarrow 2$); overlapping modes imply chance (\acs{PAD} $\rightarrow 0$).
+        After standardising each domain on its own statistics (right column) the separability disappears for both models, showing that all of it was per-channel mean and scale.
     }
     \label{fig:pad-decision}
 \end{figure}
@@ -339,7 +337,7 @@ Some parameters are held constant for fairness: the split, the normalization, th
         $1{,}000$                                                     & \acref{KD} + \acref{DSBN} & $0.2679$          & $0.2635$          & $2.2$          \\
         $1{,}000$                                                     & Supervised baseline       & $\mathbf{0.2916}$ & $\mathbf{0.2707}$ & $\mathbf{0.6}$ \\
         \midrule
-        \multicolumn{2}{l}{TerraMind teacher (Sentinel-2, reference)} & ---                       & $0.6351$          & ---                                \\
+        \multicolumn{2}{l}{TerraMind teacher (Sentinel-2, reference)} & ---                       & $0.6351$          & $14.0$                                \\
         \bottomrule
     \end{tabular}
     \caption{Main results on the \acs{LULC} task.

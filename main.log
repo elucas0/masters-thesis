@@ -1,57 +1,57 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.25)  29 AUG 2026 01:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.31)  31 AUG 2026 17:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/elouann/masters-thesis/main.tex
-(/home/elouann/masters-thesis/main.tex
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-01-22>
+**/home/elouann/copernicus/research/masters-thesis/main.tex
+(/home/elouann/copernicus/research/masters-thesis/main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
-Document Class: report 2023/05/17 v1.4n Standard LaTeX document class
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count187
-\c@chapter=\count188
-\c@section=\count189
-\c@subsection=\count190
-\c@subsubsection=\count191
-\c@paragraph=\count192
-\c@subparagraph=\count193
-\c@figure=\count194
-\c@table=\count195
-\abovecaptionskip=\skip48
-\belowcaptionskip=\skip49
-\bibindent=\dimen140
+\c@part=\count275
+\c@chapter=\count276
+\c@section=\count277
+\c@subsection=\count278
+\c@subsubsection=\count279
+\c@paragraph=\count280
+\c@subparagraph=\count281
+\c@figure=\count282
+\c@table=\count283
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen150
 ) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2021/02/14 v1.3d Input encoding file
+Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks17
 \inpenc@posthook=\toks18
 ) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks19
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
+Package graphics Info: Driver file: pdftex.def on input line 106.
  (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen141
-\Gin@req@width=\dimen142
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
 ) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
+Package: hyperref 2026-04-24 v7.01q Hypertext links for LaTeX
  (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
+Package: iftex 2024/12/12 v1.0g TeX engine tests
 ) (/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 ) (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
@@ -70,10 +70,8 @@ Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )) (/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
-Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 ) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
@@ -81,162 +79,156 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
  (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count196
+\c@section@level=\count284
 ) (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count197
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count285
+) (/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\@linkdim=\dimen143
-\Hy@linkcounter=\count198
-\Hy@pagecounter=\count199
+\@linkdim=\dimen153
+\Hy@linkcounter=\count286
+\Hy@pagecounter=\count287
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2026-04-24 v7.01q Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 ) (/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count266
+\Hy@SavedSpaceFactor=\count288
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2026-04-24 v7.01q Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Hyper figures OFF on input line 4179.
-Package hyperref Info: Link nesting OFF on input line 4184.
-Package hyperref Info: Hyper index ON on input line 4187.
-Package hyperref Info: Plain pages OFF on input line 4194.
-Package hyperref Info: Backreferencing OFF on input line 4199.
+Package hyperref Info: Hyper figures OFF on input line 4199.
+Package hyperref Info: Link nesting OFF on input line 4204.
+Package hyperref Info: Hyper index ON on input line 4207.
+Package hyperref Info: Plain pages OFF on input line 4214.
+Package hyperref Info: Backreferencing OFF on input line 4219.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4446.
-\c@Hy@tempcnt=\count267
+Package hyperref Info: Bookmarks ON on input line 4466.
+\c@Hy@tempcnt=\count289
  (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip16
+\Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4784.
-\XeTeXLinkMargin=\dimen144
+LaTeX Info: Redefining \url on input line 4805.
+\XeTeXLinkMargin=\dimen154
  (/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count268
-\Field@Width=\dimen145
-\Fld@charsize=\dimen146
-Package hyperref Info: Hyper figures OFF on input line 6063.
-Package hyperref Info: Link nesting OFF on input line 6068.
-Package hyperref Info: Hyper index ON on input line 6071.
-Package hyperref Info: backreferencing OFF on input line 6078.
-Package hyperref Info: Link coloring OFF on input line 6083.
-Package hyperref Info: Link coloring with OCG OFF on input line 6088.
-Package hyperref Info: PDF/A mode OFF on input line 6093.
- (/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
-Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
-package with kernel methods
-)
-\Hy@abspage=\count269
-\c@Item=\count270
-\c@Hfootnote=\count271
+\Fld@menulength=\count290
+\Field@Width=\dimen155
+\Fld@charsize=\dimen156
+Package hyperref Info: Hyper figures OFF on input line 6091.
+Package hyperref Info: Link nesting OFF on input line 6096.
+Package hyperref Info: Hyper index ON on input line 6099.
+Package hyperref Info: backreferencing OFF on input line 6106.
+Package hyperref Info: Link coloring OFF on input line 6111.
+Package hyperref Info: Link coloring with OCG OFF on input line 6116.
+Package hyperref Info: PDF/A mode OFF on input line 6121.
+\Hy@abspage=\count291
+\c@Item=\count292
+\c@Hfootnote=\count293
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2024-01-20 v7.01h Hyperref driver for pdfTeX
- (/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
-with kernel methods
-)
-\Fld@listcount=\count272
-\c@bookmark@seq@number=\count273
+File: hpdftex.def 2026-04-24 v7.01q Hyperref driver for pdfTeX
+\Fld@listcount=\count294
+\c@bookmark@seq@number=\count295
  (/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
  (/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
 )
-\Hy@SectionHShift=\skip50
+\Hy@SectionHShift=\skip51
 ) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2020/01/02 v5.9 Page Geometry
+Package: geometry 2026/03/07 v6.0 Page Geometry
  (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count274
-\Gm@cntv=\count275
-\c@Gm@tempcnt=\count276
-\Gm@bindingoffset=\dimen147
-\Gm@wd@mp=\dimen148
-\Gm@odd@mp=\dimen149
-\Gm@even@mp=\dimen150
-\Gm@layoutwidth=\dimen151
-\Gm@layoutheight=\dimen152
-\Gm@layouthoffset=\dimen153
-\Gm@layoutvoffset=\dimen154
+\Gm@cnth=\count296
+\Gm@cntv=\count297
+\c@Gm@tempcnt=\count298
+\Gm@bindingoffset=\dimen157
+\Gm@wd@mp=\dimen158
+\Gm@odd@mp=\dimen159
+\Gm@even@mp=\dimen160
+\Gm@layoutwidth=\dimen161
+\Gm@layoutheight=\dimen162
+\Gm@layouthoffset=\dimen163
+\Gm@layoutvoffset=\dimen164
 \Gm@dimlist=\toks20
 ) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2023/05/13 v2.17o AMS math features
-\@mathmargin=\skip51
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip52
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2021/08/26 v2.01 AMS text
+Package: amstext 2024/11/17 v2.01 AMS text
  (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks21
-\ex@=\dimen155
+\ex@=\dimen165
 )) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen156
+\pmbraise@=\dimen166
 ) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count277
-LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count278
-\leftroot@=\count279
-LaTeX Info: Redefining \overline on input line 399.
-LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count280
-\DOTSCASE@=\count281
-LaTeX Info: Redefining \ldots on input line 496.
-LaTeX Info: Redefining \dots on input line 499.
-LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box51
-\strutbox@=\box52
-LaTeX Info: Redefining \big on input line 722.
-LaTeX Info: Redefining \Big on input line 723.
-LaTeX Info: Redefining \bigg on input line 724.
-LaTeX Info: Redefining \Bigg on input line 725.
-\big@size=\dimen157
-LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count282
-LaTeX Info: Redefining \bmod on input line 905.
-LaTeX Info: Redefining \pmod on input line 910.
-LaTeX Info: Redefining \smash on input line 940.
-LaTeX Info: Redefining \relbar on input line 970.
-LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count283
-\dotsspace@=\muskip17
-\c@parentequation=\count284
-\dspbrk@lvl=\count285
+\inf@bad=\count299
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count300
+\leftroot@=\count301
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count302
+\DOTSCASE@=\count303
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen167
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count304
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count305
+\dotsspace@=\muskip18
+\c@parentequation=\count306
+\dspbrk@lvl=\count307
 \tag@help=\toks22
-\row@=\count286
-\column@=\count287
-\maxfields@=\count288
+\row@=\count308
+\column@=\count309
+\maxfields@=\count310
 \andhelp@=\toks23
-\eqnshift@=\dimen158
-\alignsep@=\dimen159
-\tagshift@=\dimen160
-\tagwidth@=\dimen161
-\totwidth@=\dimen162
-\lineht@=\dimen163
+\eqnshift@=\dimen168
+\alignsep@=\dimen169
+\tagshift@=\dimen170
+\tagwidth@=\dimen171
+\totwidth@=\dimen172
+\lineht@=\dimen173
 \@envbody=\toks24
-\multlinegap=\skip52
-\multlinetaggap=\skip53
+\multlinegap=\skip53
+\multlinetaggap=\skip54
 \mathdisplay@stack=\toks25
-LaTeX Info: Redefining \[ on input line 2953.
-LaTeX Info: Redefining \] on input line 2954.
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
 ) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
@@ -248,268 +240,267 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen164
-\lightrulewidth=\dimen165
-\cmidrulewidth=\dimen166
-\belowrulesep=\dimen167
-\belowbottomsep=\dimen168
-\aboverulesep=\dimen169
-\abovetopsep=\dimen170
-\cmidrulesep=\dimen171
-\cmidrulekern=\dimen172
-\defaultaddspace=\dimen173
-\@cmidla=\count289
-\@cmidlb=\count290
-\@aboverulesep=\dimen174
-\@belowrulesep=\dimen175
-\@thisruleclass=\count291
-\@lastruleclass=\count292
-\@thisrulewidth=\dimen176
+\heavyrulewidth=\dimen174
+\lightrulewidth=\dimen175
+\cmidrulewidth=\dimen176
+\belowrulesep=\dimen177
+\belowbottomsep=\dimen178
+\aboverulesep=\dimen179
+\abovetopsep=\dimen180
+\cmidrulesep=\dimen181
+\cmidrulekern=\dimen182
+\defaultaddspace=\dimen183
+\@cmidla=\count311
+\@cmidlb=\count312
+\@aboverulesep=\dimen184
+\@belowrulesep=\dimen185
+\@thisruleclass=\count313
+\@lastruleclass=\count314
+\@thisrulewidth=\dimen186
 ) (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen177
-\captionmargin=\dimen178
-\caption@leftmargin=\dimen179
-\caption@rightmargin=\dimen180
-\caption@width=\dimen181
-\caption@indent=\dimen182
-\caption@parindent=\dimen183
-\caption@hangindent=\dimen184
+\caption@tempdima=\dimen187
+\captionmargin=\dimen188
+\caption@leftmargin=\dimen189
+\caption@rightmargin=\dimen190
+\caption@width=\dimen191
+\caption@indent=\dimen192
+\caption@parindent=\dimen193
+\caption@hangindent=\dimen194
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count293
-\c@continuedfloat=\count294
+\c@caption@flags=\count315
+\c@continuedfloat=\count316
 Package caption Info: hyperref package is loaded.
 ) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
  (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
-Package xcolor Info: Model `RGB' extended on input line 1366.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 ) (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks26
-\pgfutil@tempdima=\dimen185
-\pgfutil@tempdimb=\dimen186
+\pgfutil@tempdima=\dimen195
+\pgfutil@tempdimb=\dimen196
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box53
+\pgfutil@abb=\box55
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
 ))
-Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
  (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks27
 \pgfkeys@temptoks=\toks28
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
 \pgfkeys@tmptoks=\toks29
 ))
-\pgf@x=\dimen187
-\pgf@y=\dimen188
-\pgf@xa=\dimen189
-\pgf@ya=\dimen190
-\pgf@xb=\dimen191
-\pgf@yb=\dimen192
-\pgf@xc=\dimen193
-\pgf@yc=\dimen194
-\pgf@xd=\dimen195
-\pgf@yd=\dimen196
+\pgf@x=\dimen197
+\pgf@y=\dimen198
+\pgf@xa=\dimen199
+\pgf@ya=\dimen256
+\pgf@xb=\dimen257
+\pgf@yb=\dimen258
+\pgf@xc=\dimen259
+\pgf@yc=\dimen260
+\pgf@xd=\dimen261
+\pgf@yd=\dimen262
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count295
-\c@pgf@countb=\count296
-\c@pgf@countc=\count297
-\c@pgf@countd=\count298
+\c@pgf@counta=\count317
+\c@pgf@countb=\count318
+\c@pgf@countc=\count319
+\c@pgf@countd=\count320
 \t@pgf@toka=\toks30
 \t@pgf@tokb=\toks31
 \t@pgf@tokc=\toks32
-\pgf@sys@id@count=\count299
+\pgf@sys@id@count=\count321
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
 )
 Driver file for pgf: pgfsys-pdftex.def
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
-File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
 ))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
-File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count300
-\pgfsyssoftpath@bigbuffer@items=\count301
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count322
+\pgfsyssoftpath@bigbuffer@items=\count323
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
-File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen197
-\pgfmath@count=\count302
-\pgfmath@box=\box54
+\pgfmath@dimen=\dimen263
+\pgfmath@count=\count324
+\pgfmath@box=\box56
 \pgfmath@toks=\toks33
 \pgfmath@stack@operand=\toks34
 \pgfmath@stack@operation=\toks35
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count303
+\c@pgfmathroundto@lastzeros=\count325
 )) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
-File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen198
-\pgf@picmaxx=\dimen199
-\pgf@picminy=\dimen256
-\pgf@picmaxy=\dimen257
-\pgf@pathminx=\dimen258
-\pgf@pathmaxx=\dimen259
-\pgf@pathminy=\dimen260
-\pgf@pathmaxy=\dimen261
-\pgf@xx=\dimen262
-\pgf@xy=\dimen263
-\pgf@yx=\dimen264
-\pgf@yy=\dimen265
-\pgf@zx=\dimen266
-\pgf@zy=\dimen267
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen264
+\pgf@picmaxx=\dimen265
+\pgf@picminy=\dimen266
+\pgf@picmaxy=\dimen267
+\pgf@pathminx=\dimen268
+\pgf@pathmaxx=\dimen269
+\pgf@pathminy=\dimen270
+\pgf@pathmaxy=\dimen271
+\pgf@xx=\dimen272
+\pgf@xy=\dimen273
+\pgf@yx=\dimen274
+\pgf@yy=\dimen275
+\pgf@zx=\dimen276
+\pgf@zy=\dimen277
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
-File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen268
-\pgf@path@lasty=\dimen269
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen278
+\pgf@path@lasty=\dimen279
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
-File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen270
-\pgf@shorten@start@additional=\dimen271
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen280
+\pgf@shorten@start@additional=\dimen281
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
-File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box55
-\pgf@hbox=\box56
-\pgf@layerbox@main=\box57
-\pgf@picture@serial@count=\count304
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box57
+\pgf@hbox=\box58
+\pgf@layerbox@main=\box59
+\pgf@picture@serial@count=\count326
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
-File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen272
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen282
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
-File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen273
-\pgf@pt@y=\dimen274
-\pgf@pt@temp=\dimen275
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen283
+\pgf@pt@y=\dimen284
+\pgf@pt@temp=\dimen285
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
-File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
-File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
-File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
-File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen276
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen286
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
-File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen277
-\pgf@sys@shading@range@num=\count305
-\pgf@shadingcount=\count306
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen287
+\pgf@sys@shading@range@num=\count327
+\pgf@shadingcount=\count328
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
-File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box58
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box60
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
-File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
-File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
-File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
-File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
-File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box59
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box61
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
-Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen278
-\pgf@nodesepend=\dimen279
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen288
+\pgf@nodesepend=\dimen289
 ) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
-Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
 )) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen280
-\pgffor@skip=\dimen281
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen290
+\pgffor@skip=\dimen291
 \pgffor@stack=\toks36
 \pgffor@toks=\toks37
 )) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
-File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count307
-\pgfplotmarksize=\dimen282
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count329
+\pgfplotmarksize=\dimen292
 )
-\tikz@lastx=\dimen283
-\tikz@lasty=\dimen284
-\tikz@lastxsaved=\dimen285
-\tikz@lastysaved=\dimen286
-\tikz@lastmovetox=\dimen287
-\tikz@lastmovetoy=\dimen288
-\tikzleveldistance=\dimen289
-\tikzsiblingdistance=\dimen290
-\tikz@figbox=\box60
-\tikz@figbox@bg=\box61
-\tikz@tempbox=\box62
-\tikz@tempbox@bg=\box63
-\tikztreelevel=\count308
-\tikznumberofchildren=\count309
-\tikznumberofcurrentchild=\count310
-\tikz@fig@count=\count311
+\tikz@lastx=\dimen293
+\tikz@lasty=\dimen294
+\tikz@lastxsaved=\dimen295
+\tikz@lastysaved=\dimen296
+\tikz@lastmovetox=\dimen297
+\tikz@lastmovetoy=\dimen298
+\tikzleveldistance=\dimen299
+\tikzsiblingdistance=\dimen300
+\tikz@figbox=\box62
+\tikz@figbox@bg=\box63
+\tikz@tempbox=\box64
+\tikz@tempbox@bg=\box65
+\tikztreelevel=\count330
+\tikznumberofchildren=\count331
+\tikznumberofcurrentchild=\count332
+\tikz@fig@count=\count333
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
-File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count312
-\pgfmatrixcurrentcolumn=\count313
-\pgf@matrix@numberofcolumns=\count314
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count334
+\pgfmatrixcurrentcolumn=\count335
+\pgf@matrix@numberofcolumns=\count336
 )
-\tikz@expandcount=\count315
+\tikz@expandcount=\count337
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
-File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))) (/usr/share/texlive/texmf-dist/tex/latex/acronym/acronym.sty
-Package: acronym 2020/04/17 v1.47 Support for acronyms (Tobias Oetiker)
+Package: acronym 2025/01/17 v1.50 Support for acronyms (Tobias Oetiker)
  (/usr/share/texlive/texmf-dist/tex/latex/bigfoot/suffix.sty
 Package: suffix 2006/07/15 1.5a Variant command support
 ) (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
-\xs_counta=\count316
-\xs_countb=\count317
+\xs_counta=\count338
+\xs_countb=\count339
 )
 Package: xstring 2023/08/22 v1.86 String manipulations (CT)
 )
 \AC@clearlist=\toks38
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
-File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: tikzlibrarypositioning.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
-File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: tikzlibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
-File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: pgflibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )) (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
-File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowinset=\dimen291
-\pgfarrowlength=\dimen292
-\pgfarrowwidth=\dimen293
-\pgfarrowlinewidth=\dimen294
+File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowinset=\dimen301
+\pgfarrowlength=\dimen302
+\pgfarrowwidth=\dimen303
+\pgfarrowlinewidth=\dimen304
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.code.tex
-File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: tikzlibraryfit.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybackgrounds.code.tex
-File: tikzlibrarybackgrounds.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@layerbox@background=\box64
-\pgf@layerboxsaved@background=\box65
+File: tikzlibrarybackgrounds.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@layerbox@background=\box66
+\pgf@layerboxsaved@background=\box67
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
-File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+File: tikzlibrarycalc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count318
-\l__pdf_internal_box=\box66
+File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count340
 ) (./main.aux)
 \openout1 = `main.aux'.
 
@@ -533,16 +524,16 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count319
-\scratchdimen=\dimen295
-\scratchbox=\box67
-\nofMPsegments=\count320
-\nofMParguments=\count321
+\scratchcounter=\count341
+\scratchdimen=\dimen305
+\scratchbox=\box68
+\nofMPsegments=\count342
+\nofMParguments=\count343
 \everyMPshowfont=\toks39
-\MPscratchCnt=\count322
-\MPscratchDim=\dimen296
-\MPnumerator=\count323
-\makeMPintoPDFobject=\count324
+\MPscratchCnt=\count344
+\MPscratchDim=\dimen306
+\MPnumerator=\count345
+\makeMPintoPDFobject=\count346
 \everyMPtoPDFconversion=\toks40
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -607,7 +598,20 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 46.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./chapters/00_abstract.tex)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] (./chapters/00_abstract.tex
+Package acronym Info: Label `acro:GeoFM' newly defined as it shall be overridden
+although it is yet undefined on input line 2.
+Package acronym Info: Label `acro:ViT' newly defined as it shall be overridden
+although it is yet undefined on input line 4.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 4.
+Package acronym Info: Label `acro:CNN' newly defined as it shall be overridden
+although it is yet undefined on input line 4.
+Package acronym Info: Label `acro:CNN' overridden on input line 10.
+Package acronym Info: Label `acro:mIoU' newly defined as it shall be overridden
+although it is yet undefined on input line 13.
+Package acronym Info: Label `acro:mIoU' overridden on input line 13.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 14.
+)
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -638,18 +642,58 @@ Overfull \hbox (6.60405pt too wide) in paragraph at lines 9--9
  \T1/cmr/m/n/12 per cell). Right: dis-tri-bu-tion of patches by Köppen--Geiger cli-mate group [[]]. 
  []
 
+Package acronym Info: Label `acro:ESA' newly defined as it shall be overridden
+although it is yet undefined on input line 10.
 [4
 
 ]
+Package acronym Info: Label `acro:DN' newly defined as it shall be overridden
+although it is yet undefined on input line 13.
+
 Overfull \hbox (2.98167pt too wide) in paragraph at lines 13--13
  [][] [][]\T1/cmr/m/n/12 The same per-band den-si-ties af-ter per-sensor $\OML/cmm/m/it/12 z$\T1/cmr/m/n/12 -score nor-mal-iza-tion of $[]$. 
  []
 
-[5] [6])
+Package acronym Info: Label `acro:NIR' newly defined as it shall be overridden
+although it is yet undefined on input line 14.
+Package acronym Info: Label `acro:ESA' overridden on input line 15.
+Package acronym Info: Label `acro:SNR' newly defined as it shall be overridden
+although it is yet undefined on input line 19.
+Package acronym Info: Label `acro:MTF' newly defined as it shall be overridden
+although it is yet undefined on input line 19.
+Package acronym Info: Label `acro:API' newly defined as it shall be overridden
+although it is yet undefined on input line 19.
+Package acronym Info: Label `acro:DSBN' newly defined as it shall be overridden
+although it is yet undefined on input line 20.
+Package acronym Info: Label `acro:DSBN' overridden on input line 20.
+[5]
+Package acronym Info: Label `acro:UMAP' newly defined as it shall be overridden
+although it is yet undefined on input line 23.
+Package acronym Info: Label `acro:PAD' newly defined as it shall be overridden
+although it is yet undefined on input line 26.
+Package acronym Info: Label `acro:PAD' overridden on input line 26.
+Package acronym Info: Label `acro:PAD' overridden on input line 26.
+Package acronym Info: Label `acro:KD' newly defined as it shall be overridden
+although it is yet undefined on input line 27.
+Package acronym Info: Label `acro:DSBN' overridden on input line 27.
+Package acronym Info: Label `acro:mIoU' overridden on input line 28.
+Package acronym Info: Label `acro:IoU' newly defined as it shall be overridden
+although it is yet undefined on input line 29.
+ [6]
+Package acronym Info: Label `acro:mIoU' overridden on input line 30.
+)
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
- [7] (./main.lot)
+ [7] (./main.lot
+Package acronym Info: Label `acro:SNR' overridden on input line 8.
+Package acronym Info: Label `acro:IoU' overridden on input line 9.
+Package acronym Info: Label `acro:IoU' overridden on input line 11.
+Package acronym Info: Label `acro:LULC' newly defined as it shall be overridden
+although it is yet undefined on input line 12.
+Package acronym Info: Label `acro:mIoU' overridden on input line 12.
+Package acronym Info: Label `acro:mIoU' overridden on input line 12.
+)
 \tf@lot=\write7
 \openout7 = `main.lot'.
 
@@ -659,15 +703,50 @@ Overfull \hbox (2.98167pt too wide) in paragraph at lines 13--13
 
 ] [10] (./chapters/01_introduction.tex
 Chapter 1.
+Package acronym Info: Label `acro:EO' newly defined as it shall be overridden
+although it is yet undefined on input line 4.
+Package acronym Info: Label `acro:NRT' newly defined as it shall be overridden
+although it is yet undefined on input line 5.
+Package acronym Info: Label `acro:VPU' newly defined as it shall be overridden
+although it is yet undefined on input line 8.
+Package acronym Info: Label `acro:CNN' overridden on input line 11.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 13.
+Package acronym Info: Label `acro:EO' overridden on input line 14.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 14.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 17.
+Package acronym Info: Label `acro:ViT' overridden on input line 19.
+Package acronym Info: Label `acro:ViT' overridden on input line 19.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 21.
+Package acronym Info: Label `acro:ViT' overridden on input line 23.
 [11
 
-] [12]) (./chapters/02_background_litreview.tex
+]
+Package acronym Info: Label `acro:ESA' overridden on input line 27.
+Package acronym Info: Label `acro:CNN' overridden on input line 30.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 36.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 47.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 56.
+ [12]
+Package acronym Info: Label `acro:GeoFM' overridden on input line 59.
+Package acronym Info: Label `acro:CNN' overridden on input line 59.
+Package acronym Info: Label `acro:ViT' overridden on input line 59.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 60.
+Package acronym Info: Label `acro:ViT' overridden on input line 62.
+Package acronym Info: Label `acro:CNN' overridden on input line 62.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 67.
+Package acronym Info: Label `acro:CNN' overridden on input line 67.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 70.
+Package acronym Info: Label `acro:CNN' overridden on input line 75.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 79.
+) (./chapters/02_background_litreview.tex
 Overfull \hbox (5.86449pt too wide) in paragraph at lines 79--1
-[]\T1/cmr/m/n/12 Answering these ques-tions would show that the gen-er-al-iza-tion promise of large [][][][]s,
+[]\T1/cmr/m/n/12 Answering these ques-tions would show that the gen-er-al-iza-tion promise of large [][][][][][]s,
  []
 
 [13] [14]
 Chapter 2.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 4.
+Package acronym Info: Label `acro:EO' overridden on input line 13.
 <figures/fig_onboard_workflow.png, id=665, 633.11531pt x 277.035pt>
 File: figures/fig_onboard_workflow.png Graphic file (type png)
 <use figures/fig_onboard_workflow.png>
@@ -676,10 +755,70 @@ Package pdftex.def Info: figures/fig_onboard_workflow.png  used on input line 22
 [15
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 48.
- (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-) [16 <./figures/fig_onboard_workflow.png>] [17] [18] [19] [20]
+Package acronym Info: Label `acro:CNN' overridden on input line 42.
+Package acronym Info: Label `acro:ViT' overridden on input line 43.
+Package acronym Info: Label `acro:CNN' overridden on input line 43.
+Package acronym Info: Label `acro:ViT' overridden on input line 44.
+Package acronym Info: Label `acro:EO' overridden on input line 44.
+Package acronym Info: Label `acro:ViT' overridden on input line 44.
+Package acronym Info: Label `acro:ViT' overridden on input line 44.
+Package acronym Info: Label `acro:ViT' overridden on input line 46.
+Package acronym Info: Label `acro:VPU' overridden on input line 47.
+Package acronym Info: Label `acro:ONNX' newly defined as it shall be overridden
+although it is yet undefined on input line 48.
+Package acronym Info: Label `acro:ViT' overridden on input line 48.
+ [16 <./figures/fig_onboard_workflow.png>]
+Package acronym Info: Label `acro:GeoFM' overridden on input line 58.
+Package acronym Info: Label `acro:EO' overridden on input line 59.
+Package acronym Info: Label `acro:ViT' overridden on input line 60.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 60.
+Package acronym Info: Label `acro:RGB' newly defined as it shall be overridden
+although it is yet undefined on input line 60.
+Package acronym Info: Label `acro:RTC' newly defined as it shall be overridden
+although it is yet undefined on input line 60.
+Package acronym Info: Label `acro:GRD' newly defined as it shall be overridden
+although it is yet undefined on input line 60.
+Package acronym Info: Label `acro:DEM' newly defined as it shall be overridden
+although it is yet undefined on input line 60.
+Package acronym Info: Label `acro:NDVI' newly defined as it shall be overridden
+although it is yet undefined on input line 60.
+Package acronym Info: Label `acro:LULC' overridden on input line 60.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 64.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 65.
+Package acronym Info: Label `acro:ViT' overridden on input line 67.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 69.
+ [17]
+Package acronym Info: Label `acro:DA' newly defined as it shall be overridden
+although it is yet undefined on input line 101.
+Package acronym Info: Label `acro:DA' overridden on input line 102.
+Package acronym Info: Label `acro:UDA' newly defined as it shall be overridden
+although it is yet undefined on input line 102.
+Package acronym Info: Label `acro:SDA' newly defined as it shall be overridden
+although it is yet undefined on input line 102.
+Package acronym Info: Label `acro:DA' overridden on input line 104.
+Package acronym Info: Label `acro:DA' overridden on input line 105.
+Package acronym Info: Label `acro:SDA' overridden on input line 106.
+Package acronym Info: Label `acro:CNN' overridden on input line 106.
+ [18]
+Package acronym Info: Label `acro:SDA' overridden on input line 109.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 110.
+Package acronym Info: Label `acro:DA' overridden on input line 110.
+Package acronym Info: Label `acro:MMD' newly defined as it shall be overridden
+although it is yet undefined on input line 116.
+Package acronym Info: Label `acro:DSBN' overridden on input line 123.
+Package acronym Info: Label `acro:UDA' overridden on input line 123.
+Package acronym Info: Label `acro:BN' newly defined as it shall be overridden
+although it is yet undefined on input line 124.
+Package acronym Info: Label `acro:DSBN' overridden on input line 125.
+Package acronym Info: Label `acro:BN' overridden on input line 125.
+Package acronym Info: Label `acro:MMD' overridden on input line 126.
+Package acronym Info: Label `acro:ESA' overridden on input line 132.
+ [19]
+Package acronym Info: Label `acro:KD' overridden on input line 146.
+Package acronym Info: Label `acro:KD' overridden on input line 147.
+Package acronym Info: Label `acro:ViT' overridden on input line 149.
+Package acronym Info: Label `acro:ViT' overridden on input line 150.
+ [20]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 155.
@@ -692,8 +831,15 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 155.
 
+Package acronym Info: Label `acro:GeoFM' overridden on input line 158.
+Package acronym Info: Label `acro:ViT' overridden on input line 159.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 159.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 161.
 ) (./chapters/03_methodology.tex [21]
 Chapter 3.
+Package acronym Info: Label `acro:ESA' overridden on input line 13.
+Package acronym Info: Label `acro:ESA' overridden on input line 23.
+Package acronym Info: Label `acro:ESA' overridden on input line 23.
 <figures/fig_patch_examples.png, id=830, 471.9231pt x 641.9985pt>
 File: figures/fig_patch_examples.png Graphic file (type png)
 <use figures/fig_patch_examples.png>
@@ -707,6 +853,8 @@ File: figures/fig_srf_s2_phisat2.png Graphic file (type png)
 <use figures/fig_srf_s2_phisat2.png>
 Package pdftex.def Info: figures/fig_srf_s2_phisat2.png  used on input line 46.
 (pdftex.def)             Requested size: 284.52756pt x 227.62106pt.
+Package acronym Info: Label `acro:LULC' overridden on input line 55.
+Package acronym Info: Label `acro:ESA' overridden on input line 56.
 <figures/triplets_example_wc_mask.png, id=854, 1196.21906pt x 296.60812pt>
 File: figures/triplets_example_wc_mask.png Graphic file (type png)
 <use figures/triplets_example_wc_mask.png>
@@ -718,17 +866,21 @@ File: figures/fig_acquisition.png Graphic file (type png)
 <use figures/fig_acquisition.png>
 Package pdftex.def Info: figures/fig_acquisition.png  used on input line 76.
 (pdftex.def)             Requested size: 452.9679pt x 146.6134pt.
+Package acronym Info: Label `acro:ESA' overridden on input line 85.
 <figures/fig_geography.png, id=862, 787.5021pt x 251.9814pt>
 File: figures/fig_geography.png Graphic file (type png)
 <use figures/fig_geography.png>
 Package pdftex.def Info: figures/fig_geography.png  used on input line 90.
 (pdftex.def)             Requested size: 452.9679pt x 144.93816pt.
  [25 <./figures/triplets_example_wc_mask.png> <./figures/fig_acquisition.png>]
+Package acronym Info: Label `acro:ESA' overridden on input line 101.
 <figures/fig_landcover.png, id=875, 753.2943pt x 251.9814pt>
 File: figures/fig_landcover.png Graphic file (type png)
 <use figures/fig_landcover.png>
 Package pdftex.def Info: figures/fig_landcover.png  used on input line 106.
 (pdftex.def)             Requested size: 452.9679pt x 151.52066pt.
+Package acronym Info: Label `acro:ESA' overridden on input line 110.
+Package acronym Info: Label `acro:ESA' overridden on input line 110.
 <figures/fig_splits.png, id=880, 753.0534pt x 235.3593pt>
 File: figures/fig_splits.png Graphic file (type png)
 <use figures/fig_splits.png>
@@ -745,139 +897,300 @@ File: figures/hist_bands_normalized.png Graphic file (type png)
 <use figures/hist_bands_normalized.png>
 Package pdftex.def Info: figures/hist_bands_normalized.png  used on input line 159.
 (pdftex.def)             Requested size: 452.9679pt x 221.79333pt.
+Package acronym Info: Label `acro:DN' overridden on input line 161.
+Package acronym Info: Label `acro:DN' overridden on input line 161.
  [27 <./figures/fig_splits.png>] [28 <./figures/hist_bands_raw.png> <./figures/hist_bands_normalized.png>]
 <figures/fig_spectral_signature.png, id=911, 427.8384pt x 254.3904pt>
 File: figures/fig_spectral_signature.png Graphic file (type png)
 <use figures/fig_spectral_signature.png>
 Package pdftex.def Info: figures/fig_spectral_signature.png  used on input line 173.
 (pdftex.def)             Requested size: 317.07614pt x 188.54094pt.
+Package acronym Info: Label `acro:NIR' overridden on input line 176.
+Package acronym Info: Label `acro:NIR' overridden on input line 176.
+Package acronym Info: Label `acro:ESA' overridden on input line 196.
  [29 <./figures/fig_spectral_signature.png>]
 <figures/fig_approx_error_by_class.png, id=926, 787.22679pt x 425.36057pt>
 File: figures/fig_approx_error_by_class.png Graphic file (type png)
 <use figures/fig_approx_error_by_class.png>
-Package pdftex.def Info: figures/fig_approx_error_by_class.png  used on input line 201.
+Package pdftex.def Info: figures/fig_approx_error_by_class.png  used on input line 203.
 (pdftex.def)             Requested size: 452.9679pt x 244.74916pt.
+Package acronym Info: Label `acro:ESA' overridden on input line 208.
+Package acronym Info: Label `acro:ESA' overridden on input line 208.
+Package acronym Info: Label `acro:LULC' overridden on input line 215.
 <figures/fig_triplet_overlay_019123.png, id=933, 1813.46078pt x 348.96086pt>
 File: figures/fig_triplet_overlay_019123.png Graphic file (type png)
 <use figures/fig_triplet_overlay_019123.png>
-Package pdftex.def Info: figures/fig_triplet_overlay_019123.png  used on input line 217.
+Package pdftex.def Info: figures/fig_triplet_overlay_019123.png  used on input line 219.
 (pdftex.def)             Requested size: 452.9679pt x 87.16013pt.
 <figures/fig_triplet_overlay_012943.png, id=936, 1813.46078pt x 349.47707pt>
 File: figures/fig_triplet_overlay_012943.png Graphic file (type png)
 <use figures/fig_triplet_overlay_012943.png>
-Package pdftex.def Info: figures/fig_triplet_overlay_012943.png  used on input line 226.
+Package pdftex.def Info: figures/fig_triplet_overlay_012943.png  used on input line 228.
 (pdftex.def)             Requested size: 452.9679pt x 87.28906pt.
 <figures/fig_triplet_overlay_019598.png, id=937, 1813.46078pt x 349.47707pt>
 File: figures/fig_triplet_overlay_019598.png Graphic file (type png)
 <use figures/fig_triplet_overlay_019598.png>
-Package pdftex.def Info: figures/fig_triplet_overlay_019598.png  used on input line 235.
+Package pdftex.def Info: figures/fig_triplet_overlay_019598.png  used on input line 237.
 (pdftex.def)             Requested size: 452.9679pt x 87.28906pt.
  [30 <./figures/fig_approx_error_by_class.png> <./figures/fig_triplet_overlay_019123.png>] [31 <./figures/fig_triplet_overlay_012943.png> <./figures/fig_triplet_overlay_019598.png>]
-<figures/fig_updated_simulator.png, id=967, 776.14969pt x 485.56406pt>
+Package acronym Info: Label `acro:ESA' overridden on input line 267.
+Package acronym Info: Label `acro:API' overridden on input line 274.
+<figures/fig_updated_simulator.png, id=967, 1701.35625pt x 916.42375pt>
 File: figures/fig_updated_simulator.png Graphic file (type png)
 <use figures/fig_updated_simulator.png>
-Package pdftex.def Info: figures/fig_updated_simulator.png  used on input line 276.
-(pdftex.def)             Requested size: 452.9679pt x 283.3833pt.
+Package pdftex.def Info: figures/fig_updated_simulator.png  used on input line 278.
+(pdftex.def)             Requested size: 452.9679pt x 243.9838pt.
+Package acronym Info: Label `acro:SNR' overridden on input line 283.
+Package acronym Info: Label `acro:MTF' overridden on input line 283.
+Package acronym Info: Label `acro:API' overridden on input line 283.
+Package acronym Info: Label `acro:SNR' overridden on input line 283.
+Package acronym Info: Label `acro:MTF' overridden on input line 283.
+Package acronym Info: Label `acro:API' overridden on input line 283.
+Package acronym Info: Label `acro:TOA' newly defined as it shall be overridden
+although it is yet undefined on input line 287.
+Package acronym Info: Label `acro:TOA' overridden on input line 287.
  [32
 
-] [33 <./figures/fig_updated_simulator.png>] [34] [35] [36]
-<figures/fig_bn_dsbn.png, id=1066, 810.77907pt x 176.91093pt>
+] [33 <./figures/fig_updated_simulator.png>]
+Package acronym Info: Label `acro:API' overridden on input line 293.
+Package acronym Info: Label `acro:SNR' overridden on input line 309.
+Package acronym Info: Label `acro:SNR' overridden on input line 311.
+Package acronym Info: Label `acro:SNR' overridden on input line 311.
+Package acronym Info: Label `acro:SNR' overridden on input line 312.
+Package acronym Info: Label `acro:SNR' overridden on input line 312.
+Package acronym Info: Label `acro:SNR' overridden on input line 314.
+Package acronym Info: Label `acro:SNR' overridden on input line 319.
+Package acronym Info: Label `acro:SNR' overridden on input line 319.
+ [34]
+Package acronym Info: Label `acro:MTF' overridden on input line 323.
+Package acronym Info: Label `acro:PSF' newly defined as it shall be overridden
+although it is yet undefined on input line 324.
+Package acronym Info: Label `acro:MTF' overridden on input line 325.
+Package acronym Info: Label `acro:MTF' overridden on input line 325.
+Package acronym Info: Label `acro:MTF' overridden on input line 327.
+Package acronym Info: Label `acro:PSF' overridden on input line 330.
+Package acronym Info: Label `acro:MTF' overridden on input line 331.
+Package acronym Info: Label `acro:PAD' overridden on input line 351.
+Package acronym Info: Label `acro:LULC' overridden on input line 352.
+Package acronym Info: Label `acro:mIoU' overridden on input line 352.
+Package acronym Info: Label `acro:IoU' overridden on input line 352.
+ [35]
+Package acronym Info: Label `acro:LULC' overridden on input line 360.
+Package acronym Info: Label `acro:DSBN' overridden on input line 369.
+Package acronym Info: Label `acro:DSBN' overridden on input line 370.
+Package acronym Info: Label `acro:BN' overridden on input line 376.
+ [36]
+Package acronym Info: Label `acro:DSBN' overridden on input line 407.
+Package acronym Info: Label `acro:DSBN' overridden on input line 410.
+Package acronym Info: Label `acro:BN' overridden on input line 434.
+Package acronym Info: Label `acro:DSBN' overridden on input line 434.
+Package acronym Info: Label `acro:DSBN' overridden on input line 441.
+Package acronym Info: Label `acro:UDA' overridden on input line 441.
+<figures/fig_bn_dsbn.png, id=1068, 810.77907pt x 176.91093pt>
 File: figures/fig_bn_dsbn.png Graphic file (type png)
 <use figures/fig_bn_dsbn.png>
-Package pdftex.def Info: figures/fig_bn_dsbn.png  used on input line 447.
+Package pdftex.def Info: figures/fig_bn_dsbn.png  used on input line 449.
 (pdftex.def)             Requested size: 452.9679pt x 98.83998pt.
+Package acronym Info: Label `acro:DSBN' overridden on input line 455.
+Package acronym Info: Label `acro:DSBN' overridden on input line 455.
+Package acronym Info: Label `acro:DSBN' overridden on input line 455.
+Package acronym Info: Label `acro:DSBN' overridden on input line 455.
  [37]
-Underfull \hbox (badness 10000) in paragraph at lines 462--462
+Package acronym Info: Label `acro:DSBN' overridden on input line 460.
+
+Underfull \hbox (badness 10000) in paragraph at lines 464--464
 [][][][]$\T1/cmtt/m/n/10 https : / / docs . openvino . ai / 2023 . 3 / openvino _ docs _ ops _ normalization _
  []
 
+Package acronym Info: Label `acro:DSBN' overridden on input line 468.
 
-Overfull \hbox (8.79388pt too wide) in paragraph at lines 458--468
+Overfull \hbox (8.79388pt too wide) in paragraph at lines 460--470
 \T1/cmr/m/n/12 ture. Batch nor-mal-iza-tion is rep-re-sentable in the de-ploy-ment for-mat: \T1/cmtt/m/n/12 BatchNormInference
  []
 
-[38 <./figures/fig_bn_dsbn.png>] [39] [40] [41]) (./chapters/04_results_discussion.tex [42]
+Package acronym Info: Label `acro:MMD' overridden on input line 477.
+[38 <./figures/fig_bn_dsbn.png>]
+Package acronym Info: Label `acro:DSBN' overridden on input line 479.
+Package acronym Info: Label `acro:LULC' overridden on input line 480.
+Package acronym Info: Label `acro:DSBN' overridden on input line 480.
+Package acronym Info: Label `acro:ViT' overridden on input line 486.
+Package acronym Info: Label `acro:VPU' overridden on input line 486.
+Package acronym Info: Label `acro:ViT' overridden on input line 486.
+Package acronym Info: Label `acro:ViT' overridden on input line 487.
+Package acronym Info: Label `acro:CNN' overridden on input line 487.
+Package acronym Info: Label `acro:ViT' overridden on input line 487.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 487.
+Package acronym Info: Label `acro:LULC' overridden on input line 488.
+Package acronym Info: Label `acro:VPU' overridden on input line 490.
+Package acronym Info: Label `acro:DSBN' overridden on input line 495.
+ [39]
+Package acronym Info: Label `acro:KL' newly defined as it shall be overridden
+although it is yet undefined on input line 620.
+ [40] [41]
+Package acronym Info: Label `acro:PAD' overridden on input line 677.
+Package acronym Info: Label `acro:DSBN' overridden on input line 678.
+Package acronym Info: Label `acro:LULC' overridden on input line 679.
+Package acronym Info: Label `acro:LULC' overridden on input line 682.
+Package acronym Info: Label `acro:mIoU' overridden on input line 682.
+Package acronym Info: Label `acro:LULC' overridden on input line 689.
+Package acronym Info: Label `acro:HDF5' newly defined as it shall be overridden
+although it is yet undefined on input line 689.
+Package acronym Info: Label `acro:DSBN' overridden on input line 690.
+) (./chapters/04_results_discussion.tex [42]
 Chapter 4.
+Package acronym Info: Label `acro:LULC' overridden on input line 10.
+Package acronym Info: Label `acro:NIR' overridden on input line 13.
 [43
 
-] [44]
-<figures/fig_embeddings_paired.png, id=1216, 831.5868pt x 387.1263pt>
+]
+Package acronym Info: Label `acro:KD' overridden on input line 38.
+Package acronym Info: Label `acro:DSBN' overridden on input line 38.
+Package acronym Info: Label `acro:KL' overridden on input line 58.
+Package acronym Info: Label `acro:BN' overridden on input line 63.
+Package acronym Info: Label `acro:PAD' overridden on input line 77.
+Package acronym Info: Label `acro:UMAP' overridden on input line 81.
+ [44]
+Package acronym Info: Label `acro:PAD' overridden on input line 83.
+<figures/fig_embeddings_paired.png, id=1218, 831.5868pt x 387.1263pt>
 File: figures/fig_embeddings_paired.png Graphic file (type png)
 <use figures/fig_embeddings_paired.png>
 Package pdftex.def Info: figures/fig_embeddings_paired.png  used on input line 90.
 (pdftex.def)             Requested size: 452.9679pt x 210.87036pt.
-<figures/fig_cosine_sim_terramind.png, id=1221, 723.4227pt x 395.3169pt>
+Package acronym Info: Label `acro:UMAP' overridden on input line 94.
+Package acronym Info: Label `acro:UMAP' overridden on input line 94.
+Package acronym Info: Label `acro:PAD' overridden on input line 99.
+Package acronym Info: Label `acro:PAD' overridden on input line 100.
+<figures/fig_cosine_sim_terramind.png, id=1223, 723.4227pt x 395.3169pt>
 File: figures/fig_cosine_sim_terramind.png Graphic file (type png)
 <use figures/fig_cosine_sim_terramind.png>
 Package pdftex.def Info: figures/fig_cosine_sim_terramind.png  used on input line 104.
 (pdftex.def)             Requested size: 385.02547pt x 210.39763pt.
- [45 <./figures/fig_embeddings_paired.png>] [46 <./figures/fig_cosine_sim_terramind.png>]
-<figures/fig_ladder_grid.png, id=1241, 1133.28394pt x 635.976pt>
+ [45 <./figures/fig_embeddings_paired.png>]
+Package acronym Info: Label `acro:SNR' overridden on input line 119.
+Package acronym Info: Label `acro:PSF' overridden on input line 119.
+Package acronym Info: Label `acro:SNR' overridden on input line 127.
+Package acronym Info: Label `acro:PSF' overridden on input line 127.
+Package acronym Info: Label `acro:SNR' overridden on input line 139.
+Package acronym Info: Label `acro:SNR' overridden on input line 139.
+ [46 <./figures/fig_cosine_sim_terramind.png>]
+<figures/fig_ladder_grid.png, id=1243, 1133.28394pt x 635.976pt>
 File: figures/fig_ladder_grid.png Graphic file (type png)
 <use figures/fig_ladder_grid.png>
 Package pdftex.def Info: figures/fig_ladder_grid.png  used on input line 147.
 (pdftex.def)             Requested size: 452.9679pt x 254.2015pt.
- [47 <./figures/fig_ladder_grid.png>] [48] [49]
-<figures/fig_pad_decision_scores.png, id=1278, 794.7291pt x 457.9509pt>
+Package acronym Info: Label `acro:SNR' overridden on input line 169.
+Package acronym Info: Label `acro:PSF' overridden on input line 175.
+Package acronym Info: Label `acro:IoU' overridden on input line 190.
+Package acronym Info: Label `acro:IoU' overridden on input line 190.
+ [47 <./figures/fig_ladder_grid.png>]
+Package acronym Info: Label `acro:PAD' overridden on input line 215.
+Package acronym Info: Label `acro:SNR' overridden on input line 225.
+Package acronym Info: Label `acro:PSF' overridden on input line 227.
+ [48]
+Package acronym Info: Label `acro:UMAP' overridden on input line 250.
+Package acronym Info: Label `acro:UMAP' overridden on input line 262.
+Package acronym Info: Label `acro:IoU' overridden on input line 274.
+Package acronym Info: Label `acro:IoU' overridden on input line 274.
+Package acronym Info: Label `acro:PAD' overridden on input line 283.
+ [49]
+Package acronym Info: Label `acro:PAD' overridden on input line 289.
+<figures/fig_pad_decision_scores.png, id=1280, 794.7291pt x 457.9509pt>
 File: figures/fig_pad_decision_scores.png Graphic file (type png)
 <use figures/fig_pad_decision_scores.png>
-Package pdftex.def Info: figures/fig_pad_decision_scores.png  used on input line 296.
+Package pdftex.def Info: figures/fig_pad_decision_scores.png  used on input line 294.
 (pdftex.def)             Requested size: 452.9679pt x 261.01376pt.
-<figures/fig_qualitative_predictions.png, id=1281, 513.117pt x 351.2322pt>
+Package acronym Info: Label `acro:PAD' overridden on input line 298.
+Package acronym Info: Label `acro:PAD' overridden on input line 298.
+Package acronym Info: Label `acro:PAD' overridden on input line 298.
+Package acronym Info: Label `acro:PAD' overridden on input line 298.
+Package acronym Info: Label `acro:PAD' overridden on input line 298.
+Package acronym Info: Label `acro:PAD' overridden on input line 298.
+<figures/fig_qualitative_predictions.png, id=1283, 513.117pt x 351.2322pt>
 File: figures/fig_qualitative_predictions.png Graphic file (type png)
 <use figures/fig_qualitative_predictions.png>
-Package pdftex.def Info: figures/fig_qualitative_predictions.png  used on input line 315.
+Package pdftex.def Info: figures/fig_qualitative_predictions.png  used on input line 313.
 (pdftex.def)             Requested size: 452.9679pt x 310.07141pt.
- [50] [51 <./figures/fig_pad_decision_scores.png>] [52 <./figures/fig_qualitative_predictions.png>]
-<figures/fig_dsbn_vs_baseline.png, id=1304, 789.1884pt x 266.6763pt>
+Package acronym Info: Label `acro:KD' overridden on input line 317.
+Package acronym Info: Label `acro:DSBN' overridden on input line 317.
+Package acronym Info: Label `acro:KD' overridden on input line 317.
+Package acronym Info: Label `acro:DSBN' overridden on input line 317.
+ [50]
+Package acronym Info: Label `acro:KD' overridden on input line 337.
+Package acronym Info: Label `acro:DSBN' overridden on input line 337.
+Package acronym Info: Label `acro:LULC' overridden on input line 347.
+Package acronym Info: Label `acro:mIoU' overridden on input line 347.
+Package acronym Info: Label `acro:mIoU' overridden on input line 347.
+Package acronym Info: Label `acro:LULC' overridden on input line 347.
+Package acronym Info: Label `acro:mIoU' overridden on input line 347.
+Package acronym Info: Label `acro:mIoU' overridden on input line 347.
+ [51 <./figures/fig_pad_decision_scores.png>] [52 <./figures/fig_qualitative_predictions.png>]
+<figures/fig_dsbn_vs_baseline.png, id=1306, 789.1884pt x 266.6763pt>
 File: figures/fig_dsbn_vs_baseline.png Graphic file (type png)
 <use figures/fig_dsbn_vs_baseline.png>
-Package pdftex.def Info: figures/fig_dsbn_vs_baseline.png  used on input line 358.
+Package pdftex.def Info: figures/fig_dsbn_vs_baseline.png  used on input line 356.
 (pdftex.def)             Requested size: 452.9679pt x 153.0691pt.
-<figures/fig_per_class_dsbn.png, id=1307, 680.7834pt x 246.6816pt>
+Package acronym Info: Label `acro:mIoU' overridden on input line 360.
+Package acronym Info: Label `acro:mIoU' overridden on input line 360.
+<figures/fig_per_class_dsbn.png, id=1309, 680.7834pt x 246.6816pt>
 File: figures/fig_per_class_dsbn.png Graphic file (type png)
 <use figures/fig_per_class_dsbn.png>
-Package pdftex.def Info: figures/fig_per_class_dsbn.png  used on input line 376.
+Package pdftex.def Info: figures/fig_per_class_dsbn.png  used on input line 374.
 (pdftex.def)             Requested size: 452.9679pt x 164.13153pt.
+Package acronym Info: Label `acro:IoU' overridden on input line 377.
+Package acronym Info: Label `acro:IoU' overridden on input line 377.
  [53 <./figures/fig_dsbn_vs_baseline.png> <./figures/fig_per_class_dsbn.png>] [54]
-<figures/fig_label_crossover.png, id=1331, 398.9304pt x 257.0403pt>
+Package acronym Info: Label `acro:KD' overridden on input line 431.
+Package acronym Info: Label `acro:UDA' overridden on input line 431.
+<figures/fig_label_crossover.png, id=1333, 398.9304pt x 257.0403pt>
 File: figures/fig_label_crossover.png Graphic file (type png)
 <use figures/fig_label_crossover.png>
-Package pdftex.def Info: figures/fig_label_crossover.png  used on input line 441.
+Package pdftex.def Info: figures/fig_label_crossover.png  used on input line 439.
 (pdftex.def)             Requested size: 326.13744pt x 210.14687pt.
+Package acronym Info: Label `acro:mIoU' overridden on input line 443.
+Package acronym Info: Label `acro:mIoU' overridden on input line 443.
+Package acronym Info: Label `acro:DA' overridden on input line 458.
  [55 <./figures/fig_label_crossover.png>] [56]) (./chapters/05_conclusion.tex [57]
 Chapter 5.
+Package acronym Info: Label `acro:LULC' overridden on input line 16.
 [58
 
-]) (./chapters/07_declarations.tex [59]) (./chapters/06_appendix.tex [60
+]
+Package acronym Info: Label `acro:GeoFM' overridden on input line 24.
+Package acronym Info: Label `acro:GeoFM' overridden on input line 26.
+Package acronym Info: Label `acro:EO' overridden on input line 27.
+) (./chapters/07_declarations.tex [59]) (./chapters/06_appendix.tex [60
 
 ]
 Appendix A.
+Package acronym Info: Label `acro:LULC' overridden on input line 5.
+Package acronym Info: Label `acro:LULC' overridden on input line 10.
+Package acronym Info: Label `acro:mIoU' overridden on input line 15.
+Package acronym Info: Label `acro:LULC' overridden on input line 16.
 ) (./main.bbl [61
 
 ] [62
 
 ] [63] [64]) [65] (./main.aux)
  ***********
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-01-22>
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: EF6DB637BCFFDA1B89F32819CA430C18;9423.
+(rerunfilecheck)             Checksum: B665A669474787A9229786B7E043281B;9420.
  ) 
 Here is how much of TeX's memory you used:
- 24946 strings out of 476182
- 466988 string characters out of 5795595
- 1958975 words of memory out of 5000000
- 46236 multiletter control sequences out of 15000+600000
- 586711 words of font info for 117 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 84i,14n,87p,1061b,1010s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/elouann/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (67 pages, 30901623 bytes).
+ 25176 strings out of 468489
+ 470199 string characters out of 5440514
+ 897948 words of memory out of 6000000
+ 53380 multiletter control sequences out of 15000+600000
+ 656363 words of font info for 121 fonts, out of 8000000 for 9000
+ 430 hyphenation exceptions out of 8191
+ 84i,14n,94p,1081b,998s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on main.pdf (67 pages, 30641681 bytes).
 PDF statistics:
- 2160 PDF objects out of 2487 (max. 8388607)
- 1397 compressed objects within 14 object streams
+ 1600 PDF objects out of 1728 (max. 8388607)
+ 1386 compressed objects within 14 object streams
  271 named destinations out of 1000 (max. 500000)
  546 words of extra memory for PDF output out of 10000 (max. 10000000)
 
