@@ -1,17 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{razzano2024ai}
-F.~Razzano, P.~Di~Stasio, F.~Mauro, G.~Meoni, M.~Esposito, G.~Schirinzi, and S.~L. Ullo, ``{AI} techniques for near real-time monitoring of contaminants in coastal waters on board future \ensuremath{\Phi}-sat-2 mission,'' {\em IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, vol.~17, pp.~16755--16766, 2024.
-
-\bibitem{longepe2024orbitalai}
-N.~Long{\'e}p{\'e}, I.~Petrelli, N.~O. Kadunc, D.~Peressutti, R.~Del~Prete, M.~Casaburi, I.~Babkina, N.~Vercruyssen, E.~C. Luis, {\'A}.~M. Elorza, {\em et~al.}, ``Simulation of multispectral and hyperspectral eo products for onboard machine learning application,'' {\em IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, vol.~17, pp.~17651--17665, 2024.
-
-\bibitem{beck2018present}
-H.~E. Beck, N.~E. Zimmermann, T.~R. McVicar, N.~Vergopolan, A.~Berg, and E.~F. Wood, ``Present and future k{\"o}ppen-geiger climate classification maps at 1-km resolution,'' {\em Scientific data}, vol.~5, no.~1, p.~180214, 2018.
-
-\bibitem{chang2019dsbn}
-W.-G. Chang, T.~You, S.~Seo, S.~Kwak, and B.~Han, ``Domain-specific batch normalization for unsupervised domain adaptation,'' in {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, pp.~7354--7362, 2019.
-
 \bibitem{barretta2026onboardaireview}
 D.~Barretta, L.~Marini, F.~Razzano, G.~Guerrisi, S.~Sandberg, R.~Del~Prete, V.~Zancan, E.~Mariotti, G.~Furano, L.~Manovi, {\em et~al.}, ``Toward real-time earth system intelligence through advancements in onboard ai processing: A review,'' {\em IEEE Geoscience and Remote Sensing Magazine}, 2026.
 
@@ -39,12 +27,21 @@ A.~Dosovitskiy, L.~Beyer, A.~Kolesnikov, D.~Weissenborn, X.~Zhai, T.~Unterthiner
 \bibitem{bendavid2010theory}
 S.~Ben-David, J.~Blitzer, K.~Crammer, A.~Kulesza, F.~Pereira, and J.~W. Vaughan, ``A theory of learning from different domains,'' {\em Machine Learning}, vol.~79, no.~1--2, pp.~151--175, 2010.
 
+\bibitem{longepe2024orbitalai}
+N.~Long{\'e}p{\'e}, I.~Petrelli, N.~O. Kadunc, D.~Peressutti, R.~Del~Prete, M.~Casaburi, I.~Babkina, N.~Vercruyssen, E.~C. Luis, {\'A}.~M. Elorza, {\em et~al.}, ``Simulation of multispectral and hyperspectral eo products for onboard machine learning application,'' {\em IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, vol.~17, pp.~17651--17665, 2024.
+
+\bibitem{chang2019dsbn}
+W.-G. Chang, T.~You, S.~Seo, S.~Kwak, and B.~Han, ``Domain-specific batch normalization for unsupervised domain adaptation,'' in {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, pp.~7354--7362, 2019.
+
 \bibitem{hinton2015distilling}
 G.~Hinton, O.~Vinyals, and J.~Dean, ``Distilling the knowledge in a neural network,'' {\em arXiv preprint arXiv:1503.02531}, 2015.
 \newblock Presented at the NIPS 2014 Deep Learning Workshop.
 
 \bibitem{du2025onorbitdemonstrationgeospatialfoundation}
 A.~Du, R.~Del~Prete, A.~Mousist, N.~Manser, F.~Marre, A.~Barton, C.~Seubert, G.~Meoni, and T.-J. Chin, ``First on-orbit demonstration of a geospatial foundation model,'' {\em arXiv preprint arXiv:2512.01181}, 2025.
+
+\bibitem{razzano2024ai}
+F.~Razzano, P.~Di~Stasio, F.~Mauro, G.~Meoni, M.~Esposito, G.~Schirinzi, and S.~L. Ullo, ``{AI} techniques for near real-time monitoring of contaminants in coastal waters on board future \ensuremath{\Phi}-sat-2 mission,'' {\em IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, vol.~17, pp.~16755--16766, 2024.
 
 \bibitem{giuffrida2021phisat1}
 G.~Giuffrida, L.~Fanucci, G.~Meoni, M.~Batic, L.~Buckley, A.~Dunne, C.~Dijk, M.~Esposito, J.~Hefele, N.~Vercruyssen, G.~Furano, M.~Pastena, and J.~Aschbacher, ``The \ensuremath{\Phi}-sat-1 mission: The first on-board deep neural network demonstrator for satellite earth observation,'' {\em IEEE Transactions on Geoscience and Remote Sensing}, vol.~60, pp.~1--14, 01 2021.
@@ -112,11 +109,20 @@ P.~Lindenberger, P.-E. Sarlin, and M.~Pollefeys, ``{LightGlue}: Local feature ma
 \bibitem{zanaga2022worldcover}
 D.~Zanaga, R.~Van De~Kerchove, D.~Daems, W.~De~Keersmaecker, C.~Brockmann, G.~Kirches, J.~Wevers, O.~Cartus, M.~Santoro, S.~Fritz, M.~Lesiv, M.~Herold, N.-E. Tsendbazar, P.~Xu, F.~Ramoino, and O.~Arino, ``{ESA WorldCover 10 m 2021 v200},'' 2022.
 
+\bibitem{beck2018present}
+H.~E. Beck, N.~E. Zimmermann, T.~R. McVicar, N.~Vergopolan, A.~Berg, and E.~F. Wood, ``Present and future k{\"o}ppen-geiger climate classification maps at 1-km resolution,'' {\em Scientific data}, vol.~5, no.~1, p.~180214, 2018.
+
 \bibitem{ronneberger2015unet}
 O.~Ronneberger, P.~Fischer, and T.~Brox, ``U-net: Convolutional networks for biomedical image segmentation,'' in {\em Medical Image Computing and Computer-Assisted Intervention (MICCAI)}, pp.~234--241, Springer, 2015.
 
 \bibitem{lin2017focal}
 T.-Y. Lin, P.~Goyal, R.~Girshick, K.~He, and P.~Doll{\'a}r, ``Focal loss for dense object detection,'' in {\em Proceedings of the IEEE International Conference on Computer Vision (ICCV)}, pp.~2980--2988, 2017.
+
+\bibitem{EO_Research_Team2024-oh}
+{EO Research Team}, ``eo-learn,'' 2024.
+
+\bibitem{gomes2025terratorch}
+C.~Gomes, B.~Blumenstiel, J.~L. d.~S. Almeida, P.~H. de~Oliveira, P.~Fraccaro, F.~M. Escofet, D.~Szwarcman, N.~Simumba, R.~Kienzler, and B.~Zadrozny, ``Terratorch: The geospatial foundation models toolkit,'' {\em arXiv preprint arXiv:2503.20563}, 2025.
 
 \bibitem{cui2019classbalanced}
 Y.~Cui, M.~Jia, T.-Y. Lin, Y.~Song, and S.~Belongie, ``Class-balanced loss based on effective number of samples,'' in {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, pp.~9268--9277, 2019.

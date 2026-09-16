@@ -64,7 +64,7 @@ Everything the two conditions could share is held constant: architecture, initia
         Sensor branches            & Two ($\Phi$-sat-2, Sentinel-2)                                                        & One ($\Phi$-sat-2)  \\
         \bottomrule
     \end{tabular}
-    \caption{Training configuration for the two methods.
+    \caption[Training Configuration for the Two Methods]{Training configuration for the two methods.
         Settings above the rule are identical by construction; those below apply to the distilled method only.
     }
     \label{tab:hyperparameters}
@@ -88,7 +88,7 @@ This analysis is also the reverse of the resolution-driven account emphasised in
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/fig_embeddings_paired.png}
-    \caption{\acs{UMAP} projection of pooled embeddings for $800$ co-registered test patches, teacher (left) and distilled student (right), each projected independently.
+    \caption[UMAP Projection of Pooled Embeddings]{\acs{UMAP} projection of pooled embeddings for $800$ co-registered test patches, teacher (left) and distilled student (right), each projected independently.
         Grey lines join the two sensor views of the same patch.
         In the teacher's space the paired views are far apart (median link $6.15$ units); in the student's they are effectively coincident ($0.40$ units).
     }
@@ -102,7 +102,7 @@ This is a supplementary observation, on a different model scale and with a diffe
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.85\textwidth]{figures/fig_cosine_sim_terramind.png}
-    \caption{Per-layer cosine similarity between raw paired Sentinel-2B and real-$\Phi$-sat-2 patch embeddings from the TerraMind Tiny encoder, averaged over $800$ samples (shaded band: one standard deviation).
+    \caption[Per-Layer Cosine Similarity]{Per-layer cosine similarity between raw paired Sentinel-2B and real-$\Phi$-sat-2 patch embeddings from the TerraMind Tiny encoder, averaged over $800$ samples (shaded band: one standard deviation).
     }
     \label{fig:cosine-sim-tiny}
 \end{figure}
@@ -132,7 +132,7 @@ A severity axis common to all three is defined by setting level~4 to the operati
         L4    & $1.000$  & $[5, 10]$         & $4.0$                     & $10.00$                    \\
         \bottomrule
     \end{tabular}
-    \caption{The degradation ladder.
+    \caption[The Degradation Ladder]{The degradation ladder.
         Level~4 reproduces the joint simulator configuration; each step down halves the perturbation.
         \acs{SNR} is drawn per scene from the stated range and the noise amplitude scales as its reciprocal, so the four ranges correspond to relative noise of $1/8$, $1/4$, $1/2$ and $1$.
         Blur and misalignment parameters are in resampled $4.75$\,m pixels.
@@ -145,7 +145,7 @@ Figure~\ref{fig:ladder-grid} shows what the four severities of Table~\ref{tab:la
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/fig_ladder_grid.png}
-    \caption{A degradation ladder sample from the Sen1Floods benchmark (scene Nigeria 81933, $256\times256$\,px at $4.75$\,m resolution).
+    \caption[Degradation Ladder Sample]{A degradation ladder sample from the Sen1Floods benchmark (scene Nigeria 81933, $256\times256$\,px at $4.75$\,m resolution).
         Each row varies one factor in isolation across the four severities of Table~\ref{tab:ladder-definition}, from clean (left) to full severity L4 (right), while every other stage of the simulator is held fixed.
     }
     \label{fig:ladder-grid}
@@ -185,7 +185,7 @@ Table~\ref{tab:ladder-domain-gap} reports the results.
         \quad L4             & $-0.140 \pm 0.007$          & $-0.119 \pm 0.009$ & $\mathbf{-0.109} \pm 0.012$ \\
         \bottomrule
     \end{tabular}
-    \caption{Domain gap across the degradation ladder: change in positive-class \acs{IoU} relative to the clean test split, for a model trained only on clean data.
+    \caption[Domain Gap Across the Degradation Ladder]{Domain gap across the degradation ladder: change in positive-class \acs{IoU} relative to the clean test split, for a model trained only on clean data.
         Values are the mean over three seeds of the within-seed drop, $\pm$ one standard deviation of those drops.
     }
     \label{tab:ladder-domain-gap}
@@ -227,7 +227,7 @@ It also reinforces the point that the gap here is not resolution-driven, which i
         Optical blur (\acref{PSF}) & $-0.128$        & $+0.020$        & all of it \\
         \bottomrule
     \end{tabular}
-    \caption{Degradation seen at inference only, against degradation present during training as well, for the distilled student at full severity.    }
+    \caption[Degradation Ladder Results]{Degradation seen at inference only, against degradation present during training as well, for the distilled student at full severity.    }
     \label{tab:ladder-adaptation}
 \end{table}
 
@@ -267,7 +267,7 @@ Table~\ref{tab:invariance} collects the three measures side by side.
         IoU($\Phi$-sat-2) $-$ IoU(Sentinel-2), test  & ---               & $\mathbf{-0.004}$ \\
         \bottomrule
     \end{tabular}
-    \caption{Sensor invariance of the teacher and the distilled student, over $800$ co-registered test patches.
+    \caption[Sensor Invariance]{Sensor invariance of the teacher and the distilled student, over $800$ co-registered test patches.
         Paired cosine and probe transfer compare the two sensor views of the same ground.
         Probe transfer fits a linear classifier on Sentinel-2 embeddings and applies it to $\Phi$-sat-2 embeddings; retention is the ratio of the two accuracies.
         The \acs{IoU} difference is measured on the full test split.
@@ -292,7 +292,7 @@ The probe transfer, which asks the functional question directly, is the appropri
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/fig_pad_decision_scores.png}
-    \caption{Distribution of the domain probe's out-of-fold decision score, the quantity from which \acs{PAD} is computed.
+    \caption[Distribution of Domain Probe Scores]{Distribution of the domain probe's out-of-fold decision score, the quantity from which \acs{PAD} is computed.
         Separated modes imply a probe that perfectly separates the domains (\acs{PAD} $\rightarrow 2$); overlapping modes imply chance (\acs{PAD} $\rightarrow 0$).
         After standardising each domain on its own statistics (right column) the separability disappears for both models, showing that all of it was per-channel mean and scale.
     }
@@ -311,7 +311,7 @@ The fourth row shows a failure case with a noisy real acquisition, making the $\
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/fig_qualitative_predictions.png}
-    \caption{Four patches from the validation set of the \acs{KD}~$+$~\acs{DSBN} run, at epoch $98$ of $101$.
+    \caption[Qualitative Predictions]{Four patches from the validation set of the \acs{KD}~$+$~\acs{DSBN} run, at epoch $98$ of $101$.
         Left to right: the real $\Phi$-sat-2, its Sentinel-2 co-registered view, WorldCover label map, frozen teacher evaluated on Sentinel-2, and the student's two branches.
         The teacher sees only the Sentinel-2 view, and one teacher output supervises both student branches (Figure~\ref{fig:kd-architecture}).
     }
@@ -340,7 +340,7 @@ Some parameters are held constant for fairness: the split, the normalization, th
         \multicolumn{2}{l}{TerraMind teacher (Sentinel-2, reference)} & ---                       & $0.6351$          & $14.0$                                \\
         \bottomrule
     \end{tabular}
-    \caption{Main results on the \acs{LULC} task.
+    \caption[Main Results on the LULC Task]{Main results on the \acs{LULC} task.
         Validation \acs{mIoU} is the best epoch, on the fixed $1{,}000$-patch validation split shared by every run.
         Test \acs{mIoU} is on the full $25{,}323$-patch test split.
         Cost is total wall-clock for the run.
@@ -354,7 +354,7 @@ Figure~\ref{fig:dsbn-vs-baseline} shows the shape of that margin: the baseline i
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/fig_dsbn_vs_baseline.png}
-    \caption{Left: $\Phi$-sat-2 validation \acs{mIoU} over training at $10{,}000$ labelled patches, with the best epoch marked.
+    \caption[Distilled Student vs. Baseline]{Left: $\Phi$-sat-2 validation \acs{mIoU} over training at $10{,}000$ labelled patches, with the best epoch marked.
         Dotted line marks teacher's accuracy on Sentinel-2.
         Right: the residual accuracy difference between the two sensors for the distilled student, which crosses zero around epoch $55$ and oscillates.
     }
@@ -372,7 +372,7 @@ The frequency-weighted IoU moves in the same direction as the macro average ($0.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/fig_per_class_dsbn.png}
-    \caption{Per-class test \acs{IoU} at $10{,}000$ labelled patches, ordered by class prevalence, with each class's share of labelled pixels beneath its label.
+    \caption[Per-Class Results]{Per-class test \acs{IoU} at $10{,}000$ labelled patches, ordered by class prevalence, with each class's share of labelled pixels beneath its label.
         Neither model leaves any class unlearned, which unweighted cross-entropy did for four of them (Section~\ref{sec:configuration}).
     }
     \label{fig:per-class}
@@ -394,13 +394,13 @@ Table~\ref{tab:complexity} compares $\Phi$satNet trained on the same $10{,}000$ 
         Model                         & Encoder   & Decoder + head & Total             & Test mIoU         \\
         \midrule
         Distilled student (KD + DSBN) & $4.72$\,M & $5.14$\,M      & $9.86$\,M         & $\mathbf{0.4481}$ \\
-        Supervised baseline U-Net     & $4.72$\,M & $5.14$\,M      & $9.85$\,M         & $0.3739$          \\
+        Baseline U-Net (Supervised)     & $4.72$\,M & $5.14$\,M      & $9.85$\,M         & $0.3739$          \\
         $\Phi$satNet, pre-trained     & $199$\,k  & $152$\,k       & $\mathbf{351}$\,k & $0.3316$          \\
         $\Phi$satNet + KD + DSBN      & $199$\,k  & $152$\,k       & $\mathbf{352}$\,k & $0.3268$          \\
         $\Phi$satNet, random init     & $199$\,k  & $152$\,k       & $\mathbf{351}$\,k & $0.3215$          \\
         \bottomrule
     \end{tabular}
-    \caption{Trainable parameters against accuracy at $10{,}000$ labelled patches.
+    \caption[Model Complexity and Accuracy]{Trainable parameters against accuracy at $10{,}000$ labelled patches.
         Every parameter is trained in all five rows, so the totals are also the trainable counts.
         Test mIoU is on the full $25{,}323$-patch test split.
     }
@@ -437,7 +437,7 @@ One reading is that the distilled configuration carries substantial overhead, wh
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.72\textwidth]{figures/fig_label_crossover.png}
-    \caption{Best validation \acs{mIoU} against labelled training budget.
+    \caption[Label Crossover]{Best validation \acs{mIoU} against labelled training budget.
         The two methods cross: distillation is worse at $1{,}000$ labelled patches and better at $10{,}000$.
         Both budgets share the same fixed validation split.
     }
@@ -461,18 +461,24 @@ That caveat does not diminish the practical result, but it does bear on how much
 \label{sec:limitations}
 
 All experiments use at most $10{,}000$ of the $202{,}582$ available training patches, under $5\%$, so the crossover of Section~\ref{sec:label-crossover} is characterised entirely within the low-data regime, and the ranking at full scale is untested.
+Additionally, the patch-level data split detailed in Section~\ref{sec:dataset-split} allows crops from the same source product to appear in both training and test sets; without a strict geographic hold-out, the reported metrics serve as an optimistic upper bound rather than a true measure of generalization to entirely unseen scenes.
+
 Single seeds are used everywhere except the degradation-ladder evaluation of Section~\ref{sec:ladder-results}, so apart from that section no result in this chapter is supported by independent replication; epoch-to-epoch validation variance is of the order of $0.02$ mIoU, and differences below roughly $0.03$, which includes the small-budget end of the crossover in Section~\ref{sec:label-crossover}, are consequently not resolved.
+
 Two further controls are outstanding at the time of writing: a shared-normalization distillation run isolating the contribution of domain-specific normalization (Section~\ref{sec:configuration}), and a recomputation of the invariance measures under shared and per-domain-standardised normalization (Section~\ref{sec:rq2-results}).
-The student is trained from a random initialisation because no pre-trained weights exist for this backbone, and this plausibly accounts for a substantial share of the remaining $0.15$ mIoU gap to the teacher, and it confounds any claim that this gap is attributable to a domain shift.
+
+The U-net student is trained from a random initialisation because no pre-trained weights exist for this backbone, and this plausibly accounts for a substantial share of the remaining $0.15$ mIoU gap to the teacher, and it confounds any claim that this gap is attributable to a domain shift.
 Finally, the work is scoped to a single sensor pair, so the finding that the gap is radiometric rather than resolution-driven (Section~\ref{sec:rq1-results}) should not be generalised beyond it.
 
 \subsection{Interpretation of the flood-robustness result}
 \label{sec:discussion-comparison}
 
-The flood-IoU degradation observed for the teacher across the simulated degradation ladder (Section~\ref{sec:ladder-results}, at worst $-0.152$ IoU under full-severity noise and $-0.008$ under full-severity blur) is expected.
+The flood-IoU degradation observed on TerraMind across the simulated degradation ladder (Section~\ref{sec:ladder-results}, at worst $-0.152$ IoU under full-severity noise and $-0.008$ under full-severity blur) is expected.
 Du et al.~\cite{du2025onorbitdemonstrationgeospatialfoundation} independently report that flood detection was anomalously robust to the sensor domain gap on Kanyini, in contrast to an approximately $47\%$ drop in cloud-detection performance on the same platform.
 We observe the same pattern, and a plausible explanation is that the strong near-infrared absorption contrast of water survives the sensor noise and the band mismatch much better than the texture-dependent and boundary-dependent cues that cloud detection or general land-cover classification rely on.
 Flood segmentation may then understate the severity of the domain-gap problem.
+
+\newpage
 
 \subsection{Positioning with \texorpdfstring{$\Phi$}{Phi}satNet}
 \label{sec:positioning-phisatnet}
@@ -483,20 +489,17 @@ This raises a central operational question: if a lightweight model already achie
 Table~\ref{tab:complexity} answers the accuracy half of that question at a budget of $10{,}000$ labels.
 $\Phi$satNet reaches $0.3316$ test mIoU against the supervised U-Net's $0.3739$ and the distilled student's $0.4481$, with $28$ times fewer parameters than either.
 Per parameter it is far ahead of both; in absolute accuracy it is behind both.
-Which of those two readings should govern is a deployment question rather than a scientific one, and under the power and memory budget of an on-board processor it is not obvious that the absolute reading wins.
+Which of those two readings should govern is a matter of deployment design, because under the power and memory budget of an on-board processor it is not obvious that the absolute reading wins.
 
-The more informative result comes from the matched initialisation, which shows that the pre-training contributes almost nothing: fine-tuning from the released land-cover checkpoint beats the identical architecture from a random initialisation by $0.0102$ test mIoU.
+The matched initialisation result shows that the pre-training contributes almost nothing: fine-tuning from the released land-cover checkpoint beats the identical architecture from a random initialisation by $0.0102$ test mIoU.
 The same checkpoint, run on real $\Phi$-sat-2 without any training, scores at the level of a uniform-random predictor.
 What $\Phi$satNet contributes in this comparison is its parameter efficiency and not transfer from its mission-specific corpus.
 
-This is not evidence against the claim in~\cite{phisatnet}, which concerns a different benchmark suite.
-It is, however, the same problem this thesis is about, displaced one level: the released $\Phi$satNet weights were pre-trained on simulated $\Phi$-sat-2 imagery, and Section~\ref{sec:rq1-results} shows that a gap of this kind originates in low-level radiometry rather than in semantics, which is exactly the part of a sensor a simulator has to get right and the part it is hardest to get right.
-A narrow pre-training corpus only earns its narrowness if it matches the sensor that is eventually flown.
-Where that corpus is a simulation, the sensor gap becomes a property of the pre-training data itself, and the comparison is less a contest between a general and a specialised model than a restatement of the same measurement problem.
-We did not measure the real-to-simulated $\Phi$-sat-2 distance directly, so this reading is an interpretation of the control rather than a result in its own right.
+This is not an evidence against the claim in~\cite{phisatnet}, which concerns a different benchmark suite.
+However, this thesis addresses the same issue: the released $\Phi$satNet weights were pre-trained on simulated $\Phi$-sat-2 imagery, and Section~\ref{sec:rq1-results} shows that a gap of this kind originates in low-level radiometry rather than in semantics, which is the part of a sensor a simulator has to replicate.
 
-Distillation does not close the gap either, and the reason is instructive.
-Handing $\Phi$satNet the same teacher, objective and budget that lift the U-Net by $0.074$ mIoU moves it by nothing at all (Section~\ref{sec:rq3-results}), which places the limit on capacity rather than on supervision.
+Distillation from a GeoFM does not close the gap either which is a significant finding.
+Handing $\Phi$satNet the same teacher, objective and budget that lift the U-Net by $0.074$ mIoU doesn't help here (Section~\ref{sec:rq3-results}). This places the limit on capacity rather than on supervision.
 The choice this poses for an on-board system is therefore not between a well-taught small model and a poorly-taught large one: below some size the teaching stops arriving, and the only way to buy the distilled student's accuracy is to carry its parameters.
 Each configuration here is a single seed, so the margins of order $0.01$ separating the $\Phi$satNet variants should be read as the absence of a large effect rather than as measurements of small ones (Section~\ref{sec:limitations}).
 

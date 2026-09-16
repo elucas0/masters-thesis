@@ -27,7 +27,7 @@ This algorithm was chosen for its ability to identify corresponding semantic key
 \begin{figure}[htp]
     \centering
     \includegraphics[width=12cm]{fig_patch_examples.png}
-    \caption{Four representative triplets, each row showing the same scene as observed by real $\Phi$-sat-2, the physics-simulated $\Phi$-sat-2 rendering, and Sentinel-2B (each channel independently contrast-stretched for display).
+    \caption[Triplets Patch Examples]{Four representative triplets, each row showing the same scene as observed by real $\Phi$-sat-2, the physics-simulated $\Phi$-sat-2 rendering, and Sentinel-2B (each channel independently contrast-stretched for display).
         The real acquisitions shows blurier scenes despite the higher resolution and a noisy texture compared to the simulated or source Sentinel-2 view.
     }
     \label{fig:patch-examples}
@@ -44,7 +44,7 @@ The target sensor is the finer of the two, so a resolution mismatch cannot accou
 \begin{figure}[htp]
     \centering
     \includegraphics[width=10cm]{fig_srf_s2_phisat2.png}
-    \caption{Band correspondence between Sentinel-2B and $\Phi$-sat-2, from Longépé et al.~\cite{longepe2024orbitalai}.
+    \caption[Spectral Response Functions of Sentinel-2B and $\Phi$-sat-2]{Band correspondence between Sentinel-2B and $\Phi$-sat-2, from Longépé et al.~\cite{longepe2024orbitalai}.
         (a) Normalized spectral response functions, Sentinel-2B above and $\Phi$-sat-2 below.
         (b) Per-band spatial resolution.
         The correspondence in (a) makes Sentinel-2 usable as the paired source; the residual differences in both panels are the sensor gap this thesis aims to measure.
@@ -60,7 +60,7 @@ Prior domain-gap studies have been limited by the scene-content and geography co
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{triplets_example_wc_mask.png}
-    \caption{A representative triplet, each row showing the same scene as observed by real $\Phi$-sat-2, the physics-simulated $\Phi$-sat-2 rendering, and Sentinel-2B (each channel independently contrast-stretched for display).
+    \caption[Triplets Example with WorldCover Labels]{A representative triplet, each row showing the same scene as observed by real $\Phi$-sat-2, the physics-simulated $\Phi$-sat-2 rendering, and Sentinel-2B (each channel independently contrast-stretched for display).
         The real acquisitions shows heavy band misalignment artifacts compared to the simulated or source Sentinel-2 view.
     }
     \label{fig:triplets-example}
@@ -74,7 +74,7 @@ After discarding a small number of corrupted source products, the dataset compri
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_acquisition.png}
-    \caption{Left: distribution of the absolute time lag between matched $\Phi$-sat-2 and Sentinel-2 acquisitions (median 6.8 days, maximum 14.9 days, $n=253{,}228$).
+    \caption[Acquisition Volume and Temporal Distribution]{Left: distribution of the absolute time lag between matched $\Phi$-sat-2 and Sentinel-2 acquisitions (median 6.8 days, maximum 14.9 days, $n=253{,}228$).
     Right: monthly acquisition volume, Aug.
     \ 2024--Apr.\ 2026, showing the collection ramp-up in the first eight months.}
     \label{fig:acquisition}
@@ -88,7 +88,7 @@ WorldCover rasterization step.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_geography.png}
-    \caption{Left: spatial density of $\Phi$-sat-2 products (hexbin, log-scaled patch count per cell).
+    \caption[Geographical Distribution of $\Phi$-sat-2 Acquisitions]{Left: spatial density of $\Phi$-sat-2 products (hexbin, log-scaled patch count per cell).
         Right: distribution of patches by K\"oppen--Geiger climate group~\cite{beck2018present}.
     }
     \label{fig:geography}
@@ -104,7 +104,7 @@ WorldCover classes present are similarly imbalanced by construction: grassland (
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_landcover.png}
-    \caption{Left: share of all labelled pixels by \acs{ESA}
+    \caption[Land Cover Distribution]{Left: share of all labelled pixels by \acs{ESA}
         WorldCover class.
         Right: number of patches in which each class is the dominant (plurality) class.
     }
@@ -112,6 +112,7 @@ WorldCover classes present are similarly imbalanced by construction: grassland (
 \end{figure}
 
 \subsubsection{Train/validation/test split}
+\label{sec:dataset-split}
 
 The dataset is split 80/10/10 (202{,}582 / 25{,}323 / 25{,}323 patches) at the patch level with a fixed seed, and the resulting class-prior distribution is stable across all three splits, confirming the split does not introduce label-distribution shift (Figure~\ref{fig:splits}, left).
 However, this introduces a different problem.
@@ -122,7 +123,7 @@ Re-splitting at product level instead of at patch level is the direct remedy, an
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_splits.png}
-    \caption{Left: class prior is stable across the train/validation/test split.
+    \caption[Train/Validation/Test Split]{Left: class prior is stable across the train/validation/test split.
         Right: every one of the 1,287 products contributing to the test set also contributes patches to the training set as the split is patch-level.
     }
     \label{fig:splits}
@@ -142,8 +143,8 @@ The domain gap this thesis is concerned with is therefore a real-vs-simulated ga
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{hist_bands_raw.png}
-    \caption{Per-band raw digital-number density by sensor (log-scaled $x$-axis; 400{,}000 sampled pixels).
-        Sentinel-2B (orange) and simulated $\Phi$-sat-2 (green) overlap.
+    \caption[Raw Digital-Number Distributions]{Per-band raw digital-number density by sensor (log-scaled $x$-axis; 400{,}000 sampled pixels).
+        Simulated $\Phi$-sat-2 (green) overlaps the Sentinel-2B (orange) histogram almost completely, which makes it invisible.
         Real $\Phi$-sat-2 (blue) is concentrated in lower values, with a smaller secondary lobe extending into the Sentinel-2B/simulated value range in every band.
     }
     \label{fig:band-boxplots}
@@ -157,7 +158,7 @@ The domain-adaptation mechanism of Section~\ref{sec:da-mechanism} must close thi
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{hist_bands_normalized.png}
-    \caption{The same per-band densities after per-sensor $z$-score normalization of $\sqrt{\text{\acs{DN}}}$.
+    \caption[Normalized Digital-Number Distributions]{The same per-band densities after per-sensor $z$-score normalization of $\sqrt{\text{\acs{DN}}}$.
     }
     \label{fig:band-boxplots-normalized}
 \end{figure}
@@ -171,7 +172,7 @@ This analysis gives us a quantitative support for attributing the domain gap pri
 \begin{figure}[htp]
     \centering
     \includegraphics[width=0.7\textwidth]{fig_spectral_signature.png}
-    \caption{Median per-band digital number, normalized by each sensor's own overall band mean (1.0 = that sensor's average).
+    \caption[Spectral Signature Comparison]{Median per-band digital number, normalized by each sensor's own overall band mean (1.0 = that sensor's average).
         Sentinel-2B and simulated $\Phi$-sat-2 overlap almost exactly; real $\Phi$-sat-2 has a markedly different spectral shape, peaking at Red and dipping at RE1 and \acs{NIR}.
     }
     \label{fig:spectral-signature}
@@ -189,8 +190,7 @@ For a pair of normalized views of the same patch, a per-pixel approximation erro
     \label{eq:approx-error}
 \end{equation}
 where $x^{\text{real}}$ and $x^{\text{s2b}}$ are the per-domain-normalized (Section~\ref{sec:normalization}) real-$\Phi$-sat-2 and Sentinel-2B views of the same co-registered patch.
-Because both views are already standardized on their own statistics, 
-Equation~\eqref{eq:approx-error} averages the absolute differences across the 7 spectral bands to isolate the part of the gap that the marginal alignment does not explain.
+Because both views are already standardized on their own statistics, Equation~\eqref{eq:approx-error} averages the absolute differences across the 7 spectral bands to isolate the part of the gap that the marginal alignment does not explain.
 This mean-over-bands $\ell_1$ distance directly captures the hardware-induced covariate shift, including the point spread function, the band response, the view geometry, and the residual co-registration error.
 
 Aggregated over 5,000 patches and broken down by the dominant \acref{ESA} WorldCover class of each pixel, the pixel-weighted mean approximation error is $0.91$ (Figure~\ref{fig:approx-error-class}).
@@ -201,10 +201,10 @@ The three classes shown with the most extreme bars (moss and lichen, snow and ic
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_approx_error_by_class.png}
-    \caption{Mean cross-sensor approximation error (Equation~\eqref{eq:approx-error}) by dominant \acs{ESA}
+    \caption[Approximation Error by Land Cover Class]{Mean cross-sensor approximation error (Equation~\eqref{eq:approx-error}) by dominant \acs{ESA}
         WorldCover class, over 5,000 patches.
         Error bars are one standard deviation; the percentage above each bar is that class's share of labelled pixels in the sample.
-        Three classes show >1\% presence in the sample (moss and lichen, snow and ice, mangroves) because they are rare in the dataset, they are still reported for completeness.
+        Three classes show <1\% presence in the sample (moss and lichen, snow and ice, mangroves) because they are rare in the dataset, they are still reported for completeness.
     }
     \label{fig:approx-error-class}
 \end{figure}
@@ -217,7 +217,7 @@ Figures~\ref{fig:triplet-overlay-a}--\ref{fig:triplet-overlay-c} show three indi
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_triplet_overlay_019123.png}
-    \caption{Patch showing coastal wetland (mean approximation error $1.24$, above the dataset-wide mean of $0.91$).
+    \caption[Triplet Example: Coastal Wetland]{Patch showing coastal wetland (mean approximation error $1.24$, above the dataset-wide mean of $0.91$).
         Errors are located over open water, consistent with the class-level pattern of Figure~\ref{fig:approx-error-class}.
     }
     \label{fig:triplet-overlay-a}
@@ -226,7 +226,7 @@ Figures~\ref{fig:triplet-overlay-a}--\ref{fig:triplet-overlay-c} show three indi
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_triplet_overlay_012943.png}
-    \caption{Patch showing a grassland cutting a forest.
+    \caption[Triplet Example: Grassland and Forest]{Patch showing a grassland cutting a forest.
         This simple scene has a low mean approximation error ($0.96$).
     }
     \label{fig:triplet-overlay-b}
@@ -235,7 +235,7 @@ Figures~\ref{fig:triplet-overlay-a}--\ref{fig:triplet-overlay-c} show three indi
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_triplet_overlay_019598.png}
-    \caption{Patch showing cropland (mean approximation error $0.90$).
+    \caption[Triplet Example: Cropland]{Patch showing cropland (mean approximation error $0.90$).
         This real data shows the band misalignment that Equation~\eqref{eq:misalign-l1a} models synthetically.
         The scalar mean approximation error for this patch ($0.90$) is close to the dataset-wide mean despite the heavy artifact: Equation~\eqref{eq:approx-error} averages absolute per-band intensity differences and is insensitive to spatial/geometric coherence, so it under-represents local misalignment, which is a limitation of the metric.
     }
@@ -276,10 +276,8 @@ Solar geometry and irradiance are retrieved per scene from the Copernicus Data S
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_updated_simulator.png}
-    \caption{The updated degradation pipeline.
-        A source Sentinel-2 L1 product passes through five physical stages in radiance space before conversion back to reflectance, each driven by its own auxiliary input: the centre-wavelength list and spectral response functions for the spectral adjustment, the 4.75\,m target ground sampling distance for the resampling, a misalignment standard deviation for the band-to-band shift, the per-band effective \acs{SNR} for the noise term, and the Nyquist \acs{MTF} for the optical blur.
-        Solar zenith angle, Earth--Sun distance, and solar irradiance are retrieved per scene from the Copernicus Data Space OData \acs{API}.
-        Because every stage is parameterised separately, individual effects can be varied or switched off independently, and the segmentation mask is carried through the pipeline so that labels stay aligned with the degraded imagery.
+    \caption[Updated Degradation Pipeline Diagram]{The updated degradation pipeline.
+        Source Sentinel-2 L1 product passes through five physical stages in radiance space before conversion back to reflectance, each driven by its own auxiliary input.
     }
     \label{fig:simulator}
 \end{figure}
@@ -400,7 +398,7 @@ At the $t$-th mini-batch,
 these accumulated values whiten activations at test time.
 
 Equation~\eqref{eq:bn-stats} is where a single-branch network fails under domain gap: the sums run over every example in the mini-batch regardless of which sensor produced it, so the running estimates of Equation~\eqref{eq:bn-ema} converge to a blend of the two sensors' statistics.
-Chang et al. \cite{chang2019dsbn}
+Chang et al.\cite{chang2019dsbn}
 \ make the same observation in general terms, that sharing the mean and variance across source and target is inappropriate when the domain shift is significant; the raw-scale and distribution-shape differences measured in Section~\ref{sec:triplets} fit this description.
 
 \paragraph{Domain-specific batch normalization.}
@@ -435,7 +433,8 @@ Every \acref{BN} layer of a base network $F(\cdot)$ is replaced by a \acref{DSBN
 Only $\gamma_d$, $\beta_d$, $\bar{\mu}_d$ and $\bar{\sigma}_d$ are duplicated, which for a layer of $C$ channels is four $C$-vectors per domain, negligible beside the convolutional weights.
 Everything outside those layers, which is to say every learned filter in the student, stays shared and is trained on both sensors at once.
 The split is therefore placed exactly at the per-channel scale and shift, the part of the representation that the measurements of Section~\ref{sec:triplets} identify as the most sensor-dependent, while the filters, which ought to be common, remain so.
-Chang et al. \cite{chang2019dsbn}
+Chang et al.
+\cite{chang2019dsbn}
 \ argue that this is also why the shared weights learn better domain-invariant features: the domain-specific component of the activations can be removed using the statistics and parameters of the domain the input came from.
 
 However, \acref{DSBN} was introduced for \acref{UDA} where the target domain carries no labels at all, and the original paper embeds the layer in a two-stage framework that first estimates pseudo-labels for the target domain and then trains on them.
@@ -447,7 +446,7 @@ Figure~\ref{fig:dsbn} contrasts the two arrangements, with each example activati
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{fig_bn_dsbn.png}
-    \caption{Batch normalization compared with domain-specific batch normalization, from Chang et al.~\cite{chang2019dsbn}.
+    \caption[Batch Normalization vs. Domain-Specific Batch Normalization]{Batch normalization compared with domain-specific batch normalization, from Chang et al.~\cite{chang2019dsbn}.
         (a) A single BatchNorm layer processes source ($x_S$) and target ($x_T$) examples alike, so its statistics describe a mixture of the two domains.
         (b) A \acs{DSBN} layer carries one branch per domain, and each input is routed to the branch corresponding to its own domain; the other branch, shown greyed, is inactive for that example.
         All parameters outside the \acs{DSBN} layers remain shared across domains.
@@ -458,10 +457,10 @@ Figure~\ref{fig:dsbn} contrasts the two arrangements, with each example activati
 Because the deployed sensor on board $\Phi$-sat-2 is always known at inference, selecting the matching normalization branch at deployment time costs nothing operationally, unlike a sensor-agnostic representation, which would need to be invariant without ever being told which sensor produced a given input.
 
 Since the student must eventually run on the target hardware (Myriad~2), we also have to establish the cost of the \acref{DSBN} mechanism and its implications for the model architecture.
-Batch normalization is representable in the deployment format: \texttt{BatchNormInference} belongs to \texttt{opset1}, the earliest OpenVINO operator set, and is therefore within the operator set available to the 2020.3 release that supports this processor.
+Batch normalization is representable in the deployment format: \texttt{BatchNormInference} belongs to \texttt{opset1}, the earliest OpenVINO operator set, which is available in the 2020.3 release that supports this processor
 \footnote{\url{https://docs.openvino.ai/2023.3/openvino_docs_ops_normalization_BatchNormInference_1.html}.
-    Operator specifications are versioned by opset: the 2020.3 documentation set has been withdrawn by Intel, so the current page is cited for an operator whose opset membership predates it.
-}
+    Operator specifications are versioned by opset, 2020.3 documentation set has been withdrawn by Intel, current page is cited for an operator whose opset membership predates it.
+}.
 In practice, however, the operator is not emitted at all, because at inference a batch-normalization layer reduces to a fixed per-channel affine transform.
 OpenVINO's model conversion folds the transform into the weights of the preceding convolution by default.
 Since we are only interested in the target sensor, only the target-sensor branch is exported, and its statistics fold into the convolution weights just like a normal single-domain model.
@@ -526,9 +525,9 @@ Querying the teacher directly on $\Phi$-sat-2 would distil that error instead of
             ]
 
             % --- data -------------------------------------------------------
-            \node[database] (data_s2)  at (0,  2.8) {Real Sentinel-2\\(source $x_s$)};
-            \node[database] (data_phi) at (0, -0.9) {Real $\Phi$-sat-2\\(target $x_t$)};
-            \node[labels]   (mask)     at (0, -4.4) {WorldCover labels\\(shared)};
+            \node[database] (data_s2)  at (0,  2.8) {Sentinel-2\\(source $x_s$)};
+            \node[database] (data_phi) at (0, -0.9) {$\Phi$-sat-2\\(target $x_t$)};
+            \node[labels]   (mask)     at (0, -3.0) {WorldCover labels\\(shared)};
 
             % --- models -----------------------------------------------------
             \node[frozen] (teacher) at (6.2,  4.0)
@@ -537,14 +536,15 @@ Querying the teacher directly on $\Phi$-sat-2 would distil that error instead of
             {CNN student (U-Net)\\shared convolutional weights\\\textbf{domain-specific BN}};
 
             % --- outputs ----------------------------------------------------
-            \node[feature] (t_soft)   at (11.8,  4.0) {Teacher soft\\predictions $T(x_s)$};
-            \node[feature] (s_source) at (11.8,  1.3) {Student logits\\source branch $S(x_s)$};
-            \node[feature] (s_target) at (11.8, -1.6) {Student logits\\target branch $S(x_t)$};
+            \node[feature] (t_soft)   at (12.8,  4.0) {Teacher soft\\predictions $T(x_s)$};
+            \node[feature] (s_source) at (12.8,  0.8) {Student logits\\source branch $S(x_s)$};
+            \node[feature] (s_target) at (12.8, -1.3) {Student logits\\target branch $S(x_t)$};
 
             % --- losses -----------------------------------------------------
-            \node[loss]    (kd)   at (16.8,  3.0) {KD loss\\KL, $T=4$};
-            \node[loss]    (task) at (18.0,  0.0) {Task loss\\focal, class-weighted};
-            \node[ablated] (con)  at (16.8, -3.0) {Contrastive terms\\weight $0$};
+            \node[loss]    (kd)   at (18.95,  2.0) {KD loss\\KL, $T=4$};
+            \node[loss]    (task) at (19.0,  -0.8) {Task loss\\focal, class-weighted};
+
+            \draw[<->, >=stealth, thick] (data_s2.south) -- (data_phi.north);
 
             % --- forward routing --------------------------------------------
             \draw[arrow] (data_s2.east)  -- ++(1.2,0) |- (teacher.west);
@@ -556,35 +556,32 @@ Querying the teacher directly on $\Phi$-sat-2 would distil that error instead of
             \draw[arrow] (student.east) -- ++(0.9,0) |- (s_target.west);
 
             % one teacher output supervises BOTH student branches
-            \draw[arrow] (t_soft.east)   -- ++(0,0) |- (kd.north);
+            \draw[arrow] (t_soft.east) -| (kd.north);
             \draw[arrow] (s_source.east) -- ++(0.6,0) |- (kd.west);
             \draw[arrow] (s_target.east) -- ++(0.6,0) |- (kd.west);
 
-            \draw[arrow] (s_source.east) -- ++(0.6,0) |- (task.north);
+           \draw[arrow] (s_source.east) -- ++(0.6,0) -| (task.north);
             \draw[arrow] (s_target.east) -- ++(0.6,0) |- (task.west);
-            \draw[arrow] (mask.east) -- (20.75,-4.4) -- (task.east);
-
-            \draw[arrow, gray, dashed] (s_target.south) -- ++(0,-0.85) -| (con.west);
+            \draw[arrow] (mask.east) -- (19.0,-3.0) -- (task.south);
 
             % --- grouping ---------------------------------------------------
             \begin{scope}[on background layer]
                 \node[draw, dashed, thick, blue!45, inner sep=0.35cm, fit=(data_s2) (data_phi) (mask),
                     label=above:\textbf{Co-registered triplet dataset}] {};
-                \node[draw, dashed, thick, red!45, inner sep=0.35cm, fit=(kd) (task) (con),
+                \node[draw, dashed, thick, red!45, inner sep=0.35cm, fit=(kd) (task),
                     label=above:\textbf{Training objective}] {};
             \end{scope}
         \end{tikzpicture}%
     }
-    \caption{Cross-architecture distillation with domain-specific normalization.
+    \caption[Cross-Architecture Distillation Diagram]{Cross-architecture distillation with domain-specific normalization.
         The frozen TerraMind teacher is evaluated only on the Sentinel-2 view, where it is trustworthy; its soft predictions supervise both student branches, which is possible because the two sensor views depict the same scene.
         The student is forwarded twice per patch, once per sensor, selecting its own batch-normalization statistics each time while sharing all convolutional weights.
         Both branches also receive the task loss against the single shared WorldCover label map.
-        The contrastive terms were implemented and evaluated but carry zero weight in every result reported in Chapter~\ref{chap:results-discussion}.
     }
     \label{fig:kd-architecture}
 \end{figure}
 
-\subsection{Training objective}
+\paragraph{Training objective}
 \label{sec:kd-objective}
 
 Write $x_s$ for the Sentinel-2 view of a patch, $x_t$ for its co-registered $\Phi$-sat-2 view, and $y$ the WorldCover label map.
@@ -657,8 +654,8 @@ Both weights are zero in every result reported in Chapter~\ref{chap:results-disc
         $\tau$                        & Distillation temperature               & $4.0$                \\
         \bottomrule
     \end{tabular}
-    \caption{Coefficients of the training objective, Equation~\eqref{eq:kd-total}.
-        The two contrastive weights are zero throughout Chapter~\ref{chap:results-discussion}; the values of $\gamma$, $\alpha_c$ and $\tau$ are shared by the supervised baseline wherever the corresponding term exists in it.
+    \caption[Training Objective Coefficients]{Coefficients of the training objective, Equation~\eqref{eq:kd-total}.
+        The two contrastive weights are zero throughout Chapter~\ref{chap:results-discussion}; the values of $\gamma$, $\alpha_c$ and $\tau$ are shared by the supervised baseline.
     }
     \label{tab:loss-weights}
 \end{table}
@@ -685,7 +682,8 @@ It is not the main baseline of interest, however, because it does not test the c
 \section{Tools, Software Environment, and Reproducibility}
 \label{sec:reproducibility}
 
-The degradation pipeline and dataset construction are implemented as modular EOTask objects within the \texttt{eo-learn} framework, orchestrated through a versioned simulation configuration object instead of hard-coded parameters, so that a given degradation run (baseline-calibrated or extended-sweep) is fully specified by its configuration.
-Triplet and \acref{LULC} datasets are stored in \acref{HDF5} with an accompanying manifest recording per-patch provenance and train/validation/test split assignment (fixed random seed, positional split), enabling exact reproduction of any reported split.
-Model training (TerraMind fine-tuning, \acref{DSBN}-based distillation, the contrastive-alignment ablation) is implemented in PyTorch.
-The codebase is organized as a single versioned Python package, with submodules separating the data simulation, the dataset loading, the model training tasks and the drift analysis, under a standard git version control, so that each experiment reported in Chapter~\ref{chap:results-discussion} corresponds to a retrievable configuration.
+The degradation pipeline and dataset construction are implemented as modular EOTask objects within the \texttt{eo-learn}\cite{EO_Research_Team2024-oh} framework, orchestrated through a versioned simulation configuration object instead of hard-coded parameters, so that a given degradation run (baseline-calibrated or extended-sweep) is fully specified by its configuration.
+Triplet and \acref{LULC} datasets are stored on the \acref{ESA} High-Performance Computing (HPC) infrastructure in \acref{HDF5} format, with a manifest recording per-patch provenance and train/validation/test split assignment (fixed random seed, positional split), enabling exact reproduction of any reported split.
+Model training (TerraMind fine-tuning, \acref{DSBN}-based distillation, the contrastive-alignment ablation) is implemented in PyTorch with the TerraTorch\cite{gomes2025terratorch} toolkit.
+The codebase is available on a GitHub repository (\url{https://github.com/elucas0/terra-sat-drift}) and is organized as a single versioned Python package, with submodules separating the data simulation, the dataset loading, the model training tasks and the drift analysis.
+Each experiment reported in Chapter~\ref{chap:results-discussion} corresponds to a retrievable configuration and is available on the Weights and Biases workspace upon request at: \\ \url{https://wandb.ai/elouannlucas56-universit-bretagne-sud/encoder-lulc/workspace?nw=nwuserelouannlucas56}.

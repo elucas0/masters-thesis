@@ -4,13 +4,12 @@ However, these models are pre-trained on archived data from missions such as Sen
 This thesis studies three questions, with TerraMind, a Vision Transformer (\acref{ViT})-based \acref{GeoFM}, and the European Space Agency's $\Phi$-sat-2 CubeSat mission as the case study: whether TerraMind produces domain-invariant latent representations on real $\Phi$-sat-2 imagery, whether a lightweight Convolutional Neural Network (\acref{CNN}) distilled from it can be made sensor-adaptive, and whether doing so is better than simply training the compact model on the target sensor.
 
 We use a co-registered triplet dataset of real $\Phi$-sat-2, real Sentinel-2 and physics-simulated $\Phi$-sat-2 imagery, which lets us measure the domain gap directly, as the distance in TerraMind's embedding space between two sensor views of the same ground.
-The gap is already there in the early layers of the encoder, and a linear probe transfers only a third of its source-domain accuracy to the target sensor.
+The gap is already present in the early layers of the encoder, and a linear probe transfers only a third of its source-domain accuracy to the target sensor.
 This points to a low-level, radiometric origin in the two sensors' differing spectral response functions, since a semantic cause would rather have surfaced in the deeper layers.
 Plain fine-tuning on physics-degraded data does not close the gap either.
-Domain-specific batch normalization, applied to the student during cross-architecture knowledge distillation into a lightweight \acref{CNN}, does reduce it (cosine similarity $0.098 \rightarrow 0.948$, probe transfer $33\% \rightarrow 97\%$), and it only requires that the sensor of each input is known, which is always the case on board.
+Domain-specific batch normalization, applied to the student during knowledge distillation into a lightweight \acref{CNN}, does reduce it (cosine similarity $0.098 \rightarrow 0.948$, probe transfer $33\% \rightarrow 97\%$), and it only requires the sensor of each input to be known.
 A paired-contrastive objective exploiting the co-registered pairing was also implemented and evaluated, but it did not do better than domain-specific normalization alone.
 Whether this adaptation is worth adopting then depends on the label budget.
-The distilled, domain-adapted student outperforms a supervised baseline of identical architecture trained directly on the target sensor at a representative labeled-data budget (\acref{mIoU} $0.4532$ vs.\ $0.3989$), but it loses to that same baseline at a smaller one (\acref{mIoU} $0.2679$ vs.\ $0.2916$).
+The distilled, domain-adapted student outperforms a supervised baseline of identical architecture trained directly on the target sensor at a representative labeled-data budget (\acref{mIoU} $0.4532$ vs.
+\ $0.3989$), but it loses to that same baseline at a smaller one (\acref{mIoU} $0.2679$ vs.\ $0.2916$).
 A few-shot comparison against $\Phi$satNet, an on-orbit \acref{GeoFM} developed for the same mission, is planned but remains to be run.
-
-% What these results show is that a deliberate, domain-aware adaptation is necessary if GeoFMs are to generalize on board resource-constrained EO missions: an incidental exposure to degraded data does not deliver it, and the more complex paired mechanism is not required to. How much this adaptation is worth then depends on the label budget.

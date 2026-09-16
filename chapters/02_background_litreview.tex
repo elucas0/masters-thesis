@@ -20,7 +20,7 @@ The arrangement keeps the mission design simple, but it also makes the useful ou
 \begin{figure}[htp]
     \centering
     \includegraphics[width=12cm]{fig_onboard_workflow.png}
-    \caption{Top Workflow (Bent-Pipe Architecture): Data is acquired and minimally preprocessed on the satellite before being transmitted to the ground station, where in-depth analysis for anomalies is conducted.
+    \caption[Bent-Pipe Architecture vs. On-board Processing]{Top Workflow (Bent-Pipe Architecture): Data is acquired and minimally preprocessed on the satellite before being transmitted to the ground station, where in-depth analysis for anomalies is conducted.
         Bottom Workflow: The satellite extracts parameters and detects anomalies onboard, transmitting only the relevant anomaly data to the ground station, reducing data transmission and enabling faster detection.
         From Razzano et al.~\cite{razzano2024ai}.
     }
@@ -95,7 +95,7 @@ The three kinds are difficult to separate in practice, because two datasets acqu
 The co-registered triplets described in Chapter~\ref{chap:methodology} are constructed to remove that confound.
 Since each triplet holds views of the same ground at very nearly the same time, the label distribution and the underlying scene are held fixed across those views by construction, which leaves the sensor as the only factor that varies, and the shift it induces as the only one being measured.
 
-\subsection{Domain Adaptation}
+\paragraph{Domain Adaptation}
 \label{sec:domain-adaptation}
 
 Domain adaptation (\acref{DA}) addresses the general problem of a model trained on a source distribution being applied to a target distribution with different input statistics but unchanged semantics~\cite{kouw2019introductiondomainadaptationtransfer}.
@@ -143,7 +143,7 @@ This is the question the co-registered real acquisitions of Chapter~\ref{chap:me
 
 \section{Knowledge Distillation Across Architectures}
 
-Knowledge distillation (\acref{KD})~\cite{hinton2015distilling} compresses a large "teacher" model into a smaller "student", by training the student to reproduce the teacher's output distribution.
+Knowledge distillation (\acref{KD})~\cite{hinton2015distilling} compresses a large teacher model into a smaller student, by training the student to reproduce the teacher's output distribution.
 By transferring the teacher's semantic knowledge, \acref{KD} allows the student to generalize better on large datasets, and with a lower computational cost.
 Some feature-based variants exist that use the intermediate representations of the teacher, instead of training the student only against hard labels~\cite{heo2019comprehensive}.
 Le et al.~\cite{le2025semantic} proposed a distillation method between a \acref{ViT} teacher and a ResNet student for image classification, which uses a dynamic weighting mechanism to adjust each teacher's influence on the student, based on the teacher's confidence in its predictions.

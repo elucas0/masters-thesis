@@ -1,15 +1,16 @@
-\contentsline {table}{\numberline {1}{\ignorespaces Usage of Artificial Intelligence Tools}}{1}{table.caption.2}%
+\contentsline {table}{\numberline {1}{\ignorespaces Usage of Artificial Intelligence Tools}}{2}{table.caption.3}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Coefficients of the training objective, Equation~\eqref {eq:kd-total}. The two contrastive weights are zero throughout Chapter~\ref {chap:results-discussion}; the values of $\gamma $, $\alpha _c$ and $\tau $ are shared by the supervised baseline wherever the corresponding term exists in it. }}{41}{table.caption.39}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Training Objective Coefficients}}{39}{table.caption.42}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Training configuration for the two methods. Settings above the rule are identical by construction; those below apply to the distilled method only. }}{44}{table.caption.42}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces The degradation ladder. Level~4 reproduces the joint simulator configuration; each step down halves the perturbation. \acs {SNR} is drawn per scene from the stated range and the noise amplitude scales as its reciprocal, so the four ranges correspond to relative noise of $1/8$, $1/4$, $1/2$ and $1$. Blur and misalignment parameters are in resampled $4.75$\,m pixels. }}{46}{table.caption.45}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Domain gap across the degradation ladder: change in positive-class \acs {IoU} relative to the clean test split, for a model trained only on clean data. Values are the mean over three seeds of the within-seed drop, $\pm $ one standard deviation of those drops. }}{48}{table.caption.47}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Degradation seen at inference only, against degradation present during training as well, for the distilled student at full severity. }}{49}{table.caption.48}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Sensor invariance of the teacher and the distilled student, over $800$ co-registered test patches. Paired cosine and probe transfer compare the two sensor views of the same ground. Probe transfer fits a linear classifier on Sentinel-2 embeddings and applies it to $\Phi $-sat-2 embeddings; retention is the ratio of the two accuracies. The \acs {IoU} difference is measured on the full test split. }}{50}{table.caption.49}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces Main results on the \acs {LULC} task. Validation \acs {mIoU} is the best epoch, on the fixed $1{,}000$-patch validation split shared by every run. Test \acs {mIoU} is on the full $25{,}323$-patch test split. Cost is total wall-clock for the run. }}{51}{table.caption.52}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces Trainable parameters against accuracy at $10{,}000$ labelled patches. Every parameter is trained in all five rows, so the totals are also the trainable counts. Test mIoU is on the full $25{,}323$-patch test split. }}{54}{table.caption.56}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Training Configuration for the Two Methods}}{42}{table.caption.45}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces The Degradation Ladder}}{44}{table.caption.48}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Domain Gap Across the Degradation Ladder}}{46}{table.caption.50}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Degradation Ladder Results}}{47}{table.caption.51}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Sensor Invariance}}{48}{table.caption.52}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Main Results on the LULC Task}}{49}{table.caption.55}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Model Complexity and Accuracy}}{52}{table.caption.59}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces Real-Data LULC Baseline Results}}{59}{table.caption.63}%

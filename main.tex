@@ -14,23 +14,6 @@
 \newcommand{\acref}[1]{\hyperlink{acrolink:#1}{\acs{#1}}}
 \usetikzlibrary{positioning, shapes.geometric, arrows.meta, fit, backgrounds, calc}
 
-% ---------------------------------------------------------------------------
-% Draft-only: highlights work still in progress, for the supervisors' first read.
-%   \wip{status}                 -> box with a placeholder note
-%   \wip[my comment]{status}     -> box with my own note
-% To strip the styling for submission, replace the definition below with:
-%   \newcommand{\wip}[2][]{#2}
-% ---------------------------------------------------------------------------
-\definecolor{wipframe}{RGB}{176,98,0}
-\definecolor{wipbg}{RGB}{255,248,238}
-\newcommand{\wip}[2][\emph{(comment to be added)}]{%
-    \par\medskip\noindent
-    \fcolorbox{wipframe}{wipbg}{%
-        \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
-            \textcolor{wipframe}{\textbf{Work in progress.}}\ #2\par
-        \end{minipage}%
-    }\par\medskip%
-}
 \geometry{a4paper, margin=1in}
 \graphicspath{{figures/}}
 
@@ -48,13 +31,11 @@
     \vspace{1.5cm}
     {\Large MASTER'S THESIS\par} %[cite: 2]
 
-    \vspace{0.5cm}
     submitted in partial fulfillment of the requirements for the degree of\par %[cite: 2]
-    \vspace{0.5cm}
     {\large Master of Science (MSc)\par} %[cite: 2]
 
     \vspace{1.5cm}
-    {\large UNIVERSITY OF SALZBURG\par} %[cite: 2]
+    {\large\textbf{UNIVERSITY OF SALZBURG}\par} %[cite: 2]
     Faculty of Digital and Analytical Sciences\par %[cite: 2]
     Department of Geoinformatics\par %[cite: 2]
 
@@ -62,31 +43,41 @@
     and\par %[cite: 2]
 
     \vspace{0.5cm}
-    {\large UNIVERSITY OF SOUTH BRITTANY\par} %[cite: 2]
+    {\large\textbf{UNIVERSITY OF SOUTH BRITTANY}\par} %[cite: 2]
     Faculty of Sciences and Engineering Sciences\par %[cite: 2]
     Mathematics, Computer Science, Statistics Department\par %[cite: 2]
-    Data Science Specialisation\par %[cite: 2]
+    \textbf{Data Science Specialisation}\par %[cite: 2]
 
     \vspace{1.5cm}
-    \begin{flushleft}
-    University of Salzburg supervisor(s): Assoc.\ Prof.\ Martin Sudmanns\par %[cite: 1, 2]
-    University of South Brittany supervisor(s): Assoc.\ Prof.\ Sébastien Lefèvre\par %[cite: 1, 2]
-    Other supervisor: Nicolas Longépé, ESA Supervisor\par %[cite: 1, 2]
-    \end{flushleft}
+    \begin{center}
+        University of South Brittany supervisor: \ Prof.
+        \ Sébastien Lefèvre\par %[cite: 1, 2]
+        University of Salzburg supervisor: Assoc.
+        \ Prof.\ Martin Sudmanns\par %[cite: 1, 2]
+        ESA $\Phi$-lab supervisor: Nicolas Longépé\par \end{center}
 
-    \vspace{1.5cm}
-    \centering
-    submitted by\par %[cite: 2]
-    \vspace{0.5cm}
-    {\Large Elouann Lucas\par} %[cite: 1, 2]
+    \centering submitted by\par {\large Elouann, Nhân, François LUCAS\par}
 
-    \vfill
-    Salzburg \& Vannes, August 2026\par %[cite: 2]
-\end{titlepage}
+    \vspace{3cm} Salzburg \& Vannes, September 2026\par \end{titlepage}
+
+\newpage\mbox{}\newpage
+
+\vspace*{\fill} Co-funded by the European Union.
+This Master’s Thesis has been developed in the framework of the Erasmus Mundus Joint Master (EMJM) “Copernicus Master in Digital Earth”, jointly coordinated by University of Salzburg, Department of Geoinformatics, Austria together with University of South Brittany, Mathematics, Computer Science, Statistics Department, France and Palacký University Olomouc, Department of Geoinformatics, Czechia.
+\vspace*{\fill}
 
 \begin{abstract}
     \input{chapters/00_abstract}
 \end{abstract}
+
+\section*{Acknowledgements}
+I would like to thank my supervisors, Prof.
+\ Sébastien Lefèvre, Assoc.\ Prof.\ Martin Sudmanns and Nicolas Longépé, for their guidance on this project.
+Their continuous support and trust through the process have been deeply motivating: from sparking my interest in on-board AI to proposing a collaboration with the ESA $\Phi$-lab in Frascati and finally to the shaping for a thesis.
+Beyond his support on the methodology and expertise on the field, Nicolas Longépé provided me with everything I needed to succeed on this project, starting from the integration to the team of the $\Phi$-lab, where I had the opportunity to exchange with experts in EO and AI.
+I gained invaluable experience as a visiting researcher at the $\Phi$-lab, and I thank my friends of the $\Phi$-sat team Ivar Van Der Spoel, Malo De Pastor and Clément Gilli for their help with the tools I used for this thesis and our rich discussions.
+I would also like to thank all the friends I met through the CDE program, as well as Simon Donike, who supported me with his knowledge and insights during my stay at the $\Phi$-lab.
+\newpage
 
 \section*{Statement on the Usage of Artificial Intelligence}
 

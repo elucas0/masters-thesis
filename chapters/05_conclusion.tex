@@ -3,7 +3,7 @@
 
 On-board processing exists to shorten the path from the acquisition to the actionable information, for time-critical Earth observation applications such as flood and wildfire response, where the value of a detection decays with every hour spent waiting for a ground-based product.
 Because the data of a mission's own sensor cannot exist before its launch, and because labeled examples of rare events accumulate slowly afterward, foundation models pre-trained on the archives of other missions are an attractive way to reach a useful performance with few mission-specific labels.
-This interest is conditional, however, on the question this thesis set out to answer directly: whether the learned representation of such a model survives contact with a sensor it was never trained on, and, if it does not, whether this can be fixed deliberately instead of being assumed away.
+This interest is conditional, however, on the question this thesis set out to answer directly: whether the learned representation of such a model survives contact with a sensor it was never trained on, and, if it does not, whether this can be fixed.
 
 The evidence we gathered here says that it can, but not for free, and not through the mechanism this thesis originally expected.
 TerraMind's latent representation of real $\Phi$-sat-2 imagery does differ measurably from its representation of Sentinel-2 imagery of the same scenes.
@@ -23,5 +23,5 @@ Treating the domain-gap problem and the compute-constraint problem as one single
 
 This work is limited to a single mission and a single sensor pair, and to one specific pre-trained \acref{GeoFM}.
 Whether the spectral-response-driven account of the domain gap generalizes to other on-board missions, and whether TerraMind's broad pre-training is in fact more label-efficient than a mission-specific model trained from scratch, are both open questions that this thesis frames clearly but does not close.
-The comparison against $\Phi$satNet, a bespoke \acref{GeoFM} developed for the same mission and by the same research group, is the immediate next step toward closing the second one.
-A natural extension of this work would then be to repeat the analysis for other sensor pairs and other missions, or to attempt to train a custom foundation model instead of adapting an existing one, in order to test whether the findings here are specific to TerraMind, or general to the class of large and diversely pre-trained \acref{EO} models it represents.
+Further comparisons against $\Phi$satNet are the immediate next step toward closing the second one.
+An extension of this work would then be to repeat the analysis for other sensor pairs and other missions, or to attempt to train a custom foundation model instead of adapting an existing one, in order to test whether the findings here are specific to TerraMind, or general to the class of large and diversely pre-trained \acref{EO} models it represents.

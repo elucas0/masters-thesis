@@ -1,49 +1,49 @@
-This is BibTeX, Version 0.99e (TeX Live 2026)
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: ieeetr.bst
 Database file #1: references.bib
 Warning--empty journal in taylor2013wildfire
 Warning--empty journal in coelho2021phisat2
-You've used 41 entries,
+You've used 43 entries,
             1876 wiz_defined-function locations,
-            693 strings with 14923 characters,
-and the built_in function-call counts, 13587 in all, are:
-= -- 1104
-> -- 993
+            701 strings with 15332 characters,
+and the built_in function-call counts, 13961 in all, are:
+= -- 1126
+> -- 1029
 < -- 0
-+ -- 345
-- -- 304
-* -- 1135
-:= -- 2110
-add.period$ -- 42
-call.type$ -- 41
-change.case$ -- 42
++ -- 358
+- -- 315
+* -- 1165
+:= -- 2176
+add.period$ -- 44
+call.type$ -- 43
+change.case$ -- 44
 chr.to.int$ -- 0
-cite$ -- 43
-duplicate$ -- 607
-empty$ -- 1069
-format.name$ -- 304
-if$ -- 3108
+cite$ -- 45
+duplicate$ -- 620
+empty$ -- 1104
+format.name$ -- 315
+if$ -- 3190
 int.to.chr$ -- 0
-int.to.str$ -- 41
-missing$ -- 38
-newline$ -- 127
-num.names$ -- 41
-pop$ -- 153
+int.to.str$ -- 43
+missing$ -- 39
+newline$ -- 133
+num.names$ -- 43
+pop$ -- 164
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 396
+skip$ -- 401
 stack$ -- 0
 substring$ -- 762
-swap$ -- 248
+swap$ -- 249
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 105
-width$ -- 43
-write$ -- 383
+while$ -- 107
+width$ -- 45
+write$ -- 398
 (There were 2 warnings)
